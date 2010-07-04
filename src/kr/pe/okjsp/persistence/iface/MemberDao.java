@@ -1,4 +1,4 @@
-package kr.pe.okjsp.persistence;
+package kr.pe.okjsp.persistence.iface;
 
 import java.util.List;
 

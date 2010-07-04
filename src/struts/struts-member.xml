@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+  <package name="member" namespace="/member" extends="default">
+    <action name="login" class="kr.pe.okjsp.presentation.member.LoginAction">
+      <result name="input">/WEB-INF/jsp/member/login.jsp</result>
+      <result type="chain">
+        <param name="namespace">/</param>
+        <param name="actionName">index</param>
+      </result>
+    </action>
+
+    <action name="add-member" class="kr.pe.okjsp.presentation.member.AddMemberAction">
+      <result name="input">/WEB-INF/jsp/member/addMember.jsp</result>
+      <result>/WEB-INF/jsp/member/addMemberSuccess.jsp</result>
+    </action>
+
+    <action name="update-member-input">
+      <result>/WEB-INF/jsp/member/updateMember.jsp</result>
+    </action>
+    <action name="update-member" class="kr.pe.okjsp.presentation.MemberAction" method="updateMember">
+      <result name="input" type="chain">
+        <param name="actionName">update-member-input</param>
+      </result>
+      <result>/WEB-INF/jsp/member/updateMemberSuccess.jsp</result>
+    </action>
+
+    <action name="delete-member-input">
+      <result>/WEB-INF/jsp/member/deleteMember.jsp</result>
+    </action>
+    <action name="delete-member" class="kr.pe.okjsp.presentation.MemberAction" method="deleteMember">
+      <result name="input" type="chain">
+        <param name="actionName">delete-member-input</param>
+      </result>
+      <result>/WEB-INF/jsp/member/deleteMemberSuccess.jsp</result>
+    </action>
+  </package>
+</struts>

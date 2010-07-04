@@ -3,8 +3,11 @@ package kr.pe.okjsp.persistence.sqlmapdao;
 import java.util.List;
 
 import kr.pe.okjsp.domain.Member;
-import kr.pe.okjsp.persistence.MemberDao;
+import kr.pe.okjsp.persistence.iface.MemberDao;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class MemberSqlMapDao extends BaseSqlMapDao implements MemberDao {
 
 	public Object insertMember(Member member) {

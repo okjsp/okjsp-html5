@@ -6,5 +6,13 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+  <!-- Scans for application @Components to deploy -->
+  <context:component-scan base-package="kr.pe.okjsp" />
+  <context:component-scan base-package="kr.pe.okjsp.presentation" />
+  <context:component-scan base-package="kr.pe.okjsp.service" />
+
+  <!-- Configuration Services & Repositories -->
+  <context:annotation-config />
+
   <import resource="dataaccess-config.xml" />
 </beans>
