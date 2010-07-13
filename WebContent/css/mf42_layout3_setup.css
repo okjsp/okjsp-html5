@@ -1,0 +1,154 @@
+/****************************************************************/
+/*   Design:   Multiflex-4.2 / Layout-3                         */
+/*   File:     Global layout structure                          */
+/*--------------------------------------------------------------*/
+/*   Design:   www.1234.info                                    */
+/*   Date:     January 20, 2008                                 */
+/*--------------------------------------------------------------*/
+/*   License:  Fully open source without restrictions.          */
+/*             Please keep footer credits with the words        */
+/*             "Design by 1234.info". Thank you!                */
+/****************************************************************/
+
+/*-------------------------------------------------------------------------------*/
+/* If you are interested in adopting the new header in Multiflex-4 for your      */
+/* existing website using Multiflex-3, here are the instructions how to do it:   */
+/*                                                                               */
+/* A. CSS Code                                                                   */
+/*    1. Replace your current Multiflex-3 CSS setup file with this file.         */
+/*                                                                               */
+/* B. HTML Code                                                                  */
+/*    1. Open the Multiflex-4 HTML file corresponding to your Multiflex-3 file.  */
+/*    2. Copy the indicated HTML lines as instructed in the code.                */
+/*    3. Paste the copied HTML lines into your Multiflex-3 file.                 */
+/*                                                                               */
+/* C. IMAGE files                                                                */
+/*    1. Copy the the following five files from the Multiflex-4 image directory  */
+/*       to your current image directory for Multiflex-3:                        */
+/*       - "bg_head_corner_topleft_25px.gif"                                     */ 
+/*       - "bg_head_corner_topright_25px.gif"                                    */
+/*       - "flag_greatbritain.png"                                               */
+/*       - "flag_germany.png"                                                    */
+/*       - "flag_sweden.png"                                                     */
+/*                                                                               */
+/* D. Your new header is now ready for operation!                                */
+/*-------------------------------------------------------------------------------*/
+
+/************/
+/*  GLOBAL  */
+/************/
+
+/* NON-HEADER */
+*{padding:0; margin:0;}
+ body {font-size:62.5%; background-color:rgb(255,255,255); font-family:verdana,arial,sans-serif;} /*Font-size: 1.0em = 10px when browser default size is 16px*/
+.page-container {width:960px; margin:0px auto; margin-top:10px; margin-bottom:10px; font-size:1.0em;}
+.main {clear:both; width:954px; padding-bottom:30px; border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175); background:transparent url(../img/bg_main_reverse.gif) top left repeat-y;}
+.main-navigation {display:inline /*Fix IE floating margin bug*/; float:right; width:200px; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/; background:rgb(245,245,245);}
+.main-content {display:inline; /*Fix IE floating margin bug*/; float:left; width:690px; margin:0 0 0 30px; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+.footer {clear:both; width:954px; padding:1.0em 0 1.0em 0; border-top:solid 3px rgb(175,175,175); border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175); border-bottom:solid 3px rgb(175,175,175); background:rgb(225,225,225); font-size:1.0em; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+
+/* HEADER */
+.header {width:960px;}
+.header-top {width:954px; height:90px; border-top:solid 3px rgb(175,175,175); border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175); margin-top:10px; background:rgb(235,235,235); overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+.header-bottom {width:954px; border-bottom:solid 3px rgb(175,175,175); border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175); border-top:solid 1px rgb(175,175,175);}
+.header-breadcrumbs {clear:both; width:954px; padding:1.0em 0 1.5em 0; border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175);}
+.header .round-border-topleft {width:25px; height:25px; position:absolute; z-index:100; background:url(../img/bg_head_corner_topleft_25px.gif) no-repeat; margin-top:-3px; margin-left:-3px;}
+.header .round-border-topright {width:25px; height:25px; position:absolute; z-index:100; background:url(../img/bg_head_corner_topright_25px.gif) no-repeat; margin-top:-3px; margin-left:932px;}
+
+/*************/
+/*  2. HEAD  */
+/*************/
+.sitelogo {width:51px; height:51px; position:absolute; z-index:1; margin:18px 0 0 15px; background:url(../img/bg_head_top_logo.jpg);}
+.sitename {width:300px; height:45px; position:absolute; z-index:1; margin:23px 0 0 75px; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+.sitename h1 {font-weight:normal; font-size:240%;}
+.sitename h2 {margin:-2px 0 0 0; color:rgb(125,125,125); font-weight:normal; font-size:120%;}
+.sitename a{text-decoration:none; color:rgb(125,125,125);}
+.sitename a:hover {text-decoration:none; color:rgb(125,125,125);}
+
+.nav0 {width:350px; position:absolute; z-index:2; margin:25px 0 0 0; margin-left:610px !important /*Non-IE6*/; margin-left:613px /*IE6*/;}
+.nav0 ul {float:right; padding:0 20px 0 0;}
+.nav0 li {display:inline; list-style:none;}
+.nav0 li a {padding:0 0 0 3px;}
+.nav0 a:hover {text-decoration:none;}
+.nav0 a img {height:20px; border:none;}
+
+.nav1 {width:350px; position:absolute; z-index:3; margin:55px 0 0 610px;}
+.nav1 ul {float:right; padding:0 15px 0 0; font-weight:normal;}	
+.nav1 li {display:inline; list-style:none;}
+.nav1 li a {display:block; float:left; padding:2px 5px 2px 5px; color:rgb(125,125,125); text-decoration:none; font-size:110%;}
+.nav1 a:hover {text-decoration:none; color:rgb(50,50,50);}
+
+/*Drop-down menu*/
+.nav2 {white-space:nowrap /*IE hack*/; float:left; width:954px; background:rgb(225,225,225); color:rgb(100,100,100); font-size:130%;} /*Color navigation bar normal mode*/
+.nav2 ul {list-style-type:none;}
+.nav2 ul li {float:left; z-index:auto !important /*Non-IE6*/; z-index:1000 /*IE6*/; border-right:solid 1px rgb(175,175,175);}
+.nav2 ul li a {float:none !important /*Non-IE6*/; float:left /*IE-6*/; display:block; height:2.1em; line-height:2.1em; padding:0 16px 0 16px; text-decoration:none; font-weight:normal; color: rgb(100,100,100);}
+.nav2 ul li ul {display:none; border:none;}
+
+/*Non-IE6 hovering*/
+.nav2 ul li:hover {position:relative;} /*Sylvain IE hack*/
+.nav2 ul li:hover a {background-color:rgb(215,215,215); text-decoration:none;} /*Color main cells hovering mode*/
+.nav2 ul li:hover ul {display:block; width:10.0em; position:absolute; z-index:999; top:2.0em; margin-top:0.1em; left:0;}
+.nav2 ul li:hover ul li a {white-space:normal; display:block; width:10.0em; height:auto; line-height:1.3em; margin-left:-1px; padding:4px 16px 4px 16px; border-left:solid 1px rgb(175,175,175); border-bottom: solid 1px rgb(175,175,175); background-color:rgb(240,240,240); font-weight:normal; color:rgb(100,100,100);} /*Color subcells normal mode*/
+.nav2 ul li:hover ul li a:hover {background-color:rgb(215,215,215); text-decoration:none;} /*Color subcells hovering mode*/
+
+/*IE6 hovering*/
+.nav2 table {position:absolute; top:0; left:-1px; border-collapse:collapse;}
+.nav2 ul li a:hover {position:relative /*Sylvain IE hack*/; z-index:1000 /*Sylvain IE hack*/; background-color:rgb(215,215,215); text-decoration:none;} /*Color main cells hovering mode*/
+.nav2 ul li a:hover ul {display:block; width:10.0em; position:absolute; z-index:999; top:2.1em; t\op:2.0em; left:0; marg\in-top:0.1em;}
+.nav2 ul li a:hover ul li a {white-space:normal; display:block; w\idth:10.0em; height:1px; line-height:1.3em; padding:4px 16px 4px 16px; border-left:solid 1px rgb(175,175,175); border-bottom: solid 1px rgb(175,175,175); background-color:rgb(240,240,240); font-weight:normal; color:rgb(50,50,50);} /*Color subcells normal mode*/
+.nav2 ul li a:hover ul li a:hover {background-color:rgb(215,215,215); text-decoration:none;} /*Color subcells hovering mode*/
+
+.header-breadcrumbs ul {float:left; width:560px; list-style:none; padding:0 0 0 15px; font-family:verdana,arial,sans-serif;}
+.header-breadcrumbs ul li {display:inline; padding:0 0 0 10px; background:transparent url(../img/bg_bullet_arrow.gif) no-repeat 0 50%; font-weight:bold; color:rgb(125,125,125); font-size:100%;}
+.header-breadcrumbs ul a {color:rgb(70,122,167); text-decoration:none;}
+.header-breadcrumbs ul a:hover {color:rgb(42,90,138); text-decoration:underline;}
+
+.header-breadcrumbs .searchform {float:right; width:285px; padding:0 17px 0px 0px !important /*Non-IE6*/; padding:0 12px 0px 0px /*IE6*/;}
+.header-breadcrumbs .searchform form fieldset {float:right; border:none;}
+.header-breadcrumbs .searchform input.field {width:10.0em; padding:0.2em 0 0.2em 0; border:1px solid rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:120%; }
+.header-breadcrumbs .searchform input.button {width:3.0em; padding:1px !important /*Non-IE6*/; padding:0 /*IE6*/; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:120%;}
+.header-breadcrumbs .searchform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+
+/******************/
+/*  MAIN SECTION  */
+/******************/
+
+/* MAIN NAVIGATION */
+.main-navigation .round-border-topleft {width:10px; height:10px; position:absolute; z-index:100; margin:0; background:url(../img/bg_corner_topleft.gif) no-repeat;}
+
+/* MAIN CONTENT */
+.column1-unit {width:690px;  margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column2-unit-left {float:left; width:325px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column2-unit-right {float:right; width:325px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column3-unit-left {float:left; width:202px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column3-unit-middle {float:left; width:202px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/; margin-left:40px;}
+.column3-unit-right {float:right; width:202px;  margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+
+/********************/
+/*  FOOTER SECTION  */
+/********************/
+.footer p {line-height:1.3em; text-align:center; color:rgb(125,125,125); font-weight:bold; font-size:110%;}
+.footer p.credits {font-weight:normal;}
+.footer a {text-decoration:underline; color:rgb(125,125,125);}
+.footer a:hover {text-decoration:none; color:rgb(0,0,0);}
+.footer a:visited {color:rgb(0,0,0);}
+
+/******************/
+/*  CLEAR FLOATS  */
+/******************/
+.page-container:after, .header:after, .header-bottom:after, .header-breadcrumbs:after, .main:after, .main-navigation:after, .main-content:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.column1-unit:after, .column2-unit-left:after, .column2-unit-right:after, .column3-unit-left:after, .column3-unit-middle:after, .column3-unit-right:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+ p:after {content:"."; display:block; height:0; /*clear:both*/; visibility:hidden;}
+.footer:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.clear-contentunit {clear:both; width:690px; height:0.2em; border:none; background:rgb(210,210,210); color:rgb(210,210,210);}
+
+/********************************/
+/*  PRINTING and MISCELLANEOUS  */
+/********************************/
+@media print {.header-top {width:954px; height:80px; background:rgb(240,240,240); overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}}
+@media print {.header-breadcrumbs {width:954px; background:transparent;}}
+@media print {.nav2 {float:left; width:954px; border:none; background:rgb(240,240,240); color:rgb(75,75,75); font-size:1.0em; font-size:130%;}} /*Color navigation bar normal mode*/
+@media print {.main {clear:both; width:954px; padding-bottom:30px; background:transparent;}}
+@media print {.main-navigation {display:inline /*Fix IE floating margin bug*/; float:left; width:199px; border-right:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); background-color:rgb(240,240,240); overflow:visible !important /*Firefox*/; overflow:hidden /*IE*/;}}
+@media print {.footer {clear:both; width:954px; height:3.7em; padding:1.1em 0 0; background:rgb(240,240,240); font-size:1.0em; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}}
