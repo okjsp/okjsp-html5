@@ -3,10 +3,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<%
+String cPath = request.getContextPath();
+
+
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" type="text/css" media="screen,projection,print" href="/html5/css/mf42_layout4_setup.css" />
-<link rel="stylesheet" type="text/css" media="screen,projection,print" href="/html5/css/mf42_layout4_text.css" />
-<link rel="icon" type="image/x-icon" href="/html5/img/favicon.ico" />
+<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
+<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
+<link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
+<script type="text/javascript">
+alert('<%=cPath%>');
+</script>
 <title>OKJSP_HTML5</title>
 </head>
 <body>
