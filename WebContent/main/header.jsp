@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <header class="header">
-	<!-- A.1 HEADER TOP -->
-	<div class="header-top">
+	<!-- 타이틀_시작 -->
+	<hgroup class="header-top">
 		<div class="round-border-topleft"></div>
 		<div class="round-border-topright"></div>
 		
@@ -32,11 +32,11 @@
 				<li><a href="#" title="Send us a message">Impressum</a></li>
 			</ul>
 		</div>
-	</div>
-	
-	<!-- A.3 HEADER BOTTOM -->
+	</hgroup>
+	<!-- 타이틀_끝-->
+	<!-- 상단메뉴_시작 -->
 	<div class="header-bottom"><!-- Navigation Level 2 (Drop-down menus) -->
-		<div class="nav2"><!-- Navigation item -->
+		<nav class="nav2"><!-- Navigation item -->
 			<ul>
 				<li><a href="main.jsp">홈</a></li>
 			</ul>
@@ -54,6 +54,7 @@
 				</ul>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]--></li>
 			</ul>
-		</div>
+		</nav>
 	</div>
+	<!-- 상단메뉴_끝 -->
 </header>
