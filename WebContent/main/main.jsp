@@ -35,8 +35,8 @@ String cPath = request.getContextPath();
       <!-- Search form -->                  
       <div class="searchform">
         <form action="index.html" method="get">
-          <fieldset>
-            <input name="field" class="field"  value=" Search..." />
+          <fieldset> 
+            <input name="field" class="field"  placeholder="Search..." />
             <input type="submit" name="button" class="button" value="GO!" />
           </fieldset>
         </form>
