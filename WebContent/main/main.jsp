@@ -13,7 +13,7 @@ String cPath = request.getContextPath();
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script type="text/javascript">
-alert('<%=cPath%>');
+
 </script>
 <title>OKJSP_HTML5</title>
 </head>
@@ -24,8 +24,8 @@ alert('<%=cPath%>');
 	<!-- header -->
     <%@ include file="header.jsp" %>
 
-    <!-- 상단메뉴,검색_시작 -->
-    <div class="header-breadcrumbs">
+    <!-- 상단 카테고리,검색_시작 -->
+    <aside class="header-breadcrumbs">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Category-1</a></li>
@@ -42,31 +42,13 @@ alert('<%=cPath%>');
           </fieldset>
         </form>
       </div>
-    </div>
-    <!-- 상단메뉴,검색_끝-->
+    </aside>
+    <!-- 상단 카테고리,검색_끝-->
     
     <div class="main">
-      <!-- 좌측메뉴_시작 -->
-      <div class="main-navigation">
-
-        <!-- Navigation Level 3 -->
-        <div class="round-border-topright"></div>
-        <h1 class="first">좌측메뉴</h1>
-
-        <!-- Navigation with grid style -->
-        <dl class="nav3-grid">
-          <dt><a href="#">Navlink 11</a></dt>
-          <dt><a href="#">Navlink 12</a></dt>
-            <dd><a href="#">Navlink 121</a></dd>
-            <dd><a href="#">Navlink 122</a></dd>
-            <dd><a href="#">Navlink 123</a></dd>		
-          <dt><a href="#">Navlink 13</a></dt>
-          <dt><a href="#">Navlink 14</a></dt>
-          <dt><a href="#">Navlink 15</a></dt>
-        </dl>                        
-      </div>
-      <!-- 좌측메뉴_끝 -->
- 
+      <!-- 좌측메뉴 -->
+      <%@ include file="left.jsp" %>
+      
       <!-- 메인 컨텐츠_시작======================================= -->
       <div class="main-content">
         
