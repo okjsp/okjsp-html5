@@ -19,6 +19,8 @@
 .nav3-grid dt a, .nav3-grid dt a:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(70,122,167); font-weight:bold; font-size:120%;}
 .nav3-grid dd a, .nav3-grid dd a:visited {display:block; min-height:1.7em /*Non-IE6*/; height:auto !important; height:1.7em /*IE6*/; line-height:1.7em; padding:0px 10px 0px 40px; border:none; font-weight:normal; text-decoration:none; color:rgb(70,122,167); font-size:120%;}
 .nav3-grid dt a:hover, .nav3-grid dd a:hover {background-color:rgb(225,225,225); /*background-color:rgb(143,174,215) /*For blue background*/; color:rgb(42,90,138); text-decoration:none;}
+/* left menu CSS Ãß°¡_piki */
+.nav3-grid dt.dtcss, .nav3-grid dt.dtcss:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(70,122,167); font-weight:bold; font-size:120%;}
 
 .nav3-bullet {width:170px; margin:10px 0 0 20px;}
 .nav3-bullet dt a, .nav3-bullet dt a:visited {line-height:2.0em; padding:0 0 0 10px; background:url(../img/bg_bullet_full_1.gif) no-repeat 0px 50%; text-decoration:none; color:rgb(70,122,167); font-weight:bold; font-size:120%;}
