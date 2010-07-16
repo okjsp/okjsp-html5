@@ -1,71 +1,95 @@
-<%@ page pageEncoding="euc-kr"
-    import="kr.pe.okjsp.util.CommonUtil, java.util.Iterator,
-            kr.pe.okjsp.Article,kr.pe.okjsp.util.DateLabel" %>
-<%@page import="java.util.Map"%>
-<%@page import="kr.pe.okjsp.BbsInfoBean"%>
-<%@page import="java.util.Arrays"%>
-<jsp:useBean id="list" class="kr.pe.okjsp.ListHandler"/>
-<jsp:setProperty name="list" property="*" />
+<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>    
+<jsp:useBean id="one"  class="kr.pe.okjsp.Article" scope="request"/>
+<jsp:useBean id="list" class="kr.pe.okjsp.ListHandler" />
+<%
+	String cPath  = request.getContextPath();
+	String bbsids = request.getParameter("bbs");
+%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
+<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
+<link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
+<script src="/html5/js/prototype.js"></script>
+<title>OKJSP</title>
+</head>
+
+
 <script type="text/javascript">
-	
-	function ajax_request(bbs, pg) {
+	function getList(bbs, pg) {
 	    var myAjax = new Ajax.Request(
-	        "/html5/bbs",
+	        "/html5/bbs/list_result.jsp",
 	        {method: 'get', parameters: "act=LIST&bbs="+bbs+"&keyfield=content&keyword&pg="+pg ,
 		    onComplete: ajax_response}
 	    );
 	}
 			
 	function ajax_response(originalRequest) {
-
 			var list = $('list');
 			var addlist = document.createElement('section');
 			addlist.innerHTML = originalRequest.responseText;
 			list.appendChild(addlist);
 	}	
+
+	window.onload=getList('<%=bbsids%>', 1); 
 </script>
-<%
-    response.setContentType("text/html");
 
-	Iterator iter = list.getList().iterator();
-	Article one = null;
-%>
-<%@page import="kr.pe.okjsp.ArticleDao"%><html>
-<%
-int oldRef = -1;  // 그룹번호가 이전과 같을 경우 그룹번호 출력 안함
-while (iter.hasNext()) {
-    one = (Article) iter.next();
-%>
+<body>
+  <!-- Main Page Container -->
+  <div class="page-container">
+	
+	<!-- header -->
+    <%@ include file="../main/header.jsp" %>
 
-<section>
-  <article>
-    <%= (one.getLev()==0)?"":"Re: " %> 
-    &nbsp;
-    <% if (oldRef!=one.getRef()) out.println(one.getRef()); %>
-    &nbsp;
-    <a href="seq/<%= one.getSeq() %>" >
-    <%= CommonUtil.showHtml(one.getSubject()) %> </a>
-    &nbsp;
-    [ <%= one.getMemo() %> ]
-    &nbsp;
-    <%= one.getWriter() %>
-    &nbsp;
-   <%
-    if (one.getId() != null) {
-        %><img src="profile/<%= one.getId() %>.jpg"
-        	alt="<%= one.getId() %>"
-        	style="width:14px;height:14px"
-        	onerror="this.src='/images/spacer.gif'"><%
-    }%> 
-    &nbsp;
-    <%= one.getRead() %>
-    &nbsp;
-    <a title="<%= one.getWhen("yy-MM-dd HH:mm") %>">
-    <%= DateLabel.getTimeDiffLabel(one.getWhen()) %> </a>
-  </article> 
-</section>
-<% 
-}%>		
+    <!-- 상단 카테고리,검색_시작 -->
+    <aside class="header-breadcrumbs">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Category-1</a></li>
+        <li><a href="#">Section-1.1</a></li>
+        <li><a href="#">Content-1.1.1</a></li>          
+      </ul>
 
-<br/>
-<a href='#' onclick="this.style.display = 'none';ajax_request('<%= request.getParameter("bbs") %>', '<%=list.getPg()+1%>')" id='nextBtn'>NEXT</a>
+      <!-- Search form -->                  
+      <div class="searchform">
+        <form action="index.html" method="get">
+          <fieldset> 
+            <input name="field" class="field"  placeholder="Search..." />
+            <input type="submit" name="button" class="button" value="GO!" />
+          </fieldset>
+        </form>
+      </div>
+    </aside>
+    <!-- 상단 카테고리,검색_끝-->
+    
+    <div class="main">
+      <!-- 좌측메뉴 -->
+      <%@ include file="../main/left.jsp" %>
+     
+      <!-- 메인 컨텐츠_시작======================================= -->
+      <div class="main-content">      
+      <!-- Pagetitle -->
+        <h1 class="pagetitle">게시판이름 / <%= bbsids %></h1>
+
+        <!-- Content unit - One column -->
+        <!-- <h1 class="block">TEST.... </h1>  -->
+
+        <div class="column1-unit" id='list'>
+        </div>          
+        <hr class="clear-contentunit" />
+
+      </div>
+      <!-- 메인 컨텐츠_끝========================================== -->
+	  <!-- 우측 영역_메인 화면 외에는 제거 하고 작업... -->
+      <%@ include file="../main/right.jsp" %> 
+    </div>
+    <!-- footer -->    
+    <%@ include file="../main/footer.jsp" %>
+  </div> 
+
+</body>
+</html>
