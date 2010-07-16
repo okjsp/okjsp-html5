@@ -12,7 +12,7 @@
   <dl class="nav3-grid" ondragstart="onDragStart(event)"
   						ondragenter="onDragEnter(event)" 
   						ondragover="onDragOver(event)" 
-  						ondrop="onDrop(event)" >
+  						ondrop="onDrop(event)" id="left_menu">
   						
     <dt draggable="true" id='html5'         onClick="jump('html5'       )" class="dtcss">HTML5              </dt>
     <dt draggable="true" id='techtrend'     onClick="jump('techtrend'   )" class="dtcss">TECH TREND         </dt>
@@ -67,22 +67,17 @@
 </div>
 
 <script type="text/javascript">
-	//잘 안되네 쩝.....
-	//구글에서 작업.....
-	//event.dataTransfer 관련 로직이 잘 먹고 있지 않음....
-	var aaaa = '';
+//http://slides.html5rocks.com
+//과 책을 같이 참조...
 	function jump(tmp) {
+		//alert(document.getElementById('left_menu').innerHTML);
 		document.location.href='/bbs?act=LIST&bbs='+tmp;
 	}
 
 	//드래그 시작시 처리
 	function onDragStart(event){
-		//alert('onDragStart : '+event.target.id);
 		if(event.target.tagName.toLowerCase() == 'dt'){
-			//event.dataTransfer.setData("listItemId",event.target.id);
-			//event.dataTransfer.setData("text/uri-list",event.target.id);
-			event.dataTransfer.setData("URL",event.target.id);
-			aaaa = event.target.id;
+			event.dataTransfer.setData('text',event.target.id);		//text로 하니깐 먹는다 ㅎㅎㅎ~
 		}else{
 			event.preventDefault();
 		}
@@ -90,36 +85,40 @@
 
 	//drop이벤트 핸들러
 	function onDrop(event){
-		//var id = event.dataTransfer.getData('listItemId');		//값을 가져오지 못하는 문제로....
-		//var id = event.dataTransfer.getData('text/uri-list');
-		//var id = event.dataTransfer.getData('URL');
-		var id = aaaa;
-		var dt = document.getElementById(id);
-		if(dt && dt.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 아니면 내가 우연히 맞은건가? 흠..
-			dt.parentNode.removeChild(dt);
-			event.currentTarget.appendChild(dt);
+		//alert(event.target.outerHTML);
+		var id_before = event.dataTransfer.getData('text');	//옮길애 아이디(드뎌 이거 된다 ㅜㅜ_text로 하니깐 됨..)
+		var id_before_inner = document.getElementById(id_before).innerHTML;					//옮길애 내용
+		var dt = document.getElementById(id_before);
+
+		var id_after = event.target.id;				//옮길곳에 있는 애 아이디
+		var id_after_inner = document.getElementById(id_after).innerHTML;					//옮길곳에 있는 애 내용
+
+		if(dt && dt.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
+			//책에 있는 소스가 잘 안되서...걍 cross 시켰다.
+			document.getElementById(id_after).innerHTML=id_before_inner;
+			document.getElementById(id_before).innerHTML=id_after_inner;
 		}
+
+		//var id = event.dataTransfer.getData('text');
+		//var dt = document.getElementById(id);
+		//if(dt && dt.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
+			//dt.parentNode.removeChild(dt);
+			//event.currentTarget.appendChild(dt);
+		//}
 		event.stopPropagation();
 	}
 
-	//dragover이벤트 핸들러_드롭을 받아들이도록 기본 상태를 취소함
+	//dragover이벤트 핸들러_drop을 받아들이도록 기본 상태를 취소함
 	function onDragOver(event){
-		//alert('onDragOver');
-		event.preventDefault();
+		if (event.preventDefault) event.preventDefault(); // allows us to drop
+	    event.dataTransfer.dropEffect = 'copy';
+	    return false;
 	}	
 
-	//dataTransfer에 들어있는 데이터 타입이 'listItemId'를 포함했을때만 드래그를 받아들임
 	function onDragEnter(event){
-		var d_types = event.dataTransfer.types;
-		for(var i=0 ; i<d_types.length ; i++){
-			//if(types[i] == 'listItemId'){
-			//if(types[i] == 'text/uri-list'){
-			if(d_types[i] == 'URL'){
-				//alert('2onDragEnter : '+types[i]);
-				event.preventDefault();
-				return;
-			}
-		}
+		if (event.preventDefault) event.preventDefault();
+	    event.dataTransfer.dropEffect = 'copy';
+	    return false;
 	}
 
 
