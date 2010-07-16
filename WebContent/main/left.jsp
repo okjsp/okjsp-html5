@@ -4,7 +4,7 @@
 	String bbs = request.getParameter("bbs");
 %>
 
-<div class="main-navigation">
+<div class="main-navigation" style='text-overflow: ellipsis;'>
   <!-- Navigation Level 3 -->
   <div class="round-border-topright"></div>
   <h1 class="first">BBS LIST</h1>
@@ -14,7 +14,7 @@
   						ondragover="onDragOver(event)" 
   						ondrop="onDrop(event)" id="left_menu">
   						
-    <dt draggable="true" id='html5'         onClick="jump('html5'       )" class="dtcss">HTML5              </dt>
+    <dt draggable="true" id='html5'         onClick="jump('html5'       )" class="dtcss" >HTML5              </dt>
     <dt draggable="true" id='techtrend'     onClick="jump('techtrend'   )" class="dtcss">TECH TREND         </dt>
     <dt draggable="true" id='lecture'       onClick="jump('lecture'     )" class="dtcss">강좌                   </dt>
     <dt draggable="true" id='TOOL'          onClick="jump('TOOL'        )" class="dtcss">개발툴             </dt>
@@ -95,8 +95,10 @@
 
 		if(dt && dt.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
 			//책에 있는 소스가 잘 안되서...걍 cross 시켰다.
-			document.getElementById(id_after).innerHTML=id_before_inner;
-			document.getElementById(id_before).innerHTML=id_after_inner;
+			document.getElementById(id_after).innerHTML = '';
+			document.getElementById(id_after).innerHTML = id_before_inner;
+			document.getElementById(id_before).innerHTML = '';
+			document.getElementById(id_before).innerHTML = id_after_inner;
 		}
 
 		//var id = event.dataTransfer.getData('text');
