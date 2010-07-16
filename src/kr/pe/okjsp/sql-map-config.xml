@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 <sqlMapConfig>
+  <properties resource="jdbc.properties" />
+
   <settings useStatementNamespaces="true" defaultStatementTimeout="10" />
 
-  <sqlMap resource="kr/pe/okjsp/persistence/sqlmapdao/Member.xml" />
+  <transactionManager type="JDBC">
+    <dataSource type="SIMPLE">
+      <property value="${jdbc.driverClassName}" name="JDBC.Driver" />
+      <property value="${jdbc.url}" name="JDBC.ConnectionURL" />
+      <property value="${jdbc.username}" name="JDBC.Username" />
+      <property value="${jdbc.password}" name="JDBC.Password" />
+    </dataSource>
+  </transactionManager>
+
+  <sqlMap resource="kr/pe/okjsp/member/Member.xml" />
 </sqlMapConfig>

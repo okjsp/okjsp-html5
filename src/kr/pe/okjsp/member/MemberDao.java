@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import kr.pe.okjsp.BaseDao;
 
 public class MemberDao extends BaseDao {
-	private static MemberDao instance;
+	private static MemberDao instance = new MemberDao();
 
 	public static MemberDao getInstance() {
 		return instance;

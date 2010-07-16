@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="Member">
-  <typeAlias alias="member" type="kr.pe.okjsp.domain.Member" />
-  
+  <typeAlias alias="member" type="kr.pe.okjsp.member.Member" />
+
   <insert id="insert" parameterClass="member">
     INSERT INTO Member (id)
       VALUES (#id#)
   </insert>
+
+  <select id="login" parameterClass="member" resultClass="member">
+    SELECT 1 + 1
+  </select>
   
   <select id="getById" resultClass="member" parameterClass="string">
     SELECT *
@@ -18,7 +22,7 @@
     SELECT *
       FROM Member
   </select>
-  
+
   <update id="update" parameterClass="member">
     UPDATE Member SET
       id = #id#
