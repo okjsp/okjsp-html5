@@ -4,6 +4,7 @@
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>    
 <jsp:useBean id="one"  class="kr.pe.okjsp.Article" scope="request"/>
 <jsp:useBean id="list" class="kr.pe.okjsp.ListHandler" />
+
 <%
 	String cPath  = request.getContextPath();
 	String bbsids = request.getParameter("bbs");
@@ -35,7 +36,7 @@
 			list.appendChild(addlist);
 	}	
 
-	window.onload=getList('<%=bbsids%>', 1); 
+	window.onload=getList('<%=bbsids%>', 0); 
 </script>
 
 <body>
@@ -73,7 +74,7 @@
       <!-- 메인 컨텐츠_시작======================================= -->
       <div class="main-content">      
       <!-- Pagetitle -->
-        <h1 class="pagetitle">게시판이름 / <%= bbsids %></h1>
+        <h1 class="pagetitle">게시판이름 / <%= bbsids %> [<%= list.getCnt() %>]</h1>
 
         <!-- Content unit - One column -->
         <!-- <h1 class="block">TEST.... </h1>  -->

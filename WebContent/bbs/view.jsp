@@ -70,13 +70,8 @@
 	        <h1><%= CommonUtil.showHtml(one.getSubject()) %></h1>                            
           <h3><%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a></h3>
           <p><%=  one.getContentView()  %></p>
-          <p class="details">| Posted by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a> | Categories: <a href="#"> <%= one.getBbs() %></a> | Comments: <a href="#">73</a> | CCL: <%= one.getCcl_id() %> </p>
+          <p class="details">| Posted by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a> | Categories: <a href="#"> <%= one.getBbs() %></a> | Comments: <a href="#"><%= one.getRead() %></a> | CCL: <%= one.getCcl_id() %> </p>
         </div>          
-        <hr class="clear-contentunit" />
-
-      </div>
-      
-
 	<ul><%
 	  ArrayList fileList = (ArrayList) request.getAttribute("arrdf");
 	  if (fileList != null) {
@@ -89,8 +84,11 @@
 	  }
 	%>
 	</ul>
-
+        
+       <hr class="clear-contentunit" />
+      목록 / 답변 / 수정  / 삭제 / 책갈피
+      </div>
+      
 </section>
-view.jsp
 </body>
 </html>

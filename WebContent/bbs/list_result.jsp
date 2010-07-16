@@ -29,9 +29,9 @@ while (iter.hasNext()) {
       -->
       </h3>
       
-      <!-- <p>read more...</p> -->
+      <p><%=  CommonUtil.removeTag(one.getContentView())  %> &nbsp; <a href="seq/<%= one.getSeq() %>" >read more...</a></p>
       <p class="details">| Posted by <a href="#"><%= one.getWriter() %> 
-      </a> | Categories: <a href="#"><%= list.getBbs() %></a> | Comments: <a href="#"><%= one.getMemo() %></a> | Read: <%=one.getRead() %></p>
+      </a> | Categories: <a href="#"><%= list.getBbs() %></a> | Comments: <a href="#"><%= one.getMemo() %></a> | Read: <%=one.getRead() %> |</p>
   </article> 
 </section>
 <% 
