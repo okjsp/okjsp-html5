@@ -1,5 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<% 
+	String cPath1 = request.getContextPath();
+%>
+<script type="text/javascript" language="JavaScript">
+	var lNextWindowId = 1;	// Chatting Popup 이 항상 새로운 이름으로 열리도록하는 구분값
+
+	// OKJSP Chatting Popup
+	function openSubWindow() {
+		window.open(
+		"<%=cPath1%>/chat/chat.jsp",
+		"chatWindow" + lNextWindowId,
+		"width=900,height=550,left=" + (50 + lNextWindowId * 30) + ",top=" + (50 + lNextWindowId * 25)
+	);
+		lNextWindowId++;
+		if( lNextWindowId > 10 ) {
+			lNextWindowId = 1;
+		}
+	}
+</script>
 <div class="main-subcontent">
   <!-- 우측 로그인_시작 -->
   <div class="subcontent-unit-border-blue">
@@ -23,6 +42,12 @@
   <!-- 우측 로그인_끝 --> 
   
   
+  <div class="subcontent-unit-border-orange">
+    <div class="round-border-topleft"></div><div class="round-border-topright"></div>
+    <h1 class="orange">채팅 영역</h1>
+    <p><a href="javascript:openSubWindow();">Chatting Popup</a></p>
+  </div>
+  
   <div class="subcontent-unit-border">
     <div class="round-border-topleft"></div><div class="round-border-topright"></div>
     <h1>추천 서적</h1>
@@ -35,9 +60,4 @@
     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
   </div>
   
-  <div class="subcontent-unit-border-orange">
-    <div class="round-border-topleft"></div><div class="round-border-topright"></div>
-    <h1 class="orange">채팅 영역</h1>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-  </div>
 </div>

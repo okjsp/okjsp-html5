@@ -1,0 +1,439 @@
+﻿td {
+	border:none;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+}
+
+b {
+	border:none;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+}
+
+i {
+	border:none;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+}
+
+ul {
+	/* padding: 0; */
+	margin-top: 0;
+	margin-bottom: 12pt;
+	border: 0;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+}
+li {
+	border:none;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+	margin-top: 0;
+	margin-bottom: 3pt;
+}
+
+a {
+	border:none;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+}
+
+p {
+	padding: 0 0 6pt 0;
+	margin: 0px;
+	border:none;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+}
+
+body {
+	border:none;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+	padding: 0px;
+	border: 0px;
+	margin: 10px;
+}
+
+ul.noIndent {
+	margin-left: 0pt;
+	margin-bottom: 6pt;
+	padding-left: 12pt;
+	text-indent: 0pt;
+}
+
+pre {
+	margin:0;
+}
+
+.listing {
+	background-color:#f0f0f0;
+	font-family: Courier, "Courier New", monospace;
+}
+
+.description {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #202020;
+}
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14pt;
+	color: #006bb5;
+	/* background:url(../img/header_gradient.jpg); */
+	background-color: #f0f0f0;
+	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+
+	border: 1px solid #f0f0f0;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 18px 0px;
+}
+
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14pt;
+	color: #303030;
+
+	border: 0px;
+	padding: 0px;
+	margin: 18px 0px 6px 0px;
+}
+
+h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11pt;
+	color: #303030;
+
+	border: 0px;
+	padding: 0px;
+	margin: 12px 0px 3px 0px;
+}
+
+h4 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11pt;
+	color: #606060;
+
+	border: 0px;
+	padding: 0px;
+	margin: 12px 0px 0px 0px;
+}
+
+
+hr.divider {
+	margin: 12pt 0pt 12pt 0pt;
+}
+
+blockquote {
+	padding: 0px;
+	border: 0px;
+	margin: 0 0 0 15px;
+}
+
+.newsHeader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11pt;
+	color: #006bb5;
+	/* color: #303030; */
+
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.emphasized {
+/*	font-family: Arial, Helvetica, sans-serif;*/
+/*	font-size: 11pt; */
+	color: #006bb5;
+	font-weight: bold;
+}
+
+.linkDescription {
+	color: #505050;
+	font-size: 8pt;
+	font-weight: normal;
+}
+
+ol.instructions {
+	margin-top: 3pt;
+}
+li.instruction {
+	margin-bottom: 3pt;
+}
+
+div.sdivContainer {
+	border: 0px; /*1px solid #444;*/
+	margin:10px 0px 10px 0px;
+	padding: 3px;
+	background-color: #f0f0f0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+table.stlbDlg {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10pt;
+	/* we could use inherited here but IE doesn't get this */
+	background-color: #f0f0f0;
+}
+tr.strDlg {
+	/* we could use inherited here but IE doesn't get this */
+	background-color: #f0f0f0;
+}
+td.stdDlg {
+	/* we could use inherited here but IE doesn't get this */
+	background-color: #f0f0f0;
+}
+th.sthDlg {
+	/* we could use inherited here but IE doesn't get this */
+	background-color: #f0f0f0;
+}
+
+table.stblData {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10pt;
+	border-width: 1px 1px 1px 1px;
+	border-style: solid;
+	border-color: #e0e0e0;
+}
+tr.strData {
+}
+th.sthData {
+	background: #f0f0f0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: left;
+	border: 0;
+	padding: 2px 7px 2px 7px;
+}
+td.stdData {
+	background: white;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10pt;
+	border-width: 1px 0px 0px 0px;
+	border-style: solid;
+	border-color: #e0e0e0;
+	padding: 2px 7px 2px 7px;
+}
+
+input[type="text"].stxfDlg {
+	font-family: inherit;
+	border: 1px solid #444;
+	background-color: white;
+}
+input[type="password"].spwfDlg {
+	font-family: inherit;
+	border: 1px solid #444;
+	background-color: white;
+}
+input[type="button"].sbtnDlg {
+	font-family: inherit;
+	border: 1px solid #808080;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	margin: 1px;
+	color: white;
+	background-color: #81a0b5;
+	width: 100px;
+}
+input[type="button"].sbtnDlg:hover {
+	margin: 1px;
+	background-color: #006bb5;
+}
+input[type="button"].sbtnDlg:active {
+	margin: 1px;
+	font-weight: bold;
+	background-color: #006bb5;
+}
+input[type="button"].sbtnDlg:focus {
+	margin: 0px;
+	font-weight: bold;
+	background-color: #006bb5;
+}
+
+input[type="button"].inpBtnEm {
+	border: 1px solid #444;
+	margin: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11pt;
+	color: white;
+	background-color: #81a0b5;
+	width:140px;
+	height:22px;
+}
+
+textarea.stxaDlg {
+	font-family: inherit;
+	font-size: 10pt;
+	border: 1px solid #444;
+	background-color: white;
+}
+
+select.sselDlg {
+	font-family: inherit;
+	border: 1px solid #444;
+	background-color: white;
+}
+
+p.menulink {
+	padding: 1px;
+}
+
+img.diagram {
+	margin: 6pt 0 0 0;
+}
+
+img.screenshotOff {
+	margin: 6pt 0 0 0;
+}
+
+img.screenshotOn {
+	margin: 6pt 0 0 0;
+}
+
+img.screenshot {
+	margin: 6pt 0 0 0;
+}
+img.screenshotOn {
+	display: inline;
+}
+img.screenshotOff {
+	display: none;
+}
+p.screenshotMinus {
+	margin: 3pt 0 0 0;
+	padding: 0 0 0 20px;
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: 10pt;
+	color: #505050;
+}
+p.screenshotPlus {
+	margin: 3pt 0 0 0;
+	padding: 0 0 0 20px;
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: 10pt;
+	color: #505050;
+}
+p.screenshotPlus {
+	background: url(../img/screenshotPlus.png) 0px 0px no-repeat;
+}
+p.screenshotMinus {
+	background: url(../img/screenshotMinus.png) 0px 0px no-repeat;
+}
+
+p.imageFooter {
+	margin-top: 2px;
+	color: #505050;
+	font-size: 8pt;
+	font-weight: normal;
+}
+
+p.menuDisabled {
+	padding: 1px 10px 1px 20px;
+	background: url(../../images/bullet_grey.png) 0px 2px no-repeat;
+	background-color: white;
+	color: #808080;
+}
+
+a.menulink:visited {
+	padding: 1px 10px 1px 20px;
+	background: url(../../images/bullet_grey.png) 0px 2px no-repeat;
+	background-color: white;
+	color: #202020;
+}
+
+a.menulink:link {
+	padding: 1px 10px 1px 20px;
+	background: url(../../images/bullet_grey.png) 0px 2px no-repeat;
+	background-color: white;
+	color: #202020;
+}
+
+a.menulink {
+	padding: 1px 10px 1px 20px;
+	background: url(../../images/bullet_grey.png) 0px 2px no-repeat;
+	background-color: white;
+	color: #202020;
+}
+a.menulink:active {
+	background: url(../../images/bullet_blue.png) 0px 2px no-repeat;
+	background-color: #f0f0f0;
+}
+
+a.menulink:hover {
+	background: url(../../images/bullet_blue.png) 0px 2px no-repeat;
+	background-color: #f0f0f0;
+}
+
+a.menulink:focus {
+	background: url(../../images/bullet_blue.png) 0px 2px no-repeat;
+	background-color: #f0f0f0;
+}
+
+a.sancBtnTop {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	border: 1px solid #808080;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+	margin: 1px;
+	padding: 3px 0 0 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11pt;
+	color: white;
+	background-color: #81a0b5;
+	width: 140px;
+	height: 22px;
+}
+a.sancBtnTop:hover {
+	background-color: #006bb5;
+}
+
+a.emphasized {
+	font-weight: bold;
+	background-color: white;
+	color: #202020;
+}
+a.emphasized:hover {
+	background-color: #f0f0f0;
+}
+a.emphasized:active {
+	background-color: #f0f0f0;
+}
+a.emphasized:focus {
+	background-color: #f0f0f0;
+}
