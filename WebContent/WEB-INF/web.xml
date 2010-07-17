@@ -4,11 +4,11 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 	<display-name>html5</display-name>
-
-	<listener><!-- jWebSocket -->
+	<!--
+	<listener> jWebSocket 
 		<description>ServletContextListener</description>
 		<listener-class>org.jwebsocket.appserver.ContextListener</listener-class>
-	</listener>
+	</listener>-->
 	<servlet><!-- jWebSocket -->
 		<servlet-name>WebSocketDemo</servlet-name>
 		<servlet-class>org.jwebsocket.appserver.WebSocketDemo</servlet-class>
