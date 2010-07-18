@@ -12,6 +12,6 @@ public class MemberDao extends BaseDao {
 	}
 
 	public Member login(Member member) throws SQLException {
-		return (Member) getSqlMapper().queryForObject("Member.login", member);
+		return (Member) getSqlMapper().queryForObject("Member.login", member, member);
 	}
 }
