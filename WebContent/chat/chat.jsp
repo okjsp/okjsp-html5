@@ -10,7 +10,7 @@
 		<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<!-- If Google's chrome frame installed, use it! -->
 		<!-- Comment needs to be BELOW this meta tag! -->
-<!--
+<%--
 //	****************************************************************************
 //	jWebSocket Simple Chat (uses jWebSocket Client and Server)
 //	Copyright (c) 2010 Alexander Schulze, Innotrade GmbH, Herzogenrath
@@ -26,7 +26,7 @@
 //	You should have received a copy of the GNU Lesser General Public License along
 //	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
 //	****************************************************************************
--->
+--%>
 		<meta http-equiv="Content-Language" content="en">
 		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 		<title>jWebSocket Chat Demo</title>
