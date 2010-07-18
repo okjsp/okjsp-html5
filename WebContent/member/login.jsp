@@ -7,7 +7,7 @@
 <title>Login</title>
 </head>
 <body>
-  <form action="<%= Navigation.getPath("SECURE_DOMAIN") %>/jsp/member/login2.jsp/member/login2.jsp" method="post">
+  <form action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp" method="post">
     <input name="returnPath" type="hidden" value="<%= CommonUtil.nchk(request.getParameter("returnPath"), "/") %>">
     <input name="id" required>
     <input name="password" type="password" required>

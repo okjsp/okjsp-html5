@@ -9,7 +9,9 @@
   </insert>
 
   <select id="login" parameterClass="member" resultClass="member">
-    SELECT 1 + 1
+    SELECT id
+      FROM Member
+      WHERE id = #id#
   </select>
   
   <select id="getById" resultClass="member" parameterClass="string">
