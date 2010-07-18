@@ -108,6 +108,9 @@
 			//event.currentTarget.appendChild(dt);
 		//}
 		event.stopPropagation();
+
+		//로컬 스토리지 설
+		localStorage['leftmenu_storage'] = document.getElementById('left_menu').innerHTML;
 	}
 
 	//dragover이벤트 핸들러_drop을 받아들이도록 기본 상태를 취소함
@@ -123,5 +126,13 @@
 	    return false;
 	}
 
+	window.onload = function (){ 
+		//alert(document.getElementById('left_menu').innerHTML);
+		//alert(localStorage['leftmenu_storage']);
+		//로컬 스토리지 불러오기
+		if(localStorage['leftmenu_storage'] != 'undefind'){
+			document.getElementById('left_menu').innerHTML = localStorage['leftmenu_storage'];
+		}
+	}
 
 </script>
