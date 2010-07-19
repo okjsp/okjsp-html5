@@ -128,10 +128,12 @@
 
 	window.onload = function (){ 
 		//alert(document.getElementById('left_menu').innerHTML);
-		//alert(localStorage['leftmenu_storage']);
+		var tmp = localStorage['leftmenu_storage'];
 		//로컬 스토리지 불러오기
-		if(localStorage['leftmenu_storage'] != 'undefind'){
-			document.getElementById('left_menu').innerHTML = localStorage['leftmenu_storage'];
+		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
+			document.getElementById('left_menu').innerHTML = tmp;
+		}else{
+
 		}
 	}
 
