@@ -67,8 +67,11 @@
 </div>
 
 <script type="text/javascript">
-//http://slides.html5rocks.com
-//과 책을 같이 참조...
+//drag and drop 이벤트 핸들러 구현
+//로컬 스토리지 구현
+//http://slides.html5rocks.com 과 책을 함께 참조
+
+	var left_menu = document.querySelector('#left_menu');
 	function jump(tmp) {
 		//alert(document.getElementById('left_menu').innerHTML);
 		document.location.href='/bbs?act=LIST&bbs='+tmp;
@@ -86,31 +89,31 @@
 	//drop이벤트 핸들러
 	function onDrop(event){
 		//alert(event.target.outerHTML);
-		var id_before = event.dataTransfer.getData('text');	//옮길애 아이디(드뎌 이거 된다 ㅜㅜ_text로 하니깐 됨..)
-		var id_before_inner = document.getElementById(id_before).innerHTML;					//옮길애 내용
-		var dt = document.getElementById(id_before);
+		var drag_zone = event.dataTransfer.getData('text');	//옮길애 아이디(드뎌 이거 된다 ㅜㅜ_text로 하니깐 됨..)
+		var drag_zone_inner = document.getElementById(drag_zone).innerHTML;					//옮길애 내용
+		var dt = document.getElementById(drag_zone);
 
-		var id_after = event.target.id;				//옮길곳에 있는 애 아이디
-		var id_after_inner = document.getElementById(id_after).innerHTML;					//옮길곳에 있는 애 내용
+		var drop_zone = event.target.id;				//옮길곳에 있는 애 아이디
+		var drop_zone_inner = document.getElementById(drop_zone).innerHTML;					//옮길곳에 있는 애 내용
 
 		if(dt && dt.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
 			//책에 있는 소스가 잘 안되서...걍 cross 시켰다.
-			document.getElementById(id_after).innerHTML = '';
-			document.getElementById(id_after).innerHTML = id_before_inner;
-			document.getElementById(id_before).innerHTML = '';
-			document.getElementById(id_before).innerHTML = id_after_inner;
+			document.getElementById(drop_zone).innerHTML = '';
+			document.getElementById(drop_zone).innerHTML = drag_zone_inner;
+			document.getElementById(drag_zone).innerHTML = '';
+			document.getElementById(drag_zone).innerHTML = drop_zone_inner;
 		}
 
 		//var id = event.dataTransfer.getData('text');
 		//var dt = document.getElementById(id);
-		//if(dt && dt.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
+		//if(dt && dt.parentNode == event.currentTarget){
 			//dt.parentNode.removeChild(dt);
 			//event.currentTarget.appendChild(dt);
 		//}
 		event.stopPropagation();
 
-		//로컬 스토리지 설
-		localStorage['leftmenu_storage'] = document.getElementById('left_menu').innerHTML;
+		//로컬 스토리지 설정
+		localStorage['leftmenu_storage'] = left_menu.innerHTML;
 	}
 
 	//dragover이벤트 핸들러_drop을 받아들이도록 기본 상태를 취소함
@@ -127,11 +130,11 @@
 	}
 
 	window.onload = function (){ 
-		//alert(document.getElementById('left_menu').innerHTML);
+		//alert(left_menu.innerHTML);
 		var tmp = localStorage['leftmenu_storage'];
 		//로컬 스토리지 불러오기
 		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
-			document.getElementById('left_menu').innerHTML = tmp;
+			left_menu.innerHTML = tmp;
 		}else{
 
 		}
