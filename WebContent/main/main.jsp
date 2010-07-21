@@ -4,6 +4,7 @@
 <html lang="ko">
 <head>
 <%
+//ContextPath
 String cPath = request.getContextPath();
 
 %>
@@ -23,16 +24,14 @@ String cPath = request.getContextPath();
 	<!-- header -->
     <%@ include file="header.jsp" %>
 
-    <!-- 상단 카테고리,검색_시작 -->
+    <!-- 상단 카테고리(메인에서는 새글 알림),검색_시작 -->
     <aside class="header-breadcrumbs">
+      <!-- 새글알림 -->   
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Category-1</a></li>
-        <li><a href="#">Section-1.1</a></li>
-        <li><a href="#">Content-1.1.1</a></li>          
+        <li>13개의 개시글이 올라왔습니다</li>
       </ul>
 
-      <!-- Search form -->                  
+      <!-- 검색_시작 -->                  
       <div class="searchform">
         <form action="index.html" method="get">
           <fieldset> 
@@ -41,6 +40,7 @@ String cPath = request.getContextPath();
           </fieldset>
         </form>
       </div>
+      <!-- 검색_끝 -->
     </aside>
     <!-- 상단 카테고리,검색_끝-->
     
@@ -50,24 +50,61 @@ String cPath = request.getContextPath();
       
       <!-- 메인 컨텐츠_시작======================================= -->
       <div class="main-content">
-        
-        <!-- Pagetitle -->
-        <h1 class="pagetitle">Multiflex-4 / Layout-4</h1>
-
-        <!-- Content unit - One column -->
-        <h1 class="block">1 - Column types</h1>
+        <!-- 추천 도서_시작 -->
         <div class="column1-unit">
-          <h1>Here comes the title</h1>                            
-          <h3>Monday, 20 November 2006 at 20:30 GMT, by <a href="#">SiteAdmin </a></h3>
-          <p>Lorem ipsum dolor sit amet, consectetuer <a href="#">adipiscing elit</a>, sed diam nonummy nibh euismod tincidunt ut laoreet dolore <a href="#">magna aliquam</a> erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis. <a href="#">Read more &raquo;</a></p>
-          <p class="details">| Posted by <a href="#">SiteAdmin </a> | Categories: <a href="#">General</a> | Comments: <a href="#">73</a> |</p>
-          <h1><a href="">Heading h1 with link</a></h1>                            
-          <h3>Heading h3</h3>
-          <p>Lorem ipsum dolor sit amet, consectetuer <a href="#">adipiscing elit</a>, sed diam nonummy nibh euismod tincidunt ut laoreet dolore <a href="#">magna aliquam</a> erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis. <a href="#">Read more &raquo;</a></p>
-          <p class="details">Posting details ...  </p>
-        </div>          
-        <hr class="clear-contentunit" />
-
+          <h1 class="pagetitle">추천 도서</h1>
+          <p>
+	        <table border='1' bordercolor='blue' width="100%">
+	          <tr>
+	      		<td height="180" width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
+	      		<td width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
+	      		<td width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
+	      		<td width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
+	          </tr>
+	        </table>
+          </p>
+        </div>
+        <!-- 추천 도서_끝-->
+ 
+        <!-- 공지사항_시작 -->
+        <div class="column1-unit">
+          <h1 class="pagetitle">공지 사항</h1>
+          <p>
+		    <table border='1' bordercolor='blue' width="100%">
+	          <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
+	          <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
+	          <tr><th scope="row" height="20">Cat3</th><td>Data</td><td>Data</td><td>Data</td></tr>
+	          <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
+	          <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
+	        </table>
+	      </p>
+        </div>
+        <!-- 공지사항_끝 -->
+ 
+        <!-- 전체게시판_시작 -->
+        <div class="column1-unit">
+          <h1 class="pagetitle">전체게시판</h1>
+          <p>
+			<table border='1' bordercolor='blue' width="100%">
+		      <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat3</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat3</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat3</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
+		      <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
+			</table>
+	      </p>
+        </div>
+        <!-- 전체게시판_끝 --> 
       </div>
       <!-- 메인 컨텐츠_끝========================================== -->
 	  <!-- 우측 영역_메인 화면 외에는 제거 하고 작업... -->
