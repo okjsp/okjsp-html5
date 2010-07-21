@@ -50,13 +50,13 @@
   
   <div class="subcontent-unit-border">
     <div class="round-border-topleft"></div><div class="round-border-topright"></div>
-    <h1>추천 서적</h1>
+    <h1>광고 영역1</h1>
     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
   </div>
   
   <div class="subcontent-unit-border-green">
     <div class="round-border-topleft"></div><div class="round-border-topright"></div>
-    <h1 class="green">광고 영역</h1>
+    <h1 class="green">광고 영역2</h1>
     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
   </div>
   
