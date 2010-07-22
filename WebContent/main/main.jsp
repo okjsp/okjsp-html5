@@ -9,6 +9,8 @@ String cPath = request.getContextPath();
 
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<!-- 크롬  프레임 설정 -->
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
