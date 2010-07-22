@@ -83,7 +83,7 @@
 	}
 
 	window.onload = function (){ 
-		//localStorage.clear();
+		//localStorage.clear();	//스토리지 삭제
 		//로컬 스토리지 불러오기
 		var tmp = localStorage['leftmenu_storage'];
 		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
@@ -107,7 +107,6 @@
 							+item['name']
 							+'</dt>';
 					}
-					//alert(tmp2);
 					left_menu.innerHTML = tmp2;
 				});
 			});
