@@ -53,7 +53,7 @@ String cPath = request.getContextPath();
         <!-- 추천 도서_시작 -->
         <div class="column1-unit">
           <h1 class="pagetitle">추천 도서</h1>
-          <p>
+          <p/> 
 	        <table border='1' bordercolor='blue' width="100%">
 	          <tr>
 	      		<td height="180" width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
@@ -62,14 +62,14 @@ String cPath = request.getContextPath();
 	      		<td width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
 	          </tr>
 	        </table>
-          </p>
+          <p/>
         </div>
         <!-- 추천 도서_끝-->
  
         <!-- 공지사항_시작 -->
         <div class="column1-unit">
           <h1 class="pagetitle">공지 사항</h1>
-          <p>
+          <p/> 
 		    <table border='1' bordercolor='blue' width="100%">
 	          <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
 	          <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
@@ -77,14 +77,14 @@ String cPath = request.getContextPath();
 	          <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
 	          <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
 	        </table>
-	      </p>
+	      <p/> 
         </div>
         <!-- 공지사항_끝 -->
  
         <!-- 전체게시판_시작 -->
         <div class="column1-unit">
           <h1 class="pagetitle">전체게시판</h1>
-          <p>
+          <p/> 
 			<table border='1' bordercolor='blue' width="100%">
 		      <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
 		      <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
@@ -102,7 +102,7 @@ String cPath = request.getContextPath();
 		      <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
 		      <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
 			</table>
-	      </p>
+	      <p/> 
         </div>
         <!-- 전체게시판_끝 --> 
       </div>
