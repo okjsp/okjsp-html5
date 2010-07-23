@@ -6,18 +6,18 @@
 
 <div class="main-navigation" style='text-overflow: ellipsis;'>
   <!-- Navigation Level 3 -->
-  <div id="db_results"></div>
   <div class="round-border-topright"></div>
   <h1 class="first">BBS LIST</h1>
   <!-- Navigation with grid style -->
   <dl class="nav3-grid" ondragstart="onDragStart(event)"
   						ondragenter="onDragEnter(event)" 
   						ondragover="onDragOver(event)" 
-  						ondrop="onDrop(event)" id="left_menu">
+  						ondrop="onDrop(event)" 
+  						ondragleave="onDragLeave(event)"    id="left_menu">
   </dl>
 </div>
 
-<script type="text/javascript">
+<script>
 //drag and drop 이벤트 핸들러
 //로컬 스토리지
 //Web SQL Database
@@ -34,6 +34,7 @@
 	function onDragStart(event){
 		if(event.target.tagName.toLowerCase() == 'dt'){
 			event.dataTransfer.setData('text',event.target.id);		//text로 하니깐 먹는다 ㅎㅎㅎ~
+			document.getElementById(event.target.id).className = 'hovering';
 		}else{
 			event.preventDefault();
 		}
@@ -41,7 +42,6 @@
 
 	//drop이벤트 핸들러
 	function onDrop(event){
-		//alert(event.target.outerHTML);
 		var drag_zone = event.dataTransfer.getData('text');	//옮길애 아이디(드뎌 이거 된다 ㅜㅜ_text로 하니깐 됨..)
 		var drag_zone_inner = document.getElementById(drag_zone).innerHTML;					//옮길애 내용
 		var dt = document.getElementById(drag_zone);
@@ -55,6 +55,9 @@
 			document.getElementById(drop_zone).innerHTML = drag_zone_inner;
 			document.getElementById(drag_zone).innerHTML = '';
 			document.getElementById(drag_zone).innerHTML = drop_zone_inner;
+
+			document.getElementById(drop_zone).className = 'dtcss';
+			document.getElementById(drag_zone).className = 'dtcss';
 		}
 
 		//var id = event.dataTransfer.getData('text');
@@ -73,12 +76,22 @@
 	function onDragOver(event){
 		if (event.preventDefault) event.preventDefault(); // allows us to drop
 	    event.dataTransfer.dropEffect = 'copy';
+	    document.getElementById(event.target.id).className = 'hovering';
 	    return false;
 	}	
 
 	function onDragEnter(event){
 		if (event.preventDefault) event.preventDefault();
 	    event.dataTransfer.dropEffect = 'copy';
+	    document.getElementById(event.target.id).className = 'hovering';
+	    return false;
+	}
+
+	//drag가 지나가고 난 뒤 발생
+	function onDragLeave(event){
+		if (event.preventDefault) event.preventDefault();
+	    event.dataTransfer.dropEffect = 'copy';
+	    document.getElementById(event.target.id).className = 'dtcss';
 	    return false;
 	}
 
