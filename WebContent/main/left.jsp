@@ -87,9 +87,10 @@
 		//로컬 스토리지 불러오기
 		var tmp = localStorage['leftmenu_storage'];
 		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
+			//로컬 스토리지에 데이터가 있으면 해당 데이터를 가져와서 세팅
 			left_menu.innerHTML = tmp;
 		}else{
-			//sqLite에서 데이터 불러오기
+			//로컬 스토리지에 데이터가 없으면 Web SQL Database로 데이터 불러오기
 			var db;
 			db = openDatabase("okjsp_sqlite", "1.0", "okjsp_sqlite", 200000);
 			db.transaction(function(tx) {

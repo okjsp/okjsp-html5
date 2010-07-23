@@ -27,8 +27,13 @@ C:\Documents and Settings\[자신의 컴퓨터 id]hwayoung.kang
 \User Data\Default\databases
 \[해당도메인이름의폴더]http_localhost_8889  ==> Chrome 경로
 
-안으로 들어가보면 확장자가 없는 파일이 하나 있을겁니다
-(이 파일은 스크립트에서 openDatabase 명령어를 한번이라도 실행이 되면 생깁니다.) 
+C:\Documents and Settings\[자신의 컴퓨터 id]hwayoung.kang
+\Local Settings\Application Data
+\Apple Computer\Safari\Databases
+\[해당도메인이름의폴더]http_localhost_8889
+
+안으로 들어가보면 파일이 하나 있을겁니다
+(이 파일은 스크립트에서 openDatabase 명령어를 한번이라도 실행이 되면 생깁니다.즉 브라우저로 한번 이상 띄워야 합니다) 
 그걸 SQLite Database Browser를 이용해서 엽니다.
 
 4. SQLite Database Browser 내에서 테이블 하나를 생성합니다
