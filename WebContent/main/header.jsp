@@ -43,16 +43,37 @@
 			
 			<!-- Navigation item -->
 			<ul>
-				<li><a href="#">Page Layouts<!--[if IE 7]><!--></a><!--<![endif]-->
-				<!--[if lte IE 6]><table><tr><td><![endif]-->
-				<ul>
-					<li><a href="mf42_layout1.html">Layout-1</a></li>
-					<li><a href="mf42_layout2.html">Layout-2</a></li>
-					<li><a href="mf42_layout3.html">Layout-3</a></li>
-					<li><a href="mf42_layout4.html">Layout-4</a></li>
-					<li><a href="mf42_layout5.html">Layout-5</a></li>
-				</ul>
-				<!--[if lte IE 6]></td></tr></table></a><![endif]--></li>
+				<li><a href="#">Page Layouts</a>
+					<ul>
+						<li><a href="mf42_layout1.html">Layout-1</a></li>
+						<li><a href="mf42_layout2.html">Layout-2</a></li>
+						<li><a href="mf42_layout3.html">Layout-3</a></li>
+						<li><a href="mf42_layout4.html">Layout-4</a></li>
+						<li><a href="mf42_layout5.html">Layout-5</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul>
+				<li><a href="#">Page Layouts</a>
+					<ul>
+						<li><a href="mf42_layout1.html">Layout-1</a></li>
+						<li><a href="mf42_layout2.html">Layout-2</a></li>
+						<li><a href="mf42_layout3.html">Layout-3</a></li>
+						<li><a href="mf42_layout4.html">Layout-4</a></li>
+						<li><a href="mf42_layout5.html">Layout-5</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul>
+				<li><a href="#">Page Layouts</a>
+					<ul>
+						<li><a href="mf42_layout1.html">Layout-1</a></li>
+						<li><a href="mf42_layout2.html">Layout-2</a></li>
+						<li><a href="mf42_layout3.html">Layout-3</a></li>
+						<li><a href="mf42_layout4.html">Layout-4</a></li>
+						<li><a href="mf42_layout5.html">Layout-5</a></li>
+					</ul>
+				</li>
 			</ul>
 		</nav>
 	</div>
