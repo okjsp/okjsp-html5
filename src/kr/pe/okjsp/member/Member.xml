@@ -4,35 +4,35 @@
   <typeAlias alias="member" type="kr.pe.okjsp.member.Member" />
 
   <insert id="insert" parameterClass="member">
-    INSERT INTO Member (id)
+    INSERT INTO okmember (id)
       VALUES (#id#)
   </insert>
 
   <select id="login" parameterClass="member" resultClass="member">
     SELECT id
-      FROM Member
+      FROM okmember
       WHERE id = #id#
   </select>
   
   <select id="getById" resultClass="member" parameterClass="string">
     SELECT *
-      FROM Member
+      FROM okmember
       WHERE id = #id#
   </select>
   
   <select id="list" resultClass="member">
     SELECT *
-      FROM Member
+      FROM okmember
   </select>
 
   <update id="update" parameterClass="member">
-    UPDATE Member SET
+    UPDATE okmember SET
       id = #id#
   </update>
   
   <delete id="delete" parameterClass="string">
     DELETE
-      FROM Member
+      FROM okmember
       WHERE id = #id#
   </delete>
 </sqlMap>
