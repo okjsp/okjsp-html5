@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <% 
-	String cPath1 = request.getContextPath();
+	String cPath = request.getContextPath();
 %>
 <script type="text/javascript" language="JavaScript">
 	var lNextWindowId = 1;	// Chatting Popup 이 항상 새로운 이름으로 열리도록하는 구분값
@@ -9,7 +9,7 @@
 	// OKJSP Chatting Popup
 	function openSubWindow() {
 		window.open(
-		"<%=cPath1%>/chat/chat.jsp",
+		"<%=cPath%>/chat/chat.jsp",
 		"chatWindow" + lNextWindowId,
 		"width=900,height=550,left=" + (50 + lNextWindowId * 30) + ",top=" + (50 + lNextWindowId * 25)
 	);

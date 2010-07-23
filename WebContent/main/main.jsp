@@ -24,7 +24,7 @@ String cPath = request.getContextPath();
   <div class="page-container">
 	
 	<!-- header -->
-    <%@ include file="header.jsp" %>
+    <jsp:include page="header.jsp"></jsp:include>
 
     <!-- 상단 카테고리(메인에서는 새글 알림),검색_시작 -->
     <aside class="header-breadcrumbs">
@@ -48,7 +48,7 @@ String cPath = request.getContextPath();
     
     <div class="main">
       <!-- 좌측메뉴 -->
-      <%@ include file="left.jsp" %>
+      <jsp:include page="left.jsp"></jsp:include>
       
       <!-- 메인 컨텐츠_시작======================================= -->
       <div class="main-content">
@@ -110,10 +110,10 @@ String cPath = request.getContextPath();
       </div>
       <!-- 메인 컨텐츠_끝========================================== -->
 	  <!-- 우측 영역_메인 화면 외에는 제거 하고 작업... -->
-      <%@ include file="right.jsp" %> 
+	  <jsp:include page="right.jsp"></jsp:include> 
     </div>
     <!-- footer -->    
-    <%@ include file="footer.jsp" %>
+    <jsp:include page="footer.jsp"></jsp:include> 
   </div> 
 </body>
 </html>
