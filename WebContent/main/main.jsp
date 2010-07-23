@@ -14,7 +14,7 @@ String cPath = request.getContextPath();
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
-<script type="text/javascript">
+<script>
 
 </script>
 <title>OKJSP_HTML5</title>
@@ -53,17 +53,29 @@ String cPath = request.getContextPath();
       <!-- 메인 컨텐츠_시작======================================= -->
       <div class="main-content">
         <!-- 추천 도서_시작 -->
-        <div class="column1-unit">
+        <div>
           <h1 class="pagetitle">추천 도서</h1>
-          <p/>
-            <table border='1' bordercolor='blue' width="100%">
-              <tr>
-                <td height="180" width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
-                <td width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
-                <td width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
-                <td width="25%"><img class="center" src="/html5/img/image.jpg" alt="Image description" title="Image title" /></td>
-              </tr>
-            </table>
+          <p/> 
+	        <table border='1' bordercolor='blue' width="100%">
+	          <tr>
+	      		<td height="180" width="25%">
+	      			<a rel='external' href="#">
+	      				<img class="center-box-shadow" src="<%=cPath%>/img/image.jpg" alt="Image description" title="Image title" /></a>
+	      		</td>
+	      		<td width="25%">
+	      			<a rel='external' href="#">
+	      				<img class="center-box-shadow" src="<%=cPath%>/img/image.jpg" alt="Image description" title="Image title" /></a>
+	      		</td>
+	      		<td width="25%">
+	      			<a rel='external' href="#">
+	      				<img class="center-box-shadow" src="<%=cPath%>/img/image.jpg" alt="Image description" title="Image title" /></a>
+	      		</td>
+	      		<td width="25%">
+	      			<a rel='external' href="#">
+	      				<img class="center-box-shadow" src="<%=cPath%>/img/image.jpg" alt="Image description" title="Image title" /></a>
+	      		</td>
+	          </tr>
+	        </table>
           <p/>
         </div>
         <!-- 추천 도서_끝-->
