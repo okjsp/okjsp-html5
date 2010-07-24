@@ -39,6 +39,9 @@ C:\Documents and Settings\[자신의 컴퓨터 id]hwayoung.kang
 4. SQLite Database Browser 내에서 테이블 하나를 생성합니다
 (테이블명:okboard_category, 컬럼:seq(numeric), id(text), name(text)
 
+테이블생성 >
+CREATE TABLE IF NOT EXISTS okboard_category ( seq  numeric, id text, name text);
+
 5. insert.text를 이용하여 데이터를 insert를 합니다.
 
 그럼 설정 잘하세요 ㅎㅎㅎ~
