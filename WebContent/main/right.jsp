@@ -51,7 +51,7 @@
   <div class="subcontent-unit-border">
     <div class="round-border-topleft"></div><div class="round-border-topright"></div>
     <h1>광고 영역1</h1>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+    <p> <a href="bbs?act=LIST&bbs=lifeqna">게시판 사는얘기</a> </p>
   </div>
   
   <div class="subcontent-unit-border-green">
