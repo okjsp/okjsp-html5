@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Server-Sent Event Support Test</title>
+    <meta name="description" content="Tool to check if your browser supports Server-Sent Event HTML5 technology" />
+    <meta name="keywords" content="SSE, HTML5, WebSocket" />
+    <style>
+        body { background-color: #D8DCE0; font-family: Tahoma; font-size: 14px; }
+        div.message-box > div.header > h1 { font-family: Tahoma; color: #fff; font-size: 18px; }
+        h1 { color: #3C5F87; font-family: Tahoma; font-size: 18px; }
+        div.message-box {
+            padding: 0;
+            margin: 40px;
+            width: 90%;
+        }
+        div.message-box > div.header {
+            background-color: #3C5F87;
+            -moz-border-radius: 5px 5px 0 0;
+            -webkit-border-radius: 5px 5px 0 0;
+            padding: 10px 20px;
+			position: relative;
+        }
+		div.message-box > div.header  > a {
+            position: absolute;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            display: block;
+        }
+
+        div.message-box > div.body {
+            padding: 10px 20px;
+            background-color: #fff;
+            -moz-border-radius: 0 0 5px 5px;
+            -webkit-border-radius: 0 0 5px 5px;
+        }
+        textarea {
+           width: 100%;
+           height: 170px;
+           padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <div class="header">
+			<a href="http://dsheiko.com" title="Let's go to my home page"><!-- --></a>
+            <h1>Server-Sent Event Support Test</h1>
+        </div>
+        <div class="body">
+			<p>This is an attachment to the <a href="http://dsheiko.com/weblog/html5-and-server-sent-events/">"HTML5 and Server-Sent Events"</a> article</p>
+            <!-- Opera way to pass the event source to client -->
+            <event-source src="/sse">
+            <p>Log console:</p>
+            <textarea cols="20" rows="7" id="output"></textarea>
+            <p>
+                Tested under
+            </p>
+            <ul>
+                <li>Chrome 6.0.405.0</li>
+                <li>Safari 5.0</li>
+                <li>Opera 9.62</li>
+                <li>Firefox 3.6 <a href="http://weblog.bocoup.com/javascript-eventsource-now-available-in-firefox">(emulation)</a></li>
+            </ul>
+        </div>
+    </div>
+<script type="text/javascript">
+<!--
+(function() {
+    var INIT_MESSAGE = "Now wait for server-side events. They will keep appearing in the console...",
+        FAIL_MESSAGE = "Sorry, I have never heard that your browser supports SSE";
+
+    /**
+     * Event logger
+     * @param (string) message
+     */
+    var log = function(message) {
+        document.getElementById('output').value +=  message + "\n";
+    };
+    /**
+     * Detects which sort of SSE support to apply if to apply it at all
+     * @return user agent type
+     */
+    var detectUAgent = function() {
+        if (navigator.appName == "Opera" && -1 !== navigator.appVersion.indexOf("9.")) {
+            log("Opera browser detected. " + INIT_MESSAGE);
+            return 'opera';
+        } else
+        if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
+            log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
+            return 'webkit';
+        } else
+        if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
+            log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
+            return 'webkit';
+        } else
+        if (undefined !== window['EventSource']) {
+            log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
+            return 'webkit';
+        }  else {
+            log(FAIL_MESSAGE);
+            return false;
+        }
+    };
+    /**
+     * Event handler for upcomming server-sent messages
+     * @param (event) event
+     * @event
+     */
+    var onMessageHandler = function (event) {
+    	    alert("OKOKOKOK");
+        log(event.data);
+    };
+    /**
+     * Init event source in Opera fashion
+     */
+    var operaEventSource = function() {
+        alert( "Opera" );
+        document.getElementsByTagName("event-source")[0]
+        .addEventListener("server-time", onMessageHandler, false);
+    };
+    /**
+     * Init event source in WebKit fashion
+     */
+    var webkitEventSource = function() {
+      var eventSrc = new EventSource('b.jsp');
+      eventSrc.addEventListener('message', onMessageHandler);
+    }
+
+    window.onload = function() {
+            switch(detectUAgent()) {
+                case "opera":
+                    operaEventSource();
+                    break;
+                case "webkit":
+                    webkitEventSource();
+                    break;
+            }
+    };
+}());// -->
+</script>
+</body>   
+</html><event-source src="" />

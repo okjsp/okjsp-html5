@@ -15,6 +15,10 @@
 		<servlet-name>WebSocketDemo</servlet-name>
 		<servlet-class>org.jwebsocket.appserver.WebSocketDemo</servlet-class>
 	</servlet>
+	<servlet><!-- Server-Sent Events -->
+		<servlet-name>sse</servlet-name>
+		<servlet-class>kr.pe.okjsp.sse.SSEServlet</servlet-class>
+	</servlet>
 
 	<servlet>
 		<servlet-name>okboard</servlet-name>
@@ -56,6 +60,10 @@
 	<servlet-mapping><!-- jWebSocket -->
 		<servlet-name>WebSocketDemo</servlet-name>
 		<url-pattern>/WebSocketDemo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping><!-- Server-Sent Events -->
+		<servlet-name>sse</servlet-name>
+		<url-pattern>/sse</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>okboard</servlet-name>
