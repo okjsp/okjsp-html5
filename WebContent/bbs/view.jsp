@@ -86,7 +86,45 @@
 	</ul>
         
        <hr class="clear-contentunit" />
-      목록 / 답변 / 수정  / 삭제 / 책갈피
+       <div class="column1-unit">
+      목록 / 답변 / 수정  / 삭제 / 책갈피</div>
+      <hr class="clear-contentunit" />
+<%
+  ArrayList<MemoBean> memoList = new MemoHandler().getList(one.getSeq());
+  Iterator memo = null;
+  if (memoList != null) {
+    memo = memoList.iterator();
+    while (memo.hasNext()) {
+      MemoBean mb = (MemoBean)memo.next();
+%>
+<div class="column1-unit"><p>
+
+<%
+    if (mb.getId() != null) {
+        %><img src="http://www.okjsp.pe.kr/profile/<%= mb.getId() %>.jpg"
+        	alt="<%= mb.getId() %>"
+        	style="width:33px;height:33px"
+        	onerror="this.src='/images/spacer.gif'"><%
+    }
+%>
+<%= mb.getBcomment() %></p>
+<p><%= mb.getWriter() %>
+<%= mb.getWhen("yyyy-MM-dd HH:mm:ss")%>
+</p></div>
+<%  
+	}
+  }
+  
+%>      
+      <textarea name="bcomment" style="width:100%;height:80px"></textarea>
+        id:<input type="text" class="memoid" name="writer"
+            maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
+        pw:<input type="password" class="memopw" name="memopass" maxlength="15">
+	    <input type="hidden" name="doublecheck" class="memodc" value="okjsp">
+	    <br /><span style="color:#f00">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
+	    <br />개조심할 필요는 있으니까요. 낮말은 새, 밤말은 쥐, 인터넷말은 검색엔진</span>
+        <br /><input type="submit" name="send" value="Memo">
+
       </div>
       
 </section>

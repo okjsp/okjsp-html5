@@ -77,7 +77,7 @@
         <h1 class="pagetitle">게시판이름 / <%= bbsids %> [<%= list.getCnt() %>]</h1>
 
         <!-- Content unit - One column -->
-        <!-- <h1 class="block">TEST.... </h1>  -->
+        <h1 class="block">글쓰기 </h1> 
 
         <div class="column1-unit" id='list'>
         </div>          
