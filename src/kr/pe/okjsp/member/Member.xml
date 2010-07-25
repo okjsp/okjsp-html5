@@ -9,9 +9,10 @@
   </insert>
 
   <select id="login" parameterClass="member" resultClass="member">
-    SELECT id
+    SELECT *
       FROM okmember
       WHERE id = #id#
+        AND password = old_password(#password#)
   </select>
   
   <select id="getById" resultClass="member" parameterClass="string">

@@ -55,6 +55,7 @@ String cPath = request.getContextPath();
       <div class="main-content">
 
         <div class="column1-unit">
+          
           <h1>Login</h1>
           <div class="loginform">
             <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 

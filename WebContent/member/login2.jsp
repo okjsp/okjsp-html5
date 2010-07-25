@@ -3,7 +3,7 @@
 <%@ page import="kr.pe.okjsp.util.DomainUtil, kr.pe.okjsp.util.CommonUtil" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="memberHandler" class="kr.pe.okjsp.member.MemberHandler" />
-<jsp:useBean id="member" class="kr.pe.okjsp.member.Member" scope="session" />
+<jsp:useBean id="member" class="kr.pe.okjsp.member.Member" />
 <jsp:setProperty name="member" property="*" />
 <!DOCTYPE html>
 <html lang="ko">
