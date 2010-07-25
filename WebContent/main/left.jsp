@@ -27,7 +27,7 @@
 	//해당 게시판 url로 이동
 	function jump(tmp) {
 		//alert(document.getElementById('left_menu').innerHTML);
-		document.location.href='/bbs?act=LIST&bbs='+tmp;
+		document.location.href='/html5/bbs?act=LIST&bbs='+tmp;
 	}
 
 	//드래그 시작시 처리
