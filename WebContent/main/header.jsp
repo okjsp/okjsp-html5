@@ -43,7 +43,7 @@ String cPath = request.getContextPath();
 	<div class="header-bottom"><!-- Navigation Level 2 (Drop-down menus) -->
 		<nav class="nav2"><!-- Navigation item -->
 			<ul>
-				<li><a href="main.jsp">Ȩ</a></li>
+				<li><a href="<%=cPath%>">Ȩ</a></li>
 			</ul>
 			
 			<!-- Navigation item -->
