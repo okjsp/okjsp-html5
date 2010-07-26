@@ -44,7 +44,7 @@
   <div class="page-container">
 	
 	<!-- header -->
-    <%@ include file="../main/header.jsp" %>
+    <jsp:include page="../main/header.jsp"></jsp:include>
 
     <!-- 상단 카테고리,검색_시작 -->
     <aside class="header-breadcrumbs">
@@ -67,12 +67,12 @@
     </aside>
     <!-- 상단 카테고리,검색_끝-->
     
-    <div class="main">
+    <div class="main" >
       <!-- 좌측메뉴 -->
-      <%@ include file="../main/left.jsp" %>
+      <jsp:include page="../main/left.jsp"></jsp:include>
      
       <!-- 메인 컨텐츠_시작======================================= -->
-      <div class="main-content">      
+      <div class="main-content" style="border:1px solid red;">      
       <!-- Pagetitle -->
         <h1 class="pagetitle">게시판이름 / <%= bbsids %> [<%= list.getCnt() %>]</h1>
 
@@ -87,7 +87,7 @@
       <!-- 메인 컨텐츠_끝========================================== -->
     </div>
     <!-- footer -->    
-    <%@ include file="../main/footer.jsp" %>
+    <jsp:include page="../main/footer.jsp"></jsp:include>
   </div> 
 
 </body>

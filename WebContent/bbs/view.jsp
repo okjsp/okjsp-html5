@@ -24,7 +24,7 @@
   <div class="page-container">
 	
 	<!-- header -->
-    <%@ include file="../main/header.jsp" %>
+    <jsp:include page="../main/header.jsp"></jsp:include>
 
     <!-- 상단 카테고리,검색_시작 -->
     <aside class="header-breadcrumbs">
@@ -49,7 +49,7 @@
     
     <div class="main">
       <!-- 좌측메뉴 -->
-      <%@ include file="../main/left.jsp" %>
+      <jsp:include page="../main/left.jsp"></jsp:include>
      
       <!-- 메인 컨텐츠_시작======================================= -->
 
