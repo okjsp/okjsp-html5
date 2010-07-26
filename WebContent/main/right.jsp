@@ -32,7 +32,7 @@
           <p><input type="hidden" name="returnPath" value="http://localhost:8080/html5" /></p>
           <fieldset>
             <p><label for="username_2" class="top">ID:</label><br />
-              <input type="text" name="id" id="username_2" tabindex="1" class="field" required></p>
+              <input type="text" name="id" id="username_2" tabindex="1" class="field" required placeholder="input ID"></p>
             <p><label for="password_2" class="top">Password:</label><br />
               <input type="password" name="password" id="password_2" tabindex="2" class="field" required></p>
             <p><input type="submit" class="button" value="LOGIN"  /></p>
