@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%
+//ContextPath
+String cPath = request.getContextPath();
+
+%>    
 <header class="header">
 	<!-- 타이틀_시작 -->
 	<hgroup class="header-top">
 		<div class="round-border-topleft"></div>
 		<div class="round-border-topright"></div>
 		
-		<!-- Sitelogo and sitename --> <a class="sitelogo" href="#" title="Home"></a>
+		<!-- Sitelogo and sitename --> <a class="sitelogo" href="<%=cPath%>" title="Home"></a>
 		<div class="sitename">
-			<h1><a href="main.jsp" title="Go to Start page">OKJSP</a></h1>
+			<h1><a href="<%=cPath%>" title="Go to Start page">OKJSP</a></h1>
 			<h2>Open Source Designs & HTML5</h2>
 		</div>
 		
