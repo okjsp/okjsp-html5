@@ -6,8 +6,8 @@
 <head>
 <%
 //ContextPath
+session.removeAttribute("member");
 String cPath = request.getContextPath();
-
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <!-- 크롬  프레임 설정 -->

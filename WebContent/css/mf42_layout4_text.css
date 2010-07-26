@@ -141,6 +141,7 @@ p.caption {clear:both; margin:0.5em 0 2.0em 20px; text-align:left; color:rgb(80,
 .main-subcontent .loginform input.checkbox {float:left; margin:5px 0 0 0 !important /*Non-IE6*/; margin:2px 0 0 -3px /*IE6*/; border:none;}
 .main-subcontent .loginform input.button {float:left; width:5.0em; margin:10px 0 5px 0; padding:1px; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:110%;}
 .main-subcontent .loginform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+.main-subcontent .loginform .member p { padding: 3px; }
 
 .main-subcontent .searchform {width:160px; margin:0 10px 0 10px;}
 .main-subcontent .searchform fieldset {border:none;}

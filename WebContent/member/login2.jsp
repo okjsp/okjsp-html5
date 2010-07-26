@@ -14,19 +14,23 @@
 <c:catch var="except">
 <%
   if (memberHandler.doLogin(request, member) == 1) {
-    pageContext.setAttribute("returnPath", DomainUtil.getFixedURL(request.getParameter("requestPath")));
+    pageContext.setAttribute("returnPath", DomainUtil.getFixedURL(request.getParameter("returnPath")));
     int daysOfCookieRemain = 60 * 24 * 90;
     CommonUtil.setCookie(response, "sid", Long.toString(member.getSid()), daysOfCookieRemain);
     CommonUtil.setCookie(response, "okid", member.getId(), daysOfCookieRemain);
 %>
     <p>${member.id}´Ô ¹Ý°©½À´Ï´Ù.</p>
-    <p><a href="${returnPath}">${returnPath }</a></p>
 <%
   }
 %>
 </c:catch>
 
 ${except.message}
+<c:if test="${!empty returnPath}">
+<p><a href="${returnPath}">${returnPath}</a></p>
+</c:if>
+<c:if test="${empty returnPath}">
 <a href="#" onclick="history.go(-2)">µÚ·Î</a>
+</c:if>
 </body>
 </html>
