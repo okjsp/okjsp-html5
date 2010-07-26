@@ -15,4 +15,5 @@
   </transactionManager>
 
   <sqlMap resource="kr/pe/okjsp/member/Member.xml" />
+  <sqlMap resource="kr/pe/okjsp/member/Role.xml" />
 </sqlMapConfig>

@@ -1,18 +1,24 @@
 package kr.pe.okjsp.member;
 
-import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class MemberHandler {
 
-	public int doLogin(Member member) {
+	public int doLogin(HttpServletRequest request, Member member) {
 		try {
-			MemberDao.getInstance().login(member);
+			Member m = MemberDao.getInstance().login(member);
+			if (m != null && m.getSid() > 0) {
+				m.setRole(RoleDao.getInstance().getRoles(m.getId()));
 
-			if (member.getSid() > 0) {
+				System.out.println(ToStringBuilder.reflectionToString(m));
+
+				request.getSession().setAttribute("member", m);
 				return 1;
 			}
 			else {
-				return 2;
+				throw new RuntimeException("회원정보가 잘못 입력되었습니다.");
 			}
 		}
 		catch (Exception e) {

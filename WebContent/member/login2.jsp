@@ -13,7 +13,7 @@
 <body>
 <c:catch var="except">
 <%
-  if (memberHandler.doLogin(member) == 1) {
+  if (memberHandler.doLogin(request, member) == 1) {
     pageContext.setAttribute("returnPath", DomainUtil.getFixedURL(request.getParameter("requestPath")));
     int daysOfCookieRemain = 60 * 24 * 90;
     CommonUtil.setCookie(response, "sid", Long.toString(member.getSid()), daysOfCookieRemain);
@@ -26,7 +26,7 @@
 %>
 </c:catch>
 
-${except}
+${except.message}
 <a href="#" onclick="history.go(-2)">µÚ·Î</a>
 </body>
 </html>
