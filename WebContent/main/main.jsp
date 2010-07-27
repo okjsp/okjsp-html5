@@ -1,7 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
+<%@ page errorPage="/jsp/error.jsp"
+    import="kr.pe.okjsp.*,
+    	    kr.pe.okjsp.util.CommonUtil,
+    	    kr.pe.okjsp.util.DateLabel,
+            java.util.*,
+            java.util.Iterator"
+    pageEncoding="euc-kr"
+%>
 <head>
 <%
 //ContextPath
@@ -82,15 +88,53 @@ String cPath = request.getContextPath();
 
         <!-- 공지사항_시작 -->
         <div class="column1-unit">
-          <h1 class="pagetitle">공지 사항</h1>
-          <p/>
-            <table border='1' bordercolor='blue' width="100%">
-              <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat3</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
-            </table>
+          	<%
+          	Iterator iterList = null;
+        	Article one = null;
+          	ArrayList arrayList = new ArrayList();
+          	arrayList.add("notice|공지사항");
+
+        	Iterator iter = arrayList.iterator();
+        	String [] rec = null;
+        	while(iter.hasNext()) {
+        		rec = ((String)iter.next()).split("\\|");
+        		%>
+        		<h1 class="pagetitle"><a href="/bbs?act=LIST&bbs=<%= rec[0] %>"><%= rec[1] %></a></h1>
+          		<p/>
+          		<table border='1' bordercolor='blue' width="100%">
+        		<%
+        		iterList = getCachedList(rec[0]);
+        		while (iterList.hasNext()) {
+        			one = (Article) iterList.next();
+        			%>
+        			<tr align="center">
+				        <td ><%= one.getRef() %></td>
+				        <td ><div>
+				            <a href="/seq/<%= one.getSeq() %>">
+				            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
+				            </a>
+				        <span ><str:replace replace="[0]" with="">[<%= one.getMemo() %>]</str:replace></span>
+				        </div>
+				        </td>
+				        <td "><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
+				        <td ><div><%
+					    if (one.getId() != null) {
+					        %><img src="/profile/<%= one.getId() %>.jpg"
+					        	alt="<%= one.getId() %>"
+					        	style="width:14px;height:14px"
+					        	onerror="this.src='/images/spacer.gif'"><%
+					    }
+				        	%></div></td>
+				        <td title="<%= one.getWhen() %>">
+				        <%= DateLabel.getTimeDiffLabel(one.getWhen()) %></td>
+				    </tr>
+        			<%
+        		}
+        		%>
+        		</table>
+        		<%
+        	}
+          	%>
           <p/>
         </div>
         <!-- 공지사항_끝 -->
@@ -100,21 +144,56 @@ String cPath = request.getContextPath();
           <h1 class="pagetitle">전체게시판</h1>
           <p/>
             <table border='1' bordercolor='blue' width="100%">
-              <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat3</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat3</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat1</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat2</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat3</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat4</th><td>Data</td><td>Data</td><td>Data</td></tr>
-              <tr><th scope="row" height="20">Cat5</th><td>Data</td><td>Data</td><td>Data</td></tr>
+            <%
+				HashMap bbsInfoMap = (HashMap)application.getAttribute("bbsInfoMap");
+				iterList = list.getAllRecentList(48).iterator();
+				int i = 0;
+				while (iterList.hasNext() && i < 40) {
+			
+				    one = (Article) iterList.next();
+				    BbsInfoBean bbsInfo = ((BbsInfoBean)(bbsInfoMap.get(one.getBbs())));
+				    if (bbsInfo == null) {
+				    	bbsInfo = new BbsInfoBean();
+				    }
+			    	
+				    // 모바일웹 프로젝트 진행중에는 테스트 데이타인
+			    	// twitter 와 null 은 보여지지 않습니다.
+			    	if (bbsInfo.getCseq() == null || "".equals(bbsInfo.getCseq()) || "twitter".equals(bbsInfo.getBbs())) {
+			    		continue;
+			    	}
+			    	
+				    if ("2".equals(bbsInfo.getCseq())) {
+				    	continue;
+				    }
+				    i++;
+			%>
+                <tr align="center">
+			        <td><div style="width:73px;height:12px;overflow:hidden">
+			        <a href="/bbs?act=LIST&bbs=<%= one.getBbs() %>">
+			        <%= bbsInfo.getName() %></a></div></td>
+			        <td><div>
+			            <a href="/seq/<%= one.getSeq() %>">
+			            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
+			            </a>
+			        <span>[<%= one.getMemo() %>]</span>
+			        </div>
+			        </td>
+			        <td><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
+			        <td><div><%
+			    if (one.getId() != null) {
+			        %><img src="/profile/<%= one.getId() %>.jpg"
+			        	alt="<%= one.getId() %>"
+			        	style="width:14px;height:14px"
+			        	onerror="this.src='/images/spacer.gif'"><%
+			    }
+			        	%></div></td>
+			        <td title="<%= one.getWhen() %>">
+			        <%= DateLabel.getTimeDiffLabel(one.getWhen()) %></td>
+			    </tr>
+			<%
+				}
+			%>
+              
             </table>
           <p/>
         </div>
@@ -129,3 +208,16 @@ String cPath = request.getContextPath();
   </div>
 </body>
 </html>
+<%!
+	ListHandler list = new ListHandler();
+	Iterator getCachedList(String bbsid) {
+		Iterator iter = null;
+		try {
+			iter = list.getRecentList(bbsid, 5).iterator();
+		} catch(Exception e) {
+			iter = new ArrayList().iterator();
+		}
+		return iter;
+	}
+
+%>
