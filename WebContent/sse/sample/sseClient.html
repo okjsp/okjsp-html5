@@ -123,7 +123,7 @@
      * Init event source in WebKit fashion
      */
     var webkitEventSource = function() {
-      var eventSrc = new EventSource('b.jsp');
+      var eventSrc = new EventSource('sseServer.jsp');
       eventSrc.addEventListener('message', onMessageHandler);
     }
 
@@ -140,4 +140,4 @@
 }());// -->
 </script>
 </body>   
-</html><event-source src="" />
+</html><event-source src="sseServer.jsp" />
