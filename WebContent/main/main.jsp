@@ -142,12 +142,58 @@ String cPath = request.getContextPath();
         
         <!-- 전체게시판_시작 -->
         <div class="column1-unit">
-          <h1 class="pagetitle">전체게시판bbbb</h1>
+          <h1 class="pagetitle">전체게시판</h1>
           <p/>
             <table border='1' bordercolor='blue' width="100%">
             <%
-            
-            %>
+				HashMap bbsInfoMap = (HashMap)application.getAttribute("bbsInfoMap");
+				iterList = list.getAllRecentList(48).iterator();
+				int i = 0;
+				while (iterList.hasNext() && i < 40) {
+			
+				    one = (Article) iterList.next();
+				    BbsInfoBean bbsInfo = ((BbsInfoBean)(bbsInfoMap.get(one.getBbs())));
+				    if (bbsInfo == null) {
+				    	bbsInfo = new BbsInfoBean();
+				    }
+			    	
+				    // 모바일웹 프로젝트 진행중에는 테스트 데이타인
+			    	// twitter 와 null 은 보여지지 않습니다.
+			    	if (bbsInfo.getCseq() == null || "".equals(bbsInfo.getCseq()) || "twitter".equals(bbsInfo.getBbs())) {
+			    		continue;
+			    	}
+			    	
+				    if ("2".equals(bbsInfo.getCseq())) {
+				    	continue;
+				    }
+				    i++;
+			%>
+                <tr align="center">
+			        <td><div style="width:73px;height:12px;overflow:hidden">
+			        <a href="/bbs?act=LIST&bbs=<%= one.getBbs() %>">
+			        <%= bbsInfo.getName() %></a></div></td>
+			        <td><div>
+			            <a href="/seq/<%= one.getSeq() %>">
+			            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
+			            </a>
+			        <span>[<%= one.getMemo() %>]</span>
+			        </div>
+			        </td>
+			        <td><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
+			        <td><div><%
+			    if (one.getId() != null) {
+			        %><img src="/profile/<%= one.getId() %>.jpg"
+			        	alt="<%= one.getId() %>"
+			        	style="width:14px;height:14px"
+			        	onerror="this.src='/images/spacer.gif'"><%
+			    }
+			        	%></div></td>
+			        <td title="<%= one.getWhen() %>">
+			        <%= DateLabel.getTimeDiffLabel(one.getWhen()) %></td>
+			    </tr>
+			<%
+				}
+			%>
               
             </table>
           <p/>

@@ -56,6 +56,13 @@
 		<servlet-name>seq</servlet-name>
 		<servlet-class>kr.pe.okjsp.BbsController</servlet-class>
 	</servlet>
+	<!-- 메인 전체 게시판 -->
+	<servlet>
+		<display-name>PopBbsInfo</display-name>
+		<servlet-name>PopBbsInfo</servlet-name>
+		<servlet-class>kr.pe.okjsp.PopBbsInfoMapServlet</servlet-class>
+		<load-on-startup>5</load-on-startup>
+	</servlet>
 
 	<servlet-mapping><!-- jWebSocket -->
 		<servlet-name>WebSocketDemo</servlet-name>
