@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
-<%@ page errorPage="/jsp/error.jsp"
+<%@ page errorPage="error.jsp"
     import="kr.pe.okjsp.*,
     	    kr.pe.okjsp.util.CommonUtil,
     	    kr.pe.okjsp.util.DateLabel,
@@ -170,10 +170,10 @@ String cPath = request.getContextPath();
 			%>
                 <tr align="center">
 			        <td><div style="width:73px;height:12px;overflow:hidden">
-			        <a href="/bbs?act=LIST&bbs=<%= one.getBbs() %>">
+			        <a href="<%=cPath%>/bbs?act=LIST&bbs=<%= one.getBbs() %>">
 			        <%= bbsInfo.getName() %></a></div></td>
 			        <td><div>
-			            <a href="/seq/<%= one.getSeq() %>">
+			            <a href="<%=cPath%>/seq/<%= one.getSeq() %>">
 			            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
 			            </a>
 			        <span>[<%= one.getMemo() %>]</span>
@@ -199,11 +199,6 @@ String cPath = request.getContextPath();
           <p/>
         </div>
         <!-- 전체게시판_끝 -->
-        
-        
-        
-
-        
       </div>
       <!-- 메인 컨텐츠_끝========================================== -->
       <!-- 우측 영역_메인 화면 외에는 제거 하고 작업... -->
