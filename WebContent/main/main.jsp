@@ -21,7 +21,79 @@ String cPath = request.getContextPath();
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script>
+/**server-sent-event_Ω√¿€ */
+(function() {
+    var INIT_MESSAGE = "Now wait for server-side events. They will keep appearing in the console...",
+        FAIL_MESSAGE = "Sorry, I have never heard that your browser supports SSE";
 
+    /**
+     * Event logger
+     * @param (string) message
+     */
+    var log = function(message) {
+        document.getElementById('output').value +=  message + "\n";
+    };
+    /**
+     * Detects which sort of SSE support to apply if to apply it at all
+     * @return user agent type
+     */
+    var detectUAgent = function() {
+        if (navigator.appName == "Opera" && -1 !== navigator.appVersion.indexOf("9.")) {
+            log("Opera browser detected. " + INIT_MESSAGE);
+            return 'opera';
+        } else
+        if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
+            log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
+            return 'webkit';
+        } else
+        if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
+            log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
+            return 'webkit';
+        } else
+        if (undefined !== window['EventSource']) {
+            log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
+            return 'webkit';
+        }  else {
+            log(FAIL_MESSAGE);
+            return false;
+        }
+    };
+    /**
+     * Event handler for upcomming server-sent messages
+     * @param (event) event
+     * @event
+     */
+    var onMessageHandler = function (event) {
+        log(event.data);
+    };
+    /**
+     * Init event source in Opera fashion
+     */
+    var operaEventSource = function() {
+        alert( "Opera" );
+        document.getElementsByTagName("event-source")[0]
+        .addEventListener("server-time", onMessageHandler, false);
+    };
+    /**
+     * Init event source in WebKit fashion
+     */
+    var webkitEventSource = function() {
+      var eventSrc = new EventSource('main_event.jsp');
+      eventSrc.addEventListener('message', onMessageHandler);
+    }
+
+    window.onload = function() {
+            switch(detectUAgent()) {
+                case "opera":
+                    operaEventSource();
+                    break;
+                case "webkit":
+                    webkitEventSource();
+                    break;
+            }
+    };
+}());
+/**server-sent-event_≥° */
 </script>
 <title>OKJSP_HTML5</title>
 </head>
@@ -209,6 +281,7 @@ String cPath = request.getContextPath();
   </div>
 </body>
 </html>
+<event-source src="main_event.jsp" />
 <%!
 	ListHandler list = new ListHandler();
 	Iterator getCachedList(String bbsid) {
