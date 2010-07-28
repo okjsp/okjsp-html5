@@ -99,7 +99,7 @@ String cPath = request.getContextPath();
         	while(iter.hasNext()) {
         		rec = ((String)iter.next()).split("\\|");
         		%>
-        		<h1 class="pagetitle"><a href="/bbs?act=LIST&bbs=<%= rec[0] %>"><%= rec[1] %></a></h1>
+        		<h1 class="pagetitle"><a href="<%=cPath%>/bbs?act=LIST&bbs=<%= rec[0] %>"><%= rec[1] %></a></h1>
           		<p/>
           		<table border='1' bordercolor='blue' width="100%">
         		<%
@@ -110,7 +110,7 @@ String cPath = request.getContextPath();
         			<tr align="center">
 				        <td ><%= one.getRef() %></td>
 				        <td ><div>
-				            <a href="/seq/<%= one.getSeq() %>">
+				            <a href="<%=cPath%>/seq/<%= one.getSeq() %>">
 				            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
 				            </a>
 				        <span ><str:replace replace="[0]" with="">[<%= one.getMemo() %>]</str:replace></span>
@@ -119,10 +119,10 @@ String cPath = request.getContextPath();
 				        <td "><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
 				        <td ><div><%
 					    if (one.getId() != null) {
-					        %><img src="/profile/<%= one.getId() %>.jpg"
+					        %><img src="<%=cPath%>/profile/<%= one.getId() %>.jpg"
 					        	alt="<%= one.getId() %>"
 					        	style="width:14px;height:14px"
-					        	onerror="this.src='/images/spacer.gif'"><%
+					        	onerror="this.src='<%=cPath%>/images/spacer.gif'"><%
 					    }
 				        	%></div></td>
 				        <td title="<%= one.getWhen() %>">
@@ -182,10 +182,10 @@ String cPath = request.getContextPath();
 			        <td><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
 			        <td><div><%
 			    if (one.getId() != null) {
-			        %><img src="/profile/<%= one.getId() %>.jpg"
+			        %><img src="<%=cPath%>/profile/<%= one.getId() %>.jpg"
 			        	alt="<%= one.getId() %>"
 			        	style="width:14px;height:14px"
-			        	onerror="this.src='/images/spacer.gif'"><%
+			        	onerror="this.src='<%=cPath%>/images/spacer.gif'"><%
 			    }
 			        	%></div></td>
 			        <td title="<%= one.getWhen() %>">
