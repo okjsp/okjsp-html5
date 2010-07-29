@@ -4,6 +4,7 @@
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>    
 <jsp:useBean id="one"  class="kr.pe.okjsp.Article" scope="request"/>
 <jsp:useBean id="list" class="kr.pe.okjsp.ListHandler" />
+<jsp:setProperty name="list" property="*" />
 
 <%
 	String cPath  = request.getContextPath();
@@ -15,7 +16,7 @@
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
-<script src="/html5/js/prototype.js"></script>
+<script src="<%=cPath%>/js/prototype.js"></script>
 <title>OKJSP</title>
 </head>
 
