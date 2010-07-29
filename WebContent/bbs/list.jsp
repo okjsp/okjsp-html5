@@ -18,11 +18,9 @@
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script src="<%=cPath%>/js/prototype.js"></script>
 <title>OKJSP</title>
-</head>
-
-
 <script type="text/javascript">
 	function getList(bbs, pg) {
+				
 	    var myAjax = new Ajax.Request(
 	        "/html5/bbs/list_result.jsp",
 	        {method: 'get', parameters: "act=LIST&bbs="+bbs+"&keyfield=content&keyword&pg="+pg ,
@@ -39,6 +37,7 @@
 
 	window.onload=getList('<%=bbsids%>', 0); 
 </script>
+</head>
 
 <body>
   <!-- Main Page Container -->
@@ -47,7 +46,7 @@
 	<!-- header -->
     <jsp:include page="../main/header.jsp"></jsp:include>
 
-    <!-- 상단 카테고리,검색_시작 -->
+    <!-- 상단 카테고리,검색_시작 -->	
     <aside class="header-breadcrumbs">
       <ul>
         <li><a href="#">Home</a></li>
@@ -78,10 +77,10 @@
         <h1 class="pagetitle">게시판이름 / <%= bbsids %> [<%= list.getCnt() %>]</h1>
 
         <!-- Content unit - One column -->
-        <h1 class="block">글쓰기 </h1> 
+        <h1 class=""><a href="/html5/bbs/write2.jsp">글쓰기</a></h1> 
 
-        <div class="column1-unit" id='list'>
-        </div>          
+        <div id='list' class="column1-unit">
+        </div>
         <hr class="clear-contentunit" />
 
       </div>

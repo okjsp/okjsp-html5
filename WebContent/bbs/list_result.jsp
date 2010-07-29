@@ -36,4 +36,19 @@ while (iter.hasNext()) {
 </section>
 <% 
 }%>		
-<a href='#' onclick="this.style.display = 'none';getList('<%= request.getParameter("bbs") %>', '<%=list.getPg()+1%>')" id='nextBtn'>NEXT</a>
+
+<% 
+		int pageTotal = ( list.getCnt() - 1 ) / list.getPageSize();	//전체페이지
+		if ( pageTotal > list.getPg()  ) {
+%>
+<br/>
+<div id='pageload'><h3><center>
+<a href='#' onclick="this.style.display = 'none';document.getElementById('pageloading').style.display='inline';getList('<%= request.getParameter("bbs") %>', '<%=list.getPg()+1%>')" id='nextBtn'>NEXT</a>
+</center></h3>
+</div>
+<div id='pageloading' style='display:none;'>
+	<img src='/html5/img/loading.gif'>
+</div>
+<%
+	}
+%>
