@@ -34,7 +34,7 @@ public class WriteServlet extends HttpServlet {
 	    	bbs = writeWithFiles(req, res);
 	    }
 	    
-		String togo = "/bbs?act=LIST&bbs=" + bbs + "&pg=0";
+		String togo = "/html5/bbs?act=LIST&bbs=" + bbs + "&pg=0";
 		res.sendRedirect(togo);
 
 	} // end doPost()

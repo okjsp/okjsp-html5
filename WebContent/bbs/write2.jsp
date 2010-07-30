@@ -39,41 +39,35 @@ var sync = function() {
 
 window.onload = function () {
 	 
-	var div = document.getElementById('div');
+	var drop_area = document.getElementById('drop_area');
 
 	// ondrag
-	div.ondragenter = div.ondragover = function (e) {
+	/*
+	drop_area.ondragenter = drop_area.ondragover = function (e) {
 		e.preventDefault();
 		e.dataTransfer.dropEffect = 'copy';
 		return false;
 	}
 	
-	div.ondrop = function(e){
+	drop_area.ondrop = function(e){
 		for (var i = 0; i < e.dataTransfer.files.length; i++) { 
  
 				var file = e.dataTransfer.files[i];
 
-				 alert (file);
-				 var aa = document.getElementById('filename0');
-				 aa = file;
+				 document.getElementById('filename0').files[0] = file;
 
-				 document.getElementById('filename0').files[0] = aa;
-				 
-				 if (document.getElementById('filename0').files[0] == file ) {
-					 alert("true");
-				 }
-				 
-				 	
 		}
 		  var d = document.createElement("div");
 		 	var file = document.createElement("input");
 		 	file.setAttribute("type", "file");
 		 	file.setAttribute("name", "filename"+"1");
 		 	d.appendChild(file);
-		 	alert (d);		 			  		
+
+		 	var fileListDiv = document.getElementById('fileList');
+		 	fileListDiv.appendChild(d);
 	}
 }
-
+*/
 </script>
 
 </head>
@@ -147,12 +141,60 @@ window.onload = function () {
 <input id="submitButton" type="submit" value="Submit"/>
 </dd>
 </dl>
-<input type="file" name="filename0" id='filename0'><br>
-<div id="div" style="width: 100%; height: 200px; border: 1px solid blue">Drop here</div> 
+파일업로드 : 
+<input type="file" name="filename0" id='filename0' multiple><br>
+<div id='fileList'></div>
+<p id="drop_area" style="border: 2px dashed #ddd;padding: 10px;margin-bottom: 2em;"> 
+					or drag and drop files here
+</p>  
 </form>
-
 </div>
-
-
+				<ul id="file_list"> 
+					<li class="no_items">선택된 파일이 없습니다.</li> 
+				</ul> 
+	<script>
+	// view-source:http://robertnyman.com/html5/fileapi/fileapi.html 
+	(function () {
+		var filesUpload = document.getElementById("filename0"),
+			dropArea = document.getElementById("drop_area"),
+			fileList = document.getElementById("file_list");
+		
+		function traverseFiles (files) {
+			var li,
+				file,
+				fileInfo;
+			fileList.innerHTML = "";
+				
+			for (var i=0, il=files.length; i<il; i++) {
+				li = document.createElement("li");
+				file = files[i];
+				fileInfo = "<div><strong>Name:</strong> " + file.name + "</div>";
+				fileInfo += "<div><strong>Size:</strong> " + file.size + " bytes</div>";
+				fileInfo += "<div><strong>Type:</strong> " + file.type + "</div>";
+				li.innerHTML = fileInfo;
+				fileList.appendChild(li);
+			};
+		};
+		
+		filesUpload.onchange = function () {
+			traverseFiles(this.files);
+		};
+		
+		dropArea.ondragenter = function () {
+			return false;
+		};
+		
+		dropArea.ondragover = function () {
+			return false;
+		};
+		
+		dropArea.ondrop = function (evt) {
+			traverseFiles(evt.dataTransfer.files);
+			return false;
+		};
+		
+	})();
+				</script> 
 </body>
 </html>
+ 
