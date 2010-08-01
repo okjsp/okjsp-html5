@@ -43,18 +43,20 @@
 	//drop이벤트 핸들러
 	function onDrop(event){
 		var drag_zone = event.dataTransfer.getData('text');	//옮길애 아이디(드뎌 이거 된다 ㅜㅜ_text로 하니깐 됨..)
-		var drag_zone_inner = document.getElementById(drag_zone).innerHTML;					//옮길애 내용
+		var drag_zone_inner = document.getElementById(drag_zone).outerHTML;					//옮길애 내용
 		var dt = document.getElementById(drag_zone);
 
 		var drop_zone = event.target.id;				//옮길곳에 있는 애 아이디
-		var drop_zone_inner = document.getElementById(drop_zone).innerHTML;					//옮길곳에 있는 애 내용
+		var drop_zone_inner = document.getElementById(drop_zone).outerHTML;					//옮길곳에 있는 애 내용
+
+		//alert(drag_zone_inner+"--"+drop_zone_inner);
 
 		if(dt && dt.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
 			//책에 있는 소스가 잘 안되서...걍 cross 시켰다.
-			document.getElementById(drop_zone).innerHTML = '';
-			document.getElementById(drop_zone).innerHTML = drag_zone_inner;
-			document.getElementById(drag_zone).innerHTML = '';
-			document.getElementById(drag_zone).innerHTML = drop_zone_inner;
+			//document.getElementById(drop_zone).innerHTML = '';
+			document.getElementById(drop_zone).outerHTML = drag_zone_inner;
+			//document.getElementById(drag_zone).innerHTML = '';
+			document.getElementById(drag_zone).outerHTML = drop_zone_inner;
 
 			document.getElementById(drop_zone).className = 'dtcss';
 			document.getElementById(drag_zone).className = 'dtcss';
