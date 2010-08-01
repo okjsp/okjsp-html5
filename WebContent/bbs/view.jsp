@@ -8,6 +8,7 @@
 <%
 	String cPath  = request.getContextPath();
 	String bbsids = request.getParameter("bbs");
+	int memoCount = 0; 	// 뎃글 갯수 (SSE 에서 비교 값으로 사용)
 %>
 <html>
 <head>
@@ -17,6 +18,8 @@
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script src="<%=cPath%>/js/prototype.js"></script>
 <script src="<%=cPath%>/js/okboard_view.js"></script>
+
+
 <title>OKJSP</title>
 </head>
 
@@ -95,34 +98,19 @@
        <div class="column1-unit">
       목록 / 답변 / 수정  / 삭제 / 책갈피</div>
       <hr class="clear-contentunit" />
-<%
-  ArrayList<MemoBean> memoList = new MemoHandler().getList(one.getSeq());
-  Iterator memo = null;
-  if (memoList != null) {
-    memo = memoList.iterator();
-    while (memo.hasNext()) {
-      MemoBean mb = (MemoBean)memo.next();
-%>
-<div class="column1-unit"><p>
 
-<%
-    if (mb.getId() != null) {
-        %><img src="http://www.okjsp.pe.kr/profile/<%= mb.getId() %>.jpg"
-        	alt="<%= mb.getId() %>"
-        	style="width:33px;height:33px"
-        	onerror="this.src='/images/spacer.gif'"><%
-    }
-%>
-<%= mb.getBcomment() %></p>
-<p><%= mb.getWriter() %>
-<%= mb.getWhen("yyyy-MM-dd HH:mm:ss")%>
-</p></div>
-<%  
-	}
-  }
-  
-%>      
-      <textarea name="bcomment" style="width:100%;height:80px"></textarea>
+<div class="column1-unit" id="memoDiv">
+</div>
+<form name="f0" method="POST" onSubmit="return chk_memo(this)">
+    <input type="hidden" name="pact" value="MEMO">
+    <input type="hidden" name="seq" value="<%= one.getSeq() %>">
+    <input type="hidden" name="pg" value="<%= list.getPg() %>">
+    <input type="hidden" name="keyfield" value="<%=  CommonUtil.nchk(request.getParameter("keyfield"),"content")  %>">
+    <input type="hidden" name="keyword" value="<%=  CommonUtil.nchk(request.getParameter("keyword"))  %>">
+    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
+    <input type="hidden" name="viewstamp" value="<%= System.currentTimeMillis() %>">
+	<div>
+      <textarea name="bcomment" style="width:100%;height:80px" id="note"></textarea>
         id:<input type="text" class="memoid" name="writer"
             maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
         pw:<input type="password" class="memopw" name="memopass" maxlength="15">
@@ -132,7 +120,105 @@
         <br /><input type="submit" name="send" value="Memo">
 
       </div>
-      
+</form>
 </section>
 </body>
+
+<%-- ############################################################## --%>
+<%-- ############             실시간 댓글 시작                             ############ --%>
+<%-- ############################################################## --%>
+<script type="text/javascript">
+
+	var currentMemoCount = <%= memoCount %>;
+
+	function startSSE() {
+	    switch(detectUAgent()) {
+	        case "opera":
+	            // opera 지원은 추후에...
+	            break;
+	        case "webkit":
+	            webkitEventSource();
+	            break;
+	    }
+	}
+	
+	/**
+	 * Detects which sort of SSE support to apply if to apply it at all
+	 * @return user agent type
+	 */
+	var detectUAgent = function() {
+	    if (navigator.appName == "Opera" && -1 !== navigator.appVersion.indexOf("9.")) {
+	        //log("Opera browser detected. " + INIT_MESSAGE);
+	        return 'opera';
+	    } else
+	    if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
+	        //log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
+	        return 'webkit';
+	    } else
+	    if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
+	        //log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
+	        return 'webkit';
+	    } else
+	    if (undefined !== window['EventSource']) {
+	        //log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
+	        return 'webkit';
+	    }  else {
+	        //log(FAIL_MESSAGE);
+	        return false;
+	    }
+	};
+	
+	/**
+	 * Init event source in WebKit fashion
+	 */
+	var webkitEventSource = function() {
+	  var eventSrc = new EventSource('/html5/sse?seq=<%=one.getSeq()%>');
+	  eventSrc.addEventListener('message', onMessageHandler);
+	}
+	
+	/**
+	 * Event handler for upcomming server-sent messages
+	 * @param (event) event
+	 * @event
+	 */
+	var onMessageHandler = function (event) {
+			var newMemoCount = event.data;
+
+			if( currentMemoCount < newMemoCount ) {
+			    var myAjax = new Ajax.Request(
+				        "/html5/bbs/viewMemo.jsp",
+				        {method: 'get', parameters: "seq=<%=one.getSeq()%>&startCount="+currentMemoCount ,
+					    onComplete: ajax_response}
+				    );
+			}
+			
+		    currentMemoCount = newMemoCount;
+
+/*
+
+			if( currentMemoCount < newMemoCount )
+				alert( currentMemoCount +": DIFF :" + newMemoCount );
+			else
+				alert( currentMemoCount +": ==== :" + newMemoCount );
+*/
+			
+	    document.getElementById("note").innerHTML = event.data + ">>>>>" + <%= memoCount %>
+	};
+
+	function ajax_response(originalRequest) {
+
+		var list = $('memoDiv');
+		var addlist = document.createElement('section');
+		addlist.innerHTML = originalRequest.responseText;
+		list.appendChild(addlist);
+	}
+
+	// 실시간 댓글기능 Start. 
+	startSSE();
+</script>
+<%-- ############################################################## --%>
+<%-- ############             실시간 댓글 끝                             ############ --%>
+<%-- ############################################################## --%>
+
+
 </html>
