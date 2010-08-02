@@ -36,7 +36,7 @@
             <p><label for="password_2" class="top">Password:</label><br />
               <input type="password" name="password" id="password_2" tabindex="2" class="field" required></p>
             <p><input type="submit" class="button" value="LOGIN"  /></p>
-            <p><a href="#" id="forgotpsswd_2">Password forgotten?</a></p>
+            <p><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_2">회원가입</a></p>
           </fieldset>
         </form>
       </c:if>

@@ -65,7 +65,7 @@ String cPath = request.getContextPath();
                 <p><label for="password_1" class="top">Password:</label><br />
                     <input type="password" name="password" id="password_1" tabindex="2" class="field" required /></p>
                 <p><input type="submit" name="cmdweblogin" class="button" value="로그인"  /></p>
-                <p><a href="#" id="forgotpsswd_1">회원가입</a></p>
+                <p><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_1">회원가입</a></p>
               </fieldset>
             </form>
           </div>
