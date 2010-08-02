@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
+<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/okboard.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script src="<%=cPath%>/js/prototype.js"></script>
@@ -90,13 +90,13 @@
 	</ul>
         
        <hr class="clear-contentunit" />
+       <div class="column1-unit">
         <input type="button" value="목록" onClick="goPage()"/>
         <input type="button" value="답변" onClick="goReply()"/>
         <input type="button" value="수정" onClick="show_passwd_layer('goModify')"/>
         <input type="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
         <input type="button" value="책갈피" onClick="goBookmark()"/>
-       <div class="column1-unit">
-      목록 / 답변 / 수정  / 삭제 / 책갈피</div>
+       </div>
       <hr class="clear-contentunit" />
 
 <div class="column1-unit" id="memoDiv">

@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
+<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/okboard.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script src="<%=cPath%>/js/prototype.js"></script>
@@ -35,7 +35,13 @@
 			list.appendChild(addlist);
 	}	
 
-	window.onload=getList('<%=bbsids%>', 0); 
+	window.onload=getList('<%=bbsids%>', 0);
+
+	function write() {
+	    document.nav.act.value = "ADD";
+	    document.nav.submit();
+	}
+		 
 </script>
 </head>
 
@@ -67,6 +73,18 @@
     </aside>
     <!-- 상단 카테고리,검색_끝-->
     
+		<form name="nav">		
+		<%
+			String keyword = CommonUtil.nchk(request.getParameter("keyword"));
+		%>
+		<input type="hidden" name="keyword" value="<%= CommonUtil.a2k(keyword) %>">
+		<input type="hidden" name="act"      value="LIST">
+		<input type="hidden" name="bbs"      value="<%= request.getParameter("bbs") %>">
+		<input type="hidden" name="seq">
+	</form>
+
+   
+   
     <div class="main" >
       <!-- 좌측메뉴 -->
       <jsp:include page="../main/left.jsp"></jsp:include>
@@ -74,10 +92,10 @@
       <!-- 메인 컨텐츠_시작======================================= -->
       <div class="main-content" style="border:1px solid red;">      
       <!-- Pagetitle -->
-        <h1 class="pagetitle">게시판이름 / <%= bbsids %> [<%= list.getCnt() %>]</h1>
+        <h1 class="pagetitle"> <%= bbsids %> </h1>
 
         <!-- Content unit - One column -->
-        <h1 class=""><a href="/html5/bbs/write2.jsp">글쓰기</a></h1> 
+        <h1 class=""><a href="javascript:write()">글쓰기</a> <a href="/html5/bbs/write.jsp">글쓰기2</a></h1> 
 
         <div id='list' class="column1-unit">
         </div>
