@@ -15,8 +15,23 @@ String cPath = request.getContextPath();
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
+<style type="text/css">
+</style>
+<script type="text/javascript" src="<%=cPath%>/js/prototype.js"></script>
 <script type="text/javascript">
-
+  Event.observe(window, 'load', function(e) {
+    Event.observe('icon-drop', 'dragover', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }, true);
+    Event.observe('icon-drop', 'drop', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      
+      var files = e.dataTransfer.files;
+      alert(files.length);
+    }, true);
+  }, true);
 </script>
 <title>OKJSP_HTML5</title>
 </head>
@@ -72,21 +87,14 @@ String cPath = request.getContextPath();
                    <span class="guide">okjsp에서 비정기적으로 발행하는 뉴스레터와 홍보메일 수신 설정입니다.</span>
                    </p>
               </fieldset>
-              <fieldset><legend>&nbsp;MESSAGE DETAILS&nbsp;</legend>
-                <p><label for="contact_subject" class="left">Subject:</label>
-                   <input type="text" name="contact_subject" id="contact_subject" class="field" /></p>
-                <p><label for="contact_urgency" class="left">Please reply:</label>
-                   <select name="contact_urgency" id="contact_urgency" class="combo">
-                     <option value="choose"> Select... </option>
-                     <option value="today"> Latest today </option>
-                     <option value="tomorrow"> Latest tomorrow </option>
-                     <option value="threedays"> Latest in 3 days </option>
-                     <option value="week"> Latest in a week </option>
-                     <option value="month"> Latest in a month </option></select></p>
-                <p><label for="contact_message" class="left">Message:</label>
-                   <textarea name="contact_message" id="contact_message" cols="45" rows="10"></textarea></p>
-                <p><input type="button" name="cancle" id="cancel" class="button" value="Cancel" />
-                    <input type="submit" name="submit" id="submit" class="button" value="Send message" /></p>
+              <fieldset><legend>&nbsp;Icon&nbsp;</legend>
+                <div style="padding:10px;">
+                  <p id="icon-drop" style="padding:25px; border:2px dashed #bbb; color:#bbb; display:block; border-radius:5px; font:normal normal normal 20pt/normal bold, Tahoma;"
+                      ondragover="" ondragleave="">Drop files here</p>
+                </div>
+              </fieldset>
+              <fieldset><legend>&nbsp;Info&nbsp;</legend>
+                <p style="padding-left:15px;">가입시 임시비밀번호가 메일로 발송됩니다.<br>로그인 후 비밀번호를 바꿔주시기 바랍니다.</p>
               </fieldset>
             </form>
           </div>              
