@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<!-- If Google's chrome frame installed, use it! -->
+		<!-- Comment needs to be BELOW this meta tag! -->
+<!--
+//	****************************************************************************
+//	jWebSocket Hello World (uses jWebSocket Client and Server)
+//	(C) 2010 Alexander Schulze, jWebSocket.org, Innotrade GmbH, Herzogenrath
+//	****************************************************************************
+//	This program is free software; you can redistribute it and/or modify it
+//	under the terms of the GNU Lesser General Public License as published by the
+//	Free Software Foundation; either version 3 of the License, or (at your
+//	option) any later version.
+//	This program is distributed in the hope that it will be useful, but WITHOUT
+//	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+//	FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+//	more details.
+//	You should have received a copy of the GNU Lesser General Public License along
+//	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
+//	****************************************************************************
+-->
+		<meta http-equiv="Content-Language" content="en">
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<title>jWebSocket Hello World</title>
+		<link rel="stylesheet" type="text/css" href="../../res/css/jwebsocket.css">
+		<script type="text/javascript" src="../../res/js/jWebSocket.js"></script>
+		<!-- this one imports the client side sample plug-in -->
+		<script type="text/javascript" src="../../res/js/jwsSamplesPlugIn.js"></script>
+		<script type="text/javascript" language="JavaScript">
+
+			var eLog = null;
+
+			function log( aString ) {
+				eLog.innerHTML +=
+					aString + "<br>";
+				if( eLog.scrollHeight > eLog.clientHeight ) {
+					eLog.scrollTop = eLog.scrollHeight - eLog.clientHeight;
+				}
+			}
+
+			function clearLog() {
+				eLog.innerHTML = "";
+				eLog.scrollTop = 0;
+			}
+
+			var jWebSocketClient = null;
+			var gUsername = null;
+
+			function logon() {
+				// URL is ws://[yourhostname|localhost]:8787
+				var lURL = jws.JWS_SERVER_URL;
+				gUsername = eUsername.value;
+				var lPassword = ePassword.value;
+				ePassword.value = "";
+
+				log( "Connecting to " + lURL + " and logging in as '" + gUsername + "'..." );
+				var lRes = jWebSocketClient.logon( lURL, gUsername, lPassword, {
+					// OnOpen callback
+					OnOpen: function( aEvent ) {
+						log( "<font style='color:#888'>jWebSocket connection established.</font>" );
+					},
+					// OnMessage callback
+					OnMessage: function( aEvent, aToken ) {
+						log( "<font style='color:#888'>jWebSocket '" + aToken.type + "' token received, full message: '" + aEvent.data + "'</font>" );
+					},
+					// OnClose callback
+					OnClose: function( aEvent ) {
+						log( "<font style='color:#888'>jWebSocket connection closed.</font>" );
+					}
+				});
+
+				log( jWebSocketClient.resultToString( lRes ) );
+			}
+
+			function logoff() {
+				if( jWebSocketClient ) {
+					log( "Logging off " + ( gUsername != null ? "'" + gUsername + "'" : "" ) + " and disconnecting..." );
+					var lRes = jWebSocketClient.close();
+					log( jWebSocketClient.resultToString( lRes ) );
+				}
+			}
+
+			function broadcast() {
+				var lMsg = eMessage.value;
+				if( lMsg.length > 0 ) {
+					log( "Broadcasting '" + lMsg + "'..." );
+					var lRes = jWebSocketClient.broadcastText(
+						"",		// broadcast to all clients (not limited to a certain pool)
+						lMsg	// broadcast this message
+					);
+					// log error only, on success don't confuse the user
+					if( lRes.code != 0 ) {
+						log( jWebSocketClient.resultToString( lRes ) );
+					}
+					eMessage.value = "";
+				}
+			}
+
+			// example how to exchange arbitrary complex objects between clients
+			// the processComplexObject method in the server side sample plug-in
+			function exchangeComplexObjects() {
+				if( jWebSocketClient.isConnected() ) {
+					var lToken = {
+						ns: jws.SamplesPlugIn.NS,
+						type: "processComplexObject",
+						object: {
+							field1: "value1",
+							field2: "value2",
+							array1: [ "array1Item1", "array1Item2" ],
+							array2: [ "array2Item1", "array2Item2" ],
+							object1: { obj1field1: "obj1value1", obj1field2: "obj1value2" },
+							object2: { obj2field1: "obj2value1", obj2field2: "obj2value2" }
+						}
+					};
+					jWebSocketClient.sendToken( lToken,	{
+					});
+				} else {
+					log( "Not connected." );
+				}
+			}
+
+			// example how to request a result from a server side plugin
+			function sampleGetTime() {
+				log( "Requesting server time via WebSockets..." );
+				// call the getTime method of the client side plug-in
+				var lRes = jWebSocketClient.requestServerTime();
+				// log error only, on success don't confuse the user
+				if( lRes.code != 0 ) {
+					log( jWebSocketClient.resultToString( lRes ) );
+				}
+			}
+
+			function getServerTimeCallback( aToken ) {
+				log( "Server time: " + aToken.time );
+			}
+
+			function initPage() {
+				eLog = jws.$( "sdivChat" );
+				eMessage = jws.$( "stxfMessage" );
+				eUsername = jws.$( "stxfUsername" );
+				ePassword = jws.$( "spwfPassword" );
+
+				// jws.browserSupportsWebSockets checks web if sockets are available
+				// either natively, by the Flash Bridge or by the Chrome Frame.
+				if( jws.browserSupportsWebSockets() ) {
+					jWebSocketClient = new jws.jWebSocketJSONClient();
+					jWebSocketClient.setSamplesCallbacks({
+						OnSamplesServerTime: getServerTimeCallback
+					});
+					eUsername.focus();
+				} else {
+					jws.$( "sbtnLogon" ).setAttribute( "disabled", "disabled" );
+					jws.$( "sbtnLogoff" ).setAttribute( "disabled", "disabled" );
+					jws.$( "sbtnClear" ).setAttribute( "disabled", "disabled" );
+					jws.$( "sbtnBroadcast" ).setAttribute( "disabled", "disabled" );
+					jws.$( "stxfMessage" ).setAttribute( "disabled", "disabled" );
+					jws.$( "stxfUsername" ).setAttribute( "disabled", "disabled" );
+					jws.$( "spwfPassword" ).setAttribute( "disabled", "disabled" );
+
+					var lMsg = jws.MSG_WS_NOT_SUPPORTED;
+					alert( lMsg );
+					log( lMsg );
+				}
+			}
+
+			function exitPage() {
+				logoff();
+			}
+
+		</script>
+	</head>
+
+	<body
+		onload="initPage();"
+		onunload="exitPage();"
+		>
+<!--	remarked temporarily due to chrome 5 browser bug
+		<script type="text/javascript">
+			var lFrameElem = this.frameElement;
+			if( !lFrameElem ) {
+				location.replace( "../../index.htm?page=demos/hello_world/hello_world.htm" );
+				// location.href = "../../index.htm?page=demos/hello_world/hello_world.htm" ;
+			}
+		</script>
+-->		
+		<h1>jWebSocket Hello World</h1>
+		<p>This little &quot;Hello World&quot; demonstrates how to easily logon at the jWebSocket Server, broadcast a message and logoff again.<br/>
+		Please use the browser's show frame source function to see the entire source code of this page.
+		</p>
+		<div id="sdivChat" class="sdivContainer"
+			 style="position:relative; height:300px; overflow:auto;">
+		</div>
+		<div class="sdivContainer">
+			<table class="stlbDlg" border="0" cellpadding="3" cellspacing="0" width="100%">
+				<tr class="strDlg">
+					<td class="stdDlg" width="5">Username</td>
+					<td class="stdDlg" width="5"><input class="stxfDlg" id="stxfUsername" type="text" value="YourUsername" style="width:150px"></td>
+					<td class="stdDlg" width="5"><input class="sbtnDlg" id="sbtnLogon" type="button" value="Login" onclick="logon();"></td>
+					<td class="stdDlg" width="5"><input class="sbtnDlg" id="sbtnClear" type="button" value="Clear Log" onclick="clearLog();"></td>
+					<td class="stdDlg" width=""><input class="sbtnDlg" id="sbtnExCmObj" type="button" value="Complex Obj." onclick="exchangeComplexObjects();"></td>
+				</tr>
+				<tr class="strDlg">
+					<td class="stdDlg" width="5">Password</td>
+					<td class="stdDlg" width="5"><input class="spwfDlg" id="spwfPassword" type="password" value="" style="width:150px"></td>
+					<td class="stdDlg" width="5"><input class="sbtnDlg" id="sbtnLogoff" type="button" value="Logoff" onclick="logoff();"></td>
+					<td class="stdDlg" width="5"><input class="sbtnDlg" id="sbtnBroadcast" type="button" value="Broadcast" onclick="broadcast();"></td>
+					<td class="stdDlg" width=""><input class="sbtnDlg" id="sbtnGetTime" type="button" value="GetTime" onclick="sampleGetTime();"></td>
+				</tr>
+				<tr class="strDlg">
+					<td class="stdDlg" width="5">Message</td>
+					<td class="stdDlg" width="" colspan="4"><input class="stxfDlg" id="stxfMessage" type="text" value="Your Message" style="width:99%"></td>
+				</tr>
+			</table>
+		</div>
+
+	</body>
+</html>
