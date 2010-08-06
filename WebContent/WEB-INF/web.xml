@@ -19,6 +19,10 @@
 		<servlet-name>sse</servlet-name>
 		<servlet-class>kr.pe.okjsp.sse.SSEServlet</servlet-class>
 	</servlet>
+	<servlet><!-- Samples / fileUpload -->
+		<servlet-name>samples.fileUpload.AJAXUploadServlet</servlet-name>
+		<servlet-class>kr.pe.okjsp.samples.fileUpload.AJAXUploadServlet</servlet-class>
+	</servlet>
 
 	<servlet>
 		<servlet-name>download</servlet-name>
@@ -75,6 +79,10 @@
 	<servlet-mapping><!-- Server-Sent Events -->
 		<servlet-name>sse</servlet-name>
 		<url-pattern>/sse</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping><!-- Samples / fileUpload -->
+		<servlet-name>samples.fileUpload.AJAXUploadServlet</servlet-name>
+		<url-pattern>/samples.fileUpload.AJAXUploadServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>download</servlet-name>
