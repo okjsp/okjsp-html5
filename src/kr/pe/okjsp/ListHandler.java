@@ -33,6 +33,9 @@ public class ListHandler {
 	public static final String ARTICLE_LIST_ALL_RECENT =
 		"SELECT okboard.bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard ORDER BY seq DESC for orderby_num() between 1 and ?";
 	
+	public static final String ARTICLE_LIST_MAX_SEQ =
+		"select max(seq) from (" +ARTICLE_LIST_ALL_RECENT+ ") aa";
+	
 	public static final String ARTICLE_LIST_REF =
 		"SELECT bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard WHERE bbsid=? AND \"ref\"=? ORDER BY \"ref\" DESC, step";
 
@@ -105,6 +108,34 @@ public class ListHandler {
 			list = (Collection<Article>) element.getObjectValue();
 		}
 		return list;
+	}
+	
+	/**
+	 * 메인 리스트의 max 시퀀스 값을 가져온다
+	 * (main리스트의 최상위 값과 이값이 틀리면 데이터를 가져다가 뿌려준다)
+	 * @param size
+	 * @return
+	 * @throws SQLException
+	 */
+	public int getAllRecentMaxSeq(int size) throws SQLException {
+		Connection conn = null;
+    	PreparedStatement pstmt = null;
+    	ResultSet rs = null;
+    	int maxSeq = 0;
+    	try {
+    		conn = dbCon.getConnection();
+			pstmt = conn.prepareStatement(ARTICLE_LIST_MAX_SEQ);
+			pstmt.setInt   (1, size);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				maxSeq = rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbCon.close(conn, pstmt, rs);
+		}
+		return maxSeq;
 	}
 	
 	
