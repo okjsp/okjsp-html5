@@ -31,7 +31,7 @@ String cPath = request.getContextPath();
      * @param (string) message
      */
     var log = function(message) {
-        document.getElementById('output').value +=  message + "\n";
+    	document.getElementById('output').innerHTML =  message + "\n";
     };
     /**
      * Detects which sort of SSE support to apply if to apply it at all
@@ -39,22 +39,22 @@ String cPath = request.getContextPath();
      */
     var detectUAgent = function() {
         if (navigator.appName == "Opera" && -1 !== navigator.appVersion.indexOf("9.")) {
-            log("Opera browser detected. " + INIT_MESSAGE);
+            //log("Opera browser detected. " + INIT_MESSAGE);
             return 'opera';
         } else
         if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
-            log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
+            //log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
             return 'webkit';
         } else
         if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
-            log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
+            //log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
             return 'webkit';
         } else
         if (undefined !== window['EventSource']) {
-            log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
+            //log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
             return 'webkit';
         }  else {
-            log(FAIL_MESSAGE);
+            //log(FAIL_MESSAGE);
             return false;
         }
     };
@@ -78,11 +78,11 @@ String cPath = request.getContextPath();
      * Init event source in WebKit fashion
      */
     var webkitEventSource = function() {
-      var eventSrc = new EventSource('main_event.jsp');
+      var eventSrc = new EventSource('main/main_event.jsp');
       eventSrc.addEventListener('message', onMessageHandler);
-    }
+    };
 
-    window.onload = function() {
+    var startEvent = function() {
             switch(detectUAgent()) {
                 case "opera":
                     operaEventSource();
@@ -92,6 +92,7 @@ String cPath = request.getContextPath();
                     break;
             }
     };
+    startEvent();
 }());
 /**server-sent-event_끝 */
 </script>
@@ -215,7 +216,11 @@ String cPath = request.getContextPath();
         <!-- 전체게시판_시작 -->
         <div class="column1-unit">
           <h1 class="pagetitle">전체게시판</h1>
+          <div id="output">aa</div>
           <p/>
+          
+          
+          
             <table border='1' bordercolor='blue' width="100%">
             <%
 				HashMap bbsInfoMap = (HashMap)application.getAttribute("bbsInfoMap");
@@ -268,6 +273,9 @@ String cPath = request.getContextPath();
 			%>
               
             </table>
+            
+            
+            
           <p/>
         </div>
         <!-- 전체게시판_끝 -->
