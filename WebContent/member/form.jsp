@@ -18,18 +18,35 @@ String cPath = request.getContextPath();
 <style type="text/css">
 </style>
 <script type="text/javascript" src="<%=cPath%>/js/prototype.js"></script>
-<script type="text/javascript">
+<script>
+alert(window.FileReader);
   Event.observe(window, 'load', function(e) {
-    Event.observe('icon-drop', 'dragover', function(e) {
+    $('icon-drop').observe('dragover', function(e) {
       e.stopPropagation();
       e.preventDefault();
     }, true);
-    Event.observe('icon-drop', 'drop', function(e) {
+    $('icon-drop').observe('drop', function(e) {
       e.stopPropagation();
       e.preventDefault();
       
       var files = e.dataTransfer.files;
-      alert(files.length);
+      if (files.length != 1) {
+          return;
+      }
+
+      var file = files[0];
+      if (!file.type.match(/image.*/)) {
+          return;
+      }
+
+      var img = document.createElement('img');
+      img.file = file;
+alert('1');
+      document.getElementById('preview').appendChild(img);
+      var reader = new FileReader();
+alert('');
+      reader.onloadend = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+      reader.readAsDataURL(file);
     }, true);
   }, true);
 </script>
@@ -91,6 +108,7 @@ String cPath = request.getContextPath();
                 <div style="padding:10px;">
                   <p id="icon-drop" style="padding:25px; border:2px dashed #bbb; color:#bbb; display:block; border-radius:5px; font:normal normal normal 20pt/normal bold, Tahoma;"
                       ondragover="" ondragleave="">Drop files here</p>
+                  <p id="preview"></p>
                 </div>
               </fieldset>
               <fieldset><legend>&nbsp;Info&nbsp;</legend>
