@@ -45,7 +45,7 @@ String cPath = request.getContextPath();
 
 	//드래그 시작시 처리
 	function onDragStart(event){
-		if(event.target.tagName.toLowerCase() == 'a'){
+		if(event.target.tagName.toLowerCase() == 'li'){
 			event.dataTransfer.setData('text',event.target.id);		//text로 하니깐 먹는다 ㅎㅎㅎ~
 			document.getElementById(event.target.id).className = 'hovering';
 		}else{
@@ -57,14 +57,14 @@ String cPath = request.getContextPath();
 	function onDrop(event){
 		var drag_zone = event.dataTransfer.getData('text');	//옮길애 아이디(드뎌 이거 된다 ㅜㅜ_text로 하니깐 됨..)
 		var drag_zone_inner = document.getElementById(drag_zone).outerHTML;					//옮길애 내용
-		var a = document.getElementById(drag_zone);
+		var li = document.getElementById(drag_zone);
 
 		var drop_zone = event.target.id;				//옮길곳에 있는 애 아이디
 		var drop_zone_inner = document.getElementById(drop_zone).outerHTML;					//옮길곳에 있는 애 내용
 
 		//alert(drag_zone_inner+"--"+drop_zone_inner);
 
-		if(a && a.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
+		if(li && li.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
 			//책에 있는 소스가 잘 안되서...걍 cross 시켰다.
 			//document.getElementById(drop_zone).innerHTML = '';
 			document.getElementById(drop_zone).outerHTML = drag_zone_inner;
@@ -76,10 +76,10 @@ String cPath = request.getContextPath();
 		}
 
 		//var id = event.dataTransfer.getData('text');
-		//var a = document.getElementById(id);
-		//if(a && a.parentNode == event.currentTarget){
-			//a.parentNode.removeChild(a);
-			//event.currentTarget.appendChild(a);
+		//var li = document.getElementById(id);
+		//if(li && li.parentNode == event.currentTarget){
+			//li.parentNode.removeChild(li);
+			//event.currentTarget.appendChild(li);
 		//}
 		event.stopPropagation();
 
@@ -111,7 +111,7 @@ String cPath = request.getContextPath();
 	}
 
 	window.onload = function (){ 
-		localStorage.clear();	//스토리지 삭제
+		localStorage.clear();	//스토리지 삭제(임시)
 		//로컬 스토리지 불러오기
 		var tmp = localStorage['leftmenu_storage'];
 		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
@@ -183,10 +183,11 @@ String cPath = request.getContextPath();
 							tmp2 = tmp2 + 
 								'<li draggable="true" id="'
 								+ item['id']
-								+'">'
-								//+'<a href="javascript=jump('+item['id']+')">'+item['name']
-								+'<a href="javascript:jump(\''+item['id']+'\')" class="dtcss">'+item['name']
-								+'</a></li>';
+								+'" onClick="jump(\''
+								+item['id']
+								+'\')" class="dtcss" >'
+								+item['name']
+								+'</li>';
 						}
 						left_menu.innerHTML = tmp2;
 					});
