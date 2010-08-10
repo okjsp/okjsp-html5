@@ -250,20 +250,23 @@ list-style-image: url(/html5/images/redarrow.gif);}
 aside li {
 	color: #696969;
 	padding: 4px 6px 5px 5px;
+	cursor:hand;
+}
+
+aside li.dtcss {
+	color: #696969;
+	padding: 4px 6px 5px 5px;
+	cursor:hand;
+}
+
+aside li.hovering {
+	color: #000000;
+	font-weight:bold;
+	padding: 4px 6px 5px 5px;
 }
 
 aside a {
 	color: #6E7761;
-  text-decoration: none;
-}
-
-aside a.dtcss {
-	color: #6E7761;
-  text-decoration: none;
-}
-
-aside a.hovering {
-	/*color: #6E7761;*/
   text-decoration: none;
 }
 
