@@ -1,25 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
-//ContextPath
-String cPath = request.getContextPath();
+	String bbs = request.getParameter("bbs");
+%>
 
-%> 
-
-<aside id="left"><!-- start left sidebar -->
-	<div class="box">
-		<h3>BBS LIST</h3>
-		<div class="inner">
-			<ul ondragstart="onDragStart(event)"
-				ondragenter="onDragEnter(event)" 
-				ondragover="onDragOver(event)" 
-				ondrop="onDrop(event)" 
-				ondragleave="onDragLeave(event)"    id="left_menu">
-			</ul>
-		</div>
-	</div><!-- .box -->
-</aside><!-- end left sidebar -->
-
+<div class="main-navigation" style='text-overflow: ellipsis;'>
+  <!-- Navigation Level 3 -->
+  <div class="round-border-topright"></div>
+  <h1 class="first">BBS LIST</h1>
+  <!-- Navigation with grid style -->
+  <dl class="nav3-grid" ondragstart="onDragStart(event)"
+  						ondragenter="onDragEnter(event)" 
+  						ondragover="onDragOver(event)" 
+  						ondrop="onDrop(event)" 
+  						ondragleave="onDragLeave(event)"    id="left_menu">
+  </dl>
+</div>
 
 <script>
 //drag and drop 이벤트 핸들러
@@ -36,7 +32,7 @@ String cPath = request.getContextPath();
 
 	//드래그 시작시 처리
 	function onDragStart(event){
-		if(event.target.tagName.toLowerCase() == 'li'){
+		if(event.target.tagName.toLowerCase() == 'dt'){
 			event.dataTransfer.setData('text',event.target.id);		//text로 하니깐 먹는다 ㅎㅎㅎ~
 			document.getElementById(event.target.id).className = 'hovering';
 		}else{
@@ -48,14 +44,14 @@ String cPath = request.getContextPath();
 	function onDrop(event){
 		var drag_zone = event.dataTransfer.getData('text');	//옮길애 아이디(드뎌 이거 된다 ㅜㅜ_text로 하니깐 됨..)
 		var drag_zone_inner = document.getElementById(drag_zone).outerHTML;					//옮길애 내용
-		var li = document.getElementById(drag_zone);
+		var dt = document.getElementById(drag_zone);
 
 		var drop_zone = event.target.id;				//옮길곳에 있는 애 아이디
 		var drop_zone_inner = document.getElementById(drop_zone).outerHTML;					//옮길곳에 있는 애 내용
 
 		//alert(drag_zone_inner+"--"+drop_zone_inner);
 
-		if(li && li.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
+		if(dt && dt.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
 			//책에 있는 소스가 잘 안되서...걍 cross 시켰다.
 			//document.getElementById(drop_zone).innerHTML = '';
 			document.getElementById(drop_zone).outerHTML = drag_zone_inner;
@@ -67,10 +63,10 @@ String cPath = request.getContextPath();
 		}
 
 		//var id = event.dataTransfer.getData('text');
-		//var li = document.getElementById(id);
-		//if(li && li.parentNode == event.currentTarget){
-			//li.parentNode.removeChild(li);
-			//event.currentTarget.appendChild(li);
+		//var dt = document.getElementById(id);
+		//if(dt && dt.parentNode == event.currentTarget){
+			//dt.parentNode.removeChild(dt);
+			//event.currentTarget.appendChild(dt);
 		//}
 		event.stopPropagation();
 
@@ -102,7 +98,7 @@ String cPath = request.getContextPath();
 	}
 
 	window.onload = function (){ 
-		localStorage.clear();	//스토리지 삭제(임시)
+		//localStorage.clear();	//스토리지 삭제
 		//로컬 스토리지 불러오기
 		var tmp = localStorage['leftmenu_storage'];
 		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
@@ -172,18 +168,45 @@ String cPath = request.getContextPath();
 						for (var i = 0, item = null; i < result.rows.length; i++) {
 							item = result.rows.item(i);
 							tmp2 = tmp2 + 
-								'<li draggable="true" id="'
+								'<dt draggable="true" id="'
 								+ item['id']
 								+'" onClick="jump(\''
 								+item['id']
 								+'\')" class="dtcss" >'
 								+item['name']
-								+'</li>';
+								+'</dt>';
 						}
 						left_menu.innerHTML = tmp2;
 					});
 				});
 			});
 		}
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
 	}
+
 </script>
