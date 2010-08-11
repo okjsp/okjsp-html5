@@ -389,8 +389,24 @@ table  {
 	text-overflow: ellipsis;
 }
 
+table td {
+	height: 30px;
+	vertical-align: middle;
+}
+
 .ellipsis {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-align: left;
+}
+
+.transition {
+	-o-transition:0.2s;
+	-webkit-transition:0.2s;
+}
+
+.transition:HOVER {
+	margin:-3px; 
+	opacity:0.8;
 }

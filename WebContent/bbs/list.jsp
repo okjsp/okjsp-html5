@@ -13,11 +13,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/okboard.css" />
-<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
-<link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
+<!-- 크롬  프레임 설정 -->
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
+<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
+<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <script src="<%=cPath%>/js/prototype.js"></script>
-<title>OKJSP</title>
 <script type="text/javascript">
 	function getList(bbs, pg) {
 				
@@ -43,37 +44,17 @@
 	}
 		 
 </script>
+<title>OKJSP_HTML5</title>
 </head>
 
 <body>
-  <!-- Main Page Container -->
-  <div class="page-container">
-	
-	<!-- header -->
-    <jsp:include page="../main/header.jsp"></jsp:include>
 
-    <!-- 상단 카테고리,검색_시작 -->	
-    <aside class="header-breadcrumbs">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Category-1</a></li>
-        <li><a href="#">Section-1.1</a></li>
-        <li><a href="#">Content-1.1.1</a></li>          
-      </ul>
+<div id="wrapper">
 
-      <!-- Search form -->                  
-      <div class="searchform">
-        <form action="index.html" method="get">
-          <fieldset> 
-            <input name="field" class="field"  placeholder="Search..." />
-            <input type="submit" name="button" class="button" value="GO!" />
-          </fieldset>
-        </form>
-      </div>
-    </aside>
-    <!-- 상단 카테고리,검색_끝-->
-    
-		<form name="nav">		
+	<jsp:include page="../main/header.jsp"></jsp:include>
+
+   
+	<form name="nav">		
 		<%
 			String keyword = CommonUtil.nchk(request.getParameter("keyword"));
 		%>
@@ -83,30 +64,33 @@
 		<input type="hidden" name="seq">
 	</form>
 
-   
-   
-    <div class="main" >
-      <!-- 좌측메뉴 -->
-      <jsp:include page="../main/left.jsp"></jsp:include>
-     
-      <!-- 메인 컨텐츠_시작======================================= -->
-      <div class="main-content" style="border:1px solid red;">      
-      <!-- Pagetitle -->
-        <h1 class="pagetitle"> <%= bbsids %> </h1>
+	<section>
+		<div id="container">
+			<div id="content">
+			<!-- 메인 컨텐츠_시작======================================= -->
+	   			<article>
+			      	<!-- Pagetitle -->
+			        <h1> <%= bbsids %> </h1>
+					<br></br>
+			        <!-- Content unit - One column -->
+			        <h4><a href="javascript:write()">글쓰기</a> <a href="/html5/bbs/write.jsp">글쓰기2</a></h4> 
+			
+			        <div id='list'>
+			        </div>
+	
+	
+				</article>
+	     		<!-- 메인 컨텐츠_끝========================================== -->
+			</div><!-- #content-->
+		</div><!-- #container-->
 
-        <!-- Content unit - One column -->
-        <h1 class=""><a href="javascript:write()">글쓰기</a> <a href="/html5/bbs/write.jsp">글쓰기2</a></h1> 
+		<jsp:include page="../main/left.jsp"></jsp:include>
+	
+	</section>
 
-        <div id='list' class="column1-unit">
-        </div>
-        <hr class="clear-contentunit" />
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 
-      </div>
-      <!-- 메인 컨텐츠_끝========================================== -->
-    </div>
-    <!-- footer -->    
-    <jsp:include page="../main/footer.jsp"></jsp:include>
-  </div> 
-
+</div><!-- #wrapper -->
+<!-- Free template created by http://freehtml5templates.com -->
 </body>
 </html>

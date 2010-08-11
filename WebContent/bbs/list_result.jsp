@@ -19,10 +19,10 @@ while (iter.hasNext()) {
     one = (Article) iter.next();
 %>
 <section>
-  <article>
-	    <h1><%= (one.getLev()==0)?"":"Re: " %><% if (oldRef!=one.getRef()) out.println(one.getRef()); %>
+  
+	    <h4><%= (one.getLev()==0)?"":"Re: " %><% if (oldRef!=one.getRef()) out.println(one.getRef()); %>
 	    <a href="seq/<%= one.getSeq() %>" target="_blank" ><%= CommonUtil.showHtml(one.getSubject()) %> </a>
-	    </h1>
+	    </h4>
 	     
       <h3><%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="#"><%= one.getWriter() %></a>
       <!-- <img src="profile/<%//= one.getId() %>.jpg" alt="<%//= one.getId() %>" style="width:14px;height:14px" onerror="this.src='/images/spacer.gif'">
@@ -32,7 +32,7 @@ while (iter.hasNext()) {
       <p><%//=  CommonUtil.removeTag(one.getContentView()) %> &nbsp; <a href="seq/<%= one.getSeq() %>" >read more...</a></p>
       <p class="details">| Posted by <a href="#"><%= one.getWriter() %> 
       </a> | Categories: <a href="#"><%= list.getBbs() %></a> | Comments: <a href="#"><%= one.getMemo() %></a> | Read: <%=one.getRead() %> |</p>
-  </article> 
+  
 </section>
 <% 
 }%>		
