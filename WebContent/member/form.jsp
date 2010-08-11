@@ -16,39 +16,64 @@ String cPath = request.getContextPath();
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <style type="text/css">
+#preview { padding:10px 10px 0 10px; }
+#icon-drop { margin-bottom: 15px; padding: 25px; border: 2px dashed #bbb; color: #bbb; border-radius: 5px; font: normal normal normal 20pt/normal bold, Tahoma; }
+#icon-drop.drop { border-color: red !important; }
+#icon { margin-bottom: 15px; padding: 25px; border: 2px dashed #bbb; color: #bbb; display: none; border-radius: 5px; font: normal normal normal 20pt/normal bold, Tahoma; }
+#icon img { max-width: 320px; }
 </style>
-<script type="text/javascript" src="<%=cPath%>/js/prototype.js"></script>
+<script type="text/javascript" src="<%=cPath%>/js/jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="<%=cPath%>/js/jquery/jquery.ndd.js"></script>
 <script>
-alert(window.FileReader);
-  Event.observe(window, 'load', function(e) {
-    $('icon-drop').observe('dragover', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-    }, true);
-    $('icon-drop').observe('drop', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      
-      var files = e.dataTransfer.files;
-      if (files.length != 1) {
-          return;
-      }
+  $(document).ready(function() {
+    $('#icon-drop').droppable(
+        'Files',
+        function() {
+          $(this).addClass('drop');
+        },
+        function() {
+          $(this).removeClass('drop');
+        },
+        function(e) {
+          e.stopPropagation();
+          e.preventDefault();
 
-      var file = files[0];
-      if (!file.type.match(/image.*/)) {
-          return;
-      }
+          var files = e.dataTransfer.files;
+          if (files.length != 1) {
+              return;
+          }
 
-      var img = document.createElement('img');
-      img.file = file;
-alert('1');
-      document.getElementById('preview').appendChild(img);
-      var reader = new FileReader();
-alert('');
-      reader.onloadend = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
-      reader.readAsDataURL(file);
-    }, true);
-  }, true);
+          var file = files[0];
+          if (!file.type.match(/image.*/)) {
+            return;
+          }
+
+          var img = document.createElement('img');
+          img.file = file;
+
+          var xhr = new XMLHttpRequest();
+          xhr.open('post', 'upload.jsp', true);
+          xhr.onreadystatechange = function() {
+            if (this.readyState != 4) {
+              return;
+            }
+            var responseJSON = eval('(' + this.responseText + ')');
+            $('#icon').hide().empty();
+            $('<img src="' + responseJSON['path'] + '">').appendTo('#icon')
+              .load(function() {
+                $(this).css({opacity: 0});
+            	$('#icon').slideDown(600, function() {
+                  $('#icon img').animate({opacity: 1}, 1200);
+            	});
+              });
+          };
+          xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+          xhr.setRequestHeader('X-File-Name', file.fileName);
+          xhr.setRequestHeader('X-File-Size', file.fileSize);
+          xhr.send(file);
+        }
+      );
+  });
 </script>
 <title>OKJSP_HTML5</title>
 </head>
@@ -105,10 +130,9 @@ alert('');
                    </p>
               </fieldset>
               <fieldset><legend>&nbsp;Icon&nbsp;</legend>
-                <div style="padding:10px;">
-                  <p id="icon-drop" style="padding:25px; border:2px dashed #bbb; color:#bbb; display:block; border-radius:5px; font:normal normal normal 20pt/normal bold, Tahoma;"
-                      ondragover="" ondragleave="">Drop files here</p>
-                  <p id="preview"></p>
+                <div id="preview">
+                  <div id="icon-drop">Drop the image</div>
+                  <div id="icon"></div>
                 </div>
               </fieldset>
               <fieldset><legend>&nbsp;Info&nbsp;</legend>
