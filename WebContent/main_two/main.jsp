@@ -110,6 +110,71 @@ String cPath = request.getContextPath();
 		<div id="container">
 			<div id="content">
 
+
+				<article>
+			<%
+          	Iterator iterList = null;
+        	Article one = null;
+          	ArrayList arrayList = new ArrayList();
+          	arrayList.add("notice|공지사항");
+
+        	Iterator iter = arrayList.iterator();
+        	String [] rec = null;
+        	while(iter.hasNext()) {
+        		rec = ((String)iter.next()).split("\\|");
+        		%>
+        		<h2><a href="<%=cPath%>/bbs?act=LIST&bbs=<%= rec[0] %>"><%= rec[0] %>[<%= rec[1] %>]</a></h2>
+        		<blockquote>
+          		<table>
+        		<%
+        		iterList = getCachedList(rec[0]);
+        		while (iterList.hasNext()) {
+        			one = (Article) iterList.next();
+        			%>
+        			<tr align="center">
+				        <td><%= one.getRef() %></td>
+				        <td><div class="ellipsis" style="width: 260px;">
+				            <a href="<%=cPath%>/seq/<%= one.getSeq() %>">
+				            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
+				            </a>
+				        </td>
+				        <td>
+				        <span ><str:replace replace="[0]" with="">[<%= one.getMemo() %>]</str:replace></span>
+				        </div>
+				        </td>
+				        <td><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
+				        <td><div><%
+					    if (one.getId() != null) {
+					        %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"
+					        	alt="<%= one.getId() %>"
+					        	style="width:14px;height:14px"
+					        	onerror="this.src='<%=cPath%>/images/spacer.gif'"><%
+					    }
+				        	%></div></td>
+				        <td title="<%= one.getWhen() %>">
+				        <%= DateLabel.getTimeDiffLabel(one.getWhen()) %></td>
+				    </tr>
+        			<%
+        		}
+        		%>
+        		</table>
+        		</blockquote>
+        		<%
+        	}
+          	%>
+          	
+          	</article>
+			<br><br>
+
+
+
+
+
+
+
+
+
+
 		<article>
 			<h2><a href="#" rel="bookmark">Your Awesome Article Title</a></h2>
 			<div class="entry">
@@ -133,6 +198,24 @@ String cPath = request.getContextPath();
 				</p>
 			</div>
 		</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 			</div><!-- #content-->
 		</div><!-- #container-->
@@ -149,3 +232,17 @@ String cPath = request.getContextPath();
 <!-- Free template created by http://freehtml5templates.com -->
 </body>
 </html>
+<event-source src="main_event.jsp" />
+<%!
+	ListHandler list = new ListHandler();
+	Iterator getCachedList(String bbsid) {
+		Iterator iter = null;
+		try {
+			iter = list.getRecentList(bbsid, 5).iterator();
+		} catch(Exception e) {
+			iter = new ArrayList().iterator();
+		}
+		return iter;
+	}
+
+%>

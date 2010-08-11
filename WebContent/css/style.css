@@ -1,14 +1,20 @@
 /* Created by http://freehtml5templates.com */
+* {
+	margin: 0;
+	padding: 0;
+}
 
-* {margin: 0; padding: 0;}
-header, nav, section, article, aside, footer {display: block;}
+header,nav,section,article,aside,footer {
+	display: block;
+}
+
 body {
-	font: 16px/18px Arial, Tahoma, sans-serif;
+	font: 16px/ 18px Arial, Tahoma, sans-serif;
 	color: #555;
 	width: 960px;
-  margin-left:auto;
-  margin-right:auto;
-  text-align:center;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
 
 a {
@@ -16,11 +22,17 @@ a {
 	outline: none;
 }
 
-a:hover { color: #009296;}
+a:hover {
+	color: #009296;
+}
 
-p {margin: 0 0 18px;}
+p {
+	margin: 0 0 18px;
+}
 
-img {border: none;}
+img {
+	border: none;
+}
 
 blockquote {
 	margin: 0 20px 18px 20px;
@@ -41,50 +53,56 @@ blockquote p {
 	overflow: hidden;
 }
 
-.aligncenter,
-div.aligncenter {
+.aligncenter,div.aligncenter {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.alignleft {float: left;}
+.alignleft {
+	float: left;
+}
 
-img.alignleft {margin: 5px 5px 5px 0;}
+img.alignleft {
+	margin: 5px 5px 5px 0;
+}
 
-.alignright {float: right;}
+.alignright {
+	float: right;
+}
 
-img.alignright {margin: 5px 0 5px 5px;}
+img.alignright {
+	margin: 5px 0 5px 5px;
+}
 
 #wrapper {
 	width: 960px;
-	text-align:left;
+	text-align: left;
 }
 
 img.framed {
-	background:white;
-	padding:4px;
-	border:1px solid black;
+	background: white;
+	padding: 4px;
+	border: 1px solid black;
 }
 
 /* Header
 -----------------------------------------------------------------------------*/
-
 header {
 	height: 200px;
 	position: relative;
-  background: url(/html5/images/roundedheader.png);
-  margin-top: 10px;
+	background: url(/html5/images/roundedheader.png);
+	margin-top: 10px;
 }
 
 #sitename a {
 	position: absolute;
 	top: 30px;
 	left: 10px;
-	font: 40px/1 Georgia, "Times New Roman", Times;
+	font: 40px/ 1 Georgia, "Times New Roman", Times;
 	color: #009296;
 	text-shadow: 2px 2px 2px #000;
-  text-decoration: none;
+	text-decoration: none;
 }
 
 #description {
@@ -92,9 +110,9 @@ header {
 	top: 80px;
 	left: 15px;
 	width: 600px;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 16px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 16px;
 	color: #333;
 }
 
@@ -104,8 +122,8 @@ header nav {
 	width: 915px;
 	left: 25px;
 	height: 26px;
-  font: 14px/1 Tahoma, Arial;
-  text-transform: uppercase;
+	font: 14px/ 1 Tahoma, Arial;
+	text-transform: uppercase;
 	overflow: hidden;
 }
 
@@ -124,22 +142,21 @@ header nav li {
 header nav a {
 	float: left;
 	color: #333;
-  text-decoration: none;
+	text-decoration: none;
 	padding: 7px 10px 6px;
-  border-bottom: 3px solid #F0EFEF;
+	border-bottom: 3px solid #F0EFEF;
 }
 
 /* Middle
 -----------------------------------------------------------------------------*/
-
 section {
 	width: 946px;
 	margin-top: 5px;
-  -moz-border-radius: 5px; 
-  -webkit-border-radius: 5px; 
-  border: 1px solid #AEB0AD; 
-  padding: 5px;
-  background-color: #F2F2F2;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #AEB0AD;
+	padding: 5px;
+	background-color: #F2F2F2;
 }
 
 section:after {
@@ -159,15 +176,15 @@ section:after {
 #content {
 	margin: 0 199px;
 	padding: 15px 15px 1px;
-  -moz-border-radius: 5px; 
-  -webkit-border-radius: 5px; 
-  border: 1px solid #AEB0AD;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #AEB0AD;
 	height: 1%;
 	background-color: #FFF;
 }
 
 #content h2 {
-	font: 24px/1 Arial, Tahoma;
+	font: 24px/ 1 Arial, Tahoma;
 	margin: 0 0 18px;
 	color: #333;
 }
@@ -184,42 +201,46 @@ section:after {
 	text-shadow: none;
 }
 
-#content .entry h2,
-#content .entry h3,
-#content .entry h4,
-#content .entry h5,
-#content .entry h6 {
-	font: 24px/1 Arial, Tahoma;
+#content .entry h2,#content .entry h3,#content .entry h4,#content .entry h5,#content .entry h6
+	{
+	font: 24px/ 1 Arial, Tahoma;
 	margin: 25px 0 18px;
 	color: #333;
 	text-shadow: 2px 1px 2px #CCC;
 }
 
-#content .entry h3 {font-size: 22px;}
+#content .entry h3 {
+	font-size: 22px;
+}
 
-#content .entry h4 {font-size: 20px;}
+#content .entry h4 {
+	font-size: 20px;
+}
 
-#content .entry h5 {font-size: 18px;}
+#content .entry h5 {
+	font-size: 18px;
+}
 
-#content .entry h6 {font-size: 16px;}
+#content .entry h6 {
+	font-size: 16px;
+}
 
 #content h3 {
 	color: #333;
-  font-size: 22px;
-  font-weight: normal;
-  line-height: 1;
+	font-size: 22px;
+	font-weight: normal;
+	line-height: 1;
 	text-shadow: 2px 1px 2px #CCC;
 	margin: 0 0 28px;
 }
 
 /* Sidebars
 -----------------------------------------------------------------------------*/
-
 aside {
 	float: left;
 	width: 199px;
 	position: relative;
-  font-size: 14px;
+	font-size: 14px;
 }
 
 #left {
@@ -233,41 +254,31 @@ aside {
 aside h3 {
 	line-height: 35px;
 	color: #009296;
-  font-size: 14px;
-  text-transform: uppercase;
+	font-size: 14px;
+	text-transform: uppercase;
 	text-shadow: 1px 1px 1px #DDD;
 	height: 35px;
-  padding-left: 10px;
+	padding-left: 10px;
 }
 
 aside#right h3 {
 	color: #009296;
 }
 
-aside ul {list-style-position: inside;
-list-style-image: url(/html5/images/redarrow.gif);}
+aside ul {
+	list-style-position: inside;
+	list-style-image: url(/html5/images/redarrow.gif);
+}
 
 aside li {
 	color: #696969;
 	padding: 4px 6px 5px 5px;
-	cursor:hand;
-}
-
-aside li.dtcss {
-	color: #696969;
-	padding: 4px 6px 5px 5px;
-	cursor:hand;
-}
-
-aside li.hovering {
-	color: #000000;
-	font-weight:bold;
-	padding: 4px 6px 5px 5px;
+	cursor: pointer;
 }
 
 aside a {
 	color: #6E7761;
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .box {
@@ -278,44 +289,108 @@ aside a {
 	margin-left: 10px;
 	margin-right: 10px;
 	overflow: hidden;
-  -moz-border-radius: 5px; 
-  -webkit-border-radius: 5px; 
-  border: 1px solid #009296; 
-  padding: 5px;
- 	margin-top: -7px;
- 	margin-bottom: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #009296;
+	padding: 5px;
+	margin-top: -7px;
+	margin-bottom: 10px;
 }
-
 
 /* Footer
 -----------------------------------------------------------------------------*/
-
 footer {
 	background: #F2F2F2;
-  font-size: 11px;
-  -moz-border-radius: 5px; 
-  -webkit-border-radius: 5px; 
-  border: 1px solid #AEB0AD; 
-  padding: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+	font-size: 11px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #AEB0AD;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 #copyright {
-	font: 10px/16px Tahoma, Arial;
-  text-align: right;
+	font: 10px/ 16px Tahoma, Arial;
+	text-align: right;
 	color: #333;
 	padding: 22px 10px 0 0;
 }
 
 #copyright span {
 	display: block;
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 #copyright a {
 	color: #6E7761;
-  text-decoration: none;
+	text-decoration: none;
 }
 
-#copyright a:hover { color: #009296;}
+#copyright a:hover {
+	color: #009296;
+}
+
+/* 디자인 전환 하면서 추가된 곳********************************************************* */
+	/* 좌측 메뉴 관련 */
+aside li.dtcss {
+	color: #696969;
+	padding: 4px 6px 5px 5px;
+}
+
+/* 좌측 메뉴 관련 */
+aside li.hovering {
+	color: #000000;
+	font-weight: bold;
+	padding: 4px 6px 5px 5px;
+}
+
+/* 화면 버튼 */
+input.button {
+	float: left;
+	width: 4.7em;
+	margin: 10px 0 5px 5px;
+	padding: 1px;
+	border: solid 1px rgb(150, 150, 150);
+	border-radius: 3px;
+    -moz-border-radius: 3px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
+    background: -moz-linear-gradient(top, #fff, #ddd);
+	text-align: center;
+	font-family: verdana, arial, sans-serif;
+	color: rgb(150, 150, 150);
+	font-size: 110%;
+}
+/* 화면 버튼 */
+input.button:hover {
+	cursor: pointer;
+	border: solid 1px rgb(80, 80, 80);
+	background: rgb(220, 220, 220);
+	color: rgb(80, 80, 80);
+}
+
+/* 화면 input text */
+input.field {
+	width: 158px;
+	margin: 0 0 5px 0;
+	padding: 0.1em 0 0.2em 0 !important /*Non-IE6*/;
+	padding: 0.2em 0 0.3em 0 /*IE6*/;
+	border: solid 1px rgb(200, 200, 200);
+	font-family: verdana, arial, sans-serif;
+	font-size: 110%;
+}
+
+table  {
+	width:100%;
+	/*border: 1px solid #666;*/
+	text-align:center;
+	border-collapse:collapse;
+	font-size: 13px;
+	text-overflow: ellipsis;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

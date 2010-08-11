@@ -18,15 +18,6 @@ String cPath = request.getContextPath();
 			</ul>
 		</div>
 	</div><!-- .box -->
-	
-	<div class="box">
-		<h3>Our Sponsor</h3>
-			<div class="inner">
-				<br />
-				<a href="#"><img src="<%=cPath%>/images/ad600.jpg" alt="" class="aligncenter" /></a>
-				<br />
-			</div>
-	</div><!-- .box -->
 </aside><!-- end left sidebar -->
 
 

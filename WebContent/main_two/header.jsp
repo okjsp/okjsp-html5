@@ -7,8 +7,8 @@ String cPath = request.getContextPath();
 %> 
 
 <header>
-	<h1 id="sitename"><a href="#">Turquoise Swirls</a></h1>
-	<div id="description">Your interesting & compelling tag line</div>
+	<h1 id="sitename"><a href="#">OKJSP</a></h1>
+	<div id="description">Open Source Designs & HTML5</div>
 	<div id="top">
 		<nav>
 			<ul>
