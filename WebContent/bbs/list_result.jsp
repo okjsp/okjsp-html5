@@ -21,7 +21,7 @@ while (iter.hasNext()) {
 <section>
   <article>
 	    <h1><%= (one.getLev()==0)?"":"Re: " %><% if (oldRef!=one.getRef()) out.println(one.getRef()); %>
-	    <a href="seq/<%= one.getSeq() %>" ><%= CommonUtil.showHtml(one.getSubject()) %> </a>
+	    <a href="seq/<%= one.getSeq() %>" target="_blank" ><%= CommonUtil.showHtml(one.getSubject()) %> </a>
 	    </h1>
 	     
       <h3><%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="#"><%= one.getWriter() %></a>
