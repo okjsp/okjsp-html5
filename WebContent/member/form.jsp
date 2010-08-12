@@ -22,116 +22,175 @@ String cPath = request.getContextPath();
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <style type="text/css">
 .contactform {
-    width: 418px;
-    margin: 2.0em 0 0 0;
-    padding: 10px 10px 0 10px;
-    border: solid 1px #C8C8C8;
-    background-color: #F2F2F2;
-}
-.contactform fieldset {
-    padding: 20px 0 0 0 !important /*Non-IE6*/;
-    padding: 0 /*IE6*/;
-    margin: 0 0 20px 0;
-    border: solid 1px #DCDCDC;
-}
-.contactform fieldset legend {
-    margin: 0 0 0 5px !important /*Non-IE*/;
-    margin: 0 0 20px 5px /*IE6*/;
-    padding: 0 2px 0 2px;
-    color: rgb(80,80,80);
-    font-weight:bold;
-    font-size:130%;
-}
-.contactform label.left {
-    float: left;
-    width: 100px; 
-    margin: 0 0 0 10px;
-    padding: 2px; 
-    font-size: 110%;
+	width: 418px;
+	margin: 2.0em 0 0 0;
+	padding: 10px 10px 0 10px;
+	border: solid 1px #C8C8C8;
+	background-color: #F2F2F2;
+	margin-bottom: 20px;
 }
 
+.contactform fieldset {
+	padding: 20px 0 10px 0 !important /*Non-IE6*/;
+	padding: 0 /*IE6*/;
+	margin: 0 0 20px 0;
+	border: solid 1px #DCDCDC;
+}
+
+.contactform fieldset legend {
+	margin: 0 0 0 5px !important /*Non-IE*/;
+	margin: 0 0 20px 5px /*IE6*/;
+	padding: 0 2px 0 2px;
+	color: #505050;
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.contactform label.left {
+	float: left;
+	width: 100px;
+	margin: 0 0 0 10px;
+	padding: 2px;
+	font-size: .9em;
+}
+
+.contactform input.field {
+	width: 275px;
+	padding: 2px;
+	border: solid 1px #C8C8C8;
+	font-size: 100%;
+}
+
+.contactform span.guide {
+	float: left;
+	width: 275px;
+	display: block;
+	color: #646464;
+	font-size: .9em;
+}
+
+.contactform span.item {
+	float: left;
+	color: #5A5A5A;
+	font-size: 100%;
+	vertical-align: middle;
+	padding-left: .9em;
+}
+
+.contactform span.item label {
+	margin: 0 0 0 3px !important;
+}
+
+.contactform span.item.first {
+	padding-left: 0;
+}
+
+.contactform #profile {
+	padding: 10px 10px 0 10px;
+}
+
+.contactform #profile-drop {
+	margin-bottom: 15px;
+	padding: 25px;
+	border: 2px dashed #bbb;
+	color: #bbb;
+	border-radius: 5px;
+	font: normal normal normal 20pt/normal bold, Tahoma;
+}
+
+.contactform #profile-drop.droppable {
+	border-color: red !important;
+}
+
+.contactform #preview {
+	margin-bottom: 15px;
+	padding: 25px;
+	border: 2px dashed #bbb;
+	color: #bbb;
+	display: none;
+	border-radius: 5px;
+	font: normal normal normal 20pt/normal bold, Tahoma;
+}
+
+.contactform #preview img {
+	max-width: 320px;
+}
 </style>
 <title>OKJSP</title>
-<script>
-/**server-sent-event_Ω√¿€ */
-(function() {
-    var INIT_MESSAGE = "Now wait for server-side events. They will keep appearing in the console...",
-        FAIL_MESSAGE = "Sorry, I have never heard that your browser supports SSE";
-
-    /**
-     * Event logger
-     * @param (string) message
-     */
-    var log = function(message) {
-        document.getElementById('output').innerHTML =  message + "\n";
-    };
-    /**
-     * Detects which sort of SSE support to apply if to apply it at all
-     * @return user agent type
-     */
-    var detectUAgent = function() {
-        if (navigator.appName == "Opera" && -1 !== navigator.appVersion.indexOf("9.")) {
-            //log("Opera browser detected. " + INIT_MESSAGE);
-            return 'opera';
-        } else
-        if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
-            //log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
-            return 'webkit';
-        } else
-        if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
-            //log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
-            return 'webkit';
-        } else
-        if (undefined !== window['EventSource']) {
-            //log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
-            return 'webkit';
-        }  else {
-            //log(FAIL_MESSAGE);
-            return false;
-        }
-    };
-    /**
-     * Event handler for upcomming server-sent messages
-     * @param (event) event
-     * @event
-     */
-    var onMessageHandler = function (event) {
-        log(event.data);
-    };
-    /**
-     * Init event source in Opera fashion
-     */
-    var operaEventSource = function() {
-        alert( "Opera" );
-        document.getElementsByTagName("event-source")[0]
-        .addEventListener("server-time", onMessageHandler, false);
-    };
-    /**
-     * Init event source in WebKit fashion
-     */
-    var webkitEventSource = function() {
-      var eventSrc = new EventSource('main/main_event.jsp');
-      eventSrc.addEventListener('message', onMessageHandler);
-    };
-
-    var startEvent = function() {
-            switch(detectUAgent()) {
-                case "opera":
-                    operaEventSource();
-                    break;
-                case "webkit":
-                    webkitEventSource();
-                    break;
+<script type="text/javascript" src="<%=cPath%>/js/jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#profile-drop').bind({
+        dragover: function(e) {
+            var dataTransfer = e.originalEvent.dataTransfer;
+            if (dataTransfer.types) {
+                var accepted = false;
+                for (var i = 0; i < dataTransfer.types.length; i++) {
+                    if ('Files' == dataTransfer.types[i]) {
+                        accepted = true;
+                        break;
+                    }
+                }
+                if (!accepted) {
+                    return;
+                }
             }
-    };
-    startEvent();
-}());
-/**server-sent-event_≥° */
+            dataTransfer.dropEffect = 'copy'; 
+            e.preventDefault();
+            $(this).addClass('droppable');
+        },
+        dragleave: function(e) {
+            setTimeout(function() {
+                $(e.target).removeClass('droppable');
+            }, 100);
+        },
+        drop: function(e) {
+            setTimeout(function() {
+                $(e.target).removeClass('droppable');
+            }, 50);
+
+            var files = e.originalEvent.dataTransfer.files;
+            if (files.length != 1) {
+                return;
+            }
+
+            var file = files[0];
+            if (!file.type.match(/image.*/)) {
+                return;
+            }
+
+            var img = document.createElement('img');
+            img.file = file;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', 'upload.jsp', true);
+            xhr.onreadystatechange = function() {
+                if (this.readyState != 4) {
+                    return;
+                }
+                var responseJSON = eval('(' + this.responseText + ')');
+                $('#preview').hide().empty();
+                $('<img src="' + responseJSON['path'] + '">').appendTo('#preview')
+                    .load(function() {
+                        $(this).css({opacity: 0});
+                        $('#preview').slideDown(600, function() {
+                            $('#preview img').animate({opacity: 1}, 1200);
+                        });
+                    });
+            };
+            xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+            xhr.setRequestHeader('X-File-Name', file.fileName);
+            xhr.setRequestHeader('X-File-Size', file.fileSize);
+            xhr.send(file);
+            
+            e.preventDefault();
+        }
+    });
+});
 </script>
-<title>OKJSP_HTML5</title>
 </head>
 <body>
-
+<div id="log" style="position: absolute; left: 0; top: 0;"></div>
 <div id="wrapper">
 
     <jsp:include page="../main/header.jsp" />
@@ -158,9 +217,9 @@ String cPath = request.getContextPath();
                                      </p>
                             </fieldset>
                             <fieldset><legend>&nbsp;Icon&nbsp;</legend>
-                                <div id="preview">
-                                    <div id="icon-drop">Drop the image</div>
-                                    <div id="icon"></div>
+                                <div id="profile">
+                                    <div id="profile-drop">Drop the image</div>
+                                    <div id="preview"></div>
                                 </div>
                             </fieldset>
                             <fieldset><legend>&nbsp;Info&nbsp;</legend>
@@ -184,17 +243,3 @@ String cPath = request.getContextPath();
 <!-- Free template created by http://freehtml5templates.com -->
 </body>
 </html>
-<event-source src="main_event.jsp" />
-<%!
-    ListHandler list = new ListHandler();
-    Iterator getCachedList(String bbsid) {
-        Iterator iter = null;
-        try {
-            iter = list.getRecentList(bbsid, 5).iterator();
-        } catch(Exception e) {
-            iter = new ArrayList().iterator();
-        }
-        return iter;
-    }
-
-%>
