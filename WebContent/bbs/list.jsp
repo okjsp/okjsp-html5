@@ -30,11 +30,12 @@
 	}
 			
 	function ajax_response(originalRequest) {
-			var list = $('list');
-			var addlist = document.createElement('section');
-			addlist.innerHTML = originalRequest.responseText;
-			list.appendChild(addlist);
-	}	
+		var list = $('list');
+		//var addlist = document.createElement('section');
+		//addlist.innerHTML = originalRequest.responseText;
+		//list.appendChild(addlist);
+		list.innerHTML = originalRequest.responseText;
+}		
 
 	window.onload=getList('<%=bbsids%>', 0);
 
@@ -46,14 +47,9 @@
 </script>
 <title>OKJSP_HTML5</title>
 </head>
-
 <body>
-
 <div id="wrapper">
-
 	<jsp:include page="../main/header.jsp"></jsp:include>
-
-   
 	<form name="nav">		
 		<%
 			String keyword = CommonUtil.nchk(request.getParameter("keyword"));
@@ -63,33 +59,28 @@
 		<input type="hidden" name="bbs"      value="<%= request.getParameter("bbs") %>">
 		<input type="hidden" name="seq">
 	</form>
-
 	<section>
 		<div id="container">
-			<div id="content">
-			<!-- ¸ÞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+			<div id="contentinner">
 	   			<article>
+	   			<!-- ¸ÞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
 			      	<!-- Pagetitle -->
-			        <h1> <%= bbsids %> </h1>
+			        <h1> <%= bbsids %> </h1> 
+			        <input type="button" class="button" value="±Û¾²±â" />
+			        <input type="button" class="button" value="±Û¾²±â2" />
 					<br></br>
-			        <!-- Content unit - One column -->
+			        
 			        <h4><a href="javascript:write()">±Û¾²±â</a> <a href="/html5/bbs/write.jsp">±Û¾²±â2</a></h4> 
 			
 			        <div id='list'>
 			        </div>
-	
-	
+			    <!-- ¸ÞÀÎ ÄÁÅÙÃ÷_³¡========================================== -->
 				</article>
-	     		<!-- ¸ÞÀÎ ÄÁÅÙÃ÷_³¡========================================== -->
 			</div><!-- #content-->
 		</div><!-- #container-->
-
 		<jsp:include page="../main/left.jsp"></jsp:include>
-	
 	</section>
-
 	<jsp:include page="../main/footer.jsp"></jsp:include>
-
 </div><!-- #wrapper -->
 <!-- Free template created by http://freehtml5templates.com -->
 </body>

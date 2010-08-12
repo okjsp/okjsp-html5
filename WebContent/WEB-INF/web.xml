@@ -72,7 +72,7 @@
 		<load-on-startup>5</load-on-startup>
 	</servlet>
 <!--
-	<servlet>
+	<servlet> jersey 
         <servlet-name>JerseyWebApplication</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -82,7 +82,7 @@
         <servlet-name>JerseyWebApplication</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
--->
+-->    
 	<servlet-mapping><!-- jWebSocket -->
 		<servlet-name>WebSocketDemo</servlet-name>
 		<url-pattern>/WebSocketDemo</url-pattern>

@@ -7,7 +7,7 @@ String cPath = request.getContextPath();
 %> 
 
 <header>
-	<h1 id="sitename"><a href="#">OKJSP</a></h1>
+	<h1 id="sitename"><a href="<%=cPath%>" title="Go to Start page">OKJSP</a></h1>
 	<div id="description">Open Source Designs & HTML5</div>
 	<div id="top">
 		<nav>
