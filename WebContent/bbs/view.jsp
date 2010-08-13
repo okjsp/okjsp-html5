@@ -13,8 +13,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/okboard.css" />
-<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
+<!-- 크롬  프레임 설정 -->
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
+<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
+<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script src="<%=cPath%>/js/prototype.js"></script>
 <script src="<%=cPath%>/js/okboard_view.js"></script>
@@ -24,44 +27,14 @@
 </head>
 
 <body>
-  <!-- Main Page Container -->
-  <div class="page-container">
-	
-	<!-- header -->
-    <jsp:include page="../main/header.jsp"></jsp:include>
-
-    <!-- 상단 카테고리,검색_시작 -->
-    <aside class="header-breadcrumbs">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Category-1</a></li>
-        <li><a href="#">Section-1.1</a></li>
-        <li><a href="#">Content-1.1.1</a></li>          
-      </ul>
-
-      <!-- Search form -->                  
-      <div class="searchform">
-        <form action="index.html" method="get">
-          <fieldset> 
-            <input name="field" class="field"  placeholder="Search..." />
-            <input type="submit" name="button" class="button" value="GO!" />
-          </fieldset>
-        </form>
-      </div>
-    </aside>
-    <!-- 상단 카테고리,검색_끝-->
-    
-    <div class="main">
-      <!-- 좌측메뉴 -->
-      <jsp:include page="../main/left.jsp"></jsp:include>
-     
-      <!-- 메인 컨텐츠_시작======================================= -->
-
-      <div class="main-content">      
-      <!-- Pagetitle -->
-        <h1 class="pagetitle">게시판이름 / <%= one.getBbs() %></h1>
-
-        <h1 class="block"><%= CommonUtil.showHtml(one.getSubject()) %></h1> 
+<jsp:include page="../main/left.jsp"></jsp:include>
+<div id="wrapper">
+	<jsp:include page="../main/header.jsp"></jsp:include>
+  
+    <section>
+      <header>
+        <h4>게시판이름 / <%= one.getBbs() %></h4>
+        <h3><%= CommonUtil.showHtml(one.getSubject()) %></h3>
 <%
     if (one.getId() != null) {
         %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"
@@ -70,12 +43,12 @@
         	onerror="this.src='/images/spacer.gif'"><%
     }
 %>
-        <div class="column1-unit" id='contents'>
+      </header>
+        <article>
 	        <h1><%= CommonUtil.showHtml(one.getSubject()) %></h1>                            
           <h3><%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a></h3>
           <p><%=  one.getContentView()  %></p>
-          <p class="details">| Posted by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a> | Categories: <a href="#"> <%= one.getBbs() %></a> | Comments: <a href="#"><%= one.getRead() %></a> | CCL: <%= one.getCcl_id() %> </p>
-        </div>          
+          <p>| Posted by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a> | Categories: <a href="#"> <%= one.getBbs() %></a> | Comments: <a href="#"><%= one.getRead() %></a> | CCL: <%= one.getCcl_id() %> </p>          
 	<ul><%
 	  ArrayList fileList = (ArrayList) request.getAttribute("arrdf");
 	  if (fileList != null) {
@@ -88,40 +61,41 @@
 	  }
 	%>
 	</ul>
-        
-       <hr class="clear-contentunit" />
-       <div class="column1-unit">
+	</article>
+       <nav>
         <input type="button" value="목록" onClick="goPage()"/>
         <input type="button" value="답변" onClick="goReply()"/>
         <input type="button" value="수정" onClick="show_passwd_layer('goModify')"/>
         <input type="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
         <input type="button" value="책갈피" onClick="goBookmark()"/>
-       </div>
-      <hr class="clear-contentunit" />
+       </nav>	
 
-<div class="column1-unit" id="memoDiv">
-</div>
-<form name="f0" method="POST" onSubmit="return chk_memo(this)">
-    <input type="hidden" name="pact" value="MEMO">
-    <input type="hidden" name="seq" value="<%= one.getSeq() %>">
-    <input type="hidden" name="pg" value="<%= list.getPg() %>">
-    <input type="hidden" name="keyfield" value="<%=  CommonUtil.nchk(request.getParameter("keyfield"),"content")  %>">
-    <input type="hidden" name="keyword" value="<%=  CommonUtil.nchk(request.getParameter("keyword"))  %>">
-    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
-    <input type="hidden" name="viewstamp" value="<%= System.currentTimeMillis() %>">
-	<div>
-      <textarea name="bcomment" style="width:100%;height:80px" id="note"></textarea>
-        id:<input type="text" class="memoid" name="writer"
-            maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
-        pw:<input type="password" class="memopw" name="memopass" maxlength="15">
-	    <input type="hidden" name="doublecheck" class="memodc" value="okjsp">
-	    <br /><span style="color:#f00">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
-	    <br />개조심할 필요는 있으니까요. 낮말은 새, 밤말은 쥐, 인터넷말은 검색엔진</span>
-        <br /><input type="submit" name="send" value="Memo">
-
-      </div>
-</form>
+			<div  id="memoDiv">
+			</div>
+			<form name="f0" method="POST" onSubmit="return chk_memo(this)">
+			    <input type="hidden" name="pact" value="MEMO">
+			    <input type="hidden" name="seq" value="<%= one.getSeq() %>">
+			    <input type="hidden" name="pg" value="<%= list.getPg() %>">
+			    <input type="hidden" name="keyfield" value="<%=  CommonUtil.nchk(request.getParameter("keyfield"),"content")  %>">
+			    <input type="hidden" name="keyword" value="<%=  CommonUtil.nchk(request.getParameter("keyword"))  %>">
+			    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
+			    <input type="hidden" name="viewstamp" value="<%= System.currentTimeMillis() %>">
+				<div>
+			      <textarea name="bcomment" style="width:100%;height:80px" id="note"></textarea>
+			        id:<input type="text" class="memoid" name="writer"
+			            maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
+			        pw:<input type="password" class="memopw" name="memopass" maxlength="15">
+				    <input type="hidden" name="doublecheck" class="memodc" value="okjsp">
+				    <br /><span style="color:#f00">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
+				    <br />개조심할 필요는 있으니까요. 낮말은 새, 밤말은 쥐, 인터넷말은 검색엔진</span>
+			        <br /><input type="submit" name="send" value="Memo">
+			  </div>
+		</form>	
 </section>
+  <jsp:include page="../main/left.jsp"></jsp:include>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
+</div>
+        
 </body>
 
 <%-- ############################################################## --%>
