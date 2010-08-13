@@ -389,7 +389,7 @@ table  {
 	text-overflow: ellipsis;
 }
 
-table td {
+table tr {
 	height: 30px;
 	vertical-align: middle;
 }
@@ -401,6 +401,7 @@ table td {
   text-align: left;
 }
 
+/* 상단 메뉴 에니메이션(마우스를 갖다 대면 변경) */
 .transition {
 	-o-transition:0.2s;
 	-webkit-transition:0.2s;
@@ -446,4 +447,26 @@ table td {
 
 #contentinner  p {
 	font-size: 11px;
+}
+
+/* 메인테이블에서 데이터가 나타날시 부드럽게 나타나게함.. */
+@-webkit-keyframes pulse {
+   from {
+     opacity: 0.0;
+     font-size: 1%;
+     height: 1px;
+   }
+   to {
+     opacity: 1.0;
+     font-size: 100%;
+     height: 30px;
+   }
+ }
+ 
+.tr_start {
+   -webkit-animation-name: pulse;
+   -webkit-animation-duration: 2s;
+   -webkit-animation-iteration-count: 1;
+   -webkit-animation-timing-function: ease-in-out;
+   -webkit-animation-direction: alternate;
 }
