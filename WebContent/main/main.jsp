@@ -233,7 +233,7 @@ var maxseq = '<%=maxseq%>';
     var onMessageHandler = function (event) {
         //log(event.data);
         var dbmaxseq = event.data;
-        
+        //alert('maxseq:'+maxseq +',dbmaxseq'+dbmaxseq);
 		if(maxseq < dbmaxseq){
 			//1. db값이 클경우 : 추가(하면서 밑의 데이터를 삭제시켜야함)
 			var myAjax = new Ajax.Request(
@@ -241,13 +241,15 @@ var maxseq = '<%=maxseq%>';
 			        {method: 'get', parameters: "seq="+dbmaxseq ,
 				    onComplete: ajax_response}
 			    );
-			maxseq = dbmaxseq;
 		}else if(maxseq > dbmaxseq){
+			alert('삭제');
 			//2. db값이 작을경우 : 삭제(하면서 밑의 데이터를 추가시켜야 하는데..어려울듯 ㅋㅋ)
 			//삭제만 하자 ㅋㅋ~
-			//var list = $('table_list');
-			//list.deleteRow(1);
+			//근데 삭제가 잘 안된다 쩝...
+			var list = $('table_list');
+			list.deleteRow(1);
 		} 
+		maxseq = dbmaxseq;
     };
     /**
      * Init event source in Opera fashion
@@ -288,5 +290,4 @@ var maxseq = '<%=maxseq%>';
     startEvent();
 }());
 /**server-sent-event_끝 */
-
 </script>
