@@ -30,7 +30,7 @@ public class MainListServlet extends HttpServlet {
 
 	ListHandler hand = new ListHandler();
 	
-	out.write("retry: 10000");
+	out.write("retry: 3000");
 	out.write("\n");
 	out.write("\n");
 	try {

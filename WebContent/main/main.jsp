@@ -242,7 +242,6 @@ var maxseq = '<%=maxseq%>';
 				    onComplete: ajax_response}
 			    );
 		}else if(maxseq > dbmaxseq){
-			alert('삭제');
 			//2. db값이 작을경우 : 삭제(하면서 밑의 데이터를 추가시켜야 하는데..어려울듯 ㅋㅋ)
 			//삭제만 하자 ㅋㅋ~
 			//근데 삭제가 잘 안된다 쩝...
