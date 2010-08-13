@@ -4,9 +4,9 @@
 <table width="60%" height="60%">
     <tr><td align="center">
 <pre>
-err: <c:out value="${requestScope['javax.servlet.error.status_code']}"/>
+err: ${requestScope['javax.servlet.error.status_code']}
 message: <%= exception.getMessage() %>
-referer: <c:out value="${header['referer']}" />
+referer: ${header['referer']}
 
 </pre>
 <a href="javascript:history.back()">µÚ·Î</a>

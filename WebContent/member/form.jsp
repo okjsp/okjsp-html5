@@ -1,19 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html lang="ko">
-<%@ page errorPage="error.jsp"
-    import="kr.pe.okjsp.*,
-            kr.pe.okjsp.util.CommonUtil,
-            kr.pe.okjsp.util.DateLabel,
-            java.util.*,
-            java.util.Iterator"
-%>
-<head>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%
 //ContextPath
 String cPath = request.getContextPath();
-
 %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <!-- 크롬  프레임 설정 -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -22,12 +15,10 @@ String cPath = request.getContextPath();
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <style type="text/css">
 .contactform {
-	width: 468px;
+	width: 568px;
 	margin: 1.0em 0 0 0;
-	/*padding: 10px 10px 0 10px;*/
-	/*border: solid 1px #C8C8C8;*/
+	/*padding: 10px 10px 0 10px;*/ /*border: solid 1px #C8C8C8;*/
 	/*background-color: #F2F2F2;*/
-	margin-bottom: 20px;
 }
 
 .contactform fieldset {
@@ -52,22 +43,23 @@ String cPath = request.getContextPath();
 	width: 100px;
 	margin: 0 0 0 10px;
 	padding: 2px;
-	font-size: .9em;
+	font-size: 1.2em;
 }
 
 .contactform input.field {
 	width: 275px;
 	padding: 2px;
 	border: solid 1px #C8C8C8;
-	font-size: 100%;
+	font-size: 1.2em;
 }
 
 .contactform span.guide {
-	float: left;
-	width: 275px;
+    clear: both;
+    margin-left: 110px;
+	width: 285px;
 	display: block;
-	color: #646464;
-	font-size: .9em;
+	color: #268887;
+	font-size: 1.1em;
 }
 
 .contactform span.item {
@@ -75,7 +67,7 @@ String cPath = request.getContextPath();
 	color: #5A5A5A;
 	font-size: 100%;
 	vertical-align: middle;
-	padding-left: .9em;
+	padding-left: 1.2em;
 }
 
 .contactform span.item label {
@@ -115,9 +107,19 @@ String cPath = request.getContextPath();
 
 .contactform #preview img {
 	max-width: 320px;
+    opacity: 0;
+    -webkit-transition: opacity 1.2s ease-in-out;
+}
+
+.contactform fieldset.info p {
+    font-weight: bold;
+}
+
+input.field:invalid {
+	background-color: #ffdddd;
 }
 </style>
-<title>OKJSP</title>
+<title>OKJSP_HTML5</title>
 <script type="text/javascript" src="<%=cPath%>/js/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -173,17 +175,19 @@ $(document).ready(function() {
                 $('#preview').hide().empty();
                 $('<img src="' + responseJSON['path'] + '">').appendTo('#preview')
                     .load(function() {
-                        $(this).css({opacity: 0});
                         $('#preview').slideDown(600, function() {
-                            $('#preview img').animate({opacity: 1}, 1200);
+                            $('#preview img').css({opacity: 1});
                         });
                     });
+                $(':hidden[name=file]').remove();
+                $('<input type="hidden" name="file" value="' + responseJSON['path'] + '">')
+                    .appendTo('#joinform');
             };
             xhr.setRequestHeader('Content-Type', 'multipart/form-data');
             xhr.setRequestHeader('X-File-Name', file.fileName);
             xhr.setRequestHeader('X-File-Size', file.fileSize);
             xhr.send(file);
-            
+
             e.preventDefault();
         }
     });
@@ -191,29 +195,26 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div id="log" style="position: absolute; left: 0; top: 0;"></div>
 <div id="wrapper">
-
     <jsp:include page="../main/header.jsp" />
-
     <section>
         <div id="container">
-            <div id="content">
+            <div id="contentinner">
                 <!-- 메인 컨텐츠_시작======================================= -->
                     <div class="contactform">
-                        <form method="post" action="index.html">
+                        <form id="joinform" method="post" action="register.jsp">
                             <fieldset><legend>&nbsp;okjsp.pe.kr 회원가입&nbsp;</legend>
                                 <p><label for="contact_email" class="left">Email:</label>
-                                     <input type="email" name="contact_email" id="contact_email" class="field" autofocus required /></p>
+                                     <input type="email" name="email" id="contact_email" class="field" autofocus required /></p>
                                 <p><label for="contact_id" class="left">ID:</label>
-                                     <input type="text" name="contact_id" id="contact_id" class="field" required /></p>
+                                     <input type="text" name="id" id="contact_id" class="field" required /></p>
                                 <p><label for="contact_name" class="left">Name:</label>
-                                     <input type="text" name="contact_name" id="contact_name" class="field" required /></p>
+                                     <input type="text" name="name" id="contact_name" class="field" required /></p>
                                 <p><label for="contact_url" class="left">Website:</label>
-                                     <input type="text" name="contact_url" id="contact_url" class="field" /></p>
+                                     <input type="text" name="homepage" id="contact_url" class="field" /></p>
                                 <p><label for="contact_url" class="left">Mailling:</label>
-                                     <span class="item first"><input type="radio" name="contact_mailling" id="contact_mailling_y" /><label class="" for="contact_mailling_y">허용</label></span>
-                                     <span class="item"><input type="radio" name="contact_mailling" id="contact_mailling_n" checked /><label class="" for="contact_mailling_n">거부</label></span>
+                                     <span class="item first"><input type="radio" name="mailing" id="contact_mailling_y" value="Y" /><label class="" for="contact_mailling_y">허용</label></span>
+                                     <span class="item"><input type="radio" name="mailing" id="contact_mailling_n" value="N" checked /><label class="" for="contact_mailling_n">거부</label></span>
                                      <span class="guide">okjsp에서 비정기적으로 발행하는 뉴스레터와 홍보메일 수신 설정입니다.</span>
                                      </p>
                             </fieldset>
@@ -223,23 +224,21 @@ $(document).ready(function() {
                                     <div id="preview"></div>
                                 </div>
                             </fieldset>
-                            <fieldset><legend>&nbsp;Info&nbsp;</legend>
+                            <fieldset class="info"'><legend>&nbsp;Info&nbsp;</legend>
                                 <p style="padding-left:15px;">가입시 임시비밀번호가 메일로 발송됩니다.<br>로그인 후 비밀번호를 바꿔주시기 바랍니다.</p>
                             </fieldset>
+                                <p>
+                                    <input type="submit" class="button" value="JOIN" style="float:none;">
+                                    <input type="button"" class="button" value="CANCEL" style="float:none;">
+                                </p>
                         </form>
                     </div>
                 <!-- 메인 컨텐츠_끝======================================= -->
             </div><!-- #content-->
         </div><!-- #container-->
-
         <jsp:include page="../main/left.jsp" />
-
-        <jsp:include page="../main/right.jsp" />
-    
     </section>
-
     <jsp:include page="../main/footer.jsp" />
-
 </div><!-- #wrapper -->
 <!-- Free template created by http://freehtml5templates.com -->
 </body>

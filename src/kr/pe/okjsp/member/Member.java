@@ -54,6 +54,7 @@ public class Member {
 	 */
 	private ArrayList<String>   role;
 	
+	private String file;
 
 	public Member() {}
 
@@ -241,4 +242,18 @@ public class Member {
 		this.sid = sid;
 	}
 
+	/**
+	 * Getter of the property <tt>file</tt>
+	 * @return Returns the sid
+	 */
+	public String getFile() {
+		return file;
+	}
+
+	/**
+	 * Setter of the property <tt>file</tt>
+	 */
+	public void setFile(String file) {
+		this.file = file;
+	}
 }

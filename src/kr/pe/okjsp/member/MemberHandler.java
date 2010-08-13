@@ -4,9 +4,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import kr.pe.okjsp.Navigation;
 import kr.pe.okjsp.util.DbCon;
 import kr.pe.okjsp.util.MailUtil;
+import kr.pe.okjsp.util.Thumbnailer;
 
 /**
  * 회원 정보를 처리하는 클래스입니다.
@@ -26,7 +29,7 @@ public class MemberHandler {
 	static final String QUERY_MAX_SID
 		= "select max(sid) from okmember";
 	static final String QUERY_ADD
-		= "insert into okmember (id, \"password\", name, email, homepage, joindate, mailing, sid) values (?, old_password(?), ?, ?, ?, SYSTIMESTAMP, ?, ?)";
+		= "insert into okmember (id, \"password\", name, email, homepage, joindate, mailing, sid, profile) values (?, old_password(?), ?, ?, ?, SYSTIMESTAMP, ?, ?, ?)";
 	static final String QUERY_ROLE_ADD
 		= "insert into okrole (id, \"role\") values (?,?)";
 	static final String QUERY_LOGIN
@@ -217,6 +220,7 @@ public class MemberHandler {
 	 * @throws SQLException
 	 */
 	private int addMember(Member member, String contextRoot) throws SQLException {
+System.out.println(ToStringBuilder.reflectionToString(member));
 		if (isEmailExist(member.getEmail()))
 			throw new SQLException("중복된 email이 있습니다.");
 
@@ -230,6 +234,14 @@ public class MemberHandler {
 
 		try{
 			member.setPassword("vv"+new Random().nextInt(1000000));
+			if (member.getFile() != null) {
+				new Thumbnailer(contextRoot + "/profile/temp" + member.getFile().substring(member.getFile().lastIndexOf("/")),
+						contextRoot + "/profile/"+ member.getId() + ".jpg", 
+		                77, 77)
+		        	.createThumbnail();
+				member.setProfile("Y");
+			}
+			
 			pstmt = pconn.prepareStatement(QUERY_MAX_SID);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -246,6 +258,7 @@ public class MemberHandler {
 			pstmt.setString(5,member.getHomepage());
 			pstmt.setString(6,member.getMailing());
 			pstmt.setLong  (7,member.getSid());
+			pstmt.setString(8,member.getProfile());
 
 			insert_cnt = pstmt.executeUpdate();
 
@@ -267,9 +280,6 @@ public class MemberHandler {
 				+ "\n\nJSP/Eclipse developer community http://www.okjsp.pe.kr ";
 			new MailUtil().send(mailto, subject, textMessage);
 			
-			ProfileUtil profileUtil = new ProfileUtil();
-			profileUtil.copyDefaultProfile(contextRoot, member.getId());
-
 			pconn.commit();
 		}catch(Exception e){
 			pconn.rollback();
