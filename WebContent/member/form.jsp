@@ -22,11 +22,11 @@ String cPath = request.getContextPath();
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <style type="text/css">
 .contactform {
-	width: 418px;
-	margin: 2.0em 0 0 0;
-	padding: 10px 10px 0 10px;
-	border: solid 1px #C8C8C8;
-	background-color: #F2F2F2;
+	width: 468px;
+	margin: 1.0em 0 0 0;
+	/*padding: 10px 10px 0 10px;*/
+	/*border: solid 1px #C8C8C8;*/
+	/*background-color: #F2F2F2;*/
 	margin-bottom: 20px;
 }
 
@@ -34,6 +34,7 @@ String cPath = request.getContextPath();
 	padding: 20px 0 10px 0 !important /*Non-IE6*/;
 	padding: 0 /*IE6*/;
 	margin: 0 0 20px 0;
+	background-color: #F2F2F2;
 	border: solid 1px #DCDCDC;
 }
 
