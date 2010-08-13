@@ -12,91 +12,15 @@
 <%
 //ContextPath
 String cPath = request.getContextPath();
-
+int maxseq = 0;
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <!-- 크롬  프레임 설정 -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
+<script src="<%=cPath%>/js/prototype.js"></script>
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<title>OKJSP</title>
-<script>
-/**server-sent-event_시작 */
-(function() {
-    var INIT_MESSAGE = "Now wait for server-side events. They will keep appearing in the console...",
-        FAIL_MESSAGE = "Sorry, I have never heard that your browser supports SSE";
-
-    /**
-     * Event logger
-     * @param (string) message
-     */
-    var log = function(message) {
-    	document.getElementById('output').innerHTML =  message + "\n";
-    };
-    /**
-     * Detects which sort of SSE support to apply if to apply it at all
-     * @return user agent type
-     */
-    var detectUAgent = function() {
-        if (navigator.appName == "Opera" && -1 !== navigator.appVersion.indexOf("9.")) {
-            //log("Opera browser detected. " + INIT_MESSAGE);
-            return 'opera';
-        } else
-        if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
-            //log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
-            return 'webkit';
-        } else
-        if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
-            //log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
-            return 'webkit';
-        } else
-        if (undefined !== window['EventSource']) {
-            //log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
-            return 'webkit';
-        }  else {
-            //log(FAIL_MESSAGE);
-            return false;
-        }
-    };
-    /**
-     * Event handler for upcomming server-sent messages
-     * @param (event) event
-     * @event
-     */
-    var onMessageHandler = function (event) {
-        log(event.data);
-    };
-    /**
-     * Init event source in Opera fashion
-     */
-    var operaEventSource = function() {
-        alert( "Opera" );
-        document.getElementsByTagName("event-source")[0]
-        .addEventListener("server-time", onMessageHandler, false);
-    };
-    /**
-     * Init event source in WebKit fashion
-     */
-    var webkitEventSource = function() {
-      var eventSrc = new EventSource('main/main_event.jsp');
-      eventSrc.addEventListener('message', onMessageHandler);
-    };
-
-    var startEvent = function() {
-            switch(detectUAgent()) {
-                case "opera":
-                    operaEventSource();
-                    break;
-                case "webkit":
-                    webkitEventSource();
-                    break;
-            }
-    };
-    startEvent();
-}());
-/**server-sent-event_끝 */
-</script>
 <title>OKJSP_HTML5</title>
 </head>
 <body>
@@ -167,12 +91,12 @@ String cPath = request.getContextPath();
 				<article>
 					<h2><a href="#" rel="bookmark">전체게시판</a></h2>
 					<blockquote>
-						<table>
+						<table id="table_list">
 			            <%
 							HashMap bbsInfoMap = (HashMap)application.getAttribute("bbsInfoMap");
-							iterList = list.getAllRecentList(48).iterator();
+							iterList = list.getAllRecentList(40).iterator();
 							int i = 0;
-							while (iterList.hasNext() && i < 40) {
+							while (iterList.hasNext() && i < 20) {
 						
 							    one = (Article) iterList.next();
 							    BbsInfoBean bbsInfo = ((BbsInfoBean)(bbsInfoMap.get(one.getBbs())));
@@ -189,7 +113,13 @@ String cPath = request.getContextPath();
 							    if ("2".equals(bbsInfo.getCseq())) {
 							    	continue;
 							    }
-							    i++;
+							    //게시판 목록의 가장 맨 위의 번호와 db에 있는 게시판 목록의 번호를 비교하여
+							    //다르면 db의 게시판 내용을 뿌려준다
+							    if(i == 0){
+									maxseq = one.getSeq();
+							    }
+							    
+							    i++;    
 						%>
 			                <tr align="center">
 						        <td>
@@ -256,3 +186,107 @@ String cPath = request.getContextPath();
 	}
 
 %>
+<script>
+var maxseq = '<%=maxseq%>';
+/**server-sent-event_시작 */
+(function() {
+    var INIT_MESSAGE = "Now wait for server-side events. They will keep appearing in the console...",
+        FAIL_MESSAGE = "Sorry, I have never heard that your browser supports SSE";
+
+    /**
+     * Event logger
+     * @param (string) message
+     */
+    var log = function(message) {
+    	document.getElementById('output').innerHTML =  message + "\n";
+    };
+    /**
+     * Detects which sort of SSE support to apply if to apply it at all
+     * @return user agent type
+     */
+    var detectUAgent = function() {
+        if (navigator.appName == "Opera" && -1 !== navigator.appVersion.indexOf("9.")) {
+            //log("Opera browser detected. " + INIT_MESSAGE);
+            return 'opera';
+        } else
+        if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
+            //log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
+            return 'webkit';
+        } else
+        if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
+            //log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
+            return 'webkit';
+        } else
+        if (undefined !== window['EventSource']) {
+            //log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
+            return 'webkit';
+        }  else {
+            //log(FAIL_MESSAGE);
+            return false;
+        }
+    };
+    /**
+     * Event handler for upcomming server-sent messages
+     * @param (event) event
+     * @event
+     */
+    var onMessageHandler = function (event) {
+        //log(event.data);
+        var dbmaxseq = event.data;
+        
+		if(maxseq < dbmaxseq){
+			//1. db값이 클경우 : 추가(하면서 밑의 데이터를 삭제시켜야함:그래야 새로 올라온 글에 css를 따로 주기 편할듯...)
+			var myAjax = new Ajax.Request(
+			        "/html5/main/main_event.jsp",
+			        {method: 'get', parameters: "seq="+dbmaxseq ,
+				    onComplete: ajax_response}
+			    );
+
+		}else if(maxseq > dbmaxseq){
+			//2. db값이 작을경우 : 삭제(하면서 밑의 데이터를 추가시켜야 하는데..어려울듯 ㅋㅋ)
+			//삭제만 하자 ㅋㅋ~
+			var list = $('table_list');
+			list.deleteRow(1);
+		} 
+    };
+    /**
+     * Init event source in Opera fashion
+     */
+    var operaEventSource = function() {
+        alert( "Opera" );
+        document.getElementsByTagName("event-source")[0]
+        .addEventListener("server-time", onMessageHandler, false);
+    };
+    /**
+     * Init event source in WebKit fashion
+     */
+    var webkitEventSource = function() {
+      //var eventSrc = new EventSource('main/main_event.jsp');
+      var eventSrc = new EventSource('/html5/mainlist');
+      eventSrc.addEventListener('message', onMessageHandler);
+    };
+
+    var startEvent = function() {
+            switch(detectUAgent()) {
+                case "opera":
+                    operaEventSource();
+                    break;
+                case "webkit":
+                    webkitEventSource();
+                    break;
+            }
+    };
+
+    function ajax_response(originalRequest) {
+		var list = $('table_list');
+		var oRow = list.insertRow();
+		oRow.innerHTML = originalRequest.responseText;
+		oRow.className = 'tr_start';
+		list.deleteRow(20);
+	}
+	
+    startEvent();
+}());
+/**server-sent-event_끝 */
+
+</script>

@@ -12,6 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import kr.pe.okjsp.ListHandler;
 import kr.pe.okjsp.MemoDao;
 
+/**
+ * 메인에서 새글이 올라올시 실시간으로 내용을 보여준다
+ * bbsid 가 2가 아니고 twitter 가 아니고 null이 아닌것만 조건을 걸었다...
+ * (메인 소스가 구성되어 있는데로...)
+ * @author hwayoung.kang
+ *
+ */
 public class MainListServlet extends HttpServlet {
 
     public void service(HttpServletRequest req, HttpServletResponse res)
@@ -23,11 +30,11 @@ public class MainListServlet extends HttpServlet {
 
 	ListHandler hand = new ListHandler();
 	
-	out.write("retry: 5000");
+	out.write("retry: 10000");
 	out.write("\n");
 	out.write("\n");
 	try {
-		out.write("data: " + hand.getAllRecentMaxSeq(Integer.parseInt(req.getParameter("seq"))));
+		out.write("data: " + hand.getAllRecentMaxSeq());
 	} catch (NumberFormatException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

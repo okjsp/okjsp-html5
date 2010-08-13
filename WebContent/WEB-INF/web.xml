@@ -23,6 +23,10 @@
 		<servlet-name>samples.fileUpload.AJAXUploadServlet</servlet-name>
 		<servlet-class>kr.pe.okjsp.samples.fileUpload.AJAXUploadServlet</servlet-class>
 	</servlet>
+	<servlet><!-- Server-Sent Events_main -->
+		<servlet-name>mainlist</servlet-name>
+		<servlet-class>kr.pe.okjsp.main.MainListServlet</servlet-class>
+	</servlet>
 
 	<servlet>
 		<servlet-name>download</servlet-name>
@@ -90,6 +94,10 @@
 	<servlet-mapping><!-- Server-Sent Events -->
 		<servlet-name>sse</servlet-name>
 		<url-pattern>/sse</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping><!-- Server-Sent Events_main -->
+		<servlet-name>mainlist</servlet-name>
+		<url-pattern>/mainlist</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping><!-- Samples / fileUpload -->
 		<servlet-name>samples.fileUpload.AJAXUploadServlet</servlet-name>
