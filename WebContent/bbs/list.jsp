@@ -66,12 +66,9 @@
 	   			<!-- 메인 컨텐츠_시작======================================= -->
 			      	<!-- Pagetitle -->
 			        <h1> <%= bbsids %> </h1> 
-			        <input type="button" class="button" value="글쓰기" />
-			        <input type="button" class="button" value="글쓰기2" />
-					<br></br>
-			        
-			        <h4><a href="javascript:write()">글쓰기</a> <a href="/html5/bbs/write.jsp">글쓰기2</a></h4> 
-			
+			        <a href="javascript:write()"><input type="button" class="button" value="글쓰기" /></a>
+			        <a href="/html5/bbs/write.jsp"><input type="button" class="button" value="글쓰기2" /></a>
+					<br></br><br></br>
 			        <div id='list'>
 			        </div>
 			    <!-- 메인 컨텐츠_끝========================================== -->

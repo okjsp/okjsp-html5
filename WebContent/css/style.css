@@ -437,9 +437,13 @@ table td {
 }
 
 #contentinner  h4 {
-	font-size: 20px;
+	font-size: 17px;
 }
 
 #contentinner  h3 {
-	font-size: 15px;
+	font-size: 12px;
+}
+
+#contentinner  p {
+	font-size: 11px;
 }
