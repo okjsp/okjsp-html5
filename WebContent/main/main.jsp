@@ -235,18 +235,18 @@ var maxseq = '<%=maxseq%>';
         var dbmaxseq = event.data;
         
 		if(maxseq < dbmaxseq){
-			//1. db값이 클경우 : 추가(하면서 밑의 데이터를 삭제시켜야함:그래야 새로 올라온 글에 css를 따로 주기 편할듯...)
+			//1. db값이 클경우 : 추가(하면서 밑의 데이터를 삭제시켜야함)
 			var myAjax = new Ajax.Request(
 			        "/html5/main/main_event.jsp",
 			        {method: 'get', parameters: "seq="+dbmaxseq ,
 				    onComplete: ajax_response}
 			    );
-
+			maxseq = dbmaxseq;
 		}else if(maxseq > dbmaxseq){
 			//2. db값이 작을경우 : 삭제(하면서 밑의 데이터를 추가시켜야 하는데..어려울듯 ㅋㅋ)
 			//삭제만 하자 ㅋㅋ~
-			var list = $('table_list');
-			list.deleteRow(1);
+			//var list = $('table_list');
+			//list.deleteRow(1);
 		} 
     };
     /**
