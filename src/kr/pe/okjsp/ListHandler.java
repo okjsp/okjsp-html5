@@ -34,11 +34,16 @@ public class ListHandler {
 		"SELECT okboard.bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard ORDER BY seq DESC for orderby_num() between 1 and ?";
 	
 	public static final String ARTICLE_LIST_MAX_SEQ =
-		"select max(seq) from (" +ARTICLE_LIST_ALL_RECENT+ ") aa";
+		"select max(seq) from " +
+		"(select * from okboard where bbsid not in(select bbsid from okboard_info where cseq = 2)" +
+		"ORDER BY seq DESC for orderby_num() between 1 and ?  ) aa";
 	
 	public static final String ARTICLE_LIST_REF =
 		"SELECT bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard WHERE bbsid=? AND \"ref\"=? ORDER BY \"ref\" DESC, step";
-
+	
+	public static final String ARTICLE_SEQ_RECENT =
+		"SELECT okboard.bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard where seq = ? ";
+	
 	private String bbs;
 	private String keyfield = "content";
 	private String keyword = "";
@@ -129,6 +134,7 @@ public class ListHandler {
 			rs = pstmt.executeQuery();
 			if(rs.next())
 				maxSeq = rs.getInt(1);
+			System.out.println("dbmaxSeq======"+maxSeq);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -136,6 +142,16 @@ public class ListHandler {
 			dbCon.close(conn, pstmt, rs);
 		}
 		return maxSeq;
+	}
+	
+	public Collection<Article> getboard(int seq) throws SQLException {
+		this.bbs = null;
+		ArrayList<Object> params = new ArrayList<Object>();
+		params.add(Integer.valueOf(seq));
+
+		Collection<Article> list = null;
+		list = getList(ARTICLE_SEQ_RECENT, params);
+		return list;
 	}
 	
 	

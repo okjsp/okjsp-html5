@@ -34,7 +34,7 @@ public class MainListServlet extends HttpServlet {
 	out.write("\n");
 	out.write("\n");
 	try {
-		out.write("data: " + hand.getAllRecentMaxSeq());
+		out.write("data: " + hand.getAllRecentMaxSeq(20));
 	} catch (NumberFormatException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
