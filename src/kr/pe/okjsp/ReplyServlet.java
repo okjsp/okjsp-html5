@@ -50,7 +50,7 @@ public class ReplyServlet extends HttpServlet {
     }
 
     req.setAttribute("pact", "REPLY");
-    req.getRequestDispatcher("/jsp/write.jsp").forward(req, res);
+    req.getRequestDispatcher("/bbs/write.jsp").forward(req, res);
 
   } // end doGet()
 
