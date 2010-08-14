@@ -35,7 +35,7 @@ public class ModifyServlet extends HttpServlet {
     seq 번호 가져오기
 */
     int seq = 0;
-    String resourceName = "/jsp/write.jsp";
+    String resourceName = "/bbs/write.jsp";
     String confirmPassword = req.getParameter("password");
     try {
         seq = Integer.parseInt(req.getParameter("seq"));
