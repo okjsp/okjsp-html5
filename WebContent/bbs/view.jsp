@@ -30,10 +30,10 @@
 	<jsp:include page="../main/header.jsp"></jsp:include> 
     <section>
     	<div id="container">
-			<div id="contentinner">
-		      <header>
-		        <h4>게시판이름 / <%= one.getBbs() %></h4>
-		        <h3><%= CommonUtil.showHtml(one.getSubject()) %></h3>
+			<div id="contentinner">		        
+        <article>
+	        <h2><%= CommonUtil.showHtml(one.getSubject()) %></h2>
+			<br/>
 				<%
 				    if (one.getId() != null) {
 				        %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"
@@ -42,10 +42,7 @@
 				        	onerror="this.src='/images/spacer.gif'"><%
 				    }
 				%>
-		      </header>
-        <article>
-	        <h1><%= CommonUtil.showHtml(one.getSubject()) %></h1>                            
-          <h3><%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a></h3>
+			<%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a>
           <p><%=  one.getContentView()  %></p>
           <p>| Posted by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a> | Categories: <a href="#"> <%= one.getBbs() %></a> | Comments: <a href="#"><%= one.getRead() %></a> | CCL: <%= one.getCcl_id() %> </p>          
 	<ul><%
@@ -100,7 +97,7 @@
     <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
     <input type="hidden" name="seq" value="<%= one.getSeq() %>">
     <input type="hidden" name="pg" value="<%= list.getPg() %>">
-    <input type="hidden" name="keyfield" value="<c:out value="${param.keyfield}" default="content"/>">
+    <input type="hidden" name="keyfield" value=""> 
     <input type="hidden" name="keyword" value="<%= CommonUtil.nchk(request.getParameter("keyword")) %>">
     <input type="hidden" name="pact" value="">
     <input type="hidden" name="password" value="">

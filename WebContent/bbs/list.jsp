@@ -2,10 +2,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>    
-<jsp:useBean id="one"  class="kr.pe.okjsp.Article" scope="request"/>
 <jsp:useBean id="list" class="kr.pe.okjsp.ListHandler" />
 <jsp:setProperty name="list" property="*" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%
+    response.setContentType("text/html");
 
+	Iterator iter = list.getList().iterator();
+	Article one = null;
+%>
+<%@page import="kr.pe.okjsp.ArticleDao"%>
 <%
 	String cPath  = request.getContextPath();
 	String bbsids = request.getParameter("bbs");
@@ -35,15 +41,15 @@
 		//addlist.innerHTML = originalRequest.responseText;
 		//list.appendChild(addlist);
 		list.innerHTML = originalRequest.responseText;
-}		
+	}		
 
-	window.onload=getList('<%=bbsids%>', 0);
-
-	function write() {
+	function writeArticle() {
 	    document.nav.act.value = "ADD";
 	    document.nav.submit();
 	}
-		 
+
+	window.onload=getList('<%=bbsids%>', 0);
+	
 </script>
 <title>OKJSP_HTML5</title>
 </head>
@@ -62,19 +68,24 @@
 	<section>
 		<div id="container">
 			<div id="contentinner">
-	   			<article>
+	   			<article> 
 	   			<!-- 메인 컨텐츠_시작======================================= -->
 			      	<!-- Pagetitle -->
-			        <h1> <%= bbsids %> </h1> 
-			        <a href="javascript:write()"><input type="button" class="button" value="글쓰기" /></a>
-			        <a href="/html5/bbs/write.jsp"><input type="button" class="button" value="글쓰기2" /></a>
-					<br></br><br></br>
+<%
+	Map map = (Map)application.getAttribute("bbsInfoMap");
+	BbsInfoBean bib = (BbsInfoBean)(map.get(bbsids));
+%>      	
+			        <h1> <%= bib.getName() %> [<%=list.getCnt() %>]</h1> 
+			        <br/>
+			        <h3><%= bib.getHeader() %></h3>
+			        <input type="button" class="button" value="글쓰기" onClick="writeArticle()"/>
+			        <br/><br/>
 			        <div id='list'>
 			        </div>
 			    <!-- 메인 컨텐츠_끝========================================== -->
 				</article>
 			</div><!-- #content-->
-		</div><!-- #container-->
+		</div><!-- #container--> 
 		<jsp:include page="../main/left.jsp"></jsp:include>
 	</section>
 	<jsp:include page="../main/footer.jsp"></jsp:include>

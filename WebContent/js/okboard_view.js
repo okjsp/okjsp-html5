@@ -16,8 +16,8 @@ function goPage() {
 }
 
 function goReply() {
-    document.f1.action="/bbs";
-    document.f1.act.value="REPLY";
+    document.f1.action="/html5/bbs";
+    document.f1.act.value="REPLY"; 
     document.f1.submit();
 }
 
