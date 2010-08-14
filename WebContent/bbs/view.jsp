@@ -19,31 +19,30 @@
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
-<script src="<%=cPath%>/js/prototype.js"></script>
+<script src="<%=cPath%>/js/okjsp.js"></script>
 <script src="<%=cPath%>/js/okboard_view.js"></script>
-
-
+<script src="<%=cPath%>/js/prototype.js"></script>
 <title>OKJSP</title>
 </head>
 
 <body>
-<jsp:include page="../main/left.jsp"></jsp:include>
 <div id="wrapper">
-	<jsp:include page="../main/header.jsp"></jsp:include>
-  
+	<jsp:include page="../main/header.jsp"></jsp:include> 
     <section>
-      <header>
-        <h4>게시판이름 / <%= one.getBbs() %></h4>
-        <h3><%= CommonUtil.showHtml(one.getSubject()) %></h3>
-<%
-    if (one.getId() != null) {
-        %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"
-        	alt="<%= one.getId() %>"
-        	style="width:77px"
-        	onerror="this.src='/images/spacer.gif'"><%
-    }
-%>
-      </header>
+    	<div id="container">
+			<div id="contentinner">
+		      <header>
+		        <h4>게시판이름 / <%= one.getBbs() %></h4>
+		        <h3><%= CommonUtil.showHtml(one.getSubject()) %></h3>
+				<%
+				    if (one.getId() != null) {
+				        %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"
+				        	alt="<%= one.getId() %>"
+				        	style="width:77px"
+				        	onerror="this.src='/images/spacer.gif'"><%
+				    }
+				%>
+		      </header>
         <article>
 	        <h1><%= CommonUtil.showHtml(one.getSubject()) %></h1>                            
           <h3><%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a></h3>
@@ -61,41 +60,57 @@
 	  }
 	%>
 	</ul>
-	</article>
-       <nav>
-        <input type="button" value="목록" onClick="goPage()"/>
-        <input type="button" value="답변" onClick="goReply()"/>
-        <input type="button" value="수정" onClick="show_passwd_layer('goModify')"/>
-        <input type="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
-        <input type="button" value="책갈피" onClick="goBookmark()"/>
-       </nav>	
-
-			<div  id="memoDiv">
-			</div>
-			<form name="f0" method="POST" onSubmit="return chk_memo(this)">
-			    <input type="hidden" name="pact" value="MEMO">
-			    <input type="hidden" name="seq" value="<%= one.getSeq() %>">
-			    <input type="hidden" name="pg" value="<%= list.getPg() %>">
-			    <input type="hidden" name="keyfield" value="<%=  CommonUtil.nchk(request.getParameter("keyfield"),"content")  %>">
-			    <input type="hidden" name="keyword" value="<%=  CommonUtil.nchk(request.getParameter("keyword"))  %>">
-			    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
-			    <input type="hidden" name="viewstamp" value="<%= System.currentTimeMillis() %>">
-				<div>
-			      <textarea name="bcomment" style="width:100%;height:80px" id="note"></textarea>
-			        id:<input type="text" class="memoid" name="writer"
-			            maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
-			        pw:<input type="password" class="memopw" name="memopass" maxlength="15">
-				    <input type="hidden" name="doublecheck" class="memodc" value="okjsp">
-				    <br /><span style="color:#f00">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
-				    <br />개조심할 필요는 있으니까요. 낮말은 새, 밤말은 쥐, 인터넷말은 검색엔진</span>
-			        <br /><input type="submit" name="send" value="Memo">
-			  </div>
-		</form>	
+	</article> 
+	    <input type="button" class="button" value="답변" onClick="goReply()"/>
+    	<input type="button" class="button" value="수정" onClick="show_passwd_layer('goModify')"/>
+     	<input type="button" class="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
+     	<input type="button" class="button" value="책갈피" onClick="goBookmark()"/>
+	<div id="passwd_layer" style="position:absolute;display:none;width:220px;height:60px;padding:10px" align="center">
+	<input type="password" id="passwd" name="passwd" maxlength="15">
+	<br>
+	<input type="button" class="button" id="submit_type" onclick="return submit_passwd()">
+	<input type="button" class="button" value="취소" onclick="return toggleMenu('passwd_layer')">
+     </div>
+		
+	
+	
+	<div  id="memoDiv">
+	</div>
+		<form name="f0" method="POST" onSubmit="return chk_memo(this)">
+	    <input type="hidden" name="pact" value="MEMO">
+	    <input type="hidden" name="seq" value="<%= one.getSeq() %>">
+	    <input type="hidden" name="pg" value="<%= list.getPg() %>">
+	    <input type="hidden" name="keyfield" value="<%=  CommonUtil.nchk(request.getParameter("keyfield"),"content")  %>">
+	    <input type="hidden" name="keyword" value="<%=  CommonUtil.nchk(request.getParameter("keyword"))  %>">
+	    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
+	    <input type="hidden" name="viewstamp" value="<%= System.currentTimeMillis() %>">
+		
+	      <textarea name="bcomment" style="width:100%;height:80px" id="note"></textarea>
+	        id:<input type="text" class="memoid" name="writer"
+	            maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
+	        pw:<input type="password" class="memopw" name="memopass" maxlength="15">
+		    <input type="hidden" name="doublecheck" class="memodc" value="okjsp">
+		    <br /><span style="color:#f00">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
+		    <br />개조심할 필요는 있으니까요. 낮말은 새, 밤말은 쥐, 인터넷말은 검색엔진</span>
+	        <br /><input type="submit" name="send" value="Memo">
+		</form>		
+	</div></div>
+	<form name="f1">
+    <input type="hidden" name="act" value="LIST">
+    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
+    <input type="hidden" name="seq" value="<%= one.getSeq() %>">
+    <input type="hidden" name="pg" value="<%= list.getPg() %>">
+    <input type="hidden" name="keyfield" value="<c:out value="${param.keyfield}" default="content"/>">
+    <input type="hidden" name="keyword" value="<%= CommonUtil.nchk(request.getParameter("keyword")) %>">
+    <input type="hidden" name="pact" value="">
+    <input type="hidden" name="password" value="">
+</form>
+	
+	<jsp:include page="../main/left.jsp"></jsp:include>
 </section>
-  <jsp:include page="../main/left.jsp"></jsp:include>
-	<jsp:include page="../main/footer.jsp"></jsp:include>
+<jsp:include page="../main/footer.jsp"></jsp:include>
 </div>
-        
+<!-- hidden navigation form -->
 </body>
 
 <%-- ############################################################## --%>
