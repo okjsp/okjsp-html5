@@ -59,6 +59,7 @@ String cPath = request.getContextPath();
           <h1>Login</h1>
           <div class="loginform">
             <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
+                <input type="hidden" name="returnPath" value="<%= CommonUtil.nchk(request.getParameter("returnPath"), "/") %>">
               <fieldset>
                 <p><label for="username_1" class="top">ID:</label><br />
                   <input type="text" name="id" id="username_1" tabindex="1" class="field" autofocus required /></p>

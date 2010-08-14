@@ -220,7 +220,6 @@ public class MemberHandler {
 	 * @throws SQLException
 	 */
 	private int addMember(Member member, String contextRoot) throws SQLException {
-System.out.println(ToStringBuilder.reflectionToString(member));
 		if (isEmailExist(member.getEmail()))
 			throw new SQLException("중복된 email이 있습니다.");
 
@@ -240,6 +239,8 @@ System.out.println(ToStringBuilder.reflectionToString(member));
 		                77, 77)
 		        	.createThumbnail();
 				member.setProfile("Y");
+			} else {
+				new ProfileUtil().copyDefaultProfile(contextRoot, member.getId());
 			}
 			
 			pstmt = pconn.prepareStatement(QUERY_MAX_SID);

@@ -1,8 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@page import="kr.pe.okjsp.member.Member"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="kr.pe.okjsp.Navigation"%>
 <%
-//ContextPath
-String cPath = request.getContextPath();
+	Member member = (Member) session.getAttribute("member");
+	if (member == null || member.getEmail() == null) {
+		response.sendRedirect(Navigation.getPath("LOGFORM") + "?returnPath="
+				+ URLEncoder.encode(Navigation.getPath("SECURE_DOMAIN") + "/member/info.jsp", "utf-8"));
+		return;
+	}
+%>
+<%
+	//ContextPath
+	String cPath = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -123,6 +134,7 @@ input.field:invalid {
 <script type="text/javascript" src="<%=cPath%>/js/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+    $('input[value=${member.mailing}]').attr({checked: true});
     $('#profile-drop').bind({
         dragover: function(e) {
             var dataTransfer = e.originalEvent.dataTransfer;
@@ -203,20 +215,22 @@ $(document).ready(function() {
                 <!-- 메인 컨텐츠_시작======================================= -->
                     <div class="contactform">
                         <form id="joinform" method="post" action="register.jsp">
+                            <input type="hidden" name="pact" value="modify">
                             <fieldset><legend>&nbsp;okjsp.pe.kr 회원가입&nbsp;</legend>
                                 <p><label for="contact_email" class="left">Email:</label>
-                                     <input type="email" name="email" id="contact_email" class="field" autofocus required /></p>
+                                    <input type="email" name="email" id="contact_email" value="${member.email}" class="field" autofocus required /></p>
                                 <p><label for="contact_id" class="left">ID:</label>
-                                     <input type="text" name="id" id="contact_id" class="field" required /></p>
+                                    <input type="text" name="id" id="contact_id" value="${member.id}" class="field" required readonly /></p>
                                 <p><label for="contact_name" class="left">Name:</label>
-                                     <input type="text" name="name" id="contact_name" class="field" required /></p>
+                                    <input type="text" name="name" id="contact_name" value="${member.name}" class="field" required /></p>
                                 <p><label for="contact_url" class="left">Website:</label>
-                                     <input type="text" name="homepage" id="contact_url" class="field" /></p>
+                                    <input type="text" name="homepage" id="contact_url" value="${member.homepage}" class="field" /></p>
                                 <p><label for="contact_url" class="left">Mailling:</label>
-                                     <span class="item first"><input type="radio" name="mailing" id="contact_mailling_y" value="Y" /><label class="" for="contact_mailling_y">허용</label></span>
-                                     <span class="item"><input type="radio" name="mailing" id="contact_mailling_n" value="N" checked /><label class="" for="contact_mailling_n">거부</label></span>
-                                     <span class="guide">okjsp에서 비정기적으로 발행하는 뉴스레터와 홍보메일 수신 설정입니다.</span>
-                                     </p>
+                                    <span class="item first"><input type="radio" name="mailing" id="contact_mailling_y" value="Y" /><label class="" for="contact_mailling_y">허용</label></span>
+                                    <span class="item"><input type="radio" name="mailing" id="contact_mailling_n" value="N" /><label class="" for="contact_mailling_n">거부</label></span>
+                                    <span class="guide">okjsp에서 비정기적으로 발행하는 뉴스레터와 홍보메일 수신 설정입니다.</span></p>
+                                <p><label for="contact_profile" class="left">Profile:</label>
+                                    <img alt="${member.id} Profile" src="<%= cPath %>/profile/${member.id}.jpg"></p>
                             </fieldset>
                             <fieldset><legend>&nbsp;Profile&nbsp;</legend>
                                 <div id="profile">
@@ -224,11 +238,8 @@ $(document).ready(function() {
                                     <div id="preview"></div>
                                 </div>
                             </fieldset>
-                            <fieldset class="info"'><legend>&nbsp;Information&nbsp;</legend>
-                                <p style="padding-left:15px;">가입시 임시비밀번호가 메일로 발송됩니다.<br>로그인 후 비밀번호를 바꿔주시기 바랍니다.</p>
-                            </fieldset>
                             <p>
-                                <input type="submit" class="button" value="JOIN" style="float:none;">
+                                <input type="submit" class="button" value="UPDATE" style="float:none;">
                                 <input type="button"" class="button" value="CANCEL" style="float:none;">
                             </p>
                         </form>
