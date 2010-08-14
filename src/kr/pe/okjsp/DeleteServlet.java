@@ -45,7 +45,7 @@ public class DeleteServlet extends HttpServlet {
 		    seq 번호 가져오기
 		*/
 		int seq = 0;
-		String resourceName = "/jsp/delete.jsp";
+		String resourceName = "/bbs/delete.jsp";
 		String confirmPassword = req.getParameter("password");
 		try {
 			seq = Integer.parseInt(req.getParameter("seq"));
