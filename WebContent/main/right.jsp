@@ -25,11 +25,31 @@ String cPath = request.getContextPath();
 </script>
 
 <aside id="right"><!-- start right sidebar -->	
+	<div class="box">
+		<h3>광고</h3>
+		<div class="inner" align="center">
+			<a href="<%=cPath %>/main/f.jsp?http://open.egovframe.go.kr/seminar/20100723.html" target="_blank"
+			><img src="http://www.okjsp.pe.kr/images/banner/egovframe.gif"
+				alt="전자정부 표준프레임워크 egovframe"
+			></a>
+			<a href="<%=cPath %>/main/f.jsp?http://www.adoberia.co.kr/iwt/blog/blog.php?tn=flex&id=468&src=image&kw=00003B" target="_blank"
+			><img src="http://www.okjsp.pe.kr/images/banner/welove_134x60.gif"
+			alt="WE Love the Web, Flash, HTML5, Choice"
+			></a>
+			<a href="<%=cPath %>/main/f.jsp?http://www.apptalk.tv" target="_blank"
+			><img src="http://www.okjsp.pe.kr/images/banner/apptalk_134x60.jpg"
+				alt="http://www.okjsp.pe.kr세상의 모든 앱을 영상으로. 앱의 모든 것, 앱톡"
+			></a>
+			<a href="<%=cPath %>/main/f.jsp?http://www.devgear.co.kr/" target="_blank"
+			><img src="http://www.okjsp.pe.kr/images/banner/embarcadero_134x60.gif"
+				alt="개발도구의 명가, 이제는 튜닝입니다."
+			></a>
+    	</div>
+	</div><!-- .box -->
 
 	<div class="box">
 		<h3>Login</h3>
 		<div class="inner">
-			
 		  <c:if test="${empty member}">
 	        <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
 	          <p><input type="hidden" name="returnPath" value="http://localhost:8080/html5" /></p>
@@ -45,9 +65,10 @@ String cPath = request.getContextPath();
 	      </c:if>
 	      <c:if test="${!empty member}">
 	        <fieldset class="member">
-	          <p><a href="#">${member.id} /info</a></p>
-	          <p><a href="#">Logout</a></p>
-	          <p><a href="#">책갈피</a></p>
+	          <p align="center"><a href="#">${member.id}[로그인중]</a></p>
+	          <p align="center"><a href="#">${member.id} /info</a></p>
+	          <input type="button" class="button" value="LOGOUT"  />
+	          <input type="button" class="button" value="책갈피"  />
 	        </fieldset>
 	      </c:if>
     	</div>
@@ -56,7 +77,7 @@ String cPath = request.getContextPath();
 	<div class="box">
 		<h3>Chatting</h3>
 		<div class="inner">
-			<p><a href="javascript:openSubWindow();">Chatting Popup</a></p>
+			<p align="center"><a href="javascript:openSubWindow();">Chatting Popup</a></p>
     	</div>
 	</div><!-- .box -->
 	
@@ -92,7 +113,7 @@ String cPath = request.getContextPath();
 	
 	<div class="box">
 			<h3>sponsored by</h3>
-			<div class="inner">
+			<div class="inner" align="center">
 				<a href="http://www.80port.com/community" target="_blank" title="www.80port.com
 	 				okjsp standalone 호스팅 지원, 서비스 좋습니다."> 
 					<img src="http://www.okjsp.pe.kr/images/bnr_80port.gif" width="88" height="31" border="0"></a> 
@@ -102,7 +123,7 @@ String cPath = request.getContextPath();
 			</div>
 	</div><!-- .box -->
 	
-	<div class="box">
+	<div class="box" align="center">
 			<h3>Maso Widget</h3>
 			<div class="inner" id="imaso_div">
 				<script type="text/javascript">
@@ -116,7 +137,7 @@ String cPath = request.getContextPath();
 	
 	<div class="box">
 			<h3>동맹사이트</h3>
-			<div class="inner">
+			<div class="inner" align="center">
 				<a href="http://simples.kr/" target="_blank"> 
 					<img src="http://www.okjsp.pe.kr/images/bnr_simples.png" alt="simples.kr"></a>
 			</div>
