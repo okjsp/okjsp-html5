@@ -89,10 +89,12 @@ img.framed {
 /* Header
 -----------------------------------------------------------------------------*/
 header {
-	height: 200px;
+	height: 150px;
 	position: relative;
 	background: url(/html5/images/roundedheader.png);
 	margin-top: 10px;
+	border-radius: 10px;
+    -moz-border-radius: 10px;
 }
 
 #sitename a {
@@ -118,8 +120,8 @@ header {
 
 header nav {
 	position: absolute;
-	top: 174px;
-	width: 915px;
+	top: 124px;
+	width: 70%;
 	left: 25px;
 	height: 26px;
 	font: 14px/ 1 Tahoma, Arial;
@@ -499,4 +501,15 @@ input.button_two:hover {
 	border: solid 1px rgb(80, 80, 80);
 	background: rgb(220, 220, 220);
 	color: rgb(80, 80, 80);
+}
+
+header .search {
+	position: absolute;
+	top: 115px;
+	width: 250px;
+	left: 710px;
+	height: 30px;
+	font: 14px/ 1 Tahoma, Arial;
+	text-transform: uppercase;
+	overflow: hidden;
 }

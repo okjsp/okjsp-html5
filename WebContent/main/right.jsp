@@ -83,7 +83,7 @@ String cPath = request.getContextPath();
 	</div><!-- .box -->
 	
 	<div class="box">
-			<h3>링크</h3>
+			<h3>LINK</h3>
 			<div class="inner">
 				<a href="http://cafe.naver.com/appleswing" title="애플스윙댄스카페 운동부족개발자에게 적극 추천합니다. ^^; 저는 14기 졸업했습니다." target="swing">
    					애플스윙댄스카페
@@ -91,6 +91,18 @@ String cPath = request.getContextPath();
    				<a href="http://it.nodong.net/zbxe/?mid=JOBQNA01" title="회사,일터,경력 관련 이야기 it.nodong.net" target="jobqna">
    					일터Q&amp;A
    				</a>
+			</div>
+	</div><!-- .box -->
+	
+	<div class="box">
+			<h3>sponsored by</h3>
+			<div class="inner">
+				<a href="http://www.80port.com/community" target="_blank" title="www.80port.com
+	 				okjsp standalone 호스팅 지원, 서비스 좋습니다."> 
+					<img src="http://www.okjsp.pe.kr/images/bnr_80port.gif" width="88" height="31" border="0"></a> 
+				<br /> 
+				<a href="/f.jsp?http://www.cubrid.com/" target="_blank" title="okjsp Database"> 
+					<img src="http://www.okjsp.pe.kr/images/banner/cubrid_88x31.gif" width="88" height="31" border="0"></a> 
 			</div>
 	</div><!-- .box -->
 	

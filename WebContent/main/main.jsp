@@ -33,6 +33,12 @@ int maxseq = 0;
 		<div id="container">
 			<div id="content">
 			<!-- 메인 컨텐츠_시작======================================= -->
+				<article align="center">
+					<a href="<%=cPath %>/f.jsp?http://www.devlec.com/?_pageVariable=OKJSP" target="_blank"> 
+						<img src="http://www.okjsp.pe.kr/images/banner/devlec_473x98.gif" alt="▒▒▒ 데브렉 ▒▒▒ 개발자를 위한 국내 최고 프로그래밍 전문 동영상강좌 사이트"> 
+					</a>
+				</article>
+				<br/>
 				<article>
 					<%
 		          	Iterator iterList = null;
