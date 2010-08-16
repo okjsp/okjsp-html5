@@ -1,0 +1,105 @@
+.contactform {
+    width: 568px;
+    margin: 1.0em 0 0 0;
+    /*padding: 10px 10px 0 10px;*/ /*border: solid 1px #C8C8C8;*/
+    /*background-color: #F2F2F2;*/
+}
+
+.contactform fieldset {
+    padding: 20px 0 10px 0 !important /*Non-IE6*/;
+    padding: 0 /*IE6*/;
+    margin: 0 0 20px 0;
+    background-color: #F2F2F2;
+    border: solid 1px #DCDCDC;
+    border-radius: 5px;
+}
+
+.contactform fieldset legend {
+    margin: 0 0 0 5px !important /*Non-IE*/;
+    margin: 0 0 20px 5px /*IE6*/;
+    padding: 0 2px 0 2px;
+    color: #505050;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.contactform label.left {
+    float: left;
+    width: 100px;
+    margin: 0 0 0 10px;
+    padding: 2px;
+    font-size: 1.2em;
+}
+
+.contactform input.field {
+    width: 275px;
+    padding: 2px;
+    border: solid 1px #C8C8C8;
+    font-size: 1.2em;
+}
+
+.contactform span.guide {
+    clear: both;
+    margin-left: 110px;
+    width: 285px;
+    display: block;
+    color: #268887;
+    font-size: 1.1em;
+}
+
+.contactform span.item {
+    float: left;
+    color: #5A5A5A;
+    font-size: 100%;
+    vertical-align: middle;
+    padding-left: 1.2em;
+}
+
+.contactform span.item label {
+    margin: 0 0 0 3px !important;
+}
+
+.contactform span.item.first {
+    padding-left: 0;
+}
+
+.contactform #profile {
+    padding: 10px 10px 0 10px;
+}
+
+.contactform #profile-drop {
+    margin-bottom: 15px;
+    padding: 25px;
+    border: 2px dashed #bbb;
+    color: #bbb;
+    border-radius: 5px;
+    font: normal normal normal 20pt/normal bold, Tahoma;
+}
+
+.contactform #profile-drop.droppable {
+    border-color: red !important;
+}
+
+.contactform #preview {
+    margin-bottom: 15px;
+    padding: 25px;
+    border: 2px dashed #bbb;
+    color: #bbb;
+    display: none;
+    border-radius: 5px;
+    font: normal normal normal 20pt/normal bold, Tahoma;
+}
+
+.contactform #preview img {
+    max-width: 320px;
+    opacity: 0;
+    -webkit-transition: opacity 1.2s ease-in-out;
+}
+
+.contactform fieldset.info p {
+    font-weight: bold;
+}
+
+input.field:invalid {
+    background-color: #ffdddd;
+}
