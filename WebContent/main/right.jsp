@@ -103,13 +103,22 @@ String cPath = request.getContextPath();
 	</div><!-- .box -->
 	
 	<div class="box">
-			<h3> </h3>
+			<h3>Maso Widget</h3>
 			<div class="inner" id="imaso_div">
-				<script type="text/javascript"><!--
+				<script type="text/javascript">
+				<!--
 				imaso_ad_client = "pub-31415924";
 				//-->
 				</script> 
 				<script type="text/javascript" src="http://widget.imaso.co.kr/pagead/show_ads.js"></script>  
+			</div>
+	</div><!-- .box -->
+	
+	<div class="box">
+			<h3>µø∏ÕªÁ¿Ã∆Æ</h3>
+			<div class="inner">
+				<a href="http://simples.kr/" target="_blank"> 
+					<img src="http://www.okjsp.pe.kr/images/bnr_simples.png" alt="simples.kr"></a>
 			</div>
 	</div><!-- .box -->
 	

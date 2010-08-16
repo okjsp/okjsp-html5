@@ -47,7 +47,7 @@ while (iter.hasNext()) {
 </center></h3>
 </div>
 <div id='pageloading' style='display:none;'>
-	<img src='/html5/img/loading.gif'>
+	<img src='/html5/images/loading.gif'>
 </div>
 <%
 	}

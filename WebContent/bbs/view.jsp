@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
 <script src="<%=cPath%>/js/okjsp.js"></script>
 <script src="<%=cPath%>/js/okboard_view.js"></script>
 <script src="<%=cPath%>/js/prototype.js"></script>

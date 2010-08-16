@@ -22,7 +22,7 @@
 	<!-- 기존 nas.css form_div의 dt dd등의 css스타일 선언 때문에 사용함 by raniel  -->
 	<link rel="stylesheet" href="bbs.css" type="text/css">
 	
-	<link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
 	
 	<script type="text/javascript" src="/html5/js/okjsp.js"></script>
 		

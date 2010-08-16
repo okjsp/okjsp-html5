@@ -17,6 +17,9 @@ String cPath = request.getContextPath();
 				ondragleave="onDragLeave(event)"    id="left_menu">
 			</ul>
 		</div>
+		<div align="center">
+			<input type="button" class="button_two" value="메뉴초기화" onclick="javascript:reload()">
+		</div>
 	</div><!-- .box -->
 </aside><!-- end left sidebar -->
 
@@ -47,21 +50,28 @@ String cPath = request.getContextPath();
 	//drop이벤트 핸들러
 	function onDrop(event){
 		var drag_zone = event.dataTransfer.getData('text');	//옮길애 아이디(드뎌 이거 된다 ㅜㅜ_text로 하니깐 됨..)
-		var drag_zone_inner = document.getElementById(drag_zone).outerHTML;					//옮길애 내용
+		var drag_zone_outer = document.getElementById(drag_zone).outerHTML;					//옮길애 내용
 		var li = document.getElementById(drag_zone);
 
 		var drop_zone = event.target.id;				//옮길곳에 있는 애 아이디
-		var drop_zone_inner = document.getElementById(drop_zone).outerHTML;					//옮길곳에 있는 애 내용
-
-		//alert(drag_zone_inner+"--"+drop_zone_inner);
+		var drop_zone_outer = document.getElementById(drop_zone).outerHTML;					//옮길곳에 있는 애 내용
 
 		if(li && li.parentNode == event.currentTarget){		//과연 얘는 책이 틀린건가? 흠...
 			//책에 있는 소스가 잘 안되서...걍 cross 시켰다.
-			//document.getElementById(drop_zone).innerHTML = '';
-			document.getElementById(drop_zone).outerHTML = drag_zone_inner;
-			//document.getElementById(drag_zone).innerHTML = '';
-			document.getElementById(drag_zone).outerHTML = drop_zone_inner;
+			document.getElementById(drag_zone).outerHTML = 
+				"<div id='one'>"+document.getElementById(drag_zone).outerHTML+"</div>";
 
+			document.getElementById(drop_zone).outerHTML = 
+				"<div id='two'>"+document.getElementById(drop_zone).outerHTML+"</div>";
+
+			document.getElementById('one').outerHTML = drop_zone_outer;
+			document.getElementById('two').outerHTML = drag_zone_outer;
+			
+			//document.getElementById(drop_zone).innerHTML = '';
+			//document.getElementById(drop_zone).outerHTML = drag_zone_outer;
+			//document.getElementById(drag_zone).innerHTML = '';
+			//document.getElementById(drag_zone).outerHTML = drop_zone_outer;
+			
 			document.getElementById(drop_zone).className = 'dtcss';
 			document.getElementById(drag_zone).className = 'dtcss';
 		}
@@ -101,8 +111,13 @@ String cPath = request.getContextPath();
 	    return false;
 	}
 
-	window.onload = function (){ 
-		localStorage.clear();	//스토리지 삭제(임시)
+	function reload(){
+		localStorage.clear();	//스토리지 삭제
+		self.location.href = '<%=cPath%>';
+	}
+
+	function start(){
+		//localStorage.clear();	//스토리지 삭제(임시)
 		//로컬 스토리지 불러오기
 		var tmp = localStorage['leftmenu_storage'];
 		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
@@ -186,4 +201,6 @@ String cPath = request.getContextPath();
 			});
 		}
 	}
+
+	start();
 </script>

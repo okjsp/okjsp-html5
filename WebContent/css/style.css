@@ -98,6 +98,17 @@ header {
     -moz-border-radius: 10px;
 }
 
+@-webkit-keyframes pulse {
+ from {
+   opacity: 0.0;
+   font-size: 100%;
+ }
+ to {
+   opacity: 1.0;
+   font-size: 130%;
+ }
+}
+
 #sitename a {
 	position: absolute;
 	top: 30px;
@@ -106,6 +117,11 @@ header {
 	color: #009296;
 	text-shadow: 2px 2px 2px #000;
 	text-decoration: none;
+	-webkit-animation-name: pulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate;
 }
 
 #description {

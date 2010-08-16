@@ -14,7 +14,6 @@ String cPath = request.getContextPath();
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
-<link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script type="text/javascript">
 
 </script>

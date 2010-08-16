@@ -17,6 +17,7 @@ int maxseq = 0;
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <!-- 크롬  프레임 설정 -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
 <script src="<%=cPath%>/js/prototype.js"></script>
