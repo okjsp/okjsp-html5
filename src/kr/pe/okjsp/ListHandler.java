@@ -34,16 +34,15 @@ public class ListHandler {
 		"SELECT okboard.bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard ORDER BY seq DESC for orderby_num() between 1 and ?";
 	
 	public static final String ARTICLE_LIST_MAX_SEQ =
-		"select max(seq) from " +
-		"(select * from okboard where bbsid not in(select bbsid from okboard_info where cseq = 2)" +
-		"ORDER BY seq DESC for orderby_num() between 1 and ?  ) aa";
+		"select max(seq) from (" +ARTICLE_LIST_ALL_RECENT+ ") aa "
+		+ "where bbsid in(select bbsid from okboard_info where cseq <>2 /*and bbsid<>'twitter'*/ and bbsid is not null)";
 	
 	public static final String ARTICLE_LIST_REF =
 		"SELECT bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard WHERE bbsid=? AND \"ref\"=? ORDER BY \"ref\" DESC, step";
 	
-	public static final String ARTICLE_SEQ_RECENT =
-		"SELECT okboard.bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard where seq = ? ";
-	
+	public static final String ARTICLE_BOARD_RECENT =
+		"SELECT okboard.bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard where seq = ?";
+
 	private String bbs;
 	private String keyfield = "content";
 	private String keyword = "";
@@ -122,7 +121,7 @@ public class ListHandler {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int getAllRecentMaxSeq(int size) throws SQLException {
+	public int getAllRecentMaxSeq() throws SQLException {
 		Connection conn = null;
     	PreparedStatement pstmt = null;
     	ResultSet rs = null;
@@ -130,12 +129,10 @@ public class ListHandler {
     	try {
     		conn = dbCon.getConnection();
 			pstmt = conn.prepareStatement(ARTICLE_LIST_MAX_SEQ);
-			pstmt.setInt   (1, size);
+			pstmt.setInt(1, 20);
 			rs = pstmt.executeQuery();
 			if(rs.next())
-				maxSeq = rs.getInt(1);
-			System.out.println("dbmaxSeq======"+maxSeq);
-			
+				maxSeq = rs.getInt(1);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -144,16 +141,20 @@ public class ListHandler {
 		return maxSeq;
 	}
 	
+	/**
+	 * 해당 시퀀스의 게시판 내용을 가져온다
+	 * @param seq
+	 * @return
+	 * @throws SQLException
+	 */
 	public Collection<Article> getboard(int seq) throws SQLException {
 		this.bbs = null;
 		ArrayList<Object> params = new ArrayList<Object>();
 		params.add(Integer.valueOf(seq));
-
 		Collection<Article> list = null;
-		list = getList(ARTICLE_SEQ_RECENT, params);
+		list = getList(ARTICLE_BOARD_RECENT, params);
 		return list;
 	}
-	
 	
 	/**
 	 * 최근 글이 있는 게시판 목록과 최신글수 가져오기

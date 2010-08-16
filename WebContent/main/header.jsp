@@ -12,8 +12,8 @@ String cPath = request.getContextPath();
 	<div id="top">
 		<nav>
 			<ul>
-				<li><a href="#" class="transition">헤더에요</a></li>
-				<li><a href="#" class="transition">About</a></li>
+				<li><a href="<%=cPath%>/bbs?act=LIST&bbs=notice" class="transition">공지사항</a></li>
+				<li><a href="#" class="transition">개인정보취급방침</a></li>
 				<li><a href="#" class="transition">Contact</a></li>
 				<li><a href="#" class="transition">Support</a></li>
 			</ul>

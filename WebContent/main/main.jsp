@@ -57,7 +57,7 @@ int maxseq = 0;
 							        <td><%= one.getRef() %></td>
 							        <td>
 							        	<div class="ellipsis" style="width: 260px;">
-								            <a href="<%=cPath%>/seq/<%= one.getSeq() %>">
+								            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank">
 								            	<%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
 								            </a>
 							            </div>
@@ -129,7 +129,7 @@ int maxseq = 0;
 						        </td>
 						        <td>
 						        	<div class="ellipsis" style="width: 170px;">
-							            <a href="<%=cPath%>/seq/<%= one.getSeq() %>">
+							            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank">
 							            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
 							            </a>
 						            </div>

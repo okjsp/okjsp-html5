@@ -65,16 +65,32 @@ String cPath = request.getContextPath();
 	</div><!-- .box -->
 	
 	<div class="box">
-			<h3>광고1</h3>
+			<h3>AD</h3>
 			<div class="inner">
-				<a href="#"><img src="<%=cPath%>/images/ad125.jpg" alt="" class="aligncenter" /></a>
+				<a href="<%=cPath %>/main/f.jsp?http://www.innorix.com/DS/" title="대용량 파일/폴더 업로드 컴포넌트" target="innorix">
+					업로드는 InnoDS
+				</a><br/>
+				<a href="<%=cPath %>/main/f.jsp?http://www.imaso.co.kr/" title="프로그래머를 위한 잡지" target="imaso">
+					마소 Magazine
+				</a><br/>
+				<a href="<%=cPath %>/main/f.jsp?http://bit.ly/au0bGN" title="아이폰앱 산수의신" target="godofmath">
+					아이폰앱 산수의신
+				</a><br/>
+				<a href="/f.jsp?http://bit.ly/cIQ7fA" title="안드로이드 개발환경 구축" target="android">
+					[유료]안드로이드 개발매뉴얼1
+				</a><br/>
 			</div>
 	</div><!-- .box -->
 	
 	<div class="box">
-			<h3>광고2</h3>
+			<h3>링크</h3>
 			<div class="inner">
-				<a href="#"><img src="<%=cPath%>/images/ad125.jpg" alt="" class="aligncenter" /></a>
+				<a href="http://cafe.naver.com/appleswing" title="애플스윙댄스카페 운동부족개발자에게 적극 추천합니다. ^^; 저는 14기 졸업했습니다." target="swing">
+   					애플스윙댄스카페
+   				</a><br/>
+   				<a href="http://it.nodong.net/zbxe/?mid=JOBQNA01" title="회사,일터,경력 관련 이야기 it.nodong.net" target="jobqna">
+   					일터Q&amp;A
+   				</a>
 			</div>
 	</div><!-- .box -->
 	

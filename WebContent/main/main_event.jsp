@@ -31,7 +31,7 @@ if (iterList.hasNext() ) {
         </td>
         <td align="center"><b>
         	<div class="ellipsis" style="width: 170px;">
-	            <a href="<%=cPath%>/seq/<%= one.getSeq() %>">
+	            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank">
 	            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
 	            </a>
             </div></b>

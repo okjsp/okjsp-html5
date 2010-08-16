@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.pe.okjsp.ListHandler;
-import kr.pe.okjsp.MemoDao;
 
 /**
  * 메인에서 새글이 올라올시 실시간으로 내용을 보여준다
@@ -34,7 +33,7 @@ public class MainListServlet extends HttpServlet {
 	out.write("\n");
 	out.write("\n");
 	try {
-		out.write("data: " + hand.getAllRecentMaxSeq(20));
+		out.write("data: " + hand.getAllRecentMaxSeq());
 	} catch (NumberFormatException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
