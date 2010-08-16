@@ -50,10 +50,6 @@ String cPath = request.getContextPath();
 	          <p><a href="#">책갈피</a></p>
 	        </fieldset>
 	      </c:if>
-			
-			
-			
-			
     	</div>
 	</div><!-- .box -->
 
@@ -76,7 +72,7 @@ String cPath = request.getContextPath();
 				<a href="<%=cPath %>/main/f.jsp?http://bit.ly/au0bGN" title="아이폰앱 산수의신" target="godofmath">
 					아이폰앱 산수의신
 				</a><br/>
-				<a href="/f.jsp?http://bit.ly/cIQ7fA" title="안드로이드 개발환경 구축" target="android">
+				<a href="<%=cPath %>/main/f.jsp?http://bit.ly/cIQ7fA" title="안드로이드 개발환경 구축" target="android">
 					[유료]안드로이드 개발매뉴얼1
 				</a><br/>
 			</div>
@@ -101,8 +97,19 @@ String cPath = request.getContextPath();
 	 				okjsp standalone 호스팅 지원, 서비스 좋습니다."> 
 					<img src="http://www.okjsp.pe.kr/images/bnr_80port.gif" width="88" height="31" border="0"></a> 
 				<br /> 
-				<a href="/f.jsp?http://www.cubrid.com/" target="_blank" title="okjsp Database"> 
+				<a href="<%=cPath %>/main/f.jsp?http://www.cubrid.com/" target="_blank" title="okjsp Database"> 
 					<img src="http://www.okjsp.pe.kr/images/banner/cubrid_88x31.gif" width="88" height="31" border="0"></a> 
+			</div>
+	</div><!-- .box -->
+	
+	<div class="box">
+			<h3> </h3>
+			<div class="inner" id="imaso_div">
+				<script type="text/javascript"><!--
+				imaso_ad_client = "pub-31415924";
+				//-->
+				</script> 
+				<script type="text/javascript" src="http://widget.imaso.co.kr/pagead/show_ads.js"></script>  
 			</div>
 	</div><!-- .box -->
 	

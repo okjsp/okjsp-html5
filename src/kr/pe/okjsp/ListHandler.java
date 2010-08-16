@@ -35,7 +35,7 @@ public class ListHandler {
 	
 	public static final String ARTICLE_LIST_MAX_SEQ =
 		"select max(seq) from (" +ARTICLE_LIST_ALL_RECENT+ ") aa "
-		+ "where bbsid in(select bbsid from okboard_info where cseq <>2 /*and bbsid<>'twitter'*/ and bbsid is not null)";
+		+ "where bbsid in(select bbsid from okboard_info where cseq <>2 and bbsid<>'twitter' and cseq is not null)";
 	
 	public static final String ARTICLE_LIST_REF =
 		"SELECT bbsid, seq, \"ref\", lev, subject, id, writer, hit, wtime, memo, content FROM okboard WHERE bbsid=? AND \"ref\"=? ORDER BY \"ref\" DESC, step";

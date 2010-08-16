@@ -51,7 +51,7 @@ int maxseq = 0;
 		        	while(iter.hasNext()) {
 		        		rec = ((String)iter.next()).split("\\|");
 		        		%>
-		        		<h2><a href="<%=cPath%>/bbs?act=LIST&bbs=<%= rec[0] %>"><%= rec[0] %>[<%= rec[1] %>]</a></h2>
+		        		<h2><a href="<%=cPath%>/bbs?act=LIST&bbs=<%= rec[0] %>"><%= rec[1] %></a></h2>
 		        		<blockquote>
 			          		<table>
 			        		<%
@@ -93,7 +93,6 @@ int maxseq = 0;
 		        	}
 		          	%>
 				</article>
-				<br><br>
 				<article>
 					<h2><a href="#" rel="bookmark">전체게시판</a></h2>
 					<blockquote>
@@ -129,12 +128,12 @@ int maxseq = 0;
 						%>
 			                <tr align="center">
 						        <td>
-						        	<div class="ellipsis" style="width: 50px;">
+						        	<div class="ellipsis" style="width: 70px;">
 						        		<a href="<%=cPath%>/bbs?act=LIST&bbs=<%= one.getBbs() %>">
 						        			<%= bbsInfo.getName() %></a></div>
 						        </td>
 						        <td>
-						        	<div class="ellipsis" style="width: 170px;">
+						        	<div class="ellipsis" style="width: 180px;">
 							            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank">
 							            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
 							            </a>
@@ -143,7 +142,7 @@ int maxseq = 0;
 						        <td>
 						        	<span>[<%= one.getMemo() %>]</span>
 						        </td>
-						        <td><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
+						        <td><div class="ellipsis" style="width: 50px;"><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
 						        <td><div><%
 						    if (one.getId() != null) {
 						        %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"

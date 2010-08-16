@@ -24,13 +24,13 @@ if (iterList.hasNext() ) {
     }
 %>	
 		<td align="center" ><b>
-        	<div class="ellipsis" style="width: 50px;">
+        	<div class="ellipsis" style="width: 70px;">
         		<a href="<%=cPath%>/bbs?act=LIST&bbs=<%= one.getBbs() %>">
         			<%= bbsInfo.getName() %>
         		</a></div></b>
         </td>
         <td align="center"><b>
-        	<div class="ellipsis" style="width: 170px;">
+        	<div class="ellipsis" style="width: 180px;">
 	            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank">
 	            <%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
 	            </a>
@@ -39,7 +39,7 @@ if (iterList.hasNext() ) {
         <td align="center"><b>
    		<span>[<%= one.getMemo() %>]</span></b>
         </td>
-        <td align="center"><b><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></b></td>
+        <td align="center"><b><div class="ellipsis" style="width: 50px;"><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></b></td>
         <td align="center"><b><div><%
     if (one.getId() != null) {
         %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"

@@ -29,11 +29,13 @@ public class MainListServlet extends HttpServlet {
 
 	ListHandler hand = new ListHandler();
 	
-	out.write("retry: 3000");
+	out.write("retry: 10000");
 	out.write("\n");
 	out.write("\n");
 	try {
-		out.write("data: " + hand.getAllRecentMaxSeq());
+		int tmp = hand.getAllRecentMaxSeq();
+		out.write("data: " + tmp);
+		//System.out.println("dbMaxSeq===="+tmp);
 	} catch (NumberFormatException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

@@ -20,6 +20,7 @@ body {
 a {
 	color: #333;
 	outline: none;
+	text-decoration: none;
 }
 
 a:hover {
@@ -337,7 +338,7 @@ footer {
 	/* 좌측 메뉴 관련 */
 aside li.dtcss {
 	color: #696969;
-	padding: 4px 6px 5px 5px;
+	padding: 2px 6px 2px 5px;
 }
 
 /* 좌측 메뉴 관련 */
