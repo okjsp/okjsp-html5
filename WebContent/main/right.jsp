@@ -123,9 +123,9 @@ String cPath = request.getContextPath();
 			</div>
 	</div><!-- .box -->
 	
-	<div class="box" align="center">
+	<div class="box">
 			<h3>Maso Widget</h3>
-			<div class="inner" id="imaso_div">
+			<div class="inner" id="imaso_div" align="center">
 				<script type="text/javascript">
 				<!--
 				imaso_ad_client = "pub-31415924";

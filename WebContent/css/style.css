@@ -90,7 +90,7 @@ img.framed {
 /* Header
 -----------------------------------------------------------------------------*/
 header {
-	height: 150px;
+	height: 130px;
 	position: relative;
 	background: url(/html5/images/roundedheader.png);
 	margin-top: 10px;
@@ -111,7 +111,7 @@ header {
 
 #sitename a {
 	position: absolute;
-	top: 30px;
+	top: 15px;
 	left: 10px;
 	font: 40px/ 1 Georgia, "Times New Roman", Times;
 	color: #009296;
@@ -126,7 +126,7 @@ header {
 
 #description {
 	position: absolute;
-	top: 80px;
+	top: 65px;
 	left: 15px;
 	width: 600px;
 	font-size: 16px;
@@ -137,7 +137,7 @@ header {
 
 header nav {
 	position: absolute;
-	top: 124px;
+	top: 104px;
 	width: 70%;
 	left: 25px;
 	height: 26px;
@@ -522,7 +522,7 @@ input.button_two:hover {
 
 header .search {
 	position: absolute;
-	top: 115px;
+	top: 95px;
 	width: 250px;
 	left: 710px;
 	height: 30px;

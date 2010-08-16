@@ -35,7 +35,7 @@ public class MainListServlet extends HttpServlet {
 	try {
 		int tmp = hand.getAllRecentMaxSeq();
 		out.write("data: " + tmp);
-		//System.out.println("dbMaxSeq===="+tmp);
+		System.out.println("dbMaxSeq===="+tmp);
 	} catch (NumberFormatException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
