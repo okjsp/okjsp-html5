@@ -16,6 +16,8 @@
 		response.sendRedirect(Navigation.getPath("LOGFORM"));
 		return;
 	}
+	
+	String maskname = CommonUtil.getMaskname();
 %>
 <html>
 <head>
@@ -29,11 +31,11 @@
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	
 	<link rel="stylesheet" href="/html5/css/okjsp2007.css.jsp" type="text/css">
+	
 	<!-- 기존 nas.css form_div의 dt dd등의 css스타일 선언 때문에 사용함 by raniel  -->
 	<link rel="stylesheet" href="bbs.css" type="text/css">
-	
+	<link href="fileuploader.css" rel="stylesheet" type="text/css"><%-- File Upload 에서만 사용 --%>
 	<link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
-	
 	<script type="text/javascript" src="/html5/js/okjsp.js"></script>
 		
 	<title>
@@ -173,64 +175,46 @@
 				</dt>
 				<dd>
 					<textarea name="content" id="content" style="width: 600px;" rows="6" class="write"></textarea>
+				</dd>
+				<dt>
+		<%-- ###################  File Upload 시작  ################# --%>
+		<div id="file-uploader-demo1" style="float:left; padding:50px; background:#FFDDDD;">
+			<noscript>			
+				<p>Please enable JavaScript to use file uploader.</p>
+				<!-- or put a simple form for upload here -->
+			</noscript>         
+		</div>
+	    <script src="fileuploader.js" type="text/javascript"></script>
+	    <script>
+			var totalFileCount = 0;
+
+	        function createUploader(){            
+	            var uploader = new qq.FileUploader({
+	                element: document.getElementById('file-uploader-demo1'),
+	                action: '/html5/AJAXUploadServlet',
+	                //allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+	                //params: { param1: 'param1' , param2: 'param2' }
+	            });           
+	        }
+
+	        function getMaskname() {
+		        totalFileCount++;
+		        return '<%=maskname%>'+totalFileCount;
+	        }
+	        
+	        // in your app create uploader as soon as the DOM is ready
+	        // don't wait for the window to load  
+	        window.onload = createUploader;     
+	    </script>  
+    	<%-- ###################  File Upload 끝  ################# --%>
+				</dt>
+				<dd>
 					<input id="submitButton" type="submit" value="Submit"/>
 				</dd>
 				</dl>
-				파일업로드 : 
-				<input type="file" name="filename0" id='filename0' multiple><br>
-				<div id='fileList'></div>
-				<p id="drop_area" style="border: 2px dashed #ddd;padding: 10px;margin-bottom: 2em;"> 
-					drag and drop files here
-				</p>  
 				</form>
 			</div>
-			<!-- ul id="file_list"> 
-				<li class="no_items">선택된 파일이 없습니다.</li> 
-			</ul-->
-			<script type="text/javascript">
-				// view-source:http://robertnyman.com/html5/fileapi/fileapi.html 
-				(function () {
-					var filesUpload = document.getElementById("filename0"),
-						dropArea = document.getElementById("drop_area"),
-						fileList = document.getElementById("file_list");
-					
-					function traverseFiles (files) {
-						var li,
-							file,
-							fileInfo;
-						fileList.innerHTML = "";
-							
-						for (var i=0, il=files.length; i<il; i++) {
-							li = document.createElement("li");
-							file = files[i];
-							fileInfo = "<div><strong>Name:</strong> " + file.name + "</div>";
-							fileInfo += "<div><strong>Size:</strong> " + file.size + " bytes</div>";
-							fileInfo += "<div><strong>Type:</strong> " + file.type + "</div>";
-							li.innerHTML = fileInfo;
-							fileList.appendChild(li);
-						};
-					};
-					
-					filesUpload.onchange = function () {
-						traverseFiles(this.files);
-					};
-					
-					dropArea.ondragenter = function () {
-						return false;
-					};
-					
-					dropArea.ondragover = function () {
-						return false;
-					};
-					
-					dropArea.ondrop = function (evt) {
-						traverseFiles(evt.dataTransfer.files);
-						return false;
-					};
-					
-				})();
-			</script>
-			<!-- 메인 컨텐츠_끝========================================== -->
+			
 		</div>			
     
     				</article>
