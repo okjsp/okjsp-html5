@@ -2,6 +2,8 @@ package kr.pe.okjsp.util;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -193,7 +195,7 @@ public class CommonUtil {
     	cookie.setMaxAge(60 * iMinute);
     	cookie.setPath("/");
 //    	cookie.setDomain("127.0.0.1");
-//    	cookie.setDomain("okjsp.pe.kr");
+//    	cookie.setDomain("okjsp.pe.kr");	// TODO 운영반영시 수정 필요
     	response.addCookie(cookie);
     }
 
@@ -303,4 +305,14 @@ public class CommonUtil {
 		return seq;
 	}
 
+	
+	public static String getMaskname() {
+		SimpleDateFormat formatter = new SimpleDateFormat(
+				"yyyyMMdd_HHmmss_SSS_", Locale.KOREA);
+		Date currentTime = new Date();
+		String dTime = formatter.format(currentTime);
+		
+		return dTime;
+	}
+	
 }
