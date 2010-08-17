@@ -116,8 +116,8 @@ public class WriteServlet extends HttpServlet {
 			//id 
 		    boolean isLogin = sid > 0 && !"".equals(writer);
 		    if (!isLogin) {
-		        //res.sendRedirect(Navigation.getPath("LOGFORM"));
-		        //return null;
+		        res.sendRedirect(Navigation.getPath("LOGFORM"));
+		        return null;
 		    }
 // Multipart 가 들어가면 무조건 8859_1로 변함 ㅡ.ㅡ
 			article =
@@ -217,8 +217,7 @@ public class WriteServlet extends HttpServlet {
 			//new TwitterUpdate().doUpdate(article, req);
 		}
 		
-		return "twitter";
-		//return article.getBbs();
+		return article.getBbs();
 	}
 
 	public boolean hasNothing(Article article) {
