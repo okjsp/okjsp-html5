@@ -44,7 +44,7 @@
 				%>
 			<%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a>
           <p><%=  one.getContentView()  %></p>
-          <p>| Posted by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a> | Categories: <a href="#"> <%= one.getBbs() %></a> | Comments: <a href="#"><%= one.getRead() %></a> | CCL: <%= one.getCcl_id() %> </p>          
+          <p>| Posted by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a> | Categories: <a href="#"> <%= one.getBbs() %></a> | Read: <a href="#"><%= one.getRead() %></a> | CCL: <%= one.getCcl_id() %> </p>          
 	<ul><%
 	  ArrayList fileList = (ArrayList) request.getAttribute("arrdf");
 	  if (fileList != null) {
@@ -58,7 +58,7 @@
 	%>
 	</ul>
 	</article> 
-	    <input type="button" class="button" value="답변" onClick="goReply()"/>
+	    <!--<input type="button" class="button" value="답변" onClick="goReply()"/> -->
     	<input type="button" class="button" value="수정" onClick="show_passwd_layer('goModify')"/>
      	<input type="button" class="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
      	<input type="button" class="button" value="책갈피" onClick="goBookmark()"/>

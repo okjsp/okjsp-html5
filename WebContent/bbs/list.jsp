@@ -31,22 +31,37 @@
 	    var myAjax = new Ajax.Request(
 	        "/html5/bbs/list_result.jsp",
 	        {method: 'get', parameters: "act=LIST&bbs="+bbs+"&keyfield=content&keyword&pg="+pg ,
-		    onComplete: ajax_response}
+		    onComplete: list_response}
 	    );
 	}
 			
-	function ajax_response(originalRequest) {
+	function list_response(originalRequest) {
 		var list = $('list');
-		//var addlist = document.createElement('section');
-		//addlist.innerHTML = originalRequest.responseText;
-		//list.appendChild(addlist);
-		list.innerHTML = originalRequest.responseText;
+		var addlist = document.createElement('section');
+		addlist.innerHTML = originalRequest.responseText;
+		list.appendChild(addlist);
+		//list.innerHTML = originalRequest.responseText; 
 	}		
 
 	function writeArticle() {
 	    document.nav.act.value = "ADD";
 	    document.nav.submit();
 	}
+
+	function getMemo(bbs) {
+
+	    var myAjax = new Ajax.Request(
+			        "/html5/bbs/viewMemo.jsp",
+			        {method: 'get', parameters: "seq="+bbs ,
+				    onComplete: memo_response }
+			    );
+
+	}
+
+	function memo_response(originalRequest) {
+
+		alert ( originalRequest.responseText ) ; 
+	}		
 
 	window.onload=getList('<%=bbsids%>', 0);
 	
@@ -75,7 +90,7 @@
 	Map map = (Map)application.getAttribute("bbsInfoMap");
 	BbsInfoBean bib = (BbsInfoBean)(map.get(bbsids));
 %>      	
-			        <h1> <%= bib.getName() %> [<%=list.getCnt() %>]</h1> 
+			        <h1><%= bib.getName() %> [<%=list.getCnt() %>]</h1> 
 			        <br/>
 			        <h3><%= bib.getHeader() %></h3>
 			        <input type="button" class="button" value="±Û¾²±â" onClick="writeArticle()"/>
