@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="kr.pe.okjsp.util.CommonUtil, kr.pe.okjsp.Navigation"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 //ContextPath
 String cPath = request.getContextPath();
@@ -7,6 +9,33 @@ String cPath = request.getContextPath();
 %> 
 
 <aside id="left"><!-- start left sidebar -->
+    <div class="box">
+        <h3>Login</h3>
+        <div class="inner">
+          <c:if test="${empty member}">
+            <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
+              <p><input type="hidden" name="returnPath" value="http://localhost:8080/html5" /></p>
+              <p><label for="username_2" class="top">ID:</label><br />
+                <input type="text" name="id" id="username_2" tabindex="1" class="field" required placeholder="input ID"></p>
+              <p><label for="password_2" class="top">Password:</label><br />
+                <input type="password" name="password" id="password_2" tabindex="2" class="field" required></p>
+              <p><input type="submit" class="button" value="LOGIN"  /></p>
+              <p>
+              <a href="<%= cPath %>/member/agreement.jsp" id="forgotpsswd_2"><input type="button" id="forgotpsswd_2" class="button" value="회원가입" /></a>
+              </p>
+            </form>
+          </c:if>
+          <c:if test="${!empty member}">
+            <fieldset class="member">
+              <p align="center"><a href="#">${member.id}[로그인중]</a></p>
+              <p align="center"><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/info.jsp">${member.id} /info</a></p>
+              <a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/logout.jsp"><input type="button" class="button" value="LOGOUT"  /></a>
+              <input type="button" class="button" value="책갈피"  />
+            </fieldset>
+          </c:if>
+        </div>
+    </div><!-- .box -->
+
 	<div class="box">
 		<h3>BBS LIST</h3>
 		<div class="inner">
