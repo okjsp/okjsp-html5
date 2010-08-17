@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>
 <jsp:useBean id="member" class="kr.pe.okjsp.member.Member" scope="session"/>
 <jsp:useBean id="article" class="kr.pe.okjsp.Article" scope="request"/>
 <%@page import="kr.pe.okjsp.util.CommonUtil"%>
@@ -112,35 +113,37 @@
  				
 				<dl>
 				<dt>
-					<label for="bbs">bbs:</label>
+					<label for="bbs">게시판:</label>
 				</dt>
 				<dd>
+					<%
+						Map map = (Map)application.getAttribute("bbsInfoMap");
+						BbsInfoBean bib = (BbsInfoBean)(map.get(bbsids));
+					%> 
 					<select id="bbs" name="bbs" size="1">
-					<option value='twitter'>twitter</option>
+					<option value='<%=CommonUtil.nchk(request.getParameter("bbs")) %>' disabled><%= bib.getName() %></option>
 					</select>
 					<script type="text/javascript">
-						document.getElementById('bbs').value = 'twitter';
+						document.getElementById('bbs').value = '<%=CommonUtil.nchk(request.getParameter("bbs")) %>';
 					</script>
 				</dd>
 				<dt>
-					<label for="writer">Writer:</label>
+					<label for="writer">닉네임:</label>
 				</dt>
 				<dd>
-					<input name="writer" id="writer" class="write" value="<%= article.getWriter() %>">
+					<input name="writer" id="writer" class="write" placeholder="Nick Name" value="<%= article.getWriter() %>" required autofocus> ; 실명쓰지마세요!
 				</dd>
 				<dt>
-					<label for="homepage">homepage:</label>
+					<label for="homepage">Homepage:</label>
 				</dt>
 				<dd>
-					<input name="homepage" id="homepage" class="write" 
-					       value="<%=article.getHomepage()%>">
+					<input name="homepage" id="homepage" class="write" value="<%=article.getHomepage()%>" type='url' placeholder="http://your Homepage">
 				</dd>
 				<dt>
-					<label for="password">password:</label>
+					<label for="password">비밀번호:</label>
 				</dt>
 				<dd>
-					<input name="password" id="password" type="password" class="write" 
-					       value="<%= CommonUtil.nchk(request.getParameter("password")) %>">
+					<input name="password" id="password" type="password" class="write" value="<%= CommonUtil.nchk(request.getParameter("password")) %>" required>
 				</dd>
 				<dt>
 					<label for="ccl_id">CCL:</label>
@@ -157,14 +160,17 @@
 				</select>
 				</dd>
 				<dt>
-					<label for="subject">Subject:</label>
+					<label for="subject">제목:</label>
 				</dt>
 				<dd>
-					<input name="subject" id="subject" class="write" value="<%=article.getSubject() %>">
+					<input name="subject" id="subject" class="write" value="<%=article.getSubject() %>" required>
 				</dd>
 				<dd>
 					<input type="hidden" name="msgbackup" id="msgbackup">
 				</dd>
+				<dt>
+					<label for="content">내용:</label>				
+				</dt>
 				<dd>
 					<textarea name="content" id="content" style="width: 600px;" rows="6" class="write"></textarea>
 					<input id="submitButton" type="submit" value="Submit"/>
