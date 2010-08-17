@@ -192,7 +192,7 @@ $(document).ready(function() {
                         });
                     });
                 $(':hidden[name=file]').remove();
-                $('<input type="hidden" name="file" value="' + responseJSON['path'] + '">')
+                $('<input type="text" name="file" value="' + responseJSON['path'] + '">')
                     .appendTo('#joinform');
             };
             xhr.setRequestHeader('Content-Type', 'multipart/form-data');
@@ -221,6 +221,10 @@ $(document).ready(function() {
                                     <input type="email" name="email" id="contact_email" value="${member.email}" class="field" autofocus required /></p>
                                 <p><label for="contact_id" class="left">ID:</label>
                                     <input type="text" name="id" id="contact_id" value="${member.id}" class="field" required readonly /></p>
+                                <p><label for="contact_password" class="left">Password:</label>
+                                    <input type="password" name="password" id="contact_password" class="field" required /></p>
+                                <p><label for="contact_password1" class="left">Confirm:</label>
+                                    <input type="password" name="password1" id="contact_password1" class="field" required /></p>
                                 <p><label for="contact_name" class="left">Name:</label>
                                     <input type="text" name="name" id="contact_name" value="${member.name}" class="field" required /></p>
                                 <p><label for="contact_url" class="left">Website:</label>

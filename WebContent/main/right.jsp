@@ -59,14 +59,14 @@ String cPath = request.getContextPath();
 	            <input type="password" name="password" id="password_2" tabindex="2" class="field" required></p>
 	          <p><input type="submit" class="button" value="LOGIN"  /></p>
 	          <p>
-	          <a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_2"><input type="button" id="forgotpsswd_2" class="button" value="회원가입" /></a>
+	          <a href="<%= cPath %>/member/agreement.jsp" id="forgotpsswd_2"><input type="button" id="forgotpsswd_2" class="button" value="회원가입" /></a>
 	          </p>
 	        </form>
 	      </c:if>
 	      <c:if test="${!empty member}">
 	        <fieldset class="member">
 	          <p align="center"><a href="#">${member.id}[로그인중]</a></p>
-	          <p align="center"><a href="#">${member.id} /info</a></p>
+	          <p align="center"><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/info.jsp">${member.id} /info</a></p>
 	          <input type="button" class="button" value="LOGOUT"  />
 	          <input type="button" class="button" value="책갈피"  />
 	        </fieldset>

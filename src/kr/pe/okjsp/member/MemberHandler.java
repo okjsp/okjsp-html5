@@ -130,7 +130,7 @@ public class MemberHandler {
 	 */
 	public String changeInfo(Member member, String pact, String contextRoot) throws SQLException {
 		if("modify".equals(pact)) {
-			switch (updateMember(member)) {
+			switch (updateMember(member, contextRoot)) {
 				case 1:
 				   return "수정했습니다.";
 				default:
@@ -186,13 +186,23 @@ public class MemberHandler {
 	 * @return int 처리코드
 	 * @throws SQLException
 	 */
-	private int updateMember(Member member) throws SQLException {
+	private int updateMember(Member member, String contextRoot) throws SQLException {
 		Connection pconn = dbCon.getConnection();
 		PreparedStatement pstmt = null;
 
 		int result_cnt = 0;
 
 		try{
+			if (member.getFile() != null) {
+				new Thumbnailer(contextRoot + "/profile/temp" + member.getFile().substring(member.getFile().lastIndexOf("/")),
+						contextRoot + "/profile/"+ member.getId() + ".jpg", 
+		                77, 77)
+		        	.createThumbnail();
+				member.setProfile("Y");
+			} else {
+				new ProfileUtil().copyDefaultProfile(contextRoot, member.getId());
+			}
+
 			pstmt = pconn.prepareStatement(QUERY_UPDATE);
 			pstmt.setString(1,member.getPassword());
 			pstmt.setString(2,member.getName());

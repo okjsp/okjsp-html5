@@ -19,6 +19,6 @@
 <a href="login.jsp" target="_self">login</a>
 <% } %>
 <br>
-<a href="<%= cPath %>" target="_top">Home</a>
+<a href="http://www.okjsp.pe.kr/html5" target="_top">Home</a>
 <!-- jsp:include page="/googleAnalytics.jsp" / -->
 </body>
