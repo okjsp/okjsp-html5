@@ -51,7 +51,7 @@
 	    Iterator file = fileList.iterator();
 	    while (file.hasNext()) {
 	      DownFile df = (DownFile)file.next();
-	%><li><a href="/bbs?act=DOWN&maskname=<%= df.getMaskName() %>&fileName=<%= df.getFileName() %>"><%= df.getFileName() %>
+	%><li><a href="/html5/bbs?act=DOWN&maskname=<%= df.getMaskName() %>&fileName=<%= df.getFileName() %>"><%= df.getFileName() %>
 	 <%= df.getFileSize() %> Bytes (<%=df.getDownload()%>)</a></li><%
 	    } // end while
 	  }
