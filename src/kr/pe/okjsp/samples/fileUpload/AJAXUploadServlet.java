@@ -19,19 +19,19 @@ public class AJAXUploadServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	String fileName = request.getParameter("qqfile");
-	InputStream is = request.getInputStream();
-	OutputStream os = new FileOutputStream(new File(fileName));
-	int read = 0;
-	byte[] bytes = new byte[1024];
-	while ((read = is.read(bytes)) != -1) {
-	    os.write(bytes, 0, read);
-	}
-	is.close();
-	os.flush();
-	os.close();
-	PrintWriter out = response.getWriter();
-	out.println("{success:true}");
-	out.close();
+		String fileName = request.getParameter("qqfile");
+		InputStream is = request.getInputStream();
+		OutputStream os = new FileOutputStream(new File(fileName));
+		int read = 0;
+		byte[] bytes = new byte[1024];
+		while ((read = is.read(bytes)) != -1) {
+		    os.write(bytes, 0, read);
+		}
+		is.close();
+		os.flush();
+		os.close();
+		PrintWriter out = response.getWriter();
+		out.println("{success:true}");
+		out.close();
     }
 }
