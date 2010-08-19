@@ -35,6 +35,9 @@ public class ArticleDao {
 	public static final String QUERY_ADD_FILE =
 		"insert into okboard_file (fseq, seq, filename, maskname, filesize, download) values (?,?,?,?,?,0)";
 	
+	public static final String QUERY_UPDATE_MASKNAME =
+		"update okboard_file set seq = ? where maskname = ? ";
+	
 	public static final String QUERY_DEL_FSEQ_FILE =
 		"update okboard_file set sts=0 where fseq=?";
 	
@@ -320,6 +323,7 @@ public class ArticleDao {
 		);
 	}
 
+
 	/**
 	 * <pre>
 	 * 파일 추가
@@ -330,30 +334,20 @@ public class ArticleDao {
 	 * @param arrdf
 	 * @throws SQLException
 	 */
-	public void addFile(Connection conn, int seq, ArrayList<DownFile> arrdf)
+	public void updateOKBOARD_FILE(Connection conn, int seq, String masknamePrefix, int fileCount)
 			throws SQLException {
-		// file 일련번호
-		int fseq = fetchNew(conn, QUERY_NEW_FILE_SEQ);
-
-		// file 입력
+		
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement(QUERY_ADD_FILE);
-			DownFile df;
-			for (int i = 0; i < arrdf.size(); i++) {
-				df = arrdf.get(i);
-				if (df.getFileSize() > 0) {
-					pstmt.clearParameters();
+			pstmt = conn.prepareStatement(QUERY_UPDATE_MASKNAME);
 
-					pstmt.setInt(1, fseq);
-					pstmt.setInt(2, seq);
-					pstmt.setString(3, df.getFileName());
-					pstmt.setString(4, df.getMaskName());
-					pstmt.setLong(5, df.getFileSize());
-
-					pstmt.executeUpdate();
-					fseq++;
-				}
+			for( int i = 1; i <= fileCount; i++ )
+			{
+				//pstmt.clearParameters();
+				pstmt.setInt(1, seq);
+				pstmt.setString(2, masknamePrefix + i);
+				
+				pstmt.executeUpdate();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

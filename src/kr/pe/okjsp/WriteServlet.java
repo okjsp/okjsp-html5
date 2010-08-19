@@ -93,10 +93,9 @@ public class WriteServlet extends HttpServlet {
 			new MultipartRequest(
 				req,
 				uploadDir,
-				200 * 1024 * 1024,
+				200 * 1024 * 1024, // 200MB
 				encoding);
-		// 200MB
-		ArrayList<DownFile> arrdf = new ArrayList<DownFile>();
+		
 		Article article = null;
 		String id = CommonUtil.getCookie(req, "okid");
 		long sid = CommonUtil.getCookieLong(req, "sid");
@@ -141,14 +140,7 @@ public class WriteServlet extends HttpServlet {
 					ip, ccl_id);
 
 			int cnt = 0;
-			Enumeration<String> files = multi.getFileNames();
-			while (files.hasMoreElements()) {
-				String name = files.nextElement();
-				File f = multi.getFile(name);
-				if (f != null) {
-					arrdf.add(new DownFile(f, cnt++));
-				}
-			}
+			
 		} catch (Exception e) {
 			System.out.println("WriteServlet:" + CommonUtil.a2k(e.toString()));
 		}
@@ -198,7 +190,10 @@ public class WriteServlet extends HttpServlet {
 				articleDao.write(conn, article);
 			}
 
-			articleDao.addFile(conn, article.getSeq(), arrdf);
+			int fileCount = Integer.parseInt(multi.getParameter("fileCount"));
+			if( fileCount > 0 )	// 첨부파일이 있는 경우
+				articleDao.updateOKBOARD_FILE(conn, article.getSeq(), multi.getParameter("masknamePrefix"), fileCount); // okboard_file 테이블의 seq값을 Update 한다.
+			
 			conn.commit();
 		} catch (Exception e) {
 			System.out.println("WriteServlet err:" + CommonUtil.a2k(e.toString()));

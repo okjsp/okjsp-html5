@@ -41,6 +41,10 @@
 		<servlet-name>mainlist</servlet-name>
 		<servlet-class>kr.pe.okjsp.main.MainListServlet</servlet-class>
 	</servlet>
+	<servlet><!-- fileUpload -->
+		<servlet-name>AJAXUploadServlet</servlet-name>
+		<servlet-class>kr.pe.okjsp.AJAXUploadServlet</servlet-class>
+	</servlet>
 
 	<servlet>
 		<servlet-name>download</servlet-name>
@@ -116,6 +120,10 @@
 	<servlet-mapping><!-- Samples / fileUpload -->
 		<servlet-name>samples.fileUpload.AJAXUploadServlet</servlet-name>
 		<url-pattern>/samples.fileUpload.AJAXUploadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping><!-- fileUpload -->
+		<servlet-name>AJAXUploadServlet</servlet-name>
+		<url-pattern>/AJAXUploadServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>download</servlet-name>

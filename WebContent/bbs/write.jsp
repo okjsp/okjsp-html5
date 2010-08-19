@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>
+<%@ page import="kr.pe.okjsp.util.CommonUtil"%>
+<%@ page import="kr.pe.okjsp.Navigation"%>
 <jsp:useBean id="member" class="kr.pe.okjsp.member.Member" scope="session"/>
 <jsp:useBean id="article" class="kr.pe.okjsp.Article" scope="request"/>
-<%@page import="kr.pe.okjsp.util.CommonUtil"%>
-<%@page import="kr.pe.okjsp.Navigation"%>
 <%
 	String cPath  = request.getContextPath();
 	String bbsids = request.getParameter("bbs");
@@ -17,25 +17,23 @@
 		return;
 	}
 	
-	String maskname = CommonUtil.getMaskname();
+	String masknamePrefix = CommonUtil.getMaskname();
 %>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<link rel="stylesheet" href="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.css" type="text/css"> 
-	<script type="text/javascript" src="/html5/js/jquery/jquery-1.3.2.min.js"></script>
-	<script type="text/javascript" src="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.js"></script>
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<link rel="stylesheet" href="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.css" type="text/css" />
+	<link rel="stylesheet" href="/html5/bbs/fileuploader.css" type="text/css" /><%-- File Upload 에서만 사용 --%>
 	<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 	<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
-	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	
-	<link rel="stylesheet" href="/html5/css/okjsp2007.css.jsp" type="text/css">
-	
+	<link rel="stylesheet" href="/html5/css/okjsp2007.css.jsp" type="text/css"/>
 	<!-- 기존 nas.css form_div의 dt dd등의 css스타일 선언 때문에 사용함 by raniel  -->
 	<link rel="stylesheet" href="bbs.css" type="text/css">
-	<link href="fileuploader.css" rel="stylesheet" type="text/css"><%-- File Upload 에서만 사용 --%>
 	<link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
+	<script type="text/javascript" src="/html5/js/jquery/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.js"></script>
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script type="text/javascript" src="/html5/js/okjsp.js"></script>
 		
 	<title>
@@ -103,7 +101,7 @@
 	     
 			<!-- 메인 컨텐츠_시작======================================= -->
 			<div id="form_div" style="float:left; padding:0px;">		
-				<form action="/html5/write" method="post" class="form_write" ENCTYPE="multipart/form-data">
+				<form name="writeForm" action="/html5/write" method="post" class="form_write" ENCTYPE="multipart/form-data">
 				<input name="html" id="html" value="2" type="hidden" readonly="readonly" class="write">
 				<input type="hidden" name="bbs" value="<%=CommonUtil.nchk(request.getParameter("bbs")) %>">
 				<input type="hidden" name="pg" value="<%=CommonUtil.nchk(request.getParameter("pg")) %>">
@@ -112,6 +110,8 @@
 				<input type="hidden" name="ref" value="<%=article.getRef() %>">
 				<input type="hidden" name="lev" value="<%=article.getLev() %>">
 				<input type="hidden" name="step" value="<%=article.getStep() %>">
+				<input type="hidden" name="masknamePrefix" value="<%= masknamePrefix %>">
+				<input type="hidden" name="fileCount" value="0">
  				
 				<dl>
 				<dt>
@@ -178,13 +178,11 @@
 				</dd>
 				<dt>
 		<%-- ###################  File Upload 시작  ################# --%>
-		<div id="file-uploader-demo1" style="float:left; padding:50px; background:#FFDDDD;">
-			<noscript>			
+		<div id="file-uploader-demo1" style="width: 600px; float:left;" >
 				<p>Please enable JavaScript to use file uploader.</p>
 				<!-- or put a simple form for upload here -->
-			</noscript>         
 		</div>
-	    <script src="fileuploader.js" type="text/javascript"></script>
+	    <script src="/html5/bbs/fileuploader.js" type="text/javascript"></script>
 	    <script>
 			var totalFileCount = 0;
 
@@ -198,8 +196,10 @@
 	        }
 
 	        function getMaskname() {
-		        totalFileCount++;
-		        return '<%=maskname%>'+totalFileCount;
+		        totalFileCount++;	// 1,2,3,... 1씩 증가한다. Maskname 구성할때 Sequence 값으로 사용 된다.
+		        document.writeForm.fileCount.value = totalFileCount;	// 총 첨부 파일 개수
+		        
+		        return '<%=masknamePrefix%>'+totalFileCount;
 	        }
 	        
 	        // in your app create uploader as soon as the DOM is ready
@@ -207,6 +207,7 @@
 	        window.onload = createUploader;     
 	    </script>  
     	<%-- ###################  File Upload 끝  ################# --%>
+    	<br/><br/><br/>
 				</dt>
 				<dd>
 					<input id="submitButton" type="submit" value="Submit"/>
