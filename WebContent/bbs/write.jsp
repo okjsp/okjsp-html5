@@ -17,7 +17,7 @@
 		return;
 	}
 	
-	String masknamePrefix = CommonUtil.getMaskname();
+	String masknamePrefix = CommonUtil.getMaskname();	// 첨부파일의 maskname 구성에 씌인다.
 %>
 <html>
 <head>
@@ -57,32 +57,6 @@
 		ifr.contentWindow.document.body.innerHTML="11";
 		
 		var drop_area = document.getElementById('drop_area');
-		// ondrag
-		/*
-		drop_area.ondragenter = drop_area.ondragover = function (e) {
-			e.preventDefault();
-			e.dataTransfer.dropEffect = 'copy';
-			return false;
-		}
-		
-		drop_area.ondrop = function(e){
-			for (var i = 0; i < e.dataTransfer.files.length; i++) { 
-	 
-					var file = e.dataTransfer.files[i];
-
-					 document.getElementById('filename0').files[0] = file;
-
-			}
-			  var d = document.createElement("div");
-				var file = document.createElement("input");
-				file.setAttribute("type", "file");
-				file.setAttribute("name", "filename"+"1");
-				d.appendChild(file);
-
-				var fileListDiv = document.getElementById('fileList');
-				fileListDiv.appendChild(d);
-		}
-		*/
 	}
 
 	</script>
@@ -190,21 +164,21 @@
 	            var uploader = new qq.FileUploader({
 	                element: document.getElementById('file-uploader-demo1'),
 	                action: '/html5/AJAXUploadServlet',
-	                //allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
-	                //params: { param1: 'param1' , param2: 'param2' }
+	                sizeLimit: 1024 * 1024 * 200	// 200MB 까지 첨부 가능.
+	                								// sizeLimit 이  모든 브라우져에서 가능한 것은 아니다.(Safari5/Chrome5 에서 성공. IE8에서 실패. 나머지 테스트 필요) 
+	                //allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],	// 첨부파일의 확장자 제한
+	                //params: { param1: 'param1' , param2: 'param2' }	// 기타 Parameter 를 Servlet 으로 던져야 할때 사용한다.
 	            });           
 	        }
 
 	        function getMaskname() {
-		        totalFileCount++;	// 1,2,3,... 1씩 증가한다. Maskname 구성할때 Sequence 값으로 사용 된다.
-		        document.writeForm.fileCount.value = totalFileCount;	// 총 첨부 파일 개수
+		        totalFileCount++;	// Maskname 구성할때 Sequence 값으로 사용 된다.
+		        document.writeForm.fileCount.value = totalFileCount;	// 총 첨부 파일 개수 (Servlet 에서 첨부파일 개수 파악에 쓰인다.)
 		        
 		        return '<%=masknamePrefix%>'+totalFileCount;
 	        }
 	        
-	        // in your app create uploader as soon as the DOM is ready
-	        // don't wait for the window to load  
-	        window.onload = createUploader;     
+	        window.onload = createUploader; 
 	    </script>  
     	<%-- ###################  File Upload 끝  ################# --%>
     	<br/><br/><br/>
