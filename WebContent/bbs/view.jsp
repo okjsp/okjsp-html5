@@ -137,9 +137,18 @@
 	        //log("Opera browser detected. " + INIT_MESSAGE);
 	        return 'opera';
 	    } else
-	    if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
-	        //log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
-	        return 'webkit';
+	    if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) // WebKit5 이상인 경우
+		{	
+			if( -1 !== navigator.appVersion.indexOf("Chrome/5") )	// Chrome5 버젼은 Server-Sent Events 지원하지 않아 막아 둡니다. (Chrome6 은 SSE 지원 합니다.)
+			{
+			    var myAjax = new Ajax.Request(
+				        "/html5/bbs/viewMemo.jsp",
+				        {method: 'get', parameters: "seq=<%=one.getSeq()%>&startCount="+currentMemoCount ,
+					    onComplete: ajax_response}
+				    );
+			} else {	// Chrome6 , Safari5
+				return 'webkit';
+			}
 	    } else
 	    if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
 	        //log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
@@ -158,8 +167,8 @@
 	 * Init event source in WebKit fashion
 	 */
 	var webkitEventSource = function() {
-	  var eventSrc = new EventSource('/html5/sse?seq=<%=one.getSeq()%>');
-	  eventSrc.addEventListener('message', onMessageHandler);
+		var eventSrc = new EventSource('/html5/sse?seq=<%=one.getSeq()%>');
+		eventSrc.addEventListener('message', onMessageHandler);
 	}
 	
 	/**
@@ -180,14 +189,6 @@
 			
 		    currentMemoCount = newMemoCount;
 
-/*
-
-			if( currentMemoCount < newMemoCount )
-				alert( currentMemoCount +": DIFF :" + newMemoCount );
-			else
-				alert( currentMemoCount +": ==== :" + newMemoCount );
-*/
-			
 	    document.getElementById("note").innerHTML = event.data + ">>>>>" + <%= memoCount %>
 	};
 
