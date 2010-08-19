@@ -18,6 +18,35 @@ String cPath = request.getContextPath();
 <script type="text/javascript" src="<%=cPath%>/js/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+    $('#contact_email').keyup(function(e) {
+        if ((e.keyCode < 0x60 || e.keyCode > 0x69)
+                && (e.keyCode < 0x30 || e.keyCode > 0x39)
+                && (e.keyCode < 0x41 || e.keyCode > 0x5A)
+                && e.keyCode != 0x08) {
+            return;
+        }
+
+        clearTimeout($(this).data('timer'));
+        $(this).data('timer', setTimeout(function() {
+            $.post('idchecker.jsp', { id: $('#contact_email').val() }, function(data, textStatus) {
+                alert(data);
+                //alert(data.result);
+            }, 'json');
+        }, 1000));
+    });
+
+    $('#contact_id').keyup(function(e) {
+        clearTimeout($(this).data('timer'));
+
+//alert(e.keyCode >= 0x60 && e.keyCode <= 0x69);
+//alert(e.keyCode >= 0x30 && e.keyCode <= 0x39);
+//alert(e.keyCode >= 0x41 && e.keyCode <= 0x5A);
+        return;
+        
+        $(this).data('timer', setTimeout(function() {
+        }, 1000));
+    });
+
     $('#profile-drop').bind({
         dragover: function(e) {
             var dataTransfer = e.originalEvent.dataTransfer;
@@ -86,6 +115,18 @@ $(document).ready(function() {
             e.preventDefault();
         }
     });
+
+    $('#joinform').submit(function(e) {
+        if ($('#emailchecked').val() != 'Y') {
+            alert('중복된 메일 입니다.');
+            return false;
+        }
+        if ($('#idchecked').val() != 'Y') {
+            alert('중복된 아이디 입니다.');
+            return false;
+        }
+        return true;
+    });
 });
 </script>
 </head>
@@ -102,11 +143,11 @@ $(document).ready(function() {
                                 <p><label for="contact_email" class="left">Email:</label>
                                      <input type="email" name="email" id="contact_email" class="field" autofocus required /></p>
                                 <p><label for="contact_id" class="left">ID:</label>
-                                     <input type="text" name="id" id="contact_id" class="field" required /></p>
+                                     <input type="text" name="id" id="contact_id" pattern="[a-z0-9]{6,20}" class="field" required /></p>
                                 <p><label for="contact_name" class="left">Name:</label>
-                                     <input type="text" name="name" id="contact_name" class="field" required /></p>
+                                     <input type="text" name="name" id="contact_name" pattern="[\uac00-\ud79f]{2,4}" class="field" required /></p>
                                 <p><label for="contact_url" class="left">Website:</label>
-                                     <input type="text" name="homepage" id="contact_url" class="field" /></p>
+                                     <input type="url" name="homepage" id="contact_url" placeholder="ex) http://www.okjsp.pe.kr" class="field" /></p>
                                 <p><label for="contact_url" class="left">Mailling:</label>
                                      <span class="item first"><input type="radio" name="mailing" id="contact_mailling_y" value="Y" /><label class="" for="contact_mailling_y">허용</label></span>
                                      <span class="item"><input type="radio" name="mailing" id="contact_mailling_n" value="N" checked /><label class="" for="contact_mailling_n">거부</label></span>
