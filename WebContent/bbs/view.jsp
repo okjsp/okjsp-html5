@@ -141,7 +141,7 @@
 		{	
 			if( -1 !== navigator.appVersion.indexOf("Chrome/5") )	// Chrome5 버젼은 Server-Sent Events 지원하지 않아 막아 둡니다. (Chrome6 은 SSE 지원 합니다.)
 			{
-			    var myAjax = new Ajax.Request(
+			    var myAjax = new Ajax.Request(	// 댓글 가져오는 로직
 				        "/html5/bbs/viewMemo.jsp",
 				        {method: 'get', parameters: "seq=<%=one.getSeq()%>&startCount="+currentMemoCount ,
 					    onComplete: ajax_response}
@@ -157,7 +157,12 @@
 	    if (undefined !== window['EventSource']) {
 	        //log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
 	        return 'webkit';
-	    }  else {
+	    }  else {	// IE 인 경우.
+		    var myAjax = new Ajax.Request(	// 댓글 가져오는 로직
+			        "/html5/bbs/viewMemo.jsp",
+			        {method: 'get', parameters: "seq=<%=one.getSeq()%>&startCount="+currentMemoCount ,
+				    onComplete: ajax_response}
+			    );
 	        //log(FAIL_MESSAGE);
 	        return false;
 	    }
