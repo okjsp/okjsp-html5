@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="kr.pe.okjsp.util.CommonUtil, kr.pe.okjsp.Navigation"%>
 <%
 //ContextPath
@@ -9,8 +9,8 @@ String cPath = request.getContextPath();
 
 <!DOCTYPE html>
 <html lang="ko">
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- ≈©∑“  «¡∑π¿” º≥¡§ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- ÌÅ¨Î°¨  ÌîÑÎ†àÏûÑ ÏÑ§Ï†ï -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/member.css" media="screen" /> 
@@ -24,7 +24,7 @@ String cPath = request.getContextPath();
     <section>
         <div id="container">
             <div id="contentinner">
-                <!-- ∏ﬁ¿Œ ƒ¡≈Ÿ√˜_Ω√¿€======================================= -->
+                <!-- Î©îÏù∏ Ïª®ÌÖêÏ∏†_ÏãúÏûë======================================= -->
                 <div class="contactform">
                     <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
                         <input type="hidden" name="returnPath" value="<%= CommonUtil.nchk(request.getParameter("returnPath"), "/") %>">
@@ -37,12 +37,12 @@ String cPath = request.getContextPath();
                                 <input type="submit" class="button" value="JOIN" style="float:none;">
                                 <input type="button"" class="button" value="CANCEL" style="float:none;">
                             </p>
-                            <p><input type="submit" name="cmdweblogin" class="button" value="∑Œ±◊¿Œ"  /></p>
-                            <p><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_1">»∏ø¯∞°¿‘</a></p>
+                            <p><input type="submit" name="cmdweblogin" class="button" value="Î°úÍ∑∏Ïù∏"  /></p>
+                            <p><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_1">ÌöåÏõêÍ∞ÄÏûÖ</a></p>
                         </fieldset>
                     </form>
                 </div>
-                <!-- ∏ﬁ¿Œ ƒ¡≈Ÿ√˜_≥°======================================= -->
+                <!-- Î©îÏù∏ Ïª®ÌÖêÏ∏†_ÎÅù======================================= -->
             </div><!-- #content-->
         </div><!-- #container-->
         <jsp:include page="../main/left.jsp" />

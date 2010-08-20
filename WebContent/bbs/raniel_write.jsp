@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="kr.pe.okjsp.util.CommonUtil"%>
 <%@page import="kr.pe.okjsp.Navigation"%>
 <jsp:setProperty name="list" property="*" />
@@ -10,7 +10,7 @@
 %>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.css" type="text/css"> 
 	<script type="text/javascript" src="/html5/js/jquery/jquery-1.3.2.min.js"></script>
 	<script type="text/javascript" src="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.js"></script>
@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 	<link rel="stylesheet" href="/html5/css/okjsp2007.css.jsp" type="text/css">
 	
-	<!-- ±âÁ¸ nas.css form_divÀÇ dt ddµîÀÇ css½ºÅ¸ÀÏ ¼±¾ð ¶§¹®¿¡ »ç¿ëÇÔ by raniel  -->
+	<!-- ê¸°ì¡´ nas.css form_divì˜ dt ddë“±ì˜ cssìŠ¤íƒ€ì¼ ì„ ì–¸ ë•Œë¬¸ì— ì‚¬ìš©í•¨ by raniel  -->
 	<link rel="stylesheet" href="bbs.css" type="text/css">
 	
 	<link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
@@ -27,7 +27,7 @@
 	<script type="text/javascript" src="/html5/js/okjsp.js"></script>
 		
 	<title>
-		OKJSP ±Û¾²±â
+		OKJSP ê¸€ì“°ê¸°
 	</title>
 
 	<script type="text/javascript">
@@ -83,7 +83,7 @@
 	<!-- header -->
     <jsp:include page="../main/header.jsp"></jsp:include>
 
-    <!-- »ó´Ü Ä«Å×°í¸®,°Ë»ö_½ÃÀÛ -->	
+    <!-- ìƒë‹¨ ì¹´í…Œê³ ë¦¬,ê²€ìƒ‰_ì‹œìž‘ -->	
     <aside class="header-breadcrumbs">
       <ul>
         <li><a href="#">Home</a></li>
@@ -102,13 +102,13 @@
         </form>
       </div>
     </aside>
-    <!-- »ó´Ü Ä«Å×°í¸®,°Ë»ö_³¡-->
+    <!-- ìƒë‹¨ ì¹´í…Œê³ ë¦¬,ê²€ìƒ‰_ë-->
     
 	<div class="main" >
-		<!-- ÁÂÃø¸Þ´º -->
+		<!-- ì¢Œì¸¡ë©”ë‰´ -->
 		<jsp:include page="../main/left.jsp"></jsp:include>
      
-		<!-- ¸ÞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+		<!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œìž‘======================================= -->
 		<div id="form_div" style="float:left; padding:0px;">
 		
 		
@@ -149,13 +149,13 @@
 			</dt>
 			<dd>
 			<select name="ccl_id" id="ccl_id">
-				<option value="0">Copyright-ÀúÀÛÀÚ¿¡°Ô ÀúÀÛ±Ç</option>
-				<option value="1">CCL-ÀúÀÛÀÚÇ¥½Ã</option>
-				<option value="2">CCL-ÀúÀÛÀÚÇ¥½Ã-µ¿ÀÏÁ¶°Çº¯°æÇã¶ô</option>
-				<option value="3">CCL-ÀúÀÛÀÚÇ¥½Ã-º¯°æ±ÝÁö</option>
-				<option value="4">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®</option>
-				<option value="5">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®-µ¿ÀÏÁ¶°Çº¯°æÇã¶ô</option>
-				<option value="6">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®-º¯°æ±ÝÁö</option>
+				<option value="0">Copyright-ì €ìž‘ìžì—ê²Œ ì €ìž‘ê¶Œ</option>
+				<option value="1">CCL-ì €ìž‘ìží‘œì‹œ</option>
+				<option value="2">CCL-ì €ìž‘ìží‘œì‹œ-ë™ì¼ì¡°ê±´ë³€ê²½í—ˆë½</option>
+				<option value="3">CCL-ì €ìž‘ìží‘œì‹œ-ë³€ê²½ê¸ˆì§€</option>
+				<option value="4">CCL-ì €ìž‘ìží‘œì‹œ-ë¹„ì˜ë¦¬</option>
+				<option value="5">CCL-ì €ìž‘ìží‘œì‹œ-ë¹„ì˜ë¦¬-ë™ì¼ì¡°ê±´ë³€ê²½í—ˆë½</option>
+				<option value="6">CCL-ì €ìž‘ìží‘œì‹œ-ë¹„ì˜ë¦¬-ë³€ê²½ê¸ˆì§€</option>
 			</select>
 			</dd>
 			<dt>
@@ -172,7 +172,7 @@
 				<input id="submitButton" type="submit" value="Submit"/>
 			</dd>
 			</dl>
-			ÆÄÀÏ¾÷·Îµå : 
+			íŒŒì¼ì—…ë¡œë“œ : 
 			<input type="file" name="filename0" id='filename0' multiple><br>
 			<div id='fileList'></div>
 			<p id="drop_area" style="border: 2px dashed #ddd;padding: 10px;margin-bottom: 2em;"> 
@@ -181,7 +181,7 @@
 			</form>
 		</div>
 		<!-- ul id="file_list"> 
-			<li class="no_items">¼±ÅÃµÈ ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.</li> 
+			<li class="no_items">ì„ íƒëœ íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.</li> 
 		</ul-->
 		<script type="text/javascript">
 			// view-source:http://robertnyman.com/html5/fileapi/fileapi.html 
@@ -226,7 +226,7 @@
 				
 			})();
 		</script>
-		<!-- ¸ÞÀÎ ÄÁÅÙÃ÷_³¡========================================== -->
+		<!-- ë©”ì¸ ì»¨í…ì¸ _ë========================================== -->
 		
     </div>
     <!-- footer -->    

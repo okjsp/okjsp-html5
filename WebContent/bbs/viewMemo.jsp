@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>
 <%@ page import="kr.pe.okjsp.Article,kr.pe.okjsp.util.DateLabel" %>               
 <jsp:useBean id="list" class="kr.pe.okjsp.ListHandler" />
@@ -9,7 +9,7 @@
 	int startCount = Integer.parseInt(request.getParameter("startCount"));
 %>
 <%
-  int memoCount = 0; 	// µ«±Û °¹¼ö (SSE ¿¡¼­ ºñ±³ °ªÀ¸·Î »ç¿ë)
+  int memoCount = 0; 	// ëŽƒê¸€ ê°¯ìˆ˜ (SSE ì—ì„œ ë¹„êµ ê°’ìœ¼ë¡œ ì‚¬ìš©)
   ArrayList<MemoBean> memoList = new MemoHandler().getList(seq);
   Iterator memo = null;
   if (memoList != null) {
@@ -37,7 +37,7 @@ System.out.println("#####################" + memoCount + "::" + startCount);
 </p></div>
 <%  
 	  }
-	  memoCount ++;		// µ«±Û °¹¼ö (SSE ¿¡¼­ ºñ±³ °ªÀ¸·Î »ç¿ë)
+	  memoCount ++;		// ëŽƒê¸€ ê°¯ìˆ˜ (SSE ì—ì„œ ë¹„êµ ê°’ìœ¼ë¡œ ì‚¬ìš©)
 	}
   }
 %>      

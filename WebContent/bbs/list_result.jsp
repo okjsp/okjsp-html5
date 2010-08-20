@@ -1,4 +1,4 @@
-<%@ page pageEncoding="euc-kr"
+<%@ page pageEncoding="UTF-8"
     import="kr.pe.okjsp.util.CommonUtil, java.util.Iterator,
             kr.pe.okjsp.Article,kr.pe.okjsp.util.DateLabel" %>
 <%@page import="java.util.Map"%>
@@ -14,7 +14,7 @@
 %>
 <%@page import="kr.pe.okjsp.ArticleDao"%><html>
 <%
-int oldRef = -1;  // ±×·ì¹øÈ£°¡ ÀÌÀü°ú °°À» °æ¿ì ±×·ì¹øÈ£ Ãâ·Â ¾ÈÇÔ
+int oldRef = -1;  // ê·¸ë£¹ë²ˆí˜¸ê°€ ì´ì „ê³¼ ê°™ì„ ê²½ìš° ê·¸ë£¹ë²ˆí˜¸ ì¶œë ¥ ì•ˆí•¨
 while (iter.hasNext()) {
     one = (Article) iter.next();
 %>
@@ -38,7 +38,7 @@ while (iter.hasNext()) {
 			<div id='contents_<%=one.getSeq()%>' style='display:none'>
 			<p><%= one.getContentView() %></p>
 			<br/>
-			<p>&nbsp; <a onClick="document.getElementById('contents_<%=one.getSeq()%>').style.display='none';" style='cursor:pointer'>³»¿ë ´Ý±â...</a></p>
+			<p>&nbsp; <a onClick="document.getElementById('contents_<%=one.getSeq()%>').style.display='none';" style='cursor:pointer'>ë‚´ìš© ë‹«ê¸°...</a></p>
 			</div>
       <p class="details">| Posted by <a href="#"><%= one.getWriter() %> 
       </a> | Categories: <a href="#"><%= list.getBbs() %></a> | Comments: <a href='#' onlick="parent.getMemo('<%=one.getSeq()%>')"><%= one.getMemo() %></a> | Read: <%=one.getRead() %> |</p>
@@ -48,11 +48,11 @@ while (iter.hasNext()) {
 }%>		
 
 <% 
-		int pageTotal = ( list.getCnt() - 1 ) / list.getPageSize();	//ÀüÃ¼ÆäÀÌÁö
+		int pageTotal = ( list.getCnt() - 1 ) / list.getPageSize();	//ì „ì²´íŽ˜ì´ì§€
 		if ( pageTotal > list.getPg()  ) {
 %>
 <center><h4> 
-<input type='button' class='button_two' id='nextBtn' value='´ÙÀ½ÆäÀÌÁö' onclick="this.style.display='none';getList('<%= request.getParameter("bbs") %>', '<%=list.getPg()+1%>')" />
+<input type='button' class='button_two' id='nextBtn' value='ë‹¤ìŒíŽ˜ì´ì§€' onclick="this.style.display='none';getList('<%= request.getParameter("bbs") %>', '<%=list.getPg()+1%>')" />
 </h4></center>
 <%
 	}

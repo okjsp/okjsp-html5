@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=EUC-KR" pageEncoding="EUC-KR"
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"
     errorPage = "/error.jsp"
 %><jsp:useBean id="member" class="kr.pe.okjsp.member.Member" scope="page" />
     <jsp:useBean id="memberHandler" class="kr.pe.okjsp.member.MemberHandler" scope="page" />
@@ -7,7 +7,7 @@
 <% 
     String cPath = application.getRealPath("");
     String msg = memberHandler.changeInfo(member, request.getParameter("pact"), cPath);
-    if ("¼öÁ¤Çß½À´Ï´Ù.".equals(msg)) {
+    if ("ìˆ˜ì •í–ˆìŠµë‹ˆë‹¤.".equals(msg)) {
         session.setAttribute("member", member);
     }
 %><%= msg %>

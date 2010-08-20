@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="kr.pe.okjsp.util.CommonUtil, kr.pe.okjsp.Navigation"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	String cPath = request.getContextPath();
 %>
 <script type="text/javascript" language="JavaScript">
-	var lNextWindowId = 1;	// Chatting Popup ÀÌ Ç×»ó »õ·Î¿î ÀÌ¸§À¸·Î ¿­¸®µµ·ÏÇÏ´Â ±¸ºĞ°ª
+	var lNextWindowId = 1;	// Chatting Popup ì´ í•­ìƒ ìƒˆë¡œìš´ ì´ë¦„ìœ¼ë¡œ ì—´ë¦¬ë„ë¡í•˜ëŠ” êµ¬ë¶„ê°’
 
 	// OKJSP Chatting Popup
 	function openSubWindow() {
@@ -22,7 +22,7 @@
 	}
 </script>
 <div class="main-subcontent">
-  <!-- ¿ìÃø ·Î±×ÀÎ_½ÃÀÛ -->
+  <!-- ìš°ì¸¡ ë¡œê·¸ì¸_ì‹œì‘ -->
   <div class="subcontent-unit-border-blue">
     <div class="round-border-topleft"></div><div class="round-border-topright"></div>
     <h1 class="blue">Login</h1>
@@ -36,7 +36,7 @@
             <p><label for="password_2" class="top">Password:</label><br />
               <input type="password" name="password" id="password_2" tabindex="2" class="field" required></p>
             <p><input type="submit" class="button" value="LOGIN"  /></p>
-            <p><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_2">È¸¿ø°¡ÀÔ</a></p>
+            <p><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_2">íšŒì›ê°€ì…</a></p>
           </fieldset>
         </form>
       </c:if>
@@ -44,29 +44,29 @@
         <fieldset class="member">
           <p><a href="#">${member.id} /info</a></p>
           <p><a href="#">Logout</a></p>
-          <p><a href="#">Ã¥°¥ÇÇ</a></p>
+          <p><a href="#">ì±…ê°ˆí”¼</a></p>
         </fieldset>
       </c:if>
     </div>
   </div>
-  <!-- ¿ìÃø ·Î±×ÀÎ_³¡ --> 
+  <!-- ìš°ì¸¡ ë¡œê·¸ì¸_ë --> 
   
   
   <div class="subcontent-unit-border-orange">
     <div class="round-border-topleft"></div><div class="round-border-topright"></div>
-    <h1 class="orange">Ã¤ÆÃ ¿µ¿ª</h1>
+    <h1 class="orange">ì±„íŒ… ì˜ì—­</h1>
     <p><a href="javascript:openSubWindow();">Chatting Popup</a></p>
   </div>
   
   <div class="subcontent-unit-border">
     <div class="round-border-topleft"></div><div class="round-border-topright"></div>
-    <h1>±¤°í ¿µ¿ª1</h1>
-    <p> <a href="bbs?act=LIST&bbs=lifeqna">°Ô½ÃÆÇ »ç´Â¾ê±â</a> </p>
+    <h1>ê´‘ê³  ì˜ì—­1</h1>
+    <p> <a href="bbs?act=LIST&bbs=lifeqna">ê²Œì‹œíŒ ì‚¬ëŠ”ì–˜ê¸°</a> </p>
   </div>
   
   <div class="subcontent-unit-border-green">
     <div class="round-border-topleft"></div><div class="round-border-topright"></div>
-    <h1 class="green">±¤°í ¿µ¿ª2</h1>
+    <h1 class="green">ê´‘ê³  ì˜ì—­2</h1>
     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
   </div>
   

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 //ContextPath
 String cPath = request.getContextPath();
@@ -12,9 +12,9 @@ String cPath = request.getContextPath();
 	<div id="top">
 		<nav>
 			<ul>
-				<li><a href="<%=cPath%>/bbs?act=LIST&bbs=notice" class="transition">°øÁö»çÇ×</a></li>
-				<li><a href="<%=cPath%>/member/agreement.jsp" class="transition">°³ÀÎÁ¤º¸Ãë±Þ¹æÄ§</a></li>
-				<li><a href="<%=cPath%>/seq/137659" class="transition">±¤°í¹®ÀÇ</a></li>
+				<li><a href="<%=cPath%>/bbs?act=LIST&bbs=notice" class="transition">ê³µì§€ì‚¬í•­</a></li>
+				<li><a href="<%=cPath%>/member/agreement.jsp" class="transition">ê°œì¸ì •ë³´ì·¨ê¸‰ë°©ì¹¨</a></li>
+				<li><a href="<%=cPath%>/seq/137659" class="transition">ê´‘ê³ ë¬¸ì˜</a></li>
 			</ul>
 		</nav>
 		<div class="search">

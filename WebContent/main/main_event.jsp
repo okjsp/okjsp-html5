@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="kr.pe.okjsp.*,
     	    kr.pe.okjsp.util.CommonUtil,
     	    kr.pe.okjsp.util.DateLabel,
             java.util.*,
             java.util.Iterator"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 
 <%
 String cPath = request.getContextPath();

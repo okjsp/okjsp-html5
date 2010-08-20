@@ -1,2 +1,2 @@
-<%@ page contentType="application/json; charset=euc-kr" %>
+<%@ page contentType="application/json; charset=UTF-8" %>
 { result: 'true' }

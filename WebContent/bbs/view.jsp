@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>
 <%@ page import="kr.pe.okjsp.Article,kr.pe.okjsp.util.DateLabel" %>               
 <jsp:useBean id="one"  class="kr.pe.okjsp.Article" scope="request"/>
@@ -8,12 +8,12 @@
 <%
 	String cPath  = request.getContextPath();
 	String bbsids = request.getParameter("bbs");
-	int memoCount = 0; 	// µ«±Û °¹¼ö (SSE ¿¡¼­ ºñ±³ °ªÀ¸·Î »ç¿ë)
+	int memoCount = 0; 	// ëƒê¸€ ê°¯ìˆ˜ (SSE ì—ì„œ ë¹„êµ ê°’ìœ¼ë¡œ ì‚¬ìš©)
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- Å©·Ò  ÇÁ·¹ÀÓ ¼³Á¤ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- í¬ë¡¬  í”„ë ˆì„ ì„¤ì • -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
@@ -58,15 +58,15 @@
 	%>
 	</ul>
 	</article> 
-	    <!--<input type="button" class="button" value="´äº¯" onClick="goReply()"/> -->
-    	<input type="button" class="button" value="¼öÁ¤" onClick="show_passwd_layer('goModify')"/>
-     	<input type="button" class="button" value="»èÁ¦" onClick="show_passwd_layer('goDelete')"/>
-     	<input type="button" class="button" value="Ã¥°¥ÇÇ" onClick="goBookmark()"/>
+	    <!--<input type="button" class="button" value="ë‹µë³€" onClick="goReply()"/> -->
+    	<input type="button" class="button" value="ìˆ˜ì •" onClick="show_passwd_layer('goModify')"/>
+     	<input type="button" class="button" value="ì‚­ì œ" onClick="show_passwd_layer('goDelete')"/>
+     	<input type="button" class="button" value="ì±…ê°ˆí”¼" onClick="goBookmark()"/>
 	<div id="passwd_layer" style="position:absolute;display:none;width:220px;height:60px;padding:10px" align="center">
 	<input type="password" id="passwd" name="passwd" maxlength="15">
 	<br>
 	<input type="button" class="button" id="submit_type" onclick="return submit_passwd()">
-	<input type="button" class="button" value="Ãë¼Ò" onclick="return toggleMenu('passwd_layer')">
+	<input type="button" class="button" value="ì·¨ì†Œ" onclick="return toggleMenu('passwd_layer')">
      </div>
 		
 	
@@ -87,8 +87,8 @@
 	            maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
 	        pw:<input type="password" class="memopw" name="memopass" maxlength="15">
 		    <input type="hidden" name="doublecheck" class="memodc" value="okjsp">
-		    <br /><span style="color:#f00">IP ³ëÃâµË´Ï´Ù. ¿¹¹ÎÇÑ ¾ê±â´Â ¿Ã¸®Áö ¾ÊÀ¸½Ã´Â °Ô »çÀÌÆ® ¿î¿µ¿¡ µµ¿òÀÌ µË´Ï´Ù.
-		    <br />°³Á¶½ÉÇÒ ÇÊ¿ä´Â ÀÖÀ¸´Ï±î¿ä. ³·¸»Àº »õ, ¹ã¸»Àº Áã, ÀÎÅÍ³İ¸»Àº °Ë»ö¿£Áø</span>
+		    <br /><span style="color:#f00">IP ë…¸ì¶œë©ë‹ˆë‹¤. ì˜ˆë¯¼í•œ ì–˜ê¸°ëŠ” ì˜¬ë¦¬ì§€ ì•Šìœ¼ì‹œëŠ” ê²Œ ì‚¬ì´íŠ¸ ìš´ì˜ì— ë„ì›€ì´ ë©ë‹ˆë‹¤.
+		    <br />ê°œì¡°ì‹¬í•  í•„ìš”ëŠ” ìˆìœ¼ë‹ˆê¹Œìš”. ë‚®ë§ì€ ìƒˆ, ë°¤ë§ì€ ì¥, ì¸í„°ë„·ë§ì€ ê²€ìƒ‰ì—”ì§„</span>
 	        <br /><input type="submit" name="send" value="Memo">
 		</form>		
 	</div></div>
@@ -111,7 +111,7 @@
 </body>
 
 <%-- ############################################################## --%>
-<%-- ############             ½Ç½Ã°£ ´ñ±Û ½ÃÀÛ                             ############ --%>
+<%-- ############             ì‹¤ì‹œê°„ ëŒ“ê¸€ ì‹œì‘                             ############ --%>
 <%-- ############################################################## --%>
 <script type="text/javascript">
 
@@ -120,7 +120,7 @@
 	function startSSE() {
 	    switch(detectUAgent()) {
 	        case "opera":
-	            // opera Áö¿øÀº ÃßÈÄ¿¡...
+	            // opera ì§€ì›ì€ ì¶”í›„ì—...
 	            break;
 	        case "webkit":
 	            webkitEventSource();
@@ -137,11 +137,11 @@
 	        //log("Opera browser detected. " + INIT_MESSAGE);
 	        return 'opera';
 	    } else
-	    if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) // WebKit5 ÀÌ»óÀÎ °æ¿ì
+	    if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) // WebKit5 ì´ìƒì¸ ê²½ìš°
 		{	
-			if( -1 !== navigator.appVersion.indexOf("Chrome/5") )	// Chrome5 ¹öÁ¯Àº Server-Sent Events Áö¿øÇÏÁö ¾Ê¾Æ ¸·¾Æ µÓ´Ï´Ù. (Chrome6 Àº SSE Áö¿ø ÇÕ´Ï´Ù.)
+			if( -1 !== navigator.appVersion.indexOf("Chrome/5") )	// Chrome5 ë²„ì ¼ì€ Server-Sent Events ì§€ì›í•˜ì§€ ì•Šì•„ ë§‰ì•„ ë‘¡ë‹ˆë‹¤. (Chrome6 ì€ SSE ì§€ì› í•©ë‹ˆë‹¤.)
 			{
-			    var myAjax = new Ajax.Request(	// ´ñ±Û °¡Á®¿À´Â ·ÎÁ÷
+			    var myAjax = new Ajax.Request(	// ëŒ“ê¸€ ê°€ì ¸ì˜¤ëŠ” ë¡œì§
 				        "/html5/bbs/viewMemo.jsp",
 				        {method: 'get', parameters: "seq=<%=one.getSeq()%>&startCount="+currentMemoCount ,
 					    onComplete: ajax_response}
@@ -157,8 +157,8 @@
 	    if (undefined !== window['EventSource']) {
 	        //log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
 	        return 'webkit';
-	    }  else {	// IE ÀÎ °æ¿ì.
-		    var myAjax = new Ajax.Request(	// ´ñ±Û °¡Á®¿À´Â ·ÎÁ÷
+	    }  else {	// IE ì¸ ê²½ìš°.
+		    var myAjax = new Ajax.Request(	// ëŒ“ê¸€ ê°€ì ¸ì˜¤ëŠ” ë¡œì§
 			        "/html5/bbs/viewMemo.jsp",
 			        {method: 'get', parameters: "seq=<%=one.getSeq()%>&startCount="+currentMemoCount ,
 				    onComplete: ajax_response}
@@ -205,11 +205,11 @@
 		list.appendChild(addlist);
 	}
 
-	// ½Ç½Ã°£ ´ñ±Û±â´É Start. 
+	// ì‹¤ì‹œê°„ ëŒ“ê¸€ê¸°ëŠ¥ Start. 
 	startSSE();
 </script>
 <%-- ############################################################## --%>
-<%-- ############             ½Ç½Ã°£ ´ñ±Û ³¡                             ############ --%>
+<%-- ############             ì‹¤ì‹œê°„ ëŒ“ê¸€ ë                             ############ --%>
 <%-- ############################################################## --%>
 
 

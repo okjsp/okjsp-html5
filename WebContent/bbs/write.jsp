@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>
 <%@ page import="kr.pe.okjsp.util.CommonUtil"%>
 <%@ page import="kr.pe.okjsp.Navigation"%>
@@ -17,18 +17,18 @@
 		return;
 	}
 	
-	String masknamePrefix = CommonUtil.getMaskname();	// Ã·ºÎÆÄÀÏÀÇ maskname ±¸¼º¿¡ ¾ºÀÎ´Ù.
+	String masknamePrefix = CommonUtil.getMaskname();	// ì²¨ë¶€íŒŒì¼ì˜ maskname êµ¬ì„±ì— ì”Œì¸ë‹¤.
 %>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 	<link rel="stylesheet" href="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.css" type="text/css" />
-	<link rel="stylesheet" href="/html5/bbs/fileuploader.css" type="text/css" /><%-- File Upload ¿¡¼­¸¸ »ç¿ë --%>
+	<link rel="stylesheet" href="/html5/bbs/fileuploader.css" type="text/css" /><%-- File Upload ì—ì„œë§Œ ì‚¬ìš© --%>
 	<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 	<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
 	<link rel="stylesheet" href="/html5/css/okjsp2007.css.jsp" type="text/css"/>
-	<!-- ±âÁ¸ nas.css form_divÀÇ dt ddµîÀÇ css½ºÅ¸ÀÏ ¼±¾ğ ¶§¹®¿¡ »ç¿ëÇÔ by raniel  -->
+	<!-- ê¸°ì¡´ nas.css form_divì˜ dt ddë“±ì˜ cssìŠ¤íƒ€ì¼ ì„ ì–¸ ë•Œë¬¸ì— ì‚¬ìš©í•¨ by raniel  -->
 	<link rel="stylesheet" href="bbs.css" type="text/css">
 	<link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
 	<script type="text/javascript" src="/html5/js/jquery/jquery-1.3.2.min.js"></script>
@@ -37,7 +37,7 @@
 	<script type="text/javascript" src="/html5/js/okjsp.js"></script>
 		
 	<title>
-		OKJSP ±Û¾²±â
+		OKJSP ê¸€ì“°ê¸°
 	</title>
 
 	<script type="text/javascript">
@@ -73,7 +73,7 @@
    
 		<div class="main" >
 	     
-			<!-- ¸ŞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+			<!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œì‘======================================= -->
 			<div id="form_div" style="float:left; padding:0px;">		
 				<form name="writeForm" action="/html5/write" method="post" class="form_write" ENCTYPE="multipart/form-data">
 				<input name="html" id="html" value="2" type="hidden" readonly="readonly" class="write">
@@ -89,7 +89,7 @@
  				
 				<dl>
 				<dt>
-					<label for="bbs">°Ô½ÃÆÇ:</label>
+					<label for="bbs">ê²Œì‹œíŒ:</label>
 				</dt>
 				<dd>
 					<%
@@ -104,10 +104,10 @@
 					</script>
 				</dd>
 				<dt>
-					<label for="writer">´Ğ³×ÀÓ:</label>
+					<label for="writer">ë‹‰ë„¤ì„:</label>
 				</dt>
 				<dd>
-					<input name="writer" id="writer" class="write" placeholder="Nick Name" value="<%= article.getWriter() %>" required autofocus> ; ½Ç¸í¾²Áö¸¶¼¼¿ä!
+					<input name="writer" id="writer" class="write" placeholder="Nick Name" value="<%= article.getWriter() %>" required autofocus> ; ì‹¤ëª…ì“°ì§€ë§ˆì„¸ìš”!
 				</dd>
 				<dt>
 					<label for="homepage">Homepage:</label>
@@ -116,7 +116,7 @@
 					<input name="homepage" id="homepage" class="write" value="<%=article.getHomepage()%>" type='url' placeholder="http://your Homepage">
 				</dd>
 				<dt>
-					<label for="password">ºñ¹Ğ¹øÈ£:</label>
+					<label for="password">ë¹„ë°€ë²ˆí˜¸:</label>
 				</dt>
 				<dd>
 					<input name="password" id="password" type="password" class="write" value="<%= CommonUtil.nchk(request.getParameter("password")) %>" required>
@@ -126,17 +126,17 @@
 				</dt>
 				<dd>
 				<select name="ccl_id" id="ccl_id">
-					<option value="0">Copyright-ÀúÀÛÀÚ¿¡°Ô ÀúÀÛ±Ç</option>
-					<option value="1">CCL-ÀúÀÛÀÚÇ¥½Ã</option>
-					<option value="2">CCL-ÀúÀÛÀÚÇ¥½Ã-µ¿ÀÏÁ¶°Çº¯°æÇã¶ô</option>
-					<option value="3">CCL-ÀúÀÛÀÚÇ¥½Ã-º¯°æ±İÁö</option>
-					<option value="4">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®</option>
-					<option value="5">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®-µ¿ÀÏÁ¶°Çº¯°æÇã¶ô</option>
-					<option value="6">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®-º¯°æ±İÁö</option>
+					<option value="0">Copyright-ì €ì‘ìì—ê²Œ ì €ì‘ê¶Œ</option>
+					<option value="1">CCL-ì €ì‘ìí‘œì‹œ</option>
+					<option value="2">CCL-ì €ì‘ìí‘œì‹œ-ë™ì¼ì¡°ê±´ë³€ê²½í—ˆë½</option>
+					<option value="3">CCL-ì €ì‘ìí‘œì‹œ-ë³€ê²½ê¸ˆì§€</option>
+					<option value="4">CCL-ì €ì‘ìí‘œì‹œ-ë¹„ì˜ë¦¬</option>
+					<option value="5">CCL-ì €ì‘ìí‘œì‹œ-ë¹„ì˜ë¦¬-ë™ì¼ì¡°ê±´ë³€ê²½í—ˆë½</option>
+					<option value="6">CCL-ì €ì‘ìí‘œì‹œ-ë¹„ì˜ë¦¬-ë³€ê²½ê¸ˆì§€</option>
 				</select>
 				</dd>
 				<dt>
-					<label for="subject">Á¦¸ñ:</label>
+					<label for="subject">ì œëª©:</label>
 				</dt>
 				<dd>
 					<input name="subject" id="subject" class="write" value="<%=article.getSubject() %>" required>
@@ -145,13 +145,13 @@
 					<input type="hidden" name="msgbackup" id="msgbackup">
 				</dd>
 				<dt>
-					<label for="content">³»¿ë:</label>				
+					<label for="content">ë‚´ìš©:</label>				
 				</dt>
 				<dd>
 					<textarea name="content" id="content" style="width: 600px;" rows="6" class="write"></textarea>
 				</dd>
 				<dt>
-		<%-- ###################  File Upload ½ÃÀÛ  ################# --%>
+		<%-- ###################  File Upload ì‹œì‘  ################# --%>
 		<div id="file-uploader-demo1" style="width: 600px; float:left;" >
 				<p>Please enable JavaScript to use file uploader.</p>
 				<!-- or put a simple form for upload here -->
@@ -164,23 +164,23 @@
 	            var uploader = new qq.FileUploader({
 	                element: document.getElementById('file-uploader-demo1'),
 	                action: '/html5/AJAXUploadServlet',
-	                sizeLimit: 1024 * 1024 * 200	// 200MB ±îÁö Ã·ºÎ °¡´É.
-	                								// sizeLimit ÀÌ  ¸ğµç ºê¶ó¿ìÁ®¿¡¼­ °¡´ÉÇÑ °ÍÀº ¾Æ´Ï´Ù.(Safari5/Chrome5 ¿¡¼­ ¼º°ø. IE8¿¡¼­ ½ÇÆĞ. ³ª¸ÓÁö Å×½ºÆ® ÇÊ¿ä) 
-	                //allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],	// Ã·ºÎÆÄÀÏÀÇ È®ÀåÀÚ Á¦ÇÑ
-	                //params: { param1: 'param1' , param2: 'param2' }	// ±âÅ¸ Parameter ¸¦ Servlet À¸·Î ´øÁ®¾ß ÇÒ¶§ »ç¿ëÇÑ´Ù.
+	                sizeLimit: 1024 * 1024 * 200	// 200MB ê¹Œì§€ ì²¨ë¶€ ê°€ëŠ¥.
+	                								// sizeLimit ì´  ëª¨ë“  ë¸Œë¼ìš°ì ¸ì—ì„œ ê°€ëŠ¥í•œ ê²ƒì€ ì•„ë‹ˆë‹¤.(Safari5/Chrome5 ì—ì„œ ì„±ê³µ. IE8ì—ì„œ ì‹¤íŒ¨. ë‚˜ë¨¸ì§€ í…ŒìŠ¤íŠ¸ í•„ìš”) 
+	                //allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],	// ì²¨ë¶€íŒŒì¼ì˜ í™•ì¥ì ì œí•œ
+	                //params: { param1: 'param1' , param2: 'param2' }	// ê¸°íƒ€ Parameter ë¥¼ Servlet ìœ¼ë¡œ ë˜ì ¸ì•¼ í• ë•Œ ì‚¬ìš©í•œë‹¤.
 	            });           
 	        }
 
 	        function getMaskname() {
-		        totalFileCount++;	// Maskname ±¸¼ºÇÒ¶§ Sequence °ªÀ¸·Î »ç¿ë µÈ´Ù.
-		        document.writeForm.fileCount.value = totalFileCount;	// ÃÑ Ã·ºÎ ÆÄÀÏ °³¼ö (Servlet ¿¡¼­ Ã·ºÎÆÄÀÏ °³¼ö ÆÄ¾Ç¿¡ ¾²ÀÎ´Ù.)
+		        totalFileCount++;	// Maskname êµ¬ì„±í• ë•Œ Sequence ê°’ìœ¼ë¡œ ì‚¬ìš© ëœë‹¤.
+		        document.writeForm.fileCount.value = totalFileCount;	// ì´ ì²¨ë¶€ íŒŒì¼ ê°œìˆ˜ (Servlet ì—ì„œ ì²¨ë¶€íŒŒì¼ ê°œìˆ˜ íŒŒì•…ì— ì“°ì¸ë‹¤.)
 		        
 		        return '<%=masknamePrefix%>'+totalFileCount;
 	        }
 	        
 	        window.onload = createUploader; 
 	    </script>  
-    	<%-- ###################  File Upload ³¡  ################# --%>
+    	<%-- ###################  File Upload ë  ################# --%>
     	<br/><br/><br/>
 				</dt>
 				<dd>

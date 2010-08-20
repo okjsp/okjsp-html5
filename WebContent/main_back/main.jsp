@@ -6,7 +6,7 @@
     	    kr.pe.okjsp.util.DateLabel,
             java.util.*,
             java.util.Iterator"
-    pageEncoding="euc-kr"
+    pageEncoding="UTF-8"
 %>
 <head>
 <%
@@ -14,14 +14,14 @@
 String cPath = request.getContextPath();
 
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- Å©·Ò  ÇÁ·¹ÀÓ ¼³Á¤ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- í¬ë¡¬  í”„ë ˆì„ ì„¤ì • -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_setup.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print" href="<%=cPath%>/css/mf42_layout4_text.css" />
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/img/favicon.ico" />
 <script>
-/**server-sent-event_½ÃÀÛ */
+/**server-sent-event_ì‹œì‘ */
 (function() {
     var INIT_MESSAGE = "Now wait for server-side events. They will keep appearing in the console...",
         FAIL_MESSAGE = "Sorry, I have never heard that your browser supports SSE";
@@ -94,7 +94,7 @@ String cPath = request.getContextPath();
     };
     startEvent();
 }());
-/**server-sent-event_³¡ */
+/**server-sent-event_ë */
 </script>
 <title>OKJSP_HTML5</title>
 </head>
@@ -105,14 +105,14 @@ String cPath = request.getContextPath();
     <!-- header -->
     <jsp:include page="header.jsp"></jsp:include>
 
-    <!-- »ó´Ü Ä«Å×°í¸®(¸ŞÀÎ¿¡¼­´Â »õ±Û ¾Ë¸²),°Ë»ö_½ÃÀÛ -->
+    <!-- ìƒë‹¨ ì¹´í…Œê³ ë¦¬(ë©”ì¸ì—ì„œëŠ” ìƒˆê¸€ ì•Œë¦¼),ê²€ìƒ‰_ì‹œì‘ -->
     <aside class="header-breadcrumbs">
-      <!-- »õ±Û¾Ë¸² -->
+      <!-- ìƒˆê¸€ì•Œë¦¼ -->
       <ul>
-        <li>13°³ÀÇ °³½Ã±ÛÀÌ ¿Ã¶ó¿Ô½À´Ï´Ù</li>
+        <li>13ê°œì˜ ê°œì‹œê¸€ì´ ì˜¬ë¼ì™”ìŠµë‹ˆë‹¤</li>
       </ul>
 
-      <!-- °Ë»ö_½ÃÀÛ -->
+      <!-- ê²€ìƒ‰_ì‹œì‘ -->
       <div class="searchform">
         <form action="index.html" method="get">
           <fieldset>
@@ -121,19 +121,19 @@ String cPath = request.getContextPath();
           </fieldset>
         </form>
       </div>
-      <!-- °Ë»ö_³¡ -->
+      <!-- ê²€ìƒ‰_ë -->
     </aside>
-    <!-- »ó´Ü Ä«Å×°í¸®,°Ë»ö_³¡-->
+    <!-- ìƒë‹¨ ì¹´í…Œê³ ë¦¬,ê²€ìƒ‰_ë-->
 
     <div class="main">
-      <!-- ÁÂÃø¸Ş´º -->
+      <!-- ì¢Œì¸¡ë©”ë‰´ -->
       <jsp:include page="left.jsp"></jsp:include>
 
-      <!-- ¸ŞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+      <!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œì‘======================================= -->
       <div class="main-content">
-        <!-- ÃßÃµ µµ¼­_½ÃÀÛ -->
+        <!-- ì¶”ì²œ ë„ì„œ_ì‹œì‘ -->
         <div>
-          <h1 class="pagetitle">ÃßÃµ µµ¼­</h1>
+          <h1 class="pagetitle">ì¶”ì²œ ë„ì„œ</h1>
           <p/> 
 	        <table border='1' bordercolor='blue' width="100%">
 	          <tr>
@@ -157,15 +157,15 @@ String cPath = request.getContextPath();
 	        </table>
           <p/>
         </div>
-        <!-- ÃßÃµ µµ¼­_³¡-->
+        <!-- ì¶”ì²œ ë„ì„œ_ë-->
         
-        <!-- °øÁö»çÇ×_½ÃÀÛ -->
+        <!-- ê³µì§€ì‚¬í•­_ì‹œì‘ -->
         <div class="column1-unit">
           	<%
           	Iterator iterList = null;
         	Article one = null;
           	ArrayList arrayList = new ArrayList();
-          	arrayList.add("notice|°øÁö»çÇ×");
+          	arrayList.add("notice|ê³µì§€ì‚¬í•­");
 
         	Iterator iter = arrayList.iterator();
         	String [] rec = null;
@@ -210,12 +210,12 @@ String cPath = request.getContextPath();
           	%>
           <p/>
         </div>
-        <!-- °øÁö»çÇ×_³¡ -->
+        <!-- ê³µì§€ì‚¬í•­_ë -->
         
         
-        <!-- ÀüÃ¼°Ô½ÃÆÇ_½ÃÀÛ -->
+        <!-- ì „ì²´ê²Œì‹œíŒ_ì‹œì‘ -->
         <div class="column1-unit">
-          <h1 class="pagetitle">ÀüÃ¼°Ô½ÃÆÇ</h1>
+          <h1 class="pagetitle">ì „ì²´ê²Œì‹œíŒ</h1>
           <div id="output">aa</div>
           <p/>
           
@@ -234,8 +234,8 @@ String cPath = request.getContextPath();
 				    	bbsInfo = new BbsInfoBean();
 				    }
 			    	
-				    // ¸ğ¹ÙÀÏÀ¥ ÇÁ·ÎÁ§Æ® ÁøÇàÁß¿¡´Â Å×½ºÆ® µ¥ÀÌÅ¸ÀÎ
-			    	// twitter ¿Í null Àº º¸¿©ÁöÁö ¾Ê½À´Ï´Ù.
+				    // ëª¨ë°”ì¼ì›¹ í”„ë¡œì íŠ¸ ì§„í–‰ì¤‘ì—ëŠ” í…ŒìŠ¤íŠ¸ ë°ì´íƒ€ì¸
+			    	// twitter ì™€ null ì€ ë³´ì—¬ì§€ì§€ ì•ŠìŠµë‹ˆë‹¤.
 			    	if (bbsInfo.getCseq() == null || "".equals(bbsInfo.getCseq()) || "twitter".equals(bbsInfo.getBbs())) {
 			    		continue;
 			    	}
@@ -278,10 +278,10 @@ String cPath = request.getContextPath();
             
           <p/>
         </div>
-        <!-- ÀüÃ¼°Ô½ÃÆÇ_³¡ -->
+        <!-- ì „ì²´ê²Œì‹œíŒ_ë -->
       </div>
-      <!-- ¸ŞÀÎ ÄÁÅÙÃ÷_³¡========================================== -->
-      <!-- ¿ìÃø ¿µ¿ª_¸ŞÀÎ È­¸é ¿Ü¿¡´Â Á¦°Å ÇÏ°í ÀÛ¾÷... -->
+      <!-- ë©”ì¸ ì»¨í…ì¸ _ë========================================== -->
+      <!-- ìš°ì¸¡ ì˜ì—­_ë©”ì¸ í™”ë©´ ì™¸ì—ëŠ” ì œê±° í•˜ê³  ì‘ì—…... -->
       <jsp:include page="right.jsp"></jsp:include>
     </div>
     <!-- footer -->

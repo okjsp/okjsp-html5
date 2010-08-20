@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!-- footer : ÆÄÆø¿¡¼­´Â Áö¿ø¾ÈÇÔ... -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- footer : íŒŒí­ì—ì„œëŠ” ì§€ì›ì•ˆí•¨... -->
 <footer class="footer">
-  <p>Copyright &copy; ÇÏ´ÜÀÔ´Ï´Ù.</p>
+  <p>Copyright &copy; í•˜ë‹¨ìž…ë‹ˆë‹¤.</p>
   <p class="credits">Design by <a href="http://1234.info/" title="Designer Homepage">1234.info</a> | Modified by <a href="#" title="Modifyer Homepage">Your Name</a> | Powered by <a href="#" title="CMS Homepage">Your CMS</a> | <a href="http://validator.w3.org/check?uri=referer" title="Validate XHTML code">XHTML 1.0</a> | <a href="http://jigsaw.w3.org/css-validator/" title="Validate CSS code">CSS 2.0</a></p>
 </footer>

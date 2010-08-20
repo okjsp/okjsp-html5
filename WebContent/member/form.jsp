@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 //ContextPath
 String cPath = request.getContextPath();
@@ -7,8 +7,8 @@ String cPath = request.getContextPath();
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- Å©·Ò  ÇÁ·¹ÀÓ ¼³Á¤ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- í¬ë¡¬  í”„ë ˆì„ ì„¤ì • -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/member.css" media="screen" /> 
@@ -118,11 +118,11 @@ $(document).ready(function() {
 
     $('#joinform').submit(function(e) {
         if ($('#emailchecked').val() != 'Y') {
-            alert('Áßº¹µÈ ¸ŞÀÏ ÀÔ´Ï´Ù.');
+            alert('ì¤‘ë³µëœ ë©”ì¼ ì…ë‹ˆë‹¤.');
             return false;
         }
         if ($('#idchecked').val() != 'Y') {
-            alert('Áßº¹µÈ ¾ÆÀÌµğ ÀÔ´Ï´Ù.');
+            alert('ì¤‘ë³µëœ ì•„ì´ë”” ì…ë‹ˆë‹¤.');
             return false;
         }
         return true;
@@ -136,10 +136,10 @@ $(document).ready(function() {
     <section>
         <div id="container">
             <div id="contentinner">
-                <!-- ¸ŞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+                <!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œì‘======================================= -->
                     <div class="contactform">
                         <form id="joinform" method="post" action="register.jsp">
-                            <fieldset><legend>&nbsp;okjsp.pe.kr È¸¿ø°¡ÀÔ&nbsp;</legend>
+                            <fieldset><legend>&nbsp;okjsp.pe.kr íšŒì›ê°€ì…&nbsp;</legend>
                                 <p><label for="contact_email" class="left">Email:</label>
                                      <input type="email" name="email" id="contact_email" class="field" autofocus required /></p>
                                 <p><label for="contact_id" class="left">ID:</label>
@@ -149,9 +149,9 @@ $(document).ready(function() {
                                 <p><label for="contact_url" class="left">Website:</label>
                                      <input type="url" name="homepage" id="contact_url" placeholder="ex) http://www.okjsp.pe.kr" class="field" /></p>
                                 <p><label for="contact_url" class="left">Mailling:</label>
-                                     <span class="item first"><input type="radio" name="mailing" id="contact_mailling_y" value="Y" /><label class="" for="contact_mailling_y">Çã¿ë</label></span>
-                                     <span class="item"><input type="radio" name="mailing" id="contact_mailling_n" value="N" checked /><label class="" for="contact_mailling_n">°ÅºÎ</label></span>
-                                     <span class="guide">okjsp¿¡¼­ ºñÁ¤±âÀûÀ¸·Î ¹ßÇàÇÏ´Â ´º½º·¹ÅÍ¿Í È«º¸¸ŞÀÏ ¼ö½Å ¼³Á¤ÀÔ´Ï´Ù.</span>
+                                     <span class="item first"><input type="radio" name="mailing" id="contact_mailling_y" value="Y" /><label class="" for="contact_mailling_y">í—ˆìš©</label></span>
+                                     <span class="item"><input type="radio" name="mailing" id="contact_mailling_n" value="N" checked /><label class="" for="contact_mailling_n">ê±°ë¶€</label></span>
+                                     <span class="guide">okjspì—ì„œ ë¹„ì •ê¸°ì ìœ¼ë¡œ ë°œí–‰í•˜ëŠ” ë‰´ìŠ¤ë ˆí„°ì™€ í™ë³´ë©”ì¼ ìˆ˜ì‹  ì„¤ì •ì…ë‹ˆë‹¤.</span>
                                      </p>
                             </fieldset>
                             <fieldset><legend>&nbsp;Profile&nbsp;</legend>
@@ -161,7 +161,7 @@ $(document).ready(function() {
                                 </div>
                             </fieldset>
                             <fieldset class="info"'><legend>&nbsp;Information&nbsp;</legend>
-                                <p style="padding-left:15px;">°¡ÀÔ½Ã ÀÓ½Ãºñ¹Ğ¹øÈ£°¡ ¸ŞÀÏ·Î ¹ß¼ÛµË´Ï´Ù.<br>·Î±×ÀÎ ÈÄ ºñ¹Ğ¹øÈ£¸¦ ¹Ù²ãÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.</p>
+                                <p style="padding-left:15px;">ê°€ì…ì‹œ ì„ì‹œë¹„ë°€ë²ˆí˜¸ê°€ ë©”ì¼ë¡œ ë°œì†¡ë©ë‹ˆë‹¤.<br>ë¡œê·¸ì¸ í›„ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë°”ê¿”ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.</p>
                             </fieldset>
                             <p>
                                 <input type="submit" class="button" value="JOIN" style="float:none;">
@@ -169,7 +169,7 @@ $(document).ready(function() {
                             </p>
                         </form>
                     </div>
-                <!-- ¸ŞÀÎ ÄÁÅÙÃ÷_³¡======================================= -->
+                <!-- ë©”ì¸ ì»¨í…ì¸ _ë======================================= -->
             </div><!-- #content-->
         </div><!-- #container-->
         <jsp:include page="../main/left.jsp" />

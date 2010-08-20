@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 	String bbs = request.getParameter("bbs");
 %>
@@ -18,41 +18,41 @@
 </div>
 
 <script>
-//drag and drop ÀÌº¥Æ® ÇÚµé·¯
-//·ÎÄÃ ½ºÅä¸®Áö
+//drag and drop ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
+//ë¡œì»¬ ìŠ¤í† ë¦¬ì§€
 //Web SQL Database
-//http://slides.html5rocks.com °ú Ã¥À» ÇÔ²² ÂüÁ¶
+//http://slides.html5rocks.com ê³¼ ì±…ì„ í•¨ê»˜ ì°¸ì¡°
 
 	var left_menu = document.querySelector('#left_menu');
-	//ÇØ´ç °Ô½ÃÆÇ url·Î ÀÌµ¿
+	//í•´ë‹¹ ê²Œì‹œíŒ urlë¡œ ì´ë™
 	function jump(tmp) {
 		//alert(document.getElementById('left_menu').innerHTML);
 		document.location.href='/html5/bbs?act=LIST&bbs='+tmp;
 	}
 
-	//µå·¡±× ½ÃÀÛ½Ã Ã³¸®
+	//ë“œë˜ê·¸ ì‹œì‘ì‹œ ì²˜ë¦¬
 	function onDragStart(event){
 		if(event.target.tagName.toLowerCase() == 'dt'){
-			event.dataTransfer.setData('text',event.target.id);		//text·Î ÇÏ´Ï±ñ ¸Ô´Â´Ù ¤¾¤¾¤¾~
+			event.dataTransfer.setData('text',event.target.id);		//textë¡œ í•˜ë‹ˆê¹ ë¨¹ëŠ”ë‹¤ ã…ã…ã…~
 			document.getElementById(event.target.id).className = 'hovering';
 		}else{
 			event.preventDefault();
 		}
 	}
 
-	//dropÀÌº¥Æ® ÇÚµé·¯
+	//dropì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
 	function onDrop(event){
-		var drag_zone = event.dataTransfer.getData('text');	//¿Å±æ¾Ö ¾ÆÀÌµğ(µåµ® ÀÌ°Å µÈ´Ù ¤Ì¤Ì_text·Î ÇÏ´Ï±ñ µÊ..)
-		var drag_zone_inner = document.getElementById(drag_zone).outerHTML;					//¿Å±æ¾Ö ³»¿ë
+		var drag_zone = event.dataTransfer.getData('text');	//ì˜®ê¸¸ì•  ì•„ì´ë””(ë“œëŒ ì´ê±° ëœë‹¤ ã…œã…œ_textë¡œ í•˜ë‹ˆê¹ ë¨..)
+		var drag_zone_inner = document.getElementById(drag_zone).outerHTML;					//ì˜®ê¸¸ì•  ë‚´ìš©
 		var dt = document.getElementById(drag_zone);
 
-		var drop_zone = event.target.id;				//¿Å±æ°÷¿¡ ÀÖ´Â ¾Ö ¾ÆÀÌµğ
-		var drop_zone_inner = document.getElementById(drop_zone).outerHTML;					//¿Å±æ°÷¿¡ ÀÖ´Â ¾Ö ³»¿ë
+		var drop_zone = event.target.id;				//ì˜®ê¸¸ê³³ì— ìˆëŠ” ì•  ì•„ì´ë””
+		var drop_zone_inner = document.getElementById(drop_zone).outerHTML;					//ì˜®ê¸¸ê³³ì— ìˆëŠ” ì•  ë‚´ìš©
 
 		//alert(drag_zone_inner+"--"+drop_zone_inner);
 
-		if(dt && dt.parentNode == event.currentTarget){		//°ú¿¬ ¾ê´Â Ã¥ÀÌ Æ²¸°°Ç°¡? Èì...
-			//Ã¥¿¡ ÀÖ´Â ¼Ò½º°¡ Àß ¾ÈµÇ¼­...°Á cross ½ÃÄ×´Ù.
+		if(dt && dt.parentNode == event.currentTarget){		//ê³¼ì—° ì–˜ëŠ” ì±…ì´ í‹€ë¦°ê±´ê°€? í ...
+			//ì±…ì— ìˆëŠ” ì†ŒìŠ¤ê°€ ì˜ ì•ˆë˜ì„œ...ê± cross ì‹œì¼°ë‹¤.
 			//document.getElementById(drop_zone).innerHTML = '';
 			document.getElementById(drop_zone).outerHTML = drag_zone_inner;
 			//document.getElementById(drag_zone).innerHTML = '';
@@ -70,11 +70,11 @@
 		//}
 		event.stopPropagation();
 
-		//·ÎÄÃ ½ºÅä¸®Áö ¼³Á¤_³»°¡ ¿Å°Ü³õÀº ¸Ş´º ±×´ë·Î ÀúÀåÇÏ±â À§ÇØ...
+		//ë¡œì»¬ ìŠ¤í† ë¦¬ì§€ ì„¤ì •_ë‚´ê°€ ì˜®ê²¨ë†“ì€ ë©”ë‰´ ê·¸ëŒ€ë¡œ ì €ì¥í•˜ê¸° ìœ„í•´...
 		localStorage['leftmenu_storage'] = left_menu.innerHTML;
 	}
 
-	//dragoverÀÌº¥Æ® ÇÚµé·¯_dropÀ» ¹Ş¾ÆµéÀÌµµ·Ï ±âº» »óÅÂ¸¦ Ãë¼ÒÇÔ
+	//dragoverì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬_dropì„ ë°›ì•„ë“¤ì´ë„ë¡ ê¸°ë³¸ ìƒíƒœë¥¼ ì·¨ì†Œí•¨
 	function onDragOver(event){
 		if (event.preventDefault) event.preventDefault(); // allows us to drop
 	    event.dataTransfer.dropEffect = 'copy';
@@ -89,7 +89,7 @@
 	    return false;
 	}
 
-	//drag°¡ Áö³ª°¡°í ³­ µÚ ¹ß»ı
+	//dragê°€ ì§€ë‚˜ê°€ê³  ë‚œ ë’¤ ë°œìƒ
 	function onDragLeave(event){
 		if (event.preventDefault) event.preventDefault();
 	    event.dataTransfer.dropEffect = 'copy';
@@ -98,14 +98,14 @@
 	}
 
 	window.onload = function (){ 
-		//localStorage.clear();	//½ºÅä¸®Áö »èÁ¦
-		//·ÎÄÃ ½ºÅä¸®Áö ºÒ·¯¿À±â
+		//localStorage.clear();	//ìŠ¤í† ë¦¬ì§€ ì‚­ì œ
+		//ë¡œì»¬ ìŠ¤í† ë¦¬ì§€ ë¶ˆëŸ¬ì˜¤ê¸°
 		var tmp = localStorage['leftmenu_storage'];
 		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
-			//·ÎÄÃ ½ºÅä¸®Áö¿¡ µ¥ÀÌÅÍ°¡ ÀÖÀ¸¸é ÇØ´ç µ¥ÀÌÅÍ¸¦ °¡Á®¿Í¼­ ¼¼ÆÃ
+			//ë¡œì»¬ ìŠ¤í† ë¦¬ì§€ì— ë°ì´í„°ê°€ ìˆìœ¼ë©´ í•´ë‹¹ ë°ì´í„°ë¥¼ ê°€ì ¸ì™€ì„œ ì„¸íŒ…
 			left_menu.innerHTML = tmp;
 		}else{
-			//·ÎÄÃ ½ºÅä¸®Áö¿¡ µ¥ÀÌÅÍ°¡ ¾øÀ¸¸é Web SQL Database·Î µ¥ÀÌÅÍ ºÒ·¯¿À±â
+			//ë¡œì»¬ ìŠ¤í† ë¦¬ì§€ì— ë°ì´í„°ê°€ ì—†ìœ¼ë©´ Web SQL Databaseë¡œ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
 			var db;
 			db = openDatabase("okjsp_sqlite", "1.0", "okjsp_sqlite", 2 * 1024 * 1024);
 			db.transaction(function(tx) {
@@ -113,12 +113,12 @@
 				tx.executeSql("SELECT * FROM okboard_category", [], function(tx, result) {
 					var tmp2 = '';
 					if(result.rows.length == 0){
-						//±×³É ÇØº¸°í ½Í¾ú¾î¿© ¤¾¤¾¤¾~
+						//ê·¸ëƒ¥ í•´ë³´ê³  ì‹¶ì—ˆì–´ì—¬ ã…ã…ã…~
 						tx.executeSql("insert into okboard_category(seq,id,name) values(1,'html5'       ,'HTML5')				");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(2,'techtrend'   ,'TECH TREND')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(3,'lecture'     ,'°­ÁÂ')				");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(4,'TOOL'        ,'°³¹ßÅø')				");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(5,'TOOLqna'     ,'°³¹ßÅø QnA')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(3,'lecture'     ,'ê°•ì¢Œ')				");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(4,'TOOL'        ,'ê°œë°œíˆ´')				");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(5,'TOOLqna'     ,'ê°œë°œíˆ´ QnA')			");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(6,'ajax'        ,'Ajax')				");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(7,'ajaxqna'     ,'Ajax QnA')			");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(8,'bbs2'        ,'DB Tips')				");
@@ -133,36 +133,36 @@
 						tx.executeSql("insert into okboard_category(seq,id,name) values(17,'rubyqna'    ,'Ruby on Rails QnA')	");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(18,'flex'       ,'Flex')				");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(19,'flexqna'    ,'Flex QnA')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(20,'bbs7'       ,'¼Ò½ºÀÚ·á½Ç')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(21,'docs'       ,'¹®¼­ÀÚ·á½Ç')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(22,'etc'        ,'±âÅ¸ÀÚ·á½Ç')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(23,'bbs6'       ,'»ç´Â ¾ê±â')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(24,'japanlife'  ,'ÀÏº»»ç´Â¾ê±â')		");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(25,'bbs5'       ,'¸Ó¸®½ÄÈ÷´Â °÷')		");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(20,'bbs7'       ,'ì†ŒìŠ¤ìë£Œì‹¤')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(21,'docs'       ,'ë¬¸ì„œìë£Œì‹¤')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(22,'etc'        ,'ê¸°íƒ€ìë£Œì‹¤')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(23,'bbs6'       ,'ì‚¬ëŠ” ì–˜ê¸°')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(24,'japanlife'  ,'ì¼ë³¸ì‚¬ëŠ”ì–˜ê¸°')		");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(25,'bbs5'       ,'ë¨¸ë¦¬ì‹íˆëŠ” ê³³')		");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(26,'movie'      ,'movie story')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(27,'howmuch'    ,'¾ó¸¶¸éµÅ')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(28,'lifeqna'    ,'ÀÇ°ßÁ»...')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(29,'news'       ,'´º½ºµû¶óÀâ±â')		");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(30,'solo'       ,'½Ì±ÛÀÇ ¹ÌÇĞ')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(31,'recruit'    ,'±¸ÀÎ/±¸Á÷/È«º¸')		");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(27,'howmuch'    ,'ì–¼ë§ˆë©´ë¼')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(28,'lifeqna'    ,'ì˜ê²¬ì¢€...')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(29,'news'       ,'ë‰´ìŠ¤ë”°ë¼ì¡ê¸°')		");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(30,'solo'       ,'ì‹±ê¸€ì˜ ë¯¸í•™')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(31,'recruit'    ,'êµ¬ì¸/êµ¬ì§/í™ë³´')		");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(32,'engdocs'    ,'english bbs')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(33,'krtomcat'   ,'¹ø¿ª')				");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(34,'link'       ,'ÃßÃµ»çÀÌÆ®')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(35,'goodjob'    ,'ÁÁÀºÈ¸»ç')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(36,'market'     ,'ÀåÅÍ')				");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(37,'model2jsp'  ,'¸ğµ¨2JSPÃ¥°ü·Ã')		");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(38,'notice'     ,'°øÁö»çÇ×')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(39,'okboard'    ,'ÀÚ·á½Ç¹®´ä')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(40,'useful'     ,'À¯¿ëÇÑ Á¤º¸')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(41,'mac'        ,'¸Æ Á¤º¸')				");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(42,'ihaveadream','Á¤ºÎ´Â °³¹ßÀÚ¸¦ À§ÇØ')");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(43,'javastudy'  ,'ÇÁ·Î±×·¥±âÃÊ½ºÅÍµğ')	");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(44,'ns'         ,'ÀÚ¹ÙÆĞÅÏ1±â')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(45,'dbstudy'    ,'DB½ºÅÍµğ')			");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(46,'springstudy','½ºÇÁ¸µ ½ºÅÍµğ')		");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(33,'krtomcat'   ,'ë²ˆì—­')				");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(34,'link'       ,'ì¶”ì²œì‚¬ì´íŠ¸')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(35,'goodjob'    ,'ì¢‹ì€íšŒì‚¬')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(36,'market'     ,'ì¥í„°')				");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(37,'model2jsp'  ,'ëª¨ë¸2JSPì±…ê´€ë ¨')		");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(38,'notice'     ,'ê³µì§€ì‚¬í•­')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(39,'okboard'    ,'ìë£Œì‹¤ë¬¸ë‹µ')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(40,'useful'     ,'ìœ ìš©í•œ ì •ë³´')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(41,'mac'        ,'ë§¥ ì •ë³´')				");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(42,'ihaveadream','ì •ë¶€ëŠ” ê°œë°œìë¥¼ ìœ„í•´')");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(43,'javastudy'  ,'í”„ë¡œê·¸ë¨ê¸°ì´ˆìŠ¤í„°ë””')	");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(44,'ns'         ,'ìë°”íŒ¨í„´1ê¸°')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(45,'dbstudy'    ,'DBìŠ¤í„°ë””')			");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(46,'springstudy','ìŠ¤í”„ë§ ìŠ¤í„°ë””')		");
 						tx.executeSql("insert into okboard_category(seq,id,name) values(47,'xf'         ,'SLF')					");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(48,'twitter'    ,'Æ®À§ÅÍ')				");
-						tx.executeSql("insert into okboard_category(seq,id,name) values(49,'trash'      ,'Â«Åë')				");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(48,'twitter'    ,'íŠ¸ìœ„í„°')				");
+						tx.executeSql("insert into okboard_category(seq,id,name) values(49,'trash'      ,'ì§¬í†µ')				");
 					}
 					tx.executeSql("SELECT * FROM okboard_category", [], function(tx, result) {
 						for (var i = 0, item = null; i < result.rows.length; i++) {

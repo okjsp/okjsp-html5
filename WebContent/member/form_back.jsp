@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="kr.pe.okjsp.util.CommonUtil, kr.pe.okjsp.Navigation"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,8 +9,8 @@
 session.removeAttribute("member");
 String cPath = request.getContextPath();
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- Å©·Ò  ÇÁ·¹ÀÓ ¼³Á¤ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- í¬ë¡¬  í”„ë ˆìž„ ì„¤ì • -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
@@ -84,14 +84,14 @@ String cPath = request.getContextPath();
     <!-- header -->
     <jsp:include page="/main/header.jsp" />
 
-    <!-- »ó´Ü Ä«Å×°í¸®(¸ÞÀÎ¿¡¼­´Â »õ±Û ¾Ë¸²),°Ë»ö_½ÃÀÛ -->
+    <!-- ìƒë‹¨ ì¹´í…Œê³ ë¦¬(ë©”ì¸ì—ì„œëŠ” ìƒˆê¸€ ì•Œë¦¼),ê²€ìƒ‰_ì‹œìž‘ -->
     <aside class="header-breadcrumbs">
-      <!-- »õ±Û¾Ë¸² -->   
+      <!-- ìƒˆê¸€ì•Œë¦¼ -->   
       <ul>
-        <li>13°³ÀÇ °³½Ã±ÛÀÌ ¿Ã¶ó¿Ô½À´Ï´Ù</li>
+        <li>13ê°œì˜ ê°œì‹œê¸€ì´ ì˜¬ë¼ì™”ìŠµë‹ˆë‹¤</li>
       </ul>
 
-      <!-- °Ë»ö_½ÃÀÛ -->                  
+      <!-- ê²€ìƒ‰_ì‹œìž‘ -->                  
       <div class="searchform">
         <form action="index.html" method="get">
           <fieldset> 
@@ -100,21 +100,21 @@ String cPath = request.getContextPath();
           </fieldset>
         </form>
       </div>
-      <!-- °Ë»ö_³¡ -->
+      <!-- ê²€ìƒ‰_ë -->
     </aside>
-    <!-- »ó´Ü Ä«Å×°í¸®,°Ë»ö_³¡-->
+    <!-- ìƒë‹¨ ì¹´í…Œê³ ë¦¬,ê²€ìƒ‰_ë-->
     
     <div class="main">
-      <!-- ÁÂÃø¸Þ´º -->
+      <!-- ì¢Œì¸¡ë©”ë‰´ -->
       <jsp:include page="/main/left.jsp" />
       
-      <!-- ¸ÞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+      <!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œìž‘======================================= -->
       <div class="main-content">
 
         <div class="column1-unit">
           <div class="contactform">
             <form method="post" action="index.html">
-              <fieldset><legend>&nbsp;okjsp.pe.kr È¸¿ø°¡ÀÔ&nbsp;</legend>
+              <fieldset><legend>&nbsp;okjsp.pe.kr íšŒì›ê°€ìž…&nbsp;</legend>
                 <p><label for="contact_email" class="left">Email:</label>
                    <input type="email" name="contact_email" id="contact_email" class="field" autofocus required /></p>
                 <p><label for="contact_id" class="left">ID:</label>
@@ -124,9 +124,9 @@ String cPath = request.getContextPath();
                 <p><label for="contact_url" class="left">Website:</label>
                    <input type="text" name="contact_url" id="contact_url" class="field" /></p>
                 <p><label for="contact_url" class="left">Mailling:</label>
-                   <span class="item first"><input type="radio" name="contact_mailling" id="contact_mailling_y" /><label class="" for="contact_mailling_y">Çã¿ë</label></span>
-                   <span class="item"><input type="radio" name="contact_mailling" id="contact_mailling_n" checked /><label class="" for="contact_mailling_n">°ÅºÎ</label></span>
-                   <span class="guide">okjsp¿¡¼­ ºñÁ¤±âÀûÀ¸·Î ¹ßÇàÇÏ´Â ´º½º·¹ÅÍ¿Í È«º¸¸ÞÀÏ ¼ö½Å ¼³Á¤ÀÔ´Ï´Ù.</span>
+                   <span class="item first"><input type="radio" name="contact_mailling" id="contact_mailling_y" /><label class="" for="contact_mailling_y">í—ˆìš©</label></span>
+                   <span class="item"><input type="radio" name="contact_mailling" id="contact_mailling_n" checked /><label class="" for="contact_mailling_n">ê±°ë¶€</label></span>
+                   <span class="guide">okjspì—ì„œ ë¹„ì •ê¸°ì ìœ¼ë¡œ ë°œí–‰í•˜ëŠ” ë‰´ìŠ¤ë ˆí„°ì™€ í™ë³´ë©”ì¼ ìˆ˜ì‹  ì„¤ì •ìž…ë‹ˆë‹¤.</span>
                    </p>
               </fieldset>
               <fieldset><legend>&nbsp;Icon&nbsp;</legend>
@@ -136,16 +136,16 @@ String cPath = request.getContextPath();
                 </div>
               </fieldset>
               <fieldset><legend>&nbsp;Info&nbsp;</legend>
-                <p style="padding-left:15px;">°¡ÀÔ½Ã ÀÓ½Ãºñ¹Ð¹øÈ£°¡ ¸ÞÀÏ·Î ¹ß¼ÛµË´Ï´Ù.<br>·Î±×ÀÎ ÈÄ ºñ¹Ð¹øÈ£¸¦ ¹Ù²ãÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.</p>
+                <p style="padding-left:15px;">ê°€ìž…ì‹œ ìž„ì‹œë¹„ë°€ë²ˆí˜¸ê°€ ë©”ì¼ë¡œ ë°œì†¡ë©ë‹ˆë‹¤.<br>ë¡œê·¸ì¸ í›„ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë°”ê¿”ì£¼ì‹œê¸° ë°”ëžë‹ˆë‹¤.</p>
               </fieldset>
             </form>
           </div>              
         </div>
 
       </div>
-      <!-- ¸ÞÀÎ ÄÁÅÙÃ÷_³¡========================================== -->
-      <!-- ¿ìÃø ¿µ¿ª_¸ÞÀÎ È­¸é ¿Ü¿¡´Â Á¦°Å ÇÏ°í ÀÛ¾÷... -->
-      <!-- ·Î±×ÀÎ¿¡¼­ ¿ìÃø¿µ¿ª ¾ø¾îµµ µÉµí. -->
+      <!-- ë©”ì¸ ì»¨í…ì¸ _ë========================================== -->
+      <!-- ìš°ì¸¡ ì˜ì—­_ë©”ì¸ í™”ë©´ ì™¸ì—ëŠ” ì œê±° í•˜ê³  ìž‘ì—…... -->
+      <!-- ë¡œê·¸ì¸ì—ì„œ ìš°ì¸¡ì˜ì—­ ì—†ì–´ë„ ë ë“¯. -->
       <!-- jsp:include page="/main/right.jsp" / -->
     </div>
 

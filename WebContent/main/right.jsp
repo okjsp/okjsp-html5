@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 //ContextPath
 String cPath = request.getContextPath();
 
 %> 
 <script>
-	var lNextWindowId = 1;	// Chatting Popup ÀÌ Ç×»ó »õ·Î¿î ÀÌ¸§À¸·Î ¿­¸®µµ·ÏÇÏ´Â ±¸ºĞ°ª
+	var lNextWindowId = 1;	// Chatting Popup ì´ í•­ìƒ ìƒˆë¡œìš´ ì´ë¦„ìœ¼ë¡œ ì—´ë¦¬ë„ë¡í•˜ëŠ” êµ¬ë¶„ê°’
 
 	// OKJSP Chatting Popup
 	function openSubWindow() {
@@ -24,11 +24,11 @@ String cPath = request.getContextPath();
 
 <aside id="right"><!-- start right sidebar -->	
 	<div class="box">
-		<h3>±¤°í</h3>
+		<h3>ê´‘ê³ </h3>
 		<div class="inner" align="center">
 			<a href="<%=cPath %>/main/f.jsp?http://open.egovframe.go.kr/seminar/20100723.html" target="_blank"
 			><img src="http://www.okjsp.pe.kr/images/banner/egovframe.gif"
-				alt="ÀüÀÚÁ¤ºÎ Ç¥ÁØÇÁ·¹ÀÓ¿öÅ© egovframe"
+				alt="ì „ìì •ë¶€ í‘œì¤€í”„ë ˆì„ì›Œí¬ egovframe"
 			></a>
 			<a href="<%=cPath %>/main/f.jsp?http://www.adoberia.co.kr/iwt/blog/blog.php?tn=flex&id=468&src=image&kw=00003B" target="_blank"
 			><img src="http://www.okjsp.pe.kr/images/banner/welove_134x60.gif"
@@ -36,11 +36,11 @@ String cPath = request.getContextPath();
 			></a>
 			<a href="<%=cPath %>/main/f.jsp?http://www.apptalk.tv" target="_blank"
 			><img src="http://www.okjsp.pe.kr/images/banner/apptalk_134x60.jpg"
-				alt="http://www.okjsp.pe.kr¼¼»óÀÇ ¸ğµç ¾ÛÀ» ¿µ»óÀ¸·Î. ¾ÛÀÇ ¸ğµç °Í, ¾ÛÅå"
+				alt="http://www.okjsp.pe.krì„¸ìƒì˜ ëª¨ë“  ì•±ì„ ì˜ìƒìœ¼ë¡œ. ì•±ì˜ ëª¨ë“  ê²ƒ, ì•±í†¡"
 			></a>
 			<a href="<%=cPath %>/main/f.jsp?http://www.devgear.co.kr/" target="_blank"
 			><img src="http://www.okjsp.pe.kr/images/banner/embarcadero_134x60.gif"
-				alt="°³¹ßµµ±¸ÀÇ ¸í°¡, ÀÌÁ¦´Â Æ©´×ÀÔ´Ï´Ù."
+				alt="ê°œë°œë„êµ¬ì˜ ëª…ê°€, ì´ì œëŠ” íŠœë‹ì…ë‹ˆë‹¤."
 			></a>
     	</div>
 	</div><!-- .box -->
@@ -55,17 +55,17 @@ String cPath = request.getContextPath();
 	<div class="box">
 			<h3>AD</h3>
 			<div class="inner">
-				<a href="<%=cPath %>/main/f.jsp?http://www.innorix.com/DS/" title="´ë¿ë·® ÆÄÀÏ/Æú´õ ¾÷·Îµå ÄÄÆ÷³ÍÆ®" target="innorix">
-					¾÷·Îµå´Â InnoDS
+				<a href="<%=cPath %>/main/f.jsp?http://www.innorix.com/DS/" title="ëŒ€ìš©ëŸ‰ íŒŒì¼/í´ë” ì—…ë¡œë“œ ì»´í¬ë„ŒíŠ¸" target="innorix">
+					ì—…ë¡œë“œëŠ” InnoDS
 				</a><br/>
-				<a href="<%=cPath %>/main/f.jsp?http://www.imaso.co.kr/" title="ÇÁ·Î±×·¡¸Ó¸¦ À§ÇÑ ÀâÁö" target="imaso">
-					¸¶¼Ò Magazine
+				<a href="<%=cPath %>/main/f.jsp?http://www.imaso.co.kr/" title="í”„ë¡œê·¸ë˜ë¨¸ë¥¼ ìœ„í•œ ì¡ì§€" target="imaso">
+					ë§ˆì†Œ Magazine
 				</a><br/>
-				<a href="<%=cPath %>/main/f.jsp?http://bit.ly/au0bGN" title="¾ÆÀÌÆù¾Û »ê¼öÀÇ½Å" target="godofmath">
-					¾ÆÀÌÆù¾Û »ê¼öÀÇ½Å
+				<a href="<%=cPath %>/main/f.jsp?http://bit.ly/au0bGN" title="ì•„ì´í°ì•± ì‚°ìˆ˜ì˜ì‹ " target="godofmath">
+					ì•„ì´í°ì•± ì‚°ìˆ˜ì˜ì‹ 
 				</a><br/>
-				<a href="<%=cPath %>/main/f.jsp?http://bit.ly/cIQ7fA" title="¾Èµå·ÎÀÌµå °³¹ßÈ¯°æ ±¸Ãà" target="android">
-					[À¯·á]¾Èµå·ÎÀÌµå °³¹ß¸Å´º¾ó1
+				<a href="<%=cPath %>/main/f.jsp?http://bit.ly/cIQ7fA" title="ì•ˆë“œë¡œì´ë“œ ê°œë°œí™˜ê²½ êµ¬ì¶•" target="android">
+					[ìœ ë£Œ]ì•ˆë“œë¡œì´ë“œ ê°œë°œë§¤ë‰´ì–¼1
 				</a><br/>
 			</div>
 	</div><!-- .box -->
@@ -73,11 +73,11 @@ String cPath = request.getContextPath();
 	<div class="box">
 			<h3>LINK</h3>
 			<div class="inner">
-				<a href="http://cafe.naver.com/appleswing" title="¾ÖÇÃ½ºÀ®´í½ºÄ«Æä ¿îµ¿ºÎÁ·°³¹ßÀÚ¿¡°Ô Àû±Ø ÃßÃµÇÕ´Ï´Ù. ^^; Àú´Â 14±â Á¹¾÷Çß½À´Ï´Ù." target="swing">
-   					¾ÖÇÃ½ºÀ®´í½ºÄ«Æä
+				<a href="http://cafe.naver.com/appleswing" title="ì• í”ŒìŠ¤ìœ™ëŒ„ìŠ¤ì¹´í˜ ìš´ë™ë¶€ì¡±ê°œë°œìì—ê²Œ ì ê·¹ ì¶”ì²œí•©ë‹ˆë‹¤. ^^; ì €ëŠ” 14ê¸° ì¡¸ì—…í–ˆìŠµë‹ˆë‹¤." target="swing">
+   					ì• í”ŒìŠ¤ìœ™ëŒ„ìŠ¤ì¹´í˜
    				</a><br/>
-   				<a href="http://it.nodong.net/zbxe/?mid=JOBQNA01" title="È¸»ç,ÀÏÅÍ,°æ·Â °ü·Ã ÀÌ¾ß±â it.nodong.net" target="jobqna">
-   					ÀÏÅÍQ&amp;A
+   				<a href="http://it.nodong.net/zbxe/?mid=JOBQNA01" title="íšŒì‚¬,ì¼í„°,ê²½ë ¥ ê´€ë ¨ ì´ì•¼ê¸° it.nodong.net" target="jobqna">
+   					ì¼í„°Q&amp;A
    				</a>
 			</div>
 	</div><!-- .box -->
@@ -86,7 +86,7 @@ String cPath = request.getContextPath();
 			<h3>sponsored by</h3>
 			<div class="inner" align="center">
 				<a href="http://www.80port.com/community" target="_blank" title="www.80port.com
-	 				okjsp standalone È£½ºÆÃ Áö¿ø, ¼­ºñ½º ÁÁ½À´Ï´Ù."> 
+	 				okjsp standalone í˜¸ìŠ¤íŒ… ì§€ì›, ì„œë¹„ìŠ¤ ì¢‹ìŠµë‹ˆë‹¤."> 
 					<img src="http://www.okjsp.pe.kr/images/bnr_80port.gif" width="88" height="31" border="0"></a> 
 				<br /> 
 				<a href="<%=cPath %>/main/f.jsp?http://www.cubrid.com/" target="_blank" title="okjsp Database"> 
@@ -107,7 +107,7 @@ String cPath = request.getContextPath();
 	</div><!-- .box -->
 	
 	<div class="box">
-			<h3>µ¿¸Í»çÀÌÆ®</h3>
+			<h3>ë™ë§¹ì‚¬ì´íŠ¸</h3>
 			<div class="inner" align="center">
 				<a href="http://simples.kr/" target="_blank"> 
 					<img src="http://www.okjsp.pe.kr/images/bnr_simples.png" alt="simples.kr"></a>

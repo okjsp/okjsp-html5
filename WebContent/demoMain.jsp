@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko"> 
 <!-- oswd.org Plain Blue -->
 <!-- Web Page Design by James Koster - http://www.jameskoster.co.uk  and Marko - http://www.mcville.net-->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>NEW OKJSP with CUBRID, HTML5</title>
 <link href="css/okjsp.css" rel="stylesheet" type="text/css" />
 </head>
@@ -26,9 +26,9 @@
 				<img src="images/okjsp.gif" alt="Your Logo" class="logo" />
 				
 				<p class="introduction">
-						okjsp.pe.kr HTML5 ╣╔╦Пют╢о╢ы. <br/>
-						okjsp.pe.kr HTML5 ╣╔╦Пют╢о╢ы.<br/>
-						okjsp.pe.kr HTML5 ╣╔╦Пют╢о╢ы.<br/>
+						okjsp.pe.kr HTML5 К█╟К╙╗Л·┘К▀┬К▀╓. <br/>
+						okjsp.pe.kr HTML5 К█╟К╙╗Л·┘К▀┬К▀╓.<br/>
+						okjsp.pe.kr HTML5 К█╟К╙╗Л·┘К▀┬К▀╓.<br/>
 				</p>
 				
 				<div id="sidebar">

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="kr.pe.okjsp.util.CommonUtil"%>
 <%
     CommonUtil.setCookie(response, "okid", "", 0);
@@ -9,8 +9,8 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- Å©·Ò  ÇÁ·¹ÀÓ ¼³Á¤ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- í¬ë¡¬  í”„ë ˆìž„ ì„¤ì • -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/member.css" media="screen" /> 
@@ -29,9 +29,9 @@ $(document).ready(function() {
     <section>
         <div id="container">
             <div id="contentinner">
-                <!-- ¸ÞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
-                <p>ÀÌ¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.</p>
-                <!-- ¸ÞÀÎ ÄÁÅÙÃ÷_³¡======================================= -->
+                <!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œìž‘======================================= -->
+                <p>ì´ìš©í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.</p>
+                <!-- ë©”ì¸ ì»¨í…ì¸ _ë======================================= -->
             </div><!-- #content-->
         </div><!-- #container-->
         <jsp:include page="../main/left.jsp" />

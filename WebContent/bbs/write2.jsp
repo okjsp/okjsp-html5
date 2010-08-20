@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 /*
 	long sid = CommonUtil.getCookieLong(request, "sid");
@@ -17,7 +17,7 @@
 <%@page import="kr.pe.okjsp.util.CommonUtil"%>
 <%@page import="kr.pe.okjsp.Navigation"%><html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>okjsp editor</title>
 
 <link rel="stylesheet" href="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.css" type="text/css">
@@ -117,13 +117,13 @@ window.onload = function () {
 </dt>
 <dd>
 <select name="ccl_id" id="ccl_id">
-	<option value="0">Copyright-ÀúÀÛÀÚ¿¡°Ô ÀúÀÛ±Ç</option>
-	<option value="1">CCL-ÀúÀÛÀÚÇ¥½Ã</option>
-	<option value="2">CCL-ÀúÀÛÀÚÇ¥½Ã-µ¿ÀÏÁ¶°Çº¯°æÇã¶ô</option>
-	<option value="3">CCL-ÀúÀÛÀÚÇ¥½Ã-º¯°æ±ÝÁö</option>
-	<option value="4">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®</option>
-	<option value="5">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®-µ¿ÀÏÁ¶°Çº¯°æÇã¶ô</option>
-	<option value="6">CCL-ÀúÀÛÀÚÇ¥½Ã-ºñ¿µ¸®-º¯°æ±ÝÁö</option>
+	<option value="0">Copyright-ì €ìž‘ìžì—ê²Œ ì €ìž‘ê¶Œ</option>
+	<option value="1">CCL-ì €ìž‘ìží‘œì‹œ</option>
+	<option value="2">CCL-ì €ìž‘ìží‘œì‹œ-ë™ì¼ì¡°ê±´ë³€ê²½í—ˆë½</option>
+	<option value="3">CCL-ì €ìž‘ìží‘œì‹œ-ë³€ê²½ê¸ˆì§€</option>
+	<option value="4">CCL-ì €ìž‘ìží‘œì‹œ-ë¹„ì˜ë¦¬</option>
+	<option value="5">CCL-ì €ìž‘ìží‘œì‹œ-ë¹„ì˜ë¦¬-ë™ì¼ì¡°ê±´ë³€ê²½í—ˆë½</option>
+	<option value="6">CCL-ì €ìž‘ìží‘œì‹œ-ë¹„ì˜ë¦¬-ë³€ê²½ê¸ˆì§€</option>
 </select>
 </dd>
 <dt>
@@ -141,7 +141,7 @@ window.onload = function () {
 <input id="submitButton" type="submit" value="Submit"/>
 </dd>
 </dl>
-ÆÄÀÏ¾÷·Îµå : 
+íŒŒì¼ì—…ë¡œë“œ : 
 <input type="file" name="filename0" id='filename0' multiple><br>
 <div id='fileList'></div>
 <p id="drop_area" style="border: 2px dashed #ddd;padding: 10px;margin-bottom: 2em;"> 
@@ -150,7 +150,7 @@ window.onload = function () {
 </form>
 </div>
 				<ul id="file_list"> 
-					<li class="no_items">¼±ÅÃµÈ ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.</li> 
+					<li class="no_items">ì„ íƒëœ íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.</li> 
 				</ul> 
 	<script>
 	// view-source:http://robertnyman.com/html5/fileapi/fileapi.html 

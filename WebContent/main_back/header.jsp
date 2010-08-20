@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 //ContextPath
 String cPath = request.getContextPath();
 
 %>    
 <header class="header">
-	<!-- Å¸ÀÌÆ²_½ÃÀÛ -->
+	<!-- íƒ€ì´í‹€_ì‹œìž‘ -->
 	<hgroup class="header-top">
 		<div class="round-border-topleft"></div>
 		<div class="round-border-topright"></div>
@@ -38,12 +38,12 @@ String cPath = request.getContextPath();
 			</ul>
 		</div>
 	</hgroup>
-	<!-- Å¸ÀÌÆ²_³¡-->
-	<!-- »ó´Ü¸Þ´º_½ÃÀÛ -->
+	<!-- íƒ€ì´í‹€_ë-->
+	<!-- ìƒë‹¨ë©”ë‰´_ì‹œìž‘ -->
 	<div class="header-bottom"><!-- Navigation Level 2 (Drop-down menus) -->
 		<nav class="nav2"><!-- Navigation item -->
 			<ul>
-				<li><a href="<%=cPath%>">È¨</a></li>
+				<li><a href="<%=cPath%>">í™ˆ</a></li>
 			</ul>
 			
 			<!-- Navigation item -->
@@ -82,5 +82,5 @@ String cPath = request.getContextPath();
 			</ul>
 		</nav>
 	</div>
-	<!-- »ó´Ü¸Þ´º_³¡ -->
+	<!-- ìƒë‹¨ë©”ë‰´_ë -->
 </header>

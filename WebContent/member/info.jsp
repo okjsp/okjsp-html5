@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="kr.pe.okjsp.member.Member"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="kr.pe.okjsp.Navigation"%>
@@ -18,8 +18,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- Å©·Ò  ÇÁ·¹ÀÓ ¼³Á¤ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- í¬ë¡¬  í”„ë ˆì„ ì„¤ì • -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
@@ -212,11 +212,11 @@ $(document).ready(function() {
     <section>
         <div id="container">
             <div id="contentinner">
-                <!-- ¸ŞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+                <!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œì‘======================================= -->
                     <div class="contactform">
                         <form id="joinform" method="post" action="register.jsp">
                             <input type="hidden" name="pact" value="modify">
-                            <fieldset><legend>&nbsp;okjsp.pe.kr È¸¿ø°¡ÀÔ&nbsp;</legend>
+                            <fieldset><legend>&nbsp;okjsp.pe.kr íšŒì›ê°€ì…&nbsp;</legend>
                                 <p><label for="contact_email" class="left">Email:</label>
                                     <input type="email" name="email" id="contact_email" value="${member.email}" class="field" autofocus required /></p>
                                 <p><label for="contact_id" class="left">ID:</label>
@@ -230,9 +230,9 @@ $(document).ready(function() {
                                 <p><label for="contact_url" class="left">Website:</label>
                                     <input type="text" name="homepage" id="contact_url" value="${member.homepage}" class="field" /></p>
                                 <p><label for="contact_url" class="left">Mailling:</label>
-                                    <span class="item first"><input type="radio" name="mailing" id="contact_mailling_y" value="Y" /><label class="" for="contact_mailling_y">Çã¿ë</label></span>
-                                    <span class="item"><input type="radio" name="mailing" id="contact_mailling_n" value="N" /><label class="" for="contact_mailling_n">°ÅºÎ</label></span>
-                                    <span class="guide">okjsp¿¡¼­ ºñÁ¤±âÀûÀ¸·Î ¹ßÇàÇÏ´Â ´º½º·¹ÅÍ¿Í È«º¸¸ŞÀÏ ¼ö½Å ¼³Á¤ÀÔ´Ï´Ù.</span></p>
+                                    <span class="item first"><input type="radio" name="mailing" id="contact_mailling_y" value="Y" /><label class="" for="contact_mailling_y">í—ˆìš©</label></span>
+                                    <span class="item"><input type="radio" name="mailing" id="contact_mailling_n" value="N" /><label class="" for="contact_mailling_n">ê±°ë¶€</label></span>
+                                    <span class="guide">okjspì—ì„œ ë¹„ì •ê¸°ì ìœ¼ë¡œ ë°œí–‰í•˜ëŠ” ë‰´ìŠ¤ë ˆí„°ì™€ í™ë³´ë©”ì¼ ìˆ˜ì‹  ì„¤ì •ì…ë‹ˆë‹¤.</span></p>
                                 <p><label for="contact_profile" class="left">Profile:</label>
                                     <img alt="${member.id} Profile" src="<%= cPath %>/profile/${member.id}.jpg"></p>
                             </fieldset>
@@ -248,7 +248,7 @@ $(document).ready(function() {
                             </p>
                         </form>
                     </div>
-                <!-- ¸ŞÀÎ ÄÁÅÙÃ÷_³¡======================================= -->
+                <!-- ë©”ì¸ ì»¨í…ì¸ _ë======================================= -->
             </div><!-- #content-->
         </div><!-- #container-->
         <jsp:include page="../main/left.jsp" />

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>    
 <jsp:useBean id="list" class="kr.pe.okjsp.ListHandler" />
 <jsp:setProperty name="list" property="*" />
@@ -18,8 +18,8 @@
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- Å©·Ò  ÇÁ·¹ÀÓ ¼³Á¤ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- í¬ë¡¬  í”„ë ˆìž„ ì„¤ì • -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
@@ -84,7 +84,7 @@
 		<div id="container">
 			<div id="contentinner">
 	   			<article> 
-	   			<!-- ¸ÞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+	   			<!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œìž‘======================================= -->
 			      	<!-- Pagetitle -->
 <%
 	Map map = (Map)application.getAttribute("bbsInfoMap");
@@ -93,11 +93,11 @@
 			        <h1><%= bib.getName() %> [<%=list.getCnt() %>]</h1> 
 			        <br/>
 			        <h3><%= bib.getHeader() %></h3>
-			        <input type="button" class="button" value="±Û¾²±â" onClick="writeArticle()"/>
+			        <input type="button" class="button" value="ê¸€ì“°ê¸°" onClick="writeArticle()"/>
 			        <br/><br/>
 			        <div id='list'>
 			        </div>
-			    <!-- ¸ÞÀÎ ÄÁÅÙÃ÷_³¡========================================== -->
+			    <!-- ë©”ì¸ ì»¨í…ì¸ _ë========================================== -->
 				</article>
 			</div><!-- #content-->
 		</div><!-- #container--> 

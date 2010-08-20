@@ -6,7 +6,7 @@
     	    kr.pe.okjsp.util.DateLabel,
             java.util.*,
             java.util.Iterator"
-    pageEncoding="euc-kr"
+    pageEncoding="UTF-8"
 %>
 <head>
 <%
@@ -14,8 +14,8 @@
 String cPath = request.getContextPath();
 int maxseq = 0;
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- Å©·Ò  ÇÁ·¹ÀÓ ¼³Á¤ -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- í¬ë¡¬  í”„ë ˆì„ ì„¤ì • -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
@@ -33,10 +33,10 @@ int maxseq = 0;
 	<section>
 		<div id="container">
 			<div id="content">
-			<!-- ¸ŞÀÎ ÄÁÅÙÃ÷_½ÃÀÛ======================================= -->
+			<!-- ë©”ì¸ ì»¨í…ì¸ _ì‹œì‘======================================= -->
 				<article align="center">
 					<a href="<%=cPath %>/f.jsp?http://www.devlec.com/?_pageVariable=OKJSP" target="_blank"> 
-						<img src="http://www.okjsp.pe.kr/images/banner/devlec_473x98.gif" alt="¢Æ¢Æ¢Æ µ¥ºê·º ¢Æ¢Æ¢Æ °³¹ßÀÚ¸¦ À§ÇÑ ±¹³» ÃÖ°í ÇÁ·Î±×·¡¹Ö Àü¹® µ¿¿µ»ó°­ÁÂ »çÀÌÆ®"> 
+						<img src="http://www.okjsp.pe.kr/images/banner/devlec_473x98.gif" alt="â–’â–’â–’ ë°ë¸Œë ‰ â–’â–’â–’ ê°œë°œìë¥¼ ìœ„í•œ êµ­ë‚´ ìµœê³  í”„ë¡œê·¸ë˜ë° ì „ë¬¸ ë™ì˜ìƒê°•ì¢Œ ì‚¬ì´íŠ¸"> 
 					</a>
 				</article>
 				<br/>
@@ -45,7 +45,7 @@ int maxseq = 0;
 		          	Iterator iterList = null;
 		        	Article one = null;
 		          	ArrayList arrayList = new ArrayList();
-		          	arrayList.add("notice|°øÁö»çÇ×");
+		          	arrayList.add("notice|ê³µì§€ì‚¬í•­");
 		
 		        	Iterator iter = arrayList.iterator();
 		        	String [] rec = null;
@@ -95,7 +95,7 @@ int maxseq = 0;
 		          	%>
 				</article>
 				<article>
-					<h2><a href="#" rel="bookmark">ÀüÃ¼°Ô½ÃÆÇ</a></h2>
+					<h2><a href="#" rel="bookmark">ì „ì²´ê²Œì‹œíŒ</a></h2>
 					<blockquote>
 						<table id="table_list">
 			            <%
@@ -110,8 +110,8 @@ int maxseq = 0;
 							    	bbsInfo = new BbsInfoBean();
 							    }
 						    	
-							    // ¸ğ¹ÙÀÏÀ¥ ÇÁ·ÎÁ§Æ® ÁøÇàÁß¿¡´Â Å×½ºÆ® µ¥ÀÌÅ¸ÀÎ
-						    	// twitter ¿Í null Àº º¸¿©ÁöÁö ¾Ê½À´Ï´Ù.
+							    // ëª¨ë°”ì¼ì›¹ í”„ë¡œì íŠ¸ ì§„í–‰ì¤‘ì—ëŠ” í…ŒìŠ¤íŠ¸ ë°ì´íƒ€ì¸
+						    	// twitter ì™€ null ì€ ë³´ì—¬ì§€ì§€ ì•ŠìŠµë‹ˆë‹¤.
 						    	if (bbsInfo.getCseq() == null || "".equals(bbsInfo.getCseq()) || "twitter".equals(bbsInfo.getBbs())) {
 						    		continue;
 						    	}
@@ -119,8 +119,8 @@ int maxseq = 0;
 							    if ("2".equals(bbsInfo.getCseq())) {
 							    	continue;
 							    }
-							    //°Ô½ÃÆÇ ¸ñ·ÏÀÇ °¡Àå ¸Ç À§ÀÇ ¹øÈ£¿Í db¿¡ ÀÖ´Â °Ô½ÃÆÇ ¸ñ·ÏÀÇ ¹øÈ£¸¦ ºñ±³ÇÏ¿©
-							    //´Ù¸£¸é dbÀÇ °Ô½ÃÆÇ ³»¿ëÀ» »Ñ·ÁÁØ´Ù
+							    //ê²Œì‹œíŒ ëª©ë¡ì˜ ê°€ì¥ ë§¨ ìœ„ì˜ ë²ˆí˜¸ì™€ dbì— ìˆëŠ” ê²Œì‹œíŒ ëª©ë¡ì˜ ë²ˆí˜¸ë¥¼ ë¹„êµí•˜ì—¬
+							    //ë‹¤ë¥´ë©´ dbì˜ ê²Œì‹œíŒ ë‚´ìš©ì„ ë¿Œë ¤ì¤€ë‹¤
 							    if(i == 0){
 									maxseq = one.getSeq();
 							    }
@@ -162,7 +162,7 @@ int maxseq = 0;
 					</blockquote>
 				</article>
 				<br><br>
-				<!-- ¸ŞÀÎ ÄÁÅÙÃ÷_³¡======================================= -->
+				<!-- ë©”ì¸ ì»¨í…ì¸ _ë======================================= -->
 			</div><!-- #content-->
 		</div><!-- #container-->
 
@@ -194,7 +194,7 @@ int maxseq = 0;
 %>
 <script>
 var maxseq = '<%=maxseq%>';
-/**server-sent-event_½ÃÀÛ */
+/**server-sent-event_ì‹œì‘ */
 (function() {
     var INIT_MESSAGE = "Now wait for server-side events. They will keep appearing in the console...",
         FAIL_MESSAGE = "Sorry, I have never heard that your browser supports SSE";
@@ -241,16 +241,16 @@ var maxseq = '<%=maxseq%>';
         var dbmaxseq = event.data;
         //alert('maxseq:'+maxseq +',dbmaxseq'+dbmaxseq);
 		if(maxseq < dbmaxseq){
-			//1. db°ªÀÌ Å¬°æ¿ì : Ãß°¡(ÇÏ¸é¼­ ¹ØÀÇ µ¥ÀÌÅÍ¸¦ »èÁ¦½ÃÄÑ¾ßÇÔ)
+			//1. dbê°’ì´ í´ê²½ìš° : ì¶”ê°€(í•˜ë©´ì„œ ë°‘ì˜ ë°ì´í„°ë¥¼ ì‚­ì œì‹œì¼œì•¼í•¨)
 			var myAjax = new Ajax.Request(
 			        "/html5/main/main_event.jsp",
 			        {method: 'get', parameters: "seq="+dbmaxseq ,
 				    onComplete: ajax_response}
 			    );
 		}else if(maxseq > dbmaxseq){
-			//2. db°ªÀÌ ÀÛÀ»°æ¿ì : »èÁ¦(ÇÏ¸é¼­ ¹ØÀÇ µ¥ÀÌÅÍ¸¦ Ãß°¡½ÃÄÑ¾ß ÇÏ´Âµ¥..¾î·Á¿ïµí ¤»¤»)
-			//»èÁ¦¸¸ ÇÏÀÚ ¤»¤»~
-			//±Ùµ¥ »èÁ¦°¡ Àß ¾ÈµÈ´Ù ÂÁ...
+			//2. dbê°’ì´ ì‘ì„ê²½ìš° : ì‚­ì œ(í•˜ë©´ì„œ ë°‘ì˜ ë°ì´í„°ë¥¼ ì¶”ê°€ì‹œì¼œì•¼ í•˜ëŠ”ë°..ì–´ë ¤ìš¸ë“¯ ã…‹ã…‹)
+			//ì‚­ì œë§Œ í•˜ì ã…‹ã…‹~
+			//ê·¼ë° ì‚­ì œê°€ ì˜ ì•ˆëœë‹¤ ì©...
 			var list = $('table_list');
 			list.deleteRow(1);
 		} 
@@ -294,5 +294,5 @@ var maxseq = '<%=maxseq%>';
 	
     startEvent();
 }());
-/**server-sent-event_³¡ */
+/**server-sent-event_ë */
 </script>
