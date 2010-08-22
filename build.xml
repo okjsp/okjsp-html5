@@ -22,6 +22,9 @@
 		<copy todir="${publish.home}">
 			<fileset dir="WebContent">
 				<include name="**/*.jsp" />
+				<include name="**/*.html" />
+				<include name="**/*.css" />
+				<include name="**/*.js" />
 			</fileset>
 		</copy>
     </target>
