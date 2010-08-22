@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     2010. 8. 22. 오후 4:50:56                                                        
+
+     okjsphtml5    
+     okjsp html5 deployment
+                   
+     kenu                                                                
+     ====================================================================== -->
+<project name="okjsphtml5" default="default">
+    <description>
+            okjsp html5 deployment
+    </description>
+	<property name="publish.home" value="/web/kenu/html5"/>
+
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="depends" description="okjsp html5 deployment">
+		<mkdir dir="${publish.home}"/>
+		<copy todir="${publish.home}">
+			<fileset dir="WebContent">
+				<include name="**/*.jsp" />
+			</fileset>
+		</copy>
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    </target>
+
+</project>
