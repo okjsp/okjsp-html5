@@ -18,6 +18,7 @@ String cPath = request.getContextPath();
 <script type="text/javascript" src="<%=cPath%>/js/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+    jQuery.error = function(e) {console.error(e)};
     $('#contact_email').keyup(function(e) {
         if ((e.keyCode < 0x60 || e.keyCode > 0x69)
                 && (e.keyCode < 0x30 || e.keyCode > 0x39)
@@ -28,22 +29,25 @@ $(document).ready(function() {
 
         clearTimeout($(this).data('timer'));
         $(this).data('timer', setTimeout(function() {
-            $.post('idchecker.jsp', { id: $('#contact_email').val() }, function(data, textStatus) {
-                alert(data);
-                //alert(data.result);
-            }, 'json');
+            $.post('emailchecker.jsp', { email: $('#contact_email').val() }, function(data) {
+                alert(data.result);
+            });
         }, 1000));
     });
 
     $('#contact_id').keyup(function(e) {
-        clearTimeout($(this).data('timer'));
+        if ((e.keyCode < 0x60 || e.keyCode > 0x69)
+                && (e.keyCode < 0x30 || e.keyCode > 0x39)
+                && (e.keyCode < 0x41 || e.keyCode > 0x5A)
+                && e.keyCode != 0x08) {
+            return;
+        }
 
-//alert(e.keyCode >= 0x60 && e.keyCode <= 0x69);
-//alert(e.keyCode >= 0x30 && e.keyCode <= 0x39);
-//alert(e.keyCode >= 0x41 && e.keyCode <= 0x5A);
-        return;
-        
+        clearTimeout($(this).data('timer'));
         $(this).data('timer', setTimeout(function() {
+            $.post('idchecker.jsp', { id: $('#contact_id').val() }, function(data) {
+                alert(data.result);
+            });
         }, 1000));
     });
 
