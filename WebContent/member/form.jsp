@@ -30,7 +30,7 @@ $(document).ready(function() {
         clearTimeout($(this).data('timer'));
         $(this).data('timer', setTimeout(function() {
             $.post('emailchecker.jsp', { email: $('#contact_email').val() }, function(data) {
-                alert(data.result);
+                $('#contact_email').data('emailchecked', data.result);
             });
         }, 1000));
     });
@@ -46,7 +46,7 @@ $(document).ready(function() {
         clearTimeout($(this).data('timer'));
         $(this).data('timer', setTimeout(function() {
             $.post('idchecker.jsp', { id: $('#contact_id').val() }, function(data) {
-                alert(data.result);
+                $('#contact_id').data('idchecked', data.result);
             });
         }, 1000));
     });
@@ -121,11 +121,11 @@ $(document).ready(function() {
     });
 
     $('#joinform').submit(function(e) {
-        if ($('#emailchecked').val() != 'Y') {
+        if ($('#contact_email').data('emailchecked') != true) {
             alert('중복된 메일 입니다.');
             return false;
         }
-        if ($('#idchecked').val() != 'Y') {
+        if ($('#contact_id').data('idchecked') != true) {
             alert('중복된 아이디 입니다.');
             return false;
         }
