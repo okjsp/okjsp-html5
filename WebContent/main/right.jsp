@@ -48,7 +48,7 @@ String cPath = request.getContextPath();
 	<div class="box">
 		<h3>Chatting</h3>
 		<div class="inner">
-			<p align="center"><a href="javascript:openSubWindow();">Chatting Popup</a></p>
+			<p align="center"><a href="javascript:openSubWindow();"><b>Chatting Popup</a></b></p>
     	</div>
 	</div><!-- .box -->
 	
