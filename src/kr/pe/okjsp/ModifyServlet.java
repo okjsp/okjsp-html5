@@ -62,7 +62,8 @@ public class ModifyServlet extends HttpServlet {
         if(getEncryptedString(confirmPassword, conn).equals(one.getPassword())) {
             req.setAttribute("article", one);
         } else {
-            resourceName = "/jsp/error.jsp";
+            //resourceName = "/jsp/error.jsp";
+        	resourceName = "/error.jsp";
             throw new Exception("WRONG PASSWORD");
         }
 
@@ -77,7 +78,7 @@ public class ModifyServlet extends HttpServlet {
         while (rs.next()) {
             arrdf.add(new DownFile(rs.getInt(1), CommonUtil.a2k(rs.getString(2)), rs.getString(3),
                                    rs.getLong(4), rs.getInt(1)
-                                  ) );
+                                  ));
         }
         rs.close();
         pstmt.close();
