@@ -9,12 +9,17 @@ header,nav,section,article,aside,footer {
 }
 
 body {
-	font: 16px/ 18px Arial, Tahoma, sans-serif;
+	/*font: 16px/ 18px Arial, Tahoma, sans-serif;*/
 	color: #555;
 	width: 960px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	font-family : "다음_Regular", Arial, Tahoma,;
+	src : url('Daum_Regular.ttf');
+    font-size : 12pt; 
+    /*font-family : "다음_Semi_Bold";
+    src : url('Daum_SemiBold.ttf');*/
 }
 
 a {
@@ -278,6 +283,10 @@ aside h3 {
 	text-shadow: 1px 1px 1px #DDD;
 	height: 35px;
 	padding-left: 10px;
+	/*font-family : "다음_Regular", Arial, Tahoma,;
+	src : url('Daum_Regular.ttf');*/
+    font-family : "다음_Semi_Bold";
+    src : url('Daum_SemiBold.ttf');
 }
 
 aside#right h3 {
