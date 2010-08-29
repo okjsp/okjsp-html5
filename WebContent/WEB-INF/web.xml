@@ -93,18 +93,23 @@
 		<servlet-class>kr.pe.okjsp.PopBbsInfoMapServlet</servlet-class>
 		<load-on-startup>5</load-on-startup>
 	</servlet>
-<!--
-	<servlet> jersey 
-        <servlet-name>JerseyWebApplication</servlet-name>
-        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>JerseyWebApplication</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
--->    
+	
+	<servlet>
+  	<servlet-name>Jersey REST Service</servlet-name>
+	<servlet-class>
+  	com.sun.jersey.spi.container.servlet.ServletContainer
+	</servlet-class>
+  	<init-param>
+    <param-name>com.sun.jersey.config.property.packages</param-name>
+    <param-value>kr.pe.okjsp.jersey</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+  	<servlet-name>Jersey REST Service</servlet-name>
+  	<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	
 	<servlet-mapping><!-- jWebSocket -->
 		<servlet-name>WebSocketDemo</servlet-name>
 		<url-pattern>/WebSocketDemo</url-pattern>
