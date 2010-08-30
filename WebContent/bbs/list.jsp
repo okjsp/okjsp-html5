@@ -50,9 +50,9 @@
 
 	function getMemo(bbs) {
 
-	    var myAjax = new Ajax.Request(
+	    var myAjax2 = new Ajax.Request(
 			        "/html5/bbs/viewMemo.jsp",
-			        {method: 'get', parameters: "seq="+bbs ,
+			        {method: 'get', parameters: "seq="+bbs+"&startCount=0" ,
 				    onComplete: memo_response }
 			    );
 
