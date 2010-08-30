@@ -28,10 +28,6 @@
     <!-- ================================= 
           target: default              
          ================================= -->
-	<target name="prepare">
-		<mkdir dir="${publish.home}/WEB-INF/classes"/>
-		<mkdir dir="${publish.home}/WEB-INF/lib"/>
-	</target>
 	<target name="default" depends="depends" description="okjsp html5 deployment">
 		<echo message="publish to ${publish.home}"/>
 		<copy todir="${publish.home}">
@@ -79,6 +75,7 @@
     	<mkdir dir="${publish.home}/WEB-INF"/>
 		<mkdir dir="${publish.home}/WEB-INF/classes"/>
 		<mkdir dir="${publish.home}/WEB-INF/lib"/>
+		<mkdir dir="${publish.home}/WEB-INF/conf"/>
     </target>
 
 </project>
