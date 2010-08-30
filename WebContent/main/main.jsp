@@ -19,7 +19,6 @@ int maxseq = 0;
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
-<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
 <script src="<%=cPath%>/js/prototype.js"></script>
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <title>OKJSP_HTML5</title>
@@ -61,7 +60,9 @@ int maxseq = 0;
 			        			one = (Article) iterList.next();
 			        			%>
 			        			<tr align="center">
+			        			<%-- 
 							        <td><%= one.getRef() %></td>
+							    --%>
 							        <td>
 							        	<div class="ellipsis" style="width: 260px;">
 								            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank">
@@ -72,7 +73,7 @@ int maxseq = 0;
 							        <td>
 							        	<span><str:replace replace="[0]" with="">[<%= one.getMemo() %>]</str:replace></span>
 							        </td>
-							        <td><div><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
+							        <td><div class="ellipsis" style="width: 80px;"><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
 							        <td><div><%
 								    if (one.getId() != null) {
 								        %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"

@@ -14,7 +14,7 @@ String cPath = request.getContextPath();
         <div class="inner">
           <c:if test="${empty member}">
             <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
-              <p><input type="hidden" name="returnPath" value="http://localhost:8080/html5" /></p>
+              <p><input type="hidden" name="returnPath" value="http://localhost:8887/html5" /></p>
               <p><label for="username_2" class="top">ID:</label><br />
                 <input type="text" name="id" id="username_2" tabindex="1" class="field" required placeholder="input ID"></p>
               <p><label for="password_2" class="top">Password:</label><br />
@@ -26,12 +26,11 @@ String cPath = request.getContextPath();
             </form>
           </c:if>
           <c:if test="${!empty member}">
-            <fieldset class="member">
-              <p align="center"><a href="#">${member.id}[로그인중]</a></p>
-              <p align="center"><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/info.jsp">${member.id} /info</a></p>
-              <a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/logout.jsp"><input type="button" class="button" value="LOGOUT"  /></a>
-              <input type="button" class="button" value="책갈피"  />
-            </fieldset>
+             <p align="center"><a href="#">${member.id}[로그인중]</a></p>
+             <p align="center"><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/info.jsp">${member.id} /info</a></p>
+             <p align="center">
+             	<a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/logout.jsp"><input type="button" class="button_two" value="LOGOUT" /></a>
+             </p>
           </c:if>
         </div>
     </div><!-- .box -->
