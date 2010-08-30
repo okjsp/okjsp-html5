@@ -208,7 +208,7 @@ section:after {
 }
 
 #content h2 {
-	font: 24px/ 1 Arial, Tahoma;
+	font: 24px/ 1 /*Arial, Tahoma*/;
 	margin: 0 0 18px;
 	color: #333;
 }
@@ -217,6 +217,8 @@ section:after {
 	color: #333;
 	text-decoration: none;
 	text-shadow: 2px 1px 2px #CCC;
+	font-family : '다음_SemiBold' ;
+    src : url('Daum_SemiBold.ttf');
 }
 
 #content h2 a:hover {
@@ -227,7 +229,7 @@ section:after {
 
 #content .entry h2,#content .entry h3,#content .entry h4,#content .entry h5,#content .entry h6
 	{
-	font: 24px/ 1 Arial, Tahoma;
+	font: 24px/ 1 /*Arial, Tahoma*/;
 	margin: 25px 0 18px;
 	color: #333;
 	text-shadow: 2px 1px 2px #CCC;
@@ -278,15 +280,19 @@ aside {
 aside h3 {
 	line-height: 35px;
 	color: #009296;
-	font-size: 14px;
+	font-size: 16px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px 1px #DDD;
 	height: 35px;
 	padding-left: 10px;
-	/*font-family : "다음_Regular", Arial, Tahoma,;
-	src : url('Daum_Regular.ttf');*/
+	/*font-family : "다음_Regular", Arial, Tahoma;
+	src : url('Daum_Regular.ttf');
     font-family : "다음_Semi_Bold";
     src : url('Daum_SemiBold.ttf');
+    font-family : "나눔고딕";
+    src : url('nanumgothic.eot');*/
+    font-family : "다음_Regular", Arial, Tahoma;
+	src : url('Daum_Regular.ttf');
 }
 
 aside#right h3 {
@@ -509,7 +515,7 @@ table tr {
 
 /* 버튼_width와 위치값이 없는 버튼 */
 input.button_two  {
-	margin: 10px 0 5px 5px;
+	/*margin: 10px 0 5px 5px;*/
 	padding: 1px;
 	border: solid 1px rgb(150, 150, 150);
 	border-radius: 3px;
