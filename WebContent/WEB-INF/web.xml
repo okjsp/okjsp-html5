@@ -19,12 +19,10 @@
 	</filter-mapping>
 
 	<!-- jWebSocket -->
-<!-- 
 	<listener> 
 		<description>ServletContextListener</description>
 		<listener-class>org.jwebsocket.appserver.ContextListener</listener-class>
 	</listener>
--->
 	<servlet><!-- jWebSocket -->
 		<servlet-name>WebSocketDemo</servlet-name>
 		<servlet-class>org.jwebsocket.appserver.WebSocketDemo</servlet-class>
