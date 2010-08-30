@@ -14,7 +14,12 @@ String cPath = request.getContextPath();
         <div class="inner">
           <c:if test="${empty member}">
             <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
+            <!-- server -->
+            <p><input type="hidden" name="returnPath" value="http://www.okjsp.pe.kr:9080/html5" /></p>
+            <!-- local -->
+             <!-- 
               <p><input type="hidden" name="returnPath" value="http://localhost:8887/html5" /></p>
+              -->
               <p><label for="username_2" class="top">ID:</label><br />
                 <input type="text" name="id" id="username_2" tabindex="1" class="field" required placeholder="input ID"></p>
               <p><label for="password_2" class="top">Password:</label><br />
