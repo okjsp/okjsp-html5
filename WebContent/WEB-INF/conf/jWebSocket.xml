@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Document   : jWebSocket.xml
+	Created on : March 18, 2010, 10:24 AM
+	Author     : aschulze,puran
+	Description: Configuration of the jWebSocket server.
+	This includes engines, servers, plug-ins, rights, roles and users as
+	well as logging.
+-->
+
+<!-- jWebSocket server configuration -->
+<jWebSocket>
+
+	<!--  installation can be prod or dev.
+			  'prod'- installation means all the classes will be loaded
+			   from the jars defined in this configuration file
+			  'dev' - installation means running directly from the source,
+			   all the jar files given are ignored.
+			   Default value if not specified would be 'prod'
+	-->
+	<installation>prod</installation>
+
+	<!--
+			define the protocol, default protocol if not specified is 'json'
+			possible values are [json|xml|csv]
+	-->
+	<protocol>json</protocol>
+
+	<!-- jWebSocket logging configuration -->
+	<logging>
+		<log4j>
+			<!-- log4j appender, one of the following options [console|file|rolling] -->
+			<appender>console</appender>
+			<!-- layout, please refer to http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html -->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p - %C{1}: %m%n</pattern>
+			<!-- log-level, one of the following options: [all|debug|info|warn|error|fatal|off] -->
+			<level>debug</level>
+			<!-- filename, used only when appender != console -->
+			<filename>jWebSocket.log</filename>
+			<!-- controls write cache for logging -->
+			<buffered>true</buffered>
+			<!-- specifies the size of the write cache for logging -->
+			<buffersize>4096</buffersize>
+		</log4j>
+	</logging>
+
+	<!--
+			initializer class required only in 'dev' mode so that client application can register custom servers,
+			plugins at compile time for debugging capability to test custom plugins and servers without a need for
+			jar files
+	-->
+	<initializerClass>org.jwebsocket.factory.JWebSocketInitializer</initializerClass>
+
+	<!--
+			 engines to be instantiated for jWebSocket, Only one engine will be initialized
+			 and run. The topmost engine configured will be picked and run by the system.
+	-->
+	<!-- jWebSocket engine configuration -->
+	<engines>
+		<engine>
+			<name>org.jwebsocket.tcp.engines.TCPEngine</name>
+			<id>tcp0</id>
+			<jar>jWebSocketTCPEngine-0.9.5.jar</jar>
+			<port>8787</port>
+			<!-- these domains are accepted by the engine listening on the above mentioned port -->
+			<domains>
+				<domain>localhost</domain>
+				<domain>localhost</domain>
+			</domains>
+			<!-- default session timeout 1h, max timeout currently 1 hour -->
+			<timeout>360000</timeout>
+			<!--
+				maximum size of the data packet that the engine will read,
+				if the frame size is larger than this the connection will be closed.
+			-->
+			<maxframesize>16384</maxframesize>
+		</engine>
+		<engine>
+			<name>org.jwebsocket.netty.engines.NettyEngine</name>
+			<id>netty0</id>
+			<jar>jWebSocketNettyEngine-0.9.5.jar</jar>
+			<port>8787</port>
+			<!-- these domains are accepted by the engine listening on the above mentioned port -->
+			<domains>
+				<domain>localhost</domain>
+				<domain>localhost</domain>
+			</domains>
+			<!-- default session timeout 2min, max timeout currently 1 hour -->
+			<timeout>120000</timeout>
+			<!--
+				maximum size of the data packet that the engine will read,
+				if the frame size is larger than this the connection will be closed.
+			-->
+			<maxframesize>16384</maxframesize>
+		</engine>
+	</engines>
+
+	<!-- server types to be instantiated for jWebSocket -->
+	<servers>
+		<server>
+			<name>org.jwebsocket.server.TokenServer</name>
+			<id>ts0</id>
+			<jar>jWebSocketTokenServer-0.9.5.jar</jar>
+		</server>
+		<server>
+			<name>org.jwebsocket.server.CustomServer</name>
+			<id>cs0</id>
+			<jar>jWebSocketCustomServer-0.9.5.jar</jar>
+		</server>
+	</servers>
+
+	<!-- jWebSocket global rights -->
+	<rights>
+		<!-- configuration of system plug-in specific rights -->
+		<right>
+			<ns>org.jWebSocket.plugins.system</ns>
+			<id>broadcast</id>
+			<description>Broadcast message to all other clients.</description>
+		</right>
+		<right>
+			<ns>org.jWebSocket.plugins.system</ns>
+			<id>send</id>
+			<description>Send message to a single target client.</description>
+		</right>
+
+		<!-- configuration of chat plug-in specific rights -->
+		<right>
+			<ns>org.jWebSocket.plugins.chat</ns>
+			<id>broadcast</id>
+			<description>Broadcast message to all other clients.</description>
+		</right>
+
+		<!-- configuration of rpc plug-in specific rights -->
+		<right>
+			<ns>org.jWebSocket.plugins.rpc</ns>
+			<id>rpc</id>
+			<description>Allow Remote Procedure Calls (RPC) to server</description>
+		</right>
+		<right>
+			<ns>org.jWebSocket.plugins.rpc</ns>
+			<id>rrpc</id>
+			<description>Allow Reverse Remote Procedure Calls (RRPC) to other clients</description>
+		</right>
+		<!-- Caution! Be careful with this right!
+				Unauthorized use could stop your server from
+				providing its services! -->
+		<right>
+			<ns>org.jWebSocket.plugins.admin</ns>
+			<id>shutdown</id>
+			<description>Allow to shutdown the server</description>
+		</right>
+	</rights>
+
+	<!-- jWebSocket roles -->
+	<roles>
+		<role>
+			<id>Administrator</id>
+			<description>Administrators</description>
+			<rights>
+				<!-- list of rights for "Administrator" role (ns + . + id) -->
+				<right>org.jWebSocket.plugins.system.broadcast</right>
+				<right>org.jWebSocket.plugins.system.send</right>
+				<right>org.jWebSocket.plugins.chat.broadcast</right>
+				<right>org.jWebSocket.plugins.rpc.rpc</right>
+				<right>org.jWebSocket.plugins.rpc.rrpc</right>
+				<!-- Caution! Be careful with this right!
+						Unauthorized use could stop your server from
+						providing its services! -->
+				<right>org.jWebSocket.plugins.admin.shutdown</right>
+			</rights>
+		</role>
+		<role>
+			<id>User</id>
+			<description>Registered and authenticated users.</description>
+			<rights>
+				<!-- list of rights for "User" role (ns + . + id) -->
+				<right>org.jWebSocket.plugins.system.broadcast</right>
+				<right>org.jWebSocket.plugins.system.send</right>
+				<right>org.jWebSocket.plugins.chat.broadcast</right>
+				<right>org.jWebSocket.plugins.rpc.rpc</right>
+				<right>org.jWebSocket.plugins.rpc.rrpc</right>
+			</rights>
+		</role>
+		<role>
+			<id>Guest</id>
+			<description>Anonymous users (not registered)</description>
+			<rights>
+				<!-- list of rights for "Guest" role (ns + . + id) -->
+				<right>org.jWebSocket.plugins.system.broadcast</right>
+				<right>org.jWebSocket.plugins.system.send</right>
+				<right>org.jWebSocket.plugins.chat.broadcast</right>
+				<right>org.jWebSocket.plugins.rpc.rpc</right>
+				<right>org.jWebSocket.plugins.rpc.rrpc</right>
+			</rights>
+		</role>
+	</roles>
+
+	<!-- plug-ins to be instantiated for jWebSocket -->
+	<plugins>
+		<plugin>
+			<name>org.jwebsocket.plugins.system.SystemPlugIn</name>
+			<ns>org.jWebSocket.plugins.system</ns>
+			<id>jws.system</id>
+			<jar>jWebSocketPlugins-0.9.5.jar</jar>
+			<!-- plug-in specific settings -->
+			<settings>
+				<!-- specify whether open,close,login,logout event should be broadcasted -->
+				<setting key="broadcastOpenEvent">true</setting>
+				<setting key="broadcastCloseEvent">true</setting>
+				<setting key="broadcastLoginEvent">true</setting>
+				<setting key="broadcastLogoutEvent">true</setting>
+			</settings>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</plugin>
+
+		<plugin>
+			<name>org.jwebsocket.plugins.rpc.RPCPlugIn</name>
+			<id>jws.rpc</id>
+			<ns>org.jWebSocket.plugins.rpc</ns>
+			<jar>jWebSocketPlugins-0.9.5.jar</jar>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</plugin>
+
+		<plugin>
+			<name>org.jwebsocket.plugins.streaming.StreamingPlugIn</name>
+			<id>jws.streaming</id>
+			<ns>org.jWebSocket.plugins.streaming</ns>
+			<jar>jWebSocketPlugins-0.9.5.jar</jar>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</plugin>
+
+		<plugin>
+			<name>org.jwebsocket.plugins.sharedobjects.SharedObjectsPlugIn</name>
+			<id>jws.sharedObjects</id>
+			<ns>org.jWebSocket.plugins.sharedobjects</ns>
+			<jar>jWebSocketSharedObjects-0.9.5.jar</jar>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</plugin>
+		<plugin>
+			<name>org.jwebsocket.plugins.flashbridge.FlashBridgePlugIn</name>
+			<id>jws.flashbridge</id>
+			<ns>org.jWebSocket.plugins.flashbridge</ns>
+			<jar>jWebSocketPlugins-0.9.5.jar</jar>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</plugin>
+		<!--
+		<plugin>
+			<name>org.jwebsocket.plugins.chat.ChatPlugIn</name>
+			<id>jws.chat</id>
+			<ns>org.jWebSocket.plugins.chat</ns>
+			<jar>jWebSocketPlugins-0.9.5.jar</jar>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</plugin>
+		-->
+		<plugin>
+			<name>org.jwebsocket.plugins.admin.AdminPlugIn</name>
+			<id>jws.admin</id>
+			<ns>org.jWebSocket.plugins.admin</ns>
+			<jar>jWebSocketAdmin-0.9.5.jar</jar>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</plugin>
+		<!-- this is a sample for a user plug-in -->
+		<plugin>
+			<name>org.jwebsocket.plugins.sample.SamplePlugIn</name>
+			<id>jws.sample</id>
+			<ns>org.jWebSocket.plugins.sample</ns>
+			<jar>jWebSocketSamples-0.9.5.jar</jar>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</plugin>
+	</plugins>
+
+	<!-- filters to be instantiated for jWebSocket -->
+	<filters>
+		<filter>
+			<name>org.jwebsocket.filters.system.SystemFilter</name>
+			<ns>org.jWebSocket.filters.system</ns>
+			<id>systemFilter</id>
+			<jar>jWebSocketPlugins-0.9.5.jar</jar>
+			<!-- plug-in specific settings -->
+			<settings>
+				<!-- specify whether open,close,login,logout event should be broadcasted -->
+				<setting key="key">value</setting>
+			</settings>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</filter>
+		<filter>
+			<name>org.jwebsocket.filters.custom.CustomTokenFilter</name>
+			<id>userFilter</id>
+			<ns>org.jWebSocket.filters.custom</ns>
+			<jar>jWebSocketPlugins-0.9.5.jar</jar>
+			<server-assignments>
+				<server-assignment>ts0</server-assignment>
+			</server-assignments>
+		</filter>
+	</filters>
+
+	<!-- jWebSocket users -->
+	<users>
+		<user>
+			<loginname>aschulze</loginname>
+			<firstname>Alexander</firstname>
+			<lastname>Schulze</lastname>
+			<password>t0p-s3cr3t</password>
+			<description>jWebSocket Founder</description>
+			<!-- 0=blocked 1=allowed ... future states pending -->
+			<status>1</status>
+			<roles>
+				<!-- the rights of all roles are merged -->
+				<role>Administrator</role>
+				<role>User</role>
+				<role>Guest</role>
+			</roles>
+		</user>
+		<user>
+			<loginname>stojadinovicp</loginname>
+			<firstname>Predrag</firstname>
+			<lastname>Stojadinovic</lastname>
+			<password>t0p-s3cr3t</password>
+			<description>jWebSocket Committer</description>
+			<status>1</status>
+			<roles>
+				<role>Administrator</role>
+				<role>User</role>
+				<role>Guest</role>
+			</roles>
+		</user>
+		<user>
+			<loginname>psingh</loginname>
+			<firstname>Puran</firstname>
+			<lastname>Singh</lastname>
+			<password>t0p-s3cr3t</password>
+			<description>jWebSocket Committer</description>
+			<status>1</status>
+			<roles>
+				<role>Administrator</role>
+				<role>User</role>
+				<role>Guest</role>
+			</roles>
+		</user>
+		<user>
+			<loginname>guest</loginname>
+			<firstname>Mr./Mrs.</firstname>
+			<lastname>Guest</lastname>
+			<!-- no password means that the user does not need a password -->
+			<password></password>
+			<description>jWebSocket Guest</description>
+			<status>1</status>
+			<roles>
+				<!-- should be restricted in your application! open for demo purposes only! -->
+				<role>Administrator</role>
+				<role>User</role>
+				<role>Guest</role>
+			</roles>
+		</user>
+	</users>
+
+</jWebSocket>
