@@ -12,69 +12,27 @@
             okjsp html5 deployment
     </description>
 	<property name="publish.home" value="/web/kenu/html5"/>
-	<property name="catalina.home" value="/web/local/java/apache-tomcat-6.0.29"/>
-	<path id="compile.classpath">
-		<!-- Include all elements that Tomcat exposes to applications -->
-		<fileset dir="${catalina.home}/lib">
-			<include name="*.jar"/>
-		</fileset>
-		<!-- Include all elements for this application only -->
-		<fileset dir="WebContent/WEB-INF/lib">
-			<include name="*.jar"/>
-		</fileset>
-	</path>
 
 
     <!-- ================================= 
           target: default              
          ================================= -->
-	<target name="default" depends="depends" description="okjsp html5 deployment">
-		<echo message="publish to ${publish.home}"/>
+    <target name="default" depends="depends" description="okjsp html5 deployment">
+		<mkdir dir="${publish.home}"/>
 		<copy todir="${publish.home}">
 			<fileset dir="WebContent">
 				<include name="**/*.jsp" />
-				<include name="**/*.htm*" />
-				<include name="**/equals.txt" />
-				<include name="favicon.ico" />
-				<include name="**/*.jpg" />
-				<include name="**/*.gif" />
-				<include name="**/*.png" />
-				<include name="**/*.swf" />
-				<include name="**/*.js" />
-				<include name="**/*.xml" />
-				<include name="**/*.xsl" />
-				<include name="**/*.tld" />
-				<include name="**/*.jar" />
+				<include name="**/*.html" />
 				<include name="**/*.css" />
-				<exclude name="**/*.bak" />
+				<include name="**/*.js" />
 			</fileset>
 		</copy>
-		<copy todir="${publish.home}/WEB-INF/classes">
-			<fileset dir="src">
-				<include name="**/*.properties" />
-				<include name="**/*.xml" />
-			</fileset>
-		</copy>
-		<javac srcdir="src"
-                debug="on"
-             destdir="${publish.home}/WEB-INF/classes" encoding="EUC-KR">
-			<!-- 위에서 설정한 classpath를 참조한다 -->
-			<include name="**/*.java" />
-			<classpath refid="compile.classpath"/>
-		</javac>
-		
-	</target>
-
-
+    </target>
 
     <!-- - - - - - - - - - - - - - - - - - 
           target: depends                      
          - - - - - - - - - - - - - - - - - -->
     <target name="depends">
-    	<mkdir dir="${publish.home}"/>
-    	<mkdir dir="${publish.home}/WEB-INF"/>
-		<mkdir dir="${publish.home}/WEB-INF/classes"/>
-		<mkdir dir="${publish.home}/WEB-INF/lib"/>
     </target>
 
 </project>
