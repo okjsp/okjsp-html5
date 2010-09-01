@@ -58,10 +58,7 @@
 	%>
 	</ul>
 	</article> 
-	    <!--<input type="button" class="button" value="답변" onClick="goReply()"/> -->
-    	<input type="button" class="button" value="수정" onClick="show_passwd_layer('goModify')"/>
-     	<input type="button" class="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
-     	<input type="button" class="button" value="책갈피" onClick="goBookmark()"/>
+
 	<div id="passwd_layer" style="position:absolute;display:none;width:220px;height:60px;padding:10px" align="center">
 	<input type="password" id="passwd" name="passwd" maxlength="15">
 	<br>
@@ -72,6 +69,12 @@
 	
 	
 	<div  id="memoDiv">
+		<section>
+			<!--<input type="button" class="button" value="답변" onClick="goReply()"/> -->
+	    	<input type="button" class="button" value="수정" onClick="show_passwd_layer('goModify')"/>
+	     	<input type="button" class="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
+	     	<input type="button" class="button" value="책갈피" onClick="goBookmark()"/>
+		</section>
 	</div>
 		<form name="f0" method="POST" onSubmit="return chk_memo(this)">
 	    <input type="hidden" name="pact" value="MEMO">
@@ -201,7 +204,7 @@
 
 		var list = $('memoDiv');
 		var addlist = document.createElement('section');
-		addlist.innerHTML = originalRequest.responseText;
+		addlist.innerHTML = originalRequest.responseText; 
 		list.appendChild(addlist);
 	}
 

@@ -15,11 +15,15 @@
   if (memoList != null) {
     memo = memoList.iterator();
     while (memo.hasNext()) {
-System.out.println("#####################" + memoCount + "::" + startCount);
 	  
       MemoBean mb = (MemoBean)memo.next();
       
       if( memoCount >= startCount ) {
+    	  if( memoCount != 0 ) {	// 댓글과 댓글 사이에 HR Line 을 넣는다. 이때 첫번째 댓글은 제외 시킨다.
+%>
+<hr style="border-top:1px solid #BBBBBB; margin: 7px;" />
+<%
+    	  }
 %>
 <div class="column1-unit"><p>
 
