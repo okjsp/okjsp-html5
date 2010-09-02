@@ -68,9 +68,10 @@ public class AJAXUploadServlet extends HttpServlet {
 
 		String key2 = "UPDIR";
 		String uploadBase = Navigation.getPath(key2);
-		// 절대경로입니다.
-		String filePath = getServletContext().getRealPath(request.getContextPath()) + 
-                         uploadBase + "/" + maskname;
+		
+		// 주석 사유 : html5 페이지의 Upload Path를 기존okjsp의 Upload Path와 같게 설정할 필요가 있어 UPDIR_HTML5 로 재설정 합니다.
+		//String filePath = getServletContext().getRealPath(request.getContextPath()) + uploadBase + "/" + maskname;
+		String filePath = Navigation.getPath("UPDIR_HTML5") + "/" + maskname;	// 기존OKJSP의 Upload 폴더
 		
 		File file = new File(filePath);
 		
