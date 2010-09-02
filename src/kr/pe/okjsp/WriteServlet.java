@@ -28,56 +28,22 @@ public class WriteServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 		throws IOException, ServletException {
 		String bbs;
-	    if("application/x-www-form-urlencoded".equals(req.getContentType())) {
-	    	bbs = write(req, res);
-	    } else {
-	    	bbs = writeWithFiles(req, res);
-	    }
+		
+	    bbs = writeWithFiles(req, res);
 	    
 		String togo = "/html5/bbs?act=LIST&bbs=" + bbs + "&pg=0";
 		res.sendRedirect(togo);
 
 	} // end doPost()
 
-	private String write(HttpServletRequest req, HttpServletResponse res) {
-		String id = CommonUtil.getCookie(req, "okid");
-		long sid = CommonUtil.getCookieLong(req, "sid");
-		Article article = new Article();
-		article.setId(id);
-		article.setSid(sid);
-
-		String writer = req.getParameter("writer");
-		String bbs = req.getParameter("bbs");
-		String content = req.getParameter("content");
-		String subject = req.getParameter("subject");
-		String homepage = req.getParameter("homepage");
-		String password = req.getParameter("password");
-		String html = req.getParameter("html");
-		String ccl_id = req.getParameter("ccl_id");
-		String ip = req.getRemoteAddr();
-
-		article.setWriter(writer);
-		article.setBbs(bbs);
-		article.setContent(content);
-		article.setSubject(subject);
-		article.setHomepage(homepage);
-		article.setPassword(password);
-		article.setHtml(html);
-		article.setCcl_id(ccl_id);
-		article.setIp(ip);
-		
-		new ArticleDao().write(article);
-		
-		// 트위터 글쓰기 추가
-//		new TwitterUpdate().doUpdate(article, req);
-		
-		return article.getBbs();
-	}
 
 	private String writeWithFiles(HttpServletRequest req,
 			HttpServletResponse res) throws IOException {
-		// 디렉토리 확인
-        String uploadDir = getServletContext().getRealPath(req.getContextPath())+Navigation.getPath("UPDIR");
+
+		// 주석 사유 : okjsp2007의 경로와 일치시키기 위함
+        // String uploadDir = getServletContext().getRealPath(req.getContextPath())+Navigation.getPath("UPDIR");
+		String uploadDir = Navigation.getPath("UPDIR_HTML5"); //디렉토리 확인 과정 (절대경로)
+		
         File dir = new File(uploadDir);
         if (!dir.exists()) {
             boolean mkdirs = dir.mkdirs();
@@ -86,30 +52,21 @@ public class WriteServlet extends HttpServlet {
             }
         }
         
-        // MultipartRequest는 인코딩을 지정해 줘야 하기 때문에 request의 인코딩을 뽑아서 넣어줘야합니다.
-        String encoding = CommonUtil.nchk(req.getCharacterEncoding(), "euc-kr");
-        
-		MultipartRequest multi =
-			new MultipartRequest(
-				req,
-				uploadDir,
-				200 * 1024 * 1024, // 200MB
-				encoding);
 		
 		Article article = null;
 		String id = CommonUtil.getCookie(req, "okid");
 		long sid = CommonUtil.getCookieLong(req, "sid");
 		try {
 			int seq = 0, ref = 0, lev = 0, step = 0;
-			String writer = multi.getParameter("writer");
-			String bbs = multi.getParameter("bbs");
-			String content = multi.getParameter("content");
-			String email = multi.getParameter("email");
-			String subject = multi.getParameter("subject");
-			String homepage = multi.getParameter("homepage");
-			String password = multi.getParameter("password");
-			String html = multi.getParameter("html");
-			String ccl_id = multi.getParameter("ccl_id");
+			String writer = req.getParameter("writer");
+			String bbs = req.getParameter("bbs");
+			String content = req.getParameter("content");
+			String email = req.getParameter("email");
+			String subject = req.getParameter("subject");
+			String homepage = req.getParameter("homepage");
+			String password = req.getParameter("password");
+			String html = req.getParameter("html");
+			String ccl_id = req.getParameter("ccl_id");
 			String ip = req.getRemoteAddr();
 			
 			//id 
@@ -156,7 +113,7 @@ public class WriteServlet extends HttpServlet {
 		Connection conn = null;
 		ArticleDao articleDao = new ArticleDao();
 		
-		String act = multi.getParameter("act");
+		String act = req.getParameter("act");
 		
 		try {
 
@@ -168,17 +125,17 @@ public class WriteServlet extends HttpServlet {
 
 			int seq = 0;
 			if ("MODIFY".equals(act)) {
-				seq = Integer.parseInt(multi.getParameter("seq"));
-				delFiles = multi.getParameterValues("delFile");
+				seq = Integer.parseInt(req.getParameter("seq"));
+				delFiles = req.getParameterValues("delFile");
 				article.setSeq(seq);
 			}
 
 			if ("REPLY".equals(act)) {
 				article.setSeq(articleDao.getSeq(conn));
-				article.setRef(Integer.parseInt(multi.getParameter("ref")));
-				article.setLev(Integer.parseInt(multi.getParameter("lev")));
+				article.setRef(Integer.parseInt(req.getParameter("ref")));
+				article.setLev(Integer.parseInt(req.getParameter("lev")));
 				article.setStep(
-						Integer.parseInt(multi.getParameter("step")));
+						Integer.parseInt(req.getParameter("step")));
 				articleDao.reply(conn, article);
 
 			} else if ("MODIFY".equals(act)) {
@@ -190,9 +147,9 @@ public class WriteServlet extends HttpServlet {
 				articleDao.write(conn, article);
 			}
 
-			int fileCount = Integer.parseInt(multi.getParameter("fileCount"));
+			int fileCount = Integer.parseInt(req.getParameter("fileCount"));
 			if( fileCount > 0 )	// 첨부파일이 있는 경우
-				articleDao.updateOKBOARD_FILE(conn, article.getSeq(), multi.getParameter("masknamePrefix"), fileCount); // okboard_file 테이블의 seq값을 Update 한다.
+				articleDao.updateOKBOARD_FILE(conn, article.getSeq(), req.getParameter("masknamePrefix"), fileCount); // okboard_file 테이블의 seq값을 Update 한다.
 			
 			conn.commit();
 		} catch (Exception e) {

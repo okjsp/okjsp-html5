@@ -75,7 +75,7 @@
 	     
 			<!-- 메인 컨텐츠_시작======================================= -->
 			<div id="form_div" style="float:left; padding:0px;">		
-				<form name="writeForm" action="/html5/write" method="post" class="form_write" ENCTYPE="multipart/form-data">
+				<form name="writeForm" action="/html5/write" method="post" class="form_write" >
 				<input name="html" id="html" value="2" type="hidden" readonly="readonly" class="write">
 				<input type="hidden" name="bbs" value="<%=CommonUtil.nchk(request.getParameter("bbs")) %>">
 				<input type="hidden" name="pg" value="<%=CommonUtil.nchk(request.getParameter("pg")) %>">
