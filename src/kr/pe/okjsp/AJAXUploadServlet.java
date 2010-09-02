@@ -3,12 +3,8 @@ package kr.pe.okjsp;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.pe.okjsp.util.CommonUtil;
 import kr.pe.okjsp.util.DbCon;
 
 public class AJAXUploadServlet extends HttpServlet {
@@ -32,8 +27,10 @@ public class AJAXUploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		// File 의 물리적 Upload
 		fileUpload(request, response);
 		
+		// File 정보를 OKBOARD_FILE DB테이블에 Insert 한다.
 		insertOKBOARD_FILE( request );
 
 	}
@@ -48,7 +45,7 @@ public class AJAXUploadServlet extends HttpServlet {
 			conn = dbCon.getConnection();
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setString(1, request.getParameter("qqfile"));
+			pstmt.setString(1, new String(request.getParameter("qqfile").getBytes("8859_1"),"utf-8"));	// 파일명. Ajax 를 통해 전송되어 한글 처리를 따로 한다.
 			pstmt.setString(2, request.getParameter("maskname"));
 			pstmt.setString(3, request.getParameter("fileSize"));
 			
