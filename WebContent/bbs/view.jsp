@@ -205,7 +205,10 @@
 		var list = $('memoDiv');
 		var addlist = document.createElement('section');
 		addlist.innerHTML = originalRequest.responseText; 
-		list.appendChild(addlist);
+
+		if( originalRequest.responseText.length > 100 ) {	// 100bytes 미만이면, 댓글이 없는 것으로 간주하고 'section'을 추가 하지 않는다. (빈 Section 추가 방지를 위함)
+			list.appendChild(addlist);
+		}
 	}
 
 	// 실시간 댓글기능 Start. 
