@@ -148,7 +148,7 @@
 					<label for="content">내용:</label>				
 				</dt>
 				<dd>
-					<textarea name="content" id="content" style="width: 600px;" rows="6" class="write"></textarea>
+					<textarea name="content" id="content" style="width: 600px;" rows="6" class="write" required><%=article.getContent()%></textarea>
 				</dd>
 				<dt>
 		<%-- ###################  File Upload 시작  ################# --%>
