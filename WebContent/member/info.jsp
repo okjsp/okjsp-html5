@@ -73,6 +73,13 @@
 	font-size: 1.1em;
 }
 
+.contactform span.info {
+    margin-left: 10px;
+	display: block;
+	color: #268887;
+	font-size: 1.1em;
+}
+
 .contactform span.item {
 	float: left;
 	color: #5A5A5A;
@@ -135,6 +142,41 @@ input.field:invalid {
 <script type="text/javascript">
 $(document).ready(function() {
     $('input[value=${member.mailing}]').attr({checked: true});
+    $('#contact_email').data('emailchecked', true);
+
+    jQuery.error = function(e) {console.error(e)};
+    $('#contact_email').keyup(function(e) {
+        if ((e.keyCode < 0x60 || e.keyCode > 0x69)
+                && (e.keyCode < 0x30 || e.keyCode > 0x39)
+                && (e.keyCode < 0x41 || e.keyCode > 0x5A)
+                && e.keyCode != 0x08) {
+            return;
+        }
+
+        clearTimeout($(this).data('timer'));
+        $(this).data('timer', setTimeout(function() {
+            $.post('emailchecker.jsp', { email: $('#contact_email').val() }, function(data) {
+                $('#contact_email').data('emailchecked', data.result);
+            });
+        }, 1000));
+    });
+
+    $('#contact_id').keyup(function(e) {
+        if ((e.keyCode < 0x60 || e.keyCode > 0x69)
+                && (e.keyCode < 0x30 || e.keyCode > 0x39)
+                && (e.keyCode < 0x41 || e.keyCode > 0x5A)
+                && e.keyCode != 0x08) {
+            return;
+        }
+
+        clearTimeout($(this).data('timer'));
+        $(this).data('timer', setTimeout(function() {
+            $.post('idchecker.jsp', { id: $('#contact_id').val() }, function(data) {
+                $('#contact_id').data('idchecked', data.result);
+            });
+        }, 1000));
+    });
+
     $('#profile-drop').bind({
         dragover: function(e) {
             var dataTransfer = e.originalEvent.dataTransfer;
@@ -203,6 +245,27 @@ $(document).ready(function() {
             e.preventDefault();
         }
     });
+
+    $('#joinform').submit(function(e) {
+        if ($('#contact_email').data('emailchecked') != true) {
+            alert('중복된 메일 입니다.');
+            return false;
+        }
+        return true;
+    });
+
+    $('#resign').click(function(e) {
+        var form = $('#joinform').get(0);
+        if (form.password.value == '') {
+            alert('비밀번호를 입력하세요');
+            return false;
+        }
+        if (confirm("탈퇴하시겠습니까?")) {
+            form.pact.value="delete";
+            form.submit();
+        }
+        return false;
+    });
 });
 </script>
 </head>
@@ -241,6 +304,11 @@ $(document).ready(function() {
                                     <div id="profile-drop">Drop the image</div>
                                     <div id="preview"></div>
                                 </div>
+                            </fieldset>
+                            <fieldset><legend>&nbsp;Resign&nbsp;</legend>
+                                <p><span class="info">회원탈퇴시 비밀번호는 기존의 비밀번호를 입력하세요.</span>
+                                    <a href="#" id="resign" style="display: block; margin-left: 10px; margin-top: 10px; padding: 3px; color: red; font-size: 1.2em; border: 1px solid red; width: 100px; text-align: center;">회원탈퇴</a>
+                                </p>
                             </fieldset>
                             <p>
                                 <input type="submit" class="button" value="UPDATE" style="float:none;">
