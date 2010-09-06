@@ -21,7 +21,7 @@ public class SSEServlet extends HttpServlet {
 
 	MemoDao memoDao = new MemoDao();
 	
-	out.write("retry: 5000");
+	out.write("retry: 60000"); // 트위터와 같게 60초로 설정
 	out.write("\n");
 	out.write("\n");
 	out.write("data: " + memoDao.getMemoCount(Integer.parseInt(req.getParameter("seq"))));
