@@ -196,8 +196,6 @@
 			}
 			
 		    currentMemoCount = newMemoCount;
-
-	    document.getElementById("note").innerHTML = event.data + ">>>>>" + <%= memoCount %>
 	};
 
 	function ajax_response(originalRequest) {
