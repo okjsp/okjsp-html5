@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <jsp:useBean id="member" class="kr.pe.okjsp.member.Member" scope="session" />
 <%
-	String loginName = ( member.getId() == null ) ? "Anonymous" : "member.getId()";
+	String loginName = ( member.getId() == null ) ? "Anonymous" : member.getId();
 %>
 <!DOCTYPE html>
 <html lang="ko">
