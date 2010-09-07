@@ -33,7 +33,7 @@ String cPath = request.getContextPath();
 function doChange(){
 	if(document.getElementById('change').checked == true){
 		if(confirm('기존사이트로 다시 복귀하시기 원하십니까?') == true){
-			deleteCookie( 'urlChange' );
+			deleteCookie( 'urlChangeOKSJSP' );
 			//로컬과 서버 설정 주의~!!!
 			top.location.href = 'http://www.okjsp.pe.kr';
 		}
