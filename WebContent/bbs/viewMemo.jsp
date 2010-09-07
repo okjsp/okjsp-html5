@@ -35,7 +35,7 @@
         	onerror="this.src='/images/spacer.gif'"><%
     }
 %>
-<%= mb.getBcomment() %></p>
+<pre><%= mb.getBcomment() %></pre></p>
 <p><%= mb.getWriter() %>
 <%= mb.getWhen("yyyy-MM-dd HH:mm:ss")%>
 </p></div>
