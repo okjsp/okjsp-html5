@@ -414,6 +414,10 @@ input.field {
 	font-size: 110%;
 }
 
+input.field:invalid {
+    background-color: #ffdddd;
+}
+
 table  {
 	width:100%;
 	/*border: 1px solid #666;*/

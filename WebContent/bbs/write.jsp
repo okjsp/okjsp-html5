@@ -52,6 +52,37 @@
 		ifr.contentWindow.document.body.innerHTML="11";
 		
 		var drop_area = document.getElementById('drop_area');
+	};
+
+	var okNotification;	// notification 객체가 assign된다. 5초후 자동 Close를 위해 Global 변수로 선언.
+	function validationField() {
+
+		var frm = document.writeForm;
+		var errorMsg = "- 주황색 컬럼과 [내용]은 필수 입력 입니다.";
+
+		if( frm.checkValidity() )	// frm의 값이 모두 정상이면, return 시켜 버린다.
+			return;
+
+		if(!!window.webkitNotifications) { // 브라우저에서 WebkitNotifications 을 지원 하는 경우 (현재 Chrome 만 지원)
+			if(window.webkitNotifications.checkPermission() == 0 ){ //사용자 승인 여부 확인하기 (0:승인 , 1:승인전, 2:거부)
+				var picture 	= 'http://www.okjsp.pe.kr/profile/kenu.jpg'; 
+				var titleStr 	= '필수 입력 값이 입력되지 않았습니다';
+				var bodyStr 	= errorMsg;
+				okNotification 	= window.webkitNotifications.createNotification(picture, titleStr, bodyStr);
+
+				okNotification.ondisplay = function() {
+					window.setTimeout("okNotification.cancel();", 5 * 1000);	// 5초후 자동 Close 된다.
+				};
+				okNotification.show();
+				
+			} else if(window.webkitNotifications.checkPermission() == 2)  {	//사용자 승인 여부 확인하기 (0:승인 , 1:승인전, 2:거부)
+				alert( errorMsg + " (Web Notifications 기능이 [차단] 되어 있습니다.)" );
+			} else {	// 미승인 상태
+				window.webkitNotifications.requestPermission(); // 승인요청
+			}
+		} else {	// 브라우저에서 WebkitNotifications 을 지원하지 않는 경우 (ex> Safari)
+			alert( errorMsg );
+		}
 	}
 
 	</script>
@@ -161,7 +192,7 @@
 			    	<%-- ###################  File Upload 끝  ################# --%>
   					<br/><br/><br/>
 					<article align="center">
-						<input id="submitButton" type="submit" value="저장" class="button_two" style="width:100px "/>
+						<input id="submitButton" type="submit" value="저장" class="button_two" style="width:100px" onClick="validationField();" />
 					</article>
 					<br/><br/>
 				</form>
