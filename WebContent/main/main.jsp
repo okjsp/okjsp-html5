@@ -34,9 +34,9 @@ int maxseq = 0;
 			<div id="content">
 			<!-- 메인 컨텐츠_시작======================================= -->
 				<article align="center">
-					<a href="<%=cPath %>/f.jsp?http://www.devlec.com/?_pageVariable=OKJSP" target="_blank"> 
-						<img src="http://www.okjsp.pe.kr/images/banner/devlec_473x98.gif" alt="▒▒▒ 데브렉 ▒▒▒ 개발자를 위한 국내 최고 프로그래밍 전문 동영상강좌 사이트"> 
-					</a>
+<a href="http://www.acornpub.co.kr/" target="_blank">
+<img src="/images/banner/acornpub_468x60.gif">
+</a>
 				</article>
 				<br/>
 				<article>

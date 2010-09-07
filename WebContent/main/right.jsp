@@ -22,18 +22,11 @@ String cPath = request.getContextPath();
 	}
 </script>
 
-<aside id="right"><!-- start right sidebar -->	
+<!-- start right sidebar -->	
+<aside id="right">
 	<div class="box">
 		<h3>광고</h3>
 		<div class="inner" align="center">
-			<a href="<%=cPath %>/main/f.jsp?http://open.egovframe.go.kr/seminar/20100723.html" target="_blank"
-			><img src="http://www.okjsp.pe.kr/images/banner/egovframe.gif"
-				alt="전자정부 표준프레임워크 egovframe"
-			></a>
-			<a href="<%=cPath %>/main/f.jsp?http://www.adoberia.co.kr/iwt/blog/blog.php?tn=flex&id=468&src=image&kw=00003B" target="_blank"
-			><img src="http://www.okjsp.pe.kr/images/banner/welove_134x60.gif"
-			alt="WE Love the Web, Flash, HTML5, Choice"
-			></a>
 			<a href="<%=cPath %>/main/f.jsp?http://www.apptalk.tv" target="_blank"
 			><img src="http://www.okjsp.pe.kr/images/banner/apptalk_134x60.jpg"
 				alt="http://www.okjsp.pe.kr세상의 모든 앱을 영상으로. 앱의 모든 것, 앱톡"
