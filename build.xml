@@ -71,8 +71,6 @@
           target: depends                      
          - - - - - - - - - - - - - - - - - -->
     <target name="depends">
-    	<mkdir dir="${publish.home}"/>
-    	<mkdir dir="${publish.home}/WEB-INF"/>
 		<mkdir dir="${publish.home}/WEB-INF/classes"/>
 		<mkdir dir="${publish.home}/WEB-INF/lib"/>
 		<mkdir dir="${publish.home}/WEB-INF/conf"/>
