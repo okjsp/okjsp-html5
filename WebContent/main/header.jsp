@@ -18,6 +18,7 @@ String cPath = request.getContextPath();
 			</ul>
 		</nav>
 		<div class="search">
+			<input type="checkbox" onclick="doChange()" id="change"><font color="white">기존 사이트로 변환</font><br/><br/>
 			<form name="searchf1" method="get" target="okjspsearch"
 			action="http://www.google.com/search"
 			onsubmit="searchf1.q.value='site:okjsp.pe.kr '+searchf1.qt.value;"> 
@@ -27,3 +28,16 @@ String cPath = request.getContextPath();
 		</div>
 	</div>
 </header>
+
+<script>
+function doChange(){
+	if(document.getElementById('change').checked == true){
+		if(confirm('기존사이트로 다시 복귀하시기 원하십니까?') == true){
+			deleteCookie( 'urlChange' );
+			//로컬과 서버 설정 주의~!!!
+			top.location.href = 'http://www.okjsp.pe.kr';
+		}
+	}
+}
+
+</script>

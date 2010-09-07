@@ -29,16 +29,17 @@ String cPath = request.getContextPath();
                     <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
                         <input type="hidden" name="returnPath" value="<%= CommonUtil.nchk(request.getParameter("returnPath"), "/") %>">
                         <fieldset><legend>Login</legend>
-                            <p><label for="username_1" class="top left">ID:</label><br />
+                            <p><label for="username_1" class="top left">ID:</label>
                                 <input type="text" name="id" id="username_1" tabindex="1" class="field" autofocus required /></p>
                             <p><label for="password_1" class="top left">Password:</label><br />
                                 <input type="password" name="password" id="password_1" tabindex="2" class="field" required /></p>
                              <p>
-                                <input type="submit" class="button" value="JOIN" style="float:none;">
-                                <input type="button"" class="button" value="CANCEL" style="float:none;">
+                                <input type="submit" class="button" value="LOGIN" >
+                                <input type="button"" class="button" value="CANCEL" >
                             </p>
                             <p><input type="submit" name="cmdweblogin" class="button" value="로그인"  /></p>
-                            <p><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_1">회원가입</a></p>
+                            <p><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_1">
+                            	<input type="button" id="forgotpsswd_2" class="button" value="회원가입" /></a></p>
                         </fieldset>
                     </form>
                 </div>
