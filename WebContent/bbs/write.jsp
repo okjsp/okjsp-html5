@@ -60,7 +60,7 @@
 <body>
 <div id="wrapper">
 	<jsp:include page="../main/header.jsp"></jsp:include>
-   	<section>
+   	<section style="font-size:14px">
 		<div id="container">
 			<div id="contentinner">
 			<!-- 메인 컨텐츠_시작======================================= -->
@@ -83,7 +83,7 @@
 							Map map = (Map)application.getAttribute("bbsInfoMap");
 							BbsInfoBean bib = (BbsInfoBean)(map.get(bbsids));
 						%>
-						<select id="bbs" name="bbs" size="1">
+						<select id="bbs" name="bbs" size="1" class="field">
 						<option value='<%=CommonUtil.nchk(request.getParameter("bbs")) %>' disabled><%= bib.getName() %></option>
 						</select>
 						<script>
@@ -108,7 +108,7 @@
   					<br/>
 					<article>
   						CCL:
-  						<select name="ccl_id" id="ccl_id">
+  						<select name="ccl_id" id="ccl_id" class="field" st>
 							<option value="0">Copyright-저작자에게 저작권</option>
 							<option value="1">CCL-저작자표시</option>
 							<option value="2">CCL-저작자표시-동일조건변경허락</option>
@@ -121,7 +121,7 @@
   					<br/>
 					<article>
 						제목:
-						<input name="subject" id="subject" class="field" value="<%=article.getSubject() %>" required>
+						<input name="subject" id="subject" class="field" value="<%=article.getSubject() %>" required style="width:500px ">
 						<input type="hidden" name="msgbackup" id="msgbackup">
 					</article>
 					<br/>
