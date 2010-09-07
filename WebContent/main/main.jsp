@@ -51,7 +51,7 @@ int maxseq = 0;
 		        	while(iter.hasNext()) {
 		        		rec = ((String)iter.next()).split("\\|");
 		        		%>
-		        		<h2><a href="<%=cPath%>/bbs?act=LIST&bbs=<%= rec[0] %>"><%= rec[1] %></a></h2>
+		        		<h2><a href="<%=cPath%>/bbs?act=LIST&amp;bbs=<%= rec[0] %>"><%= rec[1] %></a></h2>
 		        		<blockquote>
 			          		<table>
 			        		<%
@@ -59,10 +59,7 @@ int maxseq = 0;
 			        		while (iterList.hasNext()) {
 			        			one = (Article) iterList.next();
 			        			%>
-			        			<tr align="center">
-			        			<%-- 
-							        <td><%= one.getRef() %></td>
-							    --%>
+			        			<tr>
 							        <td>
 							        	<div class="ellipsis" style="width: 260px;">
 								            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank">
@@ -128,10 +125,10 @@ int maxseq = 0;
 							    
 							    i++;    
 						%>
-			                <tr align="center">
+			                <tr>
 						        <td>
 						        	<div class="ellipsis" style="width: 70px;">
-						        		<a href="<%=cPath%>/bbs?act=LIST&bbs=<%= one.getBbs() %>">
+						        		<a href="<%=cPath%>/bbs?act=LIST&amp;bbs=<%= one.getBbs() %>">
 						        			<%= bbsInfo.getName() %></a></div>
 						        </td>
 						        <td>
