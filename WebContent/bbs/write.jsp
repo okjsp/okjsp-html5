@@ -26,19 +26,14 @@
 	<link rel="stylesheet" href="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.css" type="text/css" />
 	<link rel="stylesheet" href="/html5/bbs/fileuploader.css" type="text/css" /><%-- File Upload 에서만 사용 --%>
 	<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
-	<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
-	<link rel="stylesheet" href="/html5/css/okjsp2007.css.jsp" type="text/css"/>
 	<!-- 기존 nas.css form_div의 dt dd등의 css스타일 선언 때문에 사용함 by raniel  -->
-	<link rel="stylesheet" href="bbs.css" type="text/css">
 	<link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
 	<script type="text/javascript" src="/html5/js/jquery/jquery-1.3.2.min.js"></script>
 	<script type="text/javascript" src="/html5/js/jquery/jwysiwyg-0.5/jquery.wysiwyg.js"></script>
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script type="text/javascript" src="/html5/js/okjsp.js"></script>
 		
-	<title>
-		OKJSP 글쓰기
-	</title>
+	<title>OKJSP_HTML5</title>
 
 	<script type="text/javascript">
 	$(function() {
@@ -65,142 +60,118 @@
 <body>
 <div id="wrapper">
 	<jsp:include page="../main/header.jsp"></jsp:include>
-    
    	<section>
-	<div id="container">
-		<div id="contentinner">
-   			<article>
-   
-		<div class="main" >
-	     
+		<div id="container">
+			<div id="contentinner">
 			<!-- 메인 컨텐츠_시작======================================= -->
-			<div id="form_div" style="float:left; padding:0px;">		
-				<form name="writeForm" action="/html5/write" method="post" class="form_write" >
-				<input name="html" id="html" value="2" type="hidden" readonly="readonly" class="write">
-				<input type="hidden" name="bbs" value="<%=CommonUtil.nchk(request.getParameter("bbs")) %>">
-				<input type="hidden" name="pg" value="<%=CommonUtil.nchk(request.getParameter("pg")) %>">
-				<input type="hidden" name="act" value="<%=CommonUtil.nchk(request.getParameter("act")) %>">
-				<input type="hidden" name="seq" value="<%=article.getSeq() %>">
-				<input type="hidden" name="ref" value="<%=article.getRef() %>">
-				<input type="hidden" name="lev" value="<%=article.getLev() %>">
-				<input type="hidden" name="step" value="<%=article.getStep() %>">
-				<input type="hidden" name="masknamePrefix" value="<%= masknamePrefix %>">
-				<input type="hidden" name="fileCount" value="0">
- 				
-				<dl>
-				<dt>
-					<label for="bbs">게시판:</label>
-				</dt>
-				<dd>
-					<%
-						Map map = (Map)application.getAttribute("bbsInfoMap");
-						BbsInfoBean bib = (BbsInfoBean)(map.get(bbsids));
-					%> 
-					<select id="bbs" name="bbs" size="1">
-					<option value='<%=CommonUtil.nchk(request.getParameter("bbs")) %>' disabled><%= bib.getName() %></option>
-					</select>
-					<script type="text/javascript">
-						document.getElementById('bbs').value = '<%=CommonUtil.nchk(request.getParameter("bbs")) %>';
-					</script>
-				</dd>
-				<dt>
-					<label for="writer">닉네임:</label>
-				</dt>
-				<dd>
-					<input name="writer" id="writer" class="write" placeholder="Nick Name" value="<%= article.getWriter() %>" required autofocus> ; 실명쓰지마세요!
-				</dd>
-				<dt>
-					<label for="homepage">Homepage:</label>
-				</dt>
-				<dd>
-					<input name="homepage" id="homepage" class="write" value="<%=article.getHomepage()%>" type='url' placeholder="http://your Homepage">
-				</dd>
-				<dt>
-					<label for="password">비밀번호:</label>
-				</dt>
-				<dd>
-					<input name="password" id="password" type="password" class="write" value="<%= CommonUtil.nchk(request.getParameter("password")) %>" required>
-				</dd>
-				<dt>
-					<label for="ccl_id">CCL:</label>
-				</dt>
-				<dd>
-				<select name="ccl_id" id="ccl_id">
-					<option value="0">Copyright-저작자에게 저작권</option>
-					<option value="1">CCL-저작자표시</option>
-					<option value="2">CCL-저작자표시-동일조건변경허락</option>
-					<option value="3">CCL-저작자표시-변경금지</option>
-					<option value="4">CCL-저작자표시-비영리</option>
-					<option value="5">CCL-저작자표시-비영리-동일조건변경허락</option>
-					<option value="6">CCL-저작자표시-비영리-변경금지</option>
-				</select>
-				</dd>
-				<dt>
-					<label for="subject">제목:</label>
-				</dt>
-				<dd>
-					<input name="subject" id="subject" class="write" value="<%=article.getSubject() %>" required>
-				</dd>
-				<dd>
-					<input type="hidden" name="msgbackup" id="msgbackup">
-				</dd>
-				<dt>
-					<label for="content">내용:</label>				
-				</dt>
-				<dd>
-					<textarea name="content" id="content" style="width: 600px;" rows="6" class="write" required><%=article.getContent()%></textarea>
-				</dd>
-				<dt>
-		<%-- ###################  File Upload 시작  ################# --%>
-		<div id="file-uploader-demo1" style="width: 600px; float:left;" >
-				<p>Please enable JavaScript to use file uploader.</p>
-				<!-- or put a simple form for upload here -->
-		</div>
-	    <script src="/html5/bbs/fileuploader.js" type="text/javascript"></script>
-	    <script>
-			var totalFileCount = 0;
-
-	        function createUploader(){            
-	            var uploader = new qq.FileUploader({
-	                element: document.getElementById('file-uploader-demo1'),
-	                action: '/html5/AJAXUploadServlet',
-	                sizeLimit: 1024 * 1024 * 200	// 200MB 까지 첨부 가능.
-	                								// sizeLimit 이  모든 브라우져에서 가능한 것은 아니다.(Safari5/Chrome5 에서 성공. IE8에서 실패. 나머지 테스트 필요) 
-	                //allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],	// 첨부파일의 확장자 제한
-	                //params: { param1: 'param1' , param2: 'param2' }	// 기타 Parameter 를 Servlet 으로 던져야 할때 사용한다.
-	            });           
-	        }
-
-	        function getMaskname() {
-		        totalFileCount++;	// Maskname 구성할때 Sequence 값으로 사용 된다.
-		        document.writeForm.fileCount.value = totalFileCount;	// 총 첨부 파일 개수 (Servlet 에서 첨부파일 개수 파악에 쓰인다.)
-		        
-		        return '<%=masknamePrefix%>'+totalFileCount;
-	        }
-	        
-	        window.onload = createUploader; 
-	    </script>  
-    	<%-- ###################  File Upload 끝  ################# --%>
-    	<br/><br/><br/>
-				</dt>
-				<dd>
-					<input id="submitButton" type="submit" value="Submit"/>
-				</dd>
-				</dl>
-				</form>
-			</div>
+   				
+  				<form name="writeForm" action="/html5/write" method="post" class="form_write" >
+					<input name="html" id="html" value="2" type="hidden" readonly="readonly" class="write">
+					<input type="hidden" name="bbs" value="<%=CommonUtil.nchk(request.getParameter("bbs")) %>">
+					<input type="hidden" name="pg" value="<%=CommonUtil.nchk(request.getParameter("pg")) %>">
+					<input type="hidden" name="act" value="<%=CommonUtil.nchk(request.getParameter("act")) %>">
+					<input type="hidden" name="seq" value="<%=article.getSeq() %>">
+					<input type="hidden" name="ref" value="<%=article.getRef() %>">
+					<input type="hidden" name="lev" value="<%=article.getLev() %>">
+					<input type="hidden" name="step" value="<%=article.getStep() %>">
+					<input type="hidden" name="masknamePrefix" value="<%= masknamePrefix %>">
+					<input type="hidden" name="fileCount" value="0">
+					
+					<article>
+						게시판:
+						<%
+							Map map = (Map)application.getAttribute("bbsInfoMap");
+							BbsInfoBean bib = (BbsInfoBean)(map.get(bbsids));
+						%>
+						<select id="bbs" name="bbs" size="1">
+						<option value='<%=CommonUtil.nchk(request.getParameter("bbs")) %>' disabled><%= bib.getName() %></option>
+						</select>
+						<script>
+							document.getElementById('bbs').value = '<%=CommonUtil.nchk(request.getParameter("bbs")) %>';
+						</script>
+					</article>
+					<br/>
+					<article>
+						닉네임:
+						<input name="writer" id="writer" class="field" placeholder="Nick Name" value="<%= article.getWriter() %>" required> (실명쓰지마세요)
+					</article>
+					<br/>
+					<article>
+						Homepage:
+						<input name="homepage" id="homepage" class="field" value="<%=article.getHomepage()%>" type='url' placeholder="http://your Homepage" style="width:500px ">
+					</article>
+					<br/>
+					<article>
+  						비밀번호:
+  						<input name="password" id="password" type="password" class="field" value="<%= CommonUtil.nchk(request.getParameter("password")) %>" required>
+  					</article>
+  					<br/>
+					<article>
+  						CCL:
+  						<select name="ccl_id" id="ccl_id">
+							<option value="0">Copyright-저작자에게 저작권</option>
+							<option value="1">CCL-저작자표시</option>
+							<option value="2">CCL-저작자표시-동일조건변경허락</option>
+							<option value="3">CCL-저작자표시-변경금지</option>
+							<option value="4">CCL-저작자표시-비영리</option>
+							<option value="5">CCL-저작자표시-비영리-동일조건변경허락</option>
+							<option value="6">CCL-저작자표시-비영리-변경금지</option>
+						</select>
+  					</article>
+  					<br/>
+					<article>
+						제목:
+						<input name="subject" id="subject" class="field" value="<%=article.getSubject() %>" required>
+						<input type="hidden" name="msgbackup" id="msgbackup">
+					</article>
+					<br/>
+					<article>
+						내용:<br/>
+						<textarea name="content" id="content" style="width: 600px;" rows="6" class="write" required><%=article.getContent()%></textarea>
+					</article>
+					<%-- ###################  File Upload 시작  ################# --%>
+					<div id="file-uploader-demo1" style="width: 600px; float:left;" >
+							<p>Please enable JavaScript to use file uploader.</p>
+							<!-- or put a simple form for upload here -->
+					</div>
+				    <script src="/html5/bbs/fileuploader.js" type="text/javascript"></script>
+				    <script>
+						var totalFileCount = 0;
 			
-		</div>			
-    
-    				</article>
-			</div><!-- #content-->
+				        function createUploader(){
+				            var uploader = new qq.FileUploader({
+				                element: document.getElementById('file-uploader-demo1'),
+				                action: '/html5/AJAXUploadServlet',
+				                sizeLimit: 1024 * 1024 * 200	// 200MB 까지 첨부 가능.
+				                								// sizeLimit 이  모든 브라우져에서 가능한 것은 아니다.(Safari5/Chrome5 에서 성공. IE8에서 실패. 나머지 테스트 필요)
+				                //allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],	// 첨부파일의 확장자 제한
+				                //params: { param1: 'param1' , param2: 'param2' }	// 기타 Parameter 를 Servlet 으로 던져야 할때 사용한다.
+				            });
+				        }
+			
+				        function getMaskname() {
+					        totalFileCount++;	// Maskname 구성할때 Sequence 값으로 사용 된다.
+					        document.writeForm.fileCount.value = totalFileCount;	// 총 첨부 파일 개수 (Servlet 에서 첨부파일 개수 파악에 쓰인다.)
+			
+					        return '<%=masknamePrefix%>'+totalFileCount;
+				        }
+			
+				        window.onload = createUploader;
+				    </script>
+			    	<%-- ###################  File Upload 끝  ################# --%>
+  					<br/><br/><br/>
+					<article align="center">
+						<input id="submitButton" type="submit" value="저장" class="button_two" style="width:100px "/>
+					</article>
+					<br/><br/>
+				</form>
+			<!-- 메인 컨텐츠_시작======================================= -->    			
+			</div><!-- #contentinner-->
 		</div><!-- #container-->
 		<jsp:include page="../main/left.jsp"></jsp:include>
 	</section>
     <!-- footer -->    
-    <jsp:include page="../main/footer.jsp"></jsp:include>
-    
-  </div> 
-	
+    <jsp:include page="../main/footer.jsp"></jsp:include> 
+</div>	
 </body>
 </html>
