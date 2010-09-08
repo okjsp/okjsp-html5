@@ -152,7 +152,9 @@ int maxseq = 0;
 						    }
 						        	%></div></td>
 						        <td title="<%= one.getWhen() %>">
-						        <%= DateLabel.getTimeDiffLabel(one.getWhen()) %></td>
+						        	<span name="dataLabel" data-time="<%= one.getWhen() %>">
+						        	</span>
+						        </td>
 						    </tr>
 						<%
 							}
@@ -193,6 +195,42 @@ int maxseq = 0;
 %>
 <script>
 var maxseq = '<%=maxseq%>';
+
+//전체게시판 날짜 계산
+function bbstime(){
+	var ddd = document.getElementsByName('dataLabel');
+	for(var k=0;k<ddd.length;k++){
+		var dddArr = ddd[k];
+		dddArr.innerHTML = dddArr.getAttribute('data-time');
+		var now = new Date();
+		var writer = new Date(dddArr.getAttribute('data-time'));
+		var tmp = '';
+		if(now.getYear() != writer.getYear()){
+			tmp = (now.getYear() - writer.getYear())+'년전';
+		}else if(now.getMonth() != writer.getMonth()){
+			tmp = (now.getMonth() - writer.getMonth())+'달전';
+		}else if(now.getDate() != writer.getDate()){
+			if((now.getDate() - writer.getDate()) == 1){
+				tmp = '어제';
+			}else if((now.getDate() - writer.getDate()) == 2){
+				tmp = '그저께';
+			}else{
+				tmp = (now.getDate() - writer.getDate())+'일전';
+			}
+		}else if(now.getHours() != writer.getHours()){
+			tmp = (now.getHours() - writer.getHours())+'시간전';
+		}else if(now.getMinutes() != writer.getMinutes()){
+			tmp = (now.getMinutes() - writer.getMinutes())+'분전';
+		}else{
+			tmp = '지금 막';
+		}
+
+		dddArr.innerHTML = tmp;
+	}
+}
+
+bbstime();
+
 /**server-sent-event_시작 */
 (function() {
     var INIT_MESSAGE = "Now wait for server-side events. They will keep appearing in the console...",
@@ -246,6 +284,8 @@ var maxseq = '<%=maxseq%>';
 			        {method: 'get', parameters: "seq="+dbmaxseq ,
 				    onComplete: ajax_response}
 			    );
+		    //1-2. 게시판의 시간 값을 바꾼다.
+		    bbstime();
 		}else if(maxseq > dbmaxseq){
 			//2. db값이 작을경우 : 삭제(하면서 밑의 데이터를 추가시켜야 하는데..어려울듯 ㅋㅋ)
 			//삭제만 하자 ㅋㅋ~
