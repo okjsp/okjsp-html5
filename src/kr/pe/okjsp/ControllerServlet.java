@@ -57,6 +57,7 @@ public class ControllerServlet extends HttpServlet {
 	String loginPath = Navigation.getPath("LOGFORM");
 	if (!isValid) {
     	res.sendRedirect(loginPath);
+    	return;
     }
 
     boolean isRestricted = "notice".equals(bbs) 
@@ -65,9 +66,11 @@ public class ControllerServlet extends HttpServlet {
 	if (isRestricted && ("ADD".equals(act) || "REPLY".equals(act)) ) {
     	if (member == null ) {
 			res.sendRedirect(loginPath);
+			return;
     	} else if ( !( "Kenny".equals(member.getId()) ||
             			"kenu".equals(member.getId()) )){
-    		throw new IOException("NO RIGHT TO WRITE!!!");
+    		res.sendRedirect("/html5/main/errorPage.jsp?msgCode=1");	// msgCode=1 : "- 죄송합니다. 본 게시판은 글쓰기 권한이 있는분만 글을 남길 수 있습니다."
+    		return;
     	}
     }
 	
