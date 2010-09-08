@@ -153,6 +153,7 @@ int maxseq = 0;
 						        	%></div></td>
 						        <td title="<%= one.getWhen() %>">
 						        	<span name="dataLabel" data-time="<%= one.getWhen() %>">
+						        		<%= DateLabel.getTimeDiffLabel(one.getWhen()) %>
 						        	</span>
 						        </td>
 						    </tr>
@@ -201,7 +202,7 @@ function bbstime(){
 	var ddd = document.getElementsByName('dataLabel');
 	for(var k=0;k<ddd.length;k++){
 		var dddArr = ddd[k];
-		dddArr.innerHTML = dddArr.getAttribute('data-time');
+		//dddArr.innerHTML = dddArr.getAttribute('data-time');
 		var now = new Date();
 		var writer = new Date(dddArr.getAttribute('data-time'));
 		var tmp = '';
