@@ -163,10 +163,9 @@ public class WriteServlet extends HttpServlet {
 			2010.03.25 윤정부[Coma] 수정 : 수정시 트위터 전송 안되게 처리함.
 			act 변수 위치 변경하였음.
 		*/
-		
 		if(!"MODIFY".equals(act) && !"REPLY".equals(act))
 		{
-			//new TwitterUpdate().doUpdate(article, req);
+			new TwitterUpdate().doUpdate(article, req);
 		}
 		
 		return article.getBbs();
