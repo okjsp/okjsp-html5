@@ -30,8 +30,8 @@ function show_passwd_layer(cb) {
 	lobj.style.background="#D0D0FF";
 	callback = cb;
 	var submit_type_label = (cb == 'goModify')
-		? "¼öÁ¤"
-		: "»èÁ¦";
+		? "ìˆ˜ì •"
+		: "ì‚­ì œ";
 	document.getElementById("submit_type").value = submit_type_label;
 	toggleMenu('passwd_layer');
 
@@ -79,7 +79,7 @@ function goPrint() {
     window.open(link);
 }
 
-// °Ë»öÇØÁ¦
+// ê²€ìƒ‰í•´ì œ
 function clearKeyword() {
     document.f1.act.value="VIEW";
     document.f1.keyword.value="";
@@ -90,7 +90,7 @@ function clearKeyword() {
 function chk_memo(mform) {
 	if (mform.mseq && mform.mseq.value != '') {
 		if (sqeeze(mform.delpass.value)==0) {
-			alert("ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+			alert("ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 			mform.delpass.focus();
 			return false;
 		} else {
@@ -98,13 +98,13 @@ function chk_memo(mform) {
 		}
 	}
 	if (sqeeze(mform.writer.value)==0) {
-		alert("ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+		alert("ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 		mform.writer.focus();
 		return false;
 	}
 	if (mform.bcomment) {
 		if (sqeeze(mform.bcomment.value)==0) {
-			alert("ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+			alert("ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 			mform.bcomment.focus();
 			return false;
 		}
@@ -133,13 +133,13 @@ function show_memodel(mseq) {
 	}
 }
 
-// ¹®ÀÚ¿­ ³»ÀÇ °ø¹é Á¦°Å ÈÄ ±æÀÌ ¹İÈ¯
+// ë¬¸ìì—´ ë‚´ì˜ ê³µë°± ì œê±° í›„ ê¸¸ì´ ë°˜í™˜
 function sqeeze(str) {
     str = str.replace(/ /g, "");
     return str.length;
 }
 
-// ÆäÀÌÁö °Ô½Ã¹° ±×·ì ÀÌµ¿
+// í˜ì´ì§€ ê²Œì‹œë¬¼ ê·¸ë£¹ ì´ë™
 function movePage() {
     document.fmove.submit();
 }
