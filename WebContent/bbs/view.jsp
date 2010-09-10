@@ -33,7 +33,8 @@
 			<div id="contentinner">		        
         <article>
 	        <h2><%= CommonUtil.showHtml(one.getSubject()) %>
-	        	<a href="//twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="okjsp"> [Tweet] </a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+	        	<%-- Twitter 공식 트윗 버튼 --%>
+	        	<a href="//twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="okjsp" data-text="<%= CommonUtil.showHtml(one.getSubject()) %>"> [Tweet]</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 	        </h2>
 			<br/>
 				<%
