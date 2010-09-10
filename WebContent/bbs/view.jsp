@@ -33,7 +33,7 @@
 			<div id="contentinner">		        
         <article>
 	        <h2><%= CommonUtil.showHtml(one.getSubject()) %>
-	        	<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="okjsp">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	        	<a href="//twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="okjsp"> [Tweet] </a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 	        </h2>
 			<br/>
 				<%
