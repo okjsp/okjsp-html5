@@ -1,3 +1,4 @@
+<%@page import="kr.pe.okjsp.util.HttpLinker"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*,kr.pe.okjsp.util.CommonUtil,kr.pe.okjsp.*" %>
@@ -35,7 +36,8 @@
         	onerror="this.src='/images/spacer.gif'"><%
     }
 %>
-<pre><%= mb.getBcomment() %></pre></p>
+<br />
+<%= HttpLinker.getLinkedSource( CommonUtil.rplc(mb.getBcomment() ,"\n", "<br>")) %></p>
 <p><%= mb.getWriter() %>
 <%= mb.getWhen("yyyy-MM-dd HH:mm:ss")%>
 </p></div>
