@@ -34,7 +34,7 @@ int maxseq = 0;
 		<div id="container">
 			<div id="content">
 			<!-- 메인 컨텐츠_시작======================================= -->
-				<article align="center">
+				<article>
 <a href="http://www.acornpub.co.kr/" target="_blank">
 <img src="/images/banner/acornpub_468x60.gif">
 </a>
@@ -63,13 +63,12 @@ int maxseq = 0;
 			        			<tr>
 							        <td>
 							        	<div class="ellipsis" style="width: 260px;">
-								            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank">
-								            	<%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %>
-								            </a>
+								            <a href="<%=cPath%>/seq/<%= one.getSeq() %>" target="_blank"
+								            ><%= CommonUtil.rplc(one.getSubject(), "<", "&lt;") %></a>
 							            </div>
 							        </td>
 							        <td>
-							        	<span><str:replace replace="[0]" with="">[<%= one.getMemo() %>]</str:replace></span>
+							        	<span>[<%= one.getMemo() %>]</span>
 							        </td>
 							        <td><div class="ellipsis" style="width: 80px;"><%= CommonUtil.rplc(one.getWriter(), "<", "&lt;") %></div></td>
 							        <td><div><%
@@ -178,8 +177,6 @@ int maxseq = 0;
 
 </div><!-- #wrapper -->
 <!-- Free template created by http://freehtml5templates.com -->
-</body>
-</html>
 <event-source src="main_event.jsp" />
 <%!
 	ListHandler list = new ListHandler();
@@ -336,3 +333,5 @@ bbstime();
 }());
 /**server-sent-event_끝 */
 </script>
+</body>
+</html>
