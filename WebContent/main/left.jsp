@@ -46,7 +46,7 @@ String cPath = request.getContextPath();
 			</ul>
 		</div>
 		<div align="center">
-			<input type="button" class="button_two" value="메뉴초기화" onclick="javascript:reload()">
+			<input type="button" class="button_two" value="메뉴초기화" id="reset_menu" onclick="reload()">
 		</div>
 	</div><!-- .box -->
 </aside><!-- end left sidebar -->
