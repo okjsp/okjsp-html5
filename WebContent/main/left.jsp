@@ -148,7 +148,7 @@ String cPath = request.getContextPath();
 		//localStorage.clear();	//스토리지 삭제(임시)
 		//로컬 스토리지 불러오기
 		var tmp = localStorage['leftmenu_storage'];
-		if(!(tmp == 'undefined' || tmp == '' || tmp == 'null' || tmp == null)){
+		if(!(tmp == undefined || tmp == '' || tmp == 'null' || tmp == null)){
 			//로컬 스토리지에 데이터가 있으면 해당 데이터를 가져와서 세팅
 			left_menu.innerHTML = tmp;
 		}else{
