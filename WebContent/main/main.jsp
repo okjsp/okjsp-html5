@@ -35,8 +35,8 @@ int maxseq = 0;
 			<div id="content">
 			<!-- 메인 컨텐츠_시작======================================= -->
 				<article>
-<a href="http://www.acornpub.co.kr/" target="_blank">
-<img src="/images/banner/acornpub_468x60.gif">
+<a href="/f.jsp?http://www.devlec.com/?_pageVariable=OKJSP" target="_blank">
+<img src="http://www.devlec.com/images/devlec_okjsp.gif">
 </a>
 				</article>
 				<br/>
