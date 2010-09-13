@@ -475,19 +475,28 @@ public class Article {
 	
 	public String getCcl_name() {
 		
-		if( this.ccl_id.trim().equals("0") )	// ccl_id Trim 필요
+		int ccl = 0;
+		try {
+			ccl = Integer.parseInt(this.ccl_id.trim());
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		
+		if( ccl == 0 )
 			return "Copyright-저작자에게 저작권";
-		else if( this.ccl_id.trim().equals("1") )
+		else if( ccl == 1 )
 			return "CCL-저작자표시";
-		else if( this.ccl_id.trim().equals("2") )
+		else if( ccl == 2 )
 			return "CCL-저작자표시-동일조건변경허락";
-		else if( this.ccl_id.trim().equals("3") )
+		else if( ccl == 3 )
 			return "CCL-저작자표시-변경금지";
-		else if( this.ccl_id.trim().equals("4") )
+		else if( ccl == 4 )
 			return "CCL-저작자표시-비영리";
-		else if( this.ccl_id.trim().equals("5") )
+		else if( ccl == 5 )
 			return "CCL-저작자표시-비영리-동일조건변경허락";
-		else if( this.ccl_id.trim().equals("6") )
+		else if( ccl == 6 )
 			return "CCL-저작자표시-비영리-변경금지";
 		else
 			return this.ccl_id;
