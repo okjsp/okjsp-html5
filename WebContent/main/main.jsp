@@ -271,9 +271,7 @@ refreshTimes();
      * @event
      */
     var onMessageHandler = function (event) {
-        //log(event.data);
         var dbmaxseq = event.data;
-        //alert('maxseq:'+maxseq +',dbmaxseq'+dbmaxseq);
 		if(maxseq < dbmaxseq){
 			//1. db값이 클경우 : 추가(하면서 밑의 데이터를 삭제시켜야함)
 			var myAjax = new Ajax.Request(
@@ -282,7 +280,7 @@ refreshTimes();
 				    onComplete: ajax_response}
 			    );
 		    //1-2. 게시판의 시간 값을 바꾼다.
-		    bbstime();
+		    refreshTimes();
 		}else if(maxseq > dbmaxseq){
 			//2. db값이 작을경우 : 삭제(하면서 밑의 데이터를 추가시켜야 하는데..어려울듯 ㅋㅋ)
 			//삭제만 하자 ㅋㅋ~
