@@ -150,8 +150,8 @@ int maxseq = 0;
 						        	onerror="this.src='<%=cPath%>/images/spacer.gif'"><%
 						    }
 						        	%></div></td>
-						        <td title="<%= one.getWhen() %>">
-						        	<span name="dataLabel" data-time="<%= one.getWhen() %>">
+						        <td title="<%= one.getWhen("yyyy-MM-dd HH:mm:ss z") %>">
+						        	<span name="dataLabel" data-time="<%= one.getWhen().getTime() %>">
 						        		<%= DateLabel.getTimeDiffLabel(one.getWhen()) %>
 						        	</span>
 						        </td>
@@ -195,13 +195,12 @@ int maxseq = 0;
 var maxseq = '<%=maxseq%>';
 
 //전체게시판 날짜 계산
-function bbstime(){
-	var ddd = document.getElementsByName('dataLabel');
-	for(var k=0;k<ddd.length;k++){
-		var dddArr = ddd[k];
-		//dddArr.innerHTML = dddArr.getAttribute('data-time');
-		var now = new Date();
-		var writer = new Date(dddArr.getAttribute('data-time'));
+function refreshTimes(){
+	var dates = document.getElementsByName('dataLabel');
+	var now = new Date();
+	for(var k=0;k<dates.length;k++){
+		var date = dates[k];
+		var writer = new Date(parseInt(date.getAttribute('data-time')));
 		var tmp = '';
 		if(now.getYear() != writer.getYear()){
 			tmp = (now.getYear() - writer.getYear())+'년전';
@@ -223,11 +222,11 @@ function bbstime(){
 			tmp = '지금 막';
 		}
 
-		dddArr.innerHTML = tmp;
+		date.innerHTML = tmp;
 	}
 }
 
-bbstime();
+refreshTimes();
 
 /**server-sent-event_시작 */
 (function() {

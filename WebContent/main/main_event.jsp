@@ -48,8 +48,11 @@ if (iterList.hasNext() ) {
         	onerror="this.src='<%=cPath%>/images/spacer.gif'"><%
     }
         	%></div></b></td>
-        <td title="<%= one.getWhen() %>" align="center">
-        <b><%= DateLabel.getTimeDiffLabel(one.getWhen()) %></b></td>
+		<td title="<%= one.getWhen("yyyy-MM-dd HH:mm:ss z") %>">
+			<span name="dataLabel" data-time="<%= one.getWhen().getTime() %>">
+			<b><%= DateLabel.getTimeDiffLabel(one.getWhen()) %></b>
+			</span>
+		</td>
 <%	
 }
 %>
