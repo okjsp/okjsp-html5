@@ -472,6 +472,27 @@ public class Article {
 	public String getCcl_id() {
 		return ccl_id;
 	}
+	
+	public String getCcl_name() {
+		
+		if( this.ccl_id.trim().equals("0") )	// ccl_id Trim 필요
+			return "Copyright-저작자에게 저작권";
+		else if( this.ccl_id.trim().equals("1") )
+			return "CCL-저작자표시";
+		else if( this.ccl_id.trim().equals("2") )
+			return "CCL-저작자표시-동일조건변경허락";
+		else if( this.ccl_id.trim().equals("3") )
+			return "CCL-저작자표시-변경금지";
+		else if( this.ccl_id.trim().equals("4") )
+			return "CCL-저작자표시-비영리";
+		else if( this.ccl_id.trim().equals("5") )
+			return "CCL-저작자표시-비영리-동일조건변경허락";
+		else if( this.ccl_id.trim().equals("6") )
+			return "CCL-저작자표시-비영리-변경금지";
+		else
+			return this.ccl_id;
+	}
+	
 
 	/**
 	 * @param ccl_id
