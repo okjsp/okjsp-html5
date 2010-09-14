@@ -151,9 +151,10 @@ int maxseq = 0;
 						    }
 						        	%></div></td>
 						        <td title="<%= one.getWhen("yyyy-MM-dd HH:mm:ss z") %>">
-						        	<span name="dataLabel" data-time="<%= one.getWhen().getTime() %>">
+						        	<span id="dataLabel">
 						        		<%= DateLabel.getTimeDiffLabel(one.getWhen()) %>
 						        	</span>
+						        	<input type="hidden" id="dataLabelHidden" value="<%= one.getWhen("yyyy-MM-dd HH:mm:ss z") %>" />
 						        </td>
 						    </tr>
 						<%
@@ -196,11 +197,14 @@ var maxseq = '<%=maxseq%>';
 
 //전체게시판 날짜 계산
 function refreshTimes(){
-	var dates = document.getElementsByName('dataLabel');
+	var dates = document.getElementById('dataLabel');
+	var dates_hidden = document.getElementById('dataLabelHidden');
 	var now = new Date();
 	for(var k=0;k<dates.length;k++){
 		var date = dates[k];
-		var writer = new Date(parseInt(date.getAttribute('data-time')));
+		//var writer = new Date(parseInt(date.getAttribute('data-time')));
+		var writer = new Date(parseInt(dates_hidden.value));
+
 		var tmp = '';
 		if(now.getYear() != writer.getYear()){
 			tmp = (now.getYear() - writer.getYear())+'년전';
