@@ -39,7 +39,7 @@
 					<section align="center">
 						위 개인정보취급방침과 회원가입약관에 동의하십니까?
 						<br/>
-							<a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp" id="forgotpsswd_2">
+							<a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/form.jsp">
 								<input type="button" id="forgotpsswd_2" class="button_two" value="동의합니다" />
 							</a>
 							<input type="button" class="button_two" value="동의하지않습니다" onClick="window.close()"/>

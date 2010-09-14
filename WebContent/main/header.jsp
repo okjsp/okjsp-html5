@@ -12,13 +12,13 @@ String cPath = request.getContextPath();
 	<div id="top">
 		<nav>
 			<ul>
-				<li><a href="<%=cPath%>/bbs?act=LIST&bbs=notice" class="transition">공지사항</a></li>
+				<li><a href="<%=cPath%>/bbs?act=LIST&amp;bbs=notice" class="transition">공지사항</a></li>
 				<li><a href="<%=cPath%>/member/agreement.jsp" class="transition">개인정보취급방침</a></li>
 				<li><a href="<%=cPath%>/seq/137659" class="transition">광고문의</a></li>
 			</ul>
 		</nav>
 		<div class="search">
-			<input type="checkbox" onclick="doChange()" id="change"><font color="white">기존 사이트로 변환</font><br/><br/>
+			<input type="checkbox" onclick="doChange()" id="change"><span class="changeFont">기존 사이트로 변환</span><br/><br/>
 			<form name="searchf1" method="get" target="okjspsearch"
 			action="http://www.google.com/search"
 			onsubmit="searchf1.q.value='site:okjsp.pe.kr '+searchf1.qt.value;"> 

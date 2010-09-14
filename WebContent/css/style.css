@@ -558,3 +558,24 @@ select.field {
 	font-family: verdana, arial, sans-serif;
 	font-size: 110%;
 }
+
+.changeFont {
+	color: white;
+}
+
+.divCenter {
+	text-align: center; 
+}
+
+.innerCenter {
+	margin-left: 10px;
+	margin-right: 10px;
+	overflow: hidden;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #009296;
+	padding: 5px;
+	margin-top: -7px;
+	margin-bottom: 10px;
+	text-align: center;
+}

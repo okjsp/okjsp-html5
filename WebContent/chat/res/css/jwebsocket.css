@@ -437,3 +437,13 @@ a.emphasized:active {
 a.emphasized:focus {
 	background-color: #f0f0f0;
 }
+
+table.stlbDlgBorder {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10pt;
+	/* we could use inherited here but IE doesn't get this */
+	background-color: #f0f0f0;
+	border: 0px;
+	width: 100%;
+}

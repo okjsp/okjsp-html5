@@ -21,7 +21,7 @@ String cPath = request.getContextPath();
                 <input type="password" name="password" id="password_2" tabindex="2" class="field" required></p>
               <p><input type="submit" class="button" value="LOGIN"  /></p>
               <p>
-              <a href="<%= cPath %>/member/agreement.jsp" id="forgotpsswd_2"><input type="button" id="forgotpsswd_2" class="button" value="회원가입" /></a>
+              <a href="<%= cPath %>/member/agreement.jsp"><input type="button" id="forgotpsswd_2" class="button" value="회원가입" /></a>
               </p>
             </form>
           </c:if>
@@ -45,7 +45,7 @@ String cPath = request.getContextPath();
 				ondragleave="onDragLeave(event)"    id="left_menu">
 			</ul>
 		</div>
-		<div align="center">
+		<div class="divCenter">
 			<input type="button" class="button_two" value="메뉴초기화" id="reset_menu" onclick="reload()">
 		</div>
 	</div><!-- .box -->

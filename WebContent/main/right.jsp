@@ -26,7 +26,7 @@ String cPath = request.getContextPath();
 <aside id="right">
 	<div class="box">
 		<h3>광고</h3>
-		<div class="inner" align="center">
+		<div class="innerCenter">
 			<a href="<%=cPath %>/main/f.jsp?http://www.apptalk.tv" target="_blank"
 			><img src="http://www.okjsp.pe.kr/images/banner/apptalk_134x60.jpg"
 				alt="http://www.okjsp.pe.kr세상의 모든 앱을 영상으로. 앱의 모든 것, 앱톡"
@@ -40,8 +40,8 @@ String cPath = request.getContextPath();
 
 	<div class="box">
 		<h3>Chatting</h3>
-		<div class="inner">
-			<p align="center"><a href="javascript:openSubWindow();"><b>Chatting Popup</b></a></p>
+		<div class="innerCenter">
+			<a href="javascript:openSubWindow();"><b>Chatting Popup</b></a>
     	</div>
 	</div><!-- .box -->
 	
@@ -77,19 +77,19 @@ String cPath = request.getContextPath();
 	
 	<div class="box">
 			<h3>sponsored by</h3>
-			<div class="inner" align="center">
+			<div class="innerCenter">
 				<a href="http://www.80port.com/community" target="_blank" title="www.80port.com
 	 				okjsp standalone 호스팅 지원, 서비스 좋습니다."> 
-					<img src="http://www.okjsp.pe.kr/images/bnr_80port.gif" width="88" height="31" border="0"></a> 
+					<img src="http://www.okjsp.pe.kr/images/bnr_80port.gif" width="88" height="31"></a> 
 				<br /> 
 				<a href="<%=cPath %>/main/f.jsp?http://www.cubrid.com/" target="_blank" title="okjsp Database"> 
-					<img src="http://www.okjsp.pe.kr/images/banner/cubrid_88x31.gif" width="88" height="31" border="0"></a> 
+					<img src="http://www.okjsp.pe.kr/images/banner/cubrid_88x31.gif" width="88" height="31"></a> 
 			</div>
 	</div><!-- .box -->
 	
 	<div class="box">
 			<h3>Maso Widget</h3>
-			<div class="inner" id="imaso_div" align="center">
+			<div class="innerCenter" id="imaso_div">
 				<script type="text/javascript">
 				<!--
 				imaso_ad_client = "pub-31415924";
@@ -101,7 +101,7 @@ String cPath = request.getContextPath();
 	
 	<div class="box">
 			<h3>동맹사이트</h3>
-			<div class="inner" align="center">
+			<div class="innerCenter">
 				<a href="http://simples.kr/" target="_blank"> 
 					<img src="http://www.okjsp.pe.kr/images/bnr_simples.png" alt="simples.kr"></a>
 			</div>

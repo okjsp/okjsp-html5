@@ -313,7 +313,7 @@
 		<h1>OKJSP Chatting</h1>
 		<p></p>
 		<div class="sdivContainer">
-			<table class="stlbDlg" border="0" cellpadding="3" cellspacing="0" width="100%">
+			<table class="stlbDlgBorder" border="0" cellpadding="3" cellspacing="0" width="100%">
 				<tr class="strDlg">
 					<td class="stdDlg" width="5">Username</td>
 					<td class="stdDlg" width="5"><input class="stxfDlg" id="stxfUsername" type="text" value="<%= loginName %>" size="20"></td>
@@ -332,7 +332,7 @@
 			 style="position:relative; height:300px; overflow:auto;">
 		</div>
 		<div class="sdivContainer">
-			<table class="stlbDlg" border="0" cellpadding="3" cellspacing="0" width="100%">
+			<table class="stlbDlgBorder" border="0" cellpadding="3" cellspacing="0" width="100%">
 				<tr class="strDlg">
 					<td valign="top" class="stdDlg" width="5">Message</td>
 					<td valign="top" class="stdDlg" width=""><textarea class="stxaDlg" id="stxaMsg" cols="255 "rows="2" style="width:100%" onFocus="javascript:if( this.value == 'Please type your message here!' ) this.value = '';">Please type your message here!</textarea></td>
