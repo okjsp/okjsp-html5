@@ -151,10 +151,9 @@ int maxseq = 0;
 						    }
 						        	%></div></td>
 						        <td title="<%= one.getWhen("yyyy-MM-dd HH:mm:ss z") %>">
-						        	<span id="dataLabel">
+						        	<span name="dataLabel" data-time="<%= one.getWhen().getTime() %>">
 						        		<%= DateLabel.getTimeDiffLabel(one.getWhen()) %>
 						        	</span>
-						        	<input type="hidden" id="dataLabelHidden" value="<%= one.getWhen("yyyy-MM-dd HH:mm:ss z") %>" />
 						        </td>
 						    </tr>
 						<%
@@ -197,20 +196,17 @@ var maxseq = '<%=maxseq%>';
 
 //전체게시판 날짜 계산
 function refreshTimes(){
-	var dates = document.getElementById('dataLabel');
-	var dates_hidden = document.getElementById('dataLabelHidden');
+	var dates = document.getElementsByName('dataLabel');
 	var now = new Date();
 	for(var k=0;k<dates.length;k++){
 		var date = dates[k];
-		//var writer = new Date(parseInt(date.getAttribute('data-time')));
-		var writer = new Date(parseInt(dates_hidden.value));
-
+		var writer = new Date(parseInt(date.getAttribute('data-time')));
 		var tmp = '';
 		if(now.getYear() != writer.getYear()){
 			tmp = (now.getYear() - writer.getYear())+'년전';
 		}else if(now.getMonth() != writer.getMonth()){
 			tmp = (now.getMonth() - writer.getMonth())+'달전';
-		}else if(now.getDate() != writer.getDate()){
+		}else if((now.getHours() - writer.getHours()>=24)&&(now.getDate() != writer.getDate())){
 			if((now.getDate() - writer.getDate()) == 1){
 				tmp = '어제';
 			}else if((now.getDate() - writer.getDate()) == 2){
@@ -219,7 +215,12 @@ function refreshTimes(){
 				tmp = (now.getDate() - writer.getDate())+'일전';
 			}
 		}else if(now.getHours() != writer.getHours()){
-			tmp = (now.getHours() - writer.getHours())+'시간전';
+			var tmp_2 = now.getHours() - writer.getHours();
+			if(tmp_2 < 0){
+				tmp = ((now.getHours()+24) - writer.getHours())+'시간전';
+			}else{
+				tmp = (now.getHours() - writer.getHours())+'시간전';
+			}
 		}else if(now.getMinutes() != writer.getMinutes()){
 			tmp = (now.getMinutes() - writer.getMinutes())+'분전';
 		}else{
