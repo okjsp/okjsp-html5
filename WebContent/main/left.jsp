@@ -16,9 +16,9 @@ String cPath = request.getContextPath();
             <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
               <p><input type="hidden" name="returnPath" value="<%= Navigation.getPath("SECURE_DOMAIN") %>" /></p>
               <p><label for="username_2" class="top">ID:</label><br />
-                <input type="text" name="id" id="username_2" tabindex="1" class="field" required placeholder="input ID"></p>
+                <input type="text" name="id" id="username_2" tabindex="10" class="field" required placeholder="input ID"></p>
               <p><label for="password_2" class="top">Password:</label><br />
-                <input type="password" name="password" id="password_2" tabindex="2" class="field" required></p>
+                <input type="password" name="password" id="password_2" tabindex="11" class="field" required></p>
               <p><input type="submit" class="button" value="LOGIN"  /></p>
               <p>
               <a href="<%= cPath %>/member/agreement.jsp"><input type="button" id="forgotpsswd_2" class="button" value="회원가입" /></a>
