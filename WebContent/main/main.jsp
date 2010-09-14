@@ -201,8 +201,25 @@ function refreshTimes(){
 	for(var k=0;k<dates.length;k++){
 		var date = dates[k];
 		var writer = new Date(parseInt(date.getAttribute('data-time')));
+		//alert(now+'=='+writer+'\n'+(now - writer));
+		var tmp_date = round((now - writer)/60000);
 		var tmp = '';
-		if(now.getYear() != writer.getYear()){
+
+		if(tmp_date < 60){
+			tmp = (tmp_date + '분전');
+		}else if(tmp_date < (60*24)){
+			tmp_date = round(tmp_date/24);
+			tmp = (tmp_date + '시간전');
+		}else if(tmp_date < (60*24*30)){
+			tmp_date = round(tmp_date/30);
+			tmp = (tmp_date + '일전');
+		}else if(tmp_date < (60*24*30*12)){
+			tmp_date = round(tmp_date/12);
+			tmp = (tmp_date + '달전');
+		}else{
+			tmp = '지금막';
+		}
+		/*if(now.getYear() != writer.getYear()){
 			tmp = (now.getYear() - writer.getYear())+'년전';
 		}else if(now.getMonth() != writer.getMonth()){
 			tmp = (now.getMonth() - writer.getMonth())+'달전';
@@ -225,7 +242,7 @@ function refreshTimes(){
 			tmp = (now.getMinutes() - writer.getMinutes())+'분전';
 		}else{
 			tmp = '지금 막';
-		}
+		}*/
 
 		date.innerHTML = tmp;
 	}
