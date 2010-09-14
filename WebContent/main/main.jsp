@@ -227,7 +227,6 @@ function refreshTimes(){
 		}
 
 		date.innerHTML = tmp;
-		dates_hidden.value = tmp;
 	}
 }
 
