@@ -202,22 +202,24 @@ function refreshTimes(){
 		var date = dates[k];
 		var writer = new Date(parseInt(date.getAttribute('data-time')));
 		//alert(now+'=='+writer+'\n'+(now - writer));
-		var tmp_date = round((now - writer)/60000);
+		var tmp_date = Math.round((now - writer)/60000);
 		var tmp = '';
 
-		if(tmp_date < 60){
+		if(tmp_date < 1){
+			tmp = ('지금막');
+		}else if(tmp_date < 60){
 			tmp = (tmp_date + '분전');
 		}else if(tmp_date < (60*24)){
-			tmp_date = round(tmp_date/24);
+			tmp_date = Math.round(tmp_date/24);
 			tmp = (tmp_date + '시간전');
 		}else if(tmp_date < (60*24*30)){
-			tmp_date = round(tmp_date/30);
+			tmp_date = Math.round(tmp_date/30);
 			tmp = (tmp_date + '일전');
 		}else if(tmp_date < (60*24*30*12)){
-			tmp_date = round(tmp_date/12);
+			tmp_date = Math.round(tmp_date/12);
 			tmp = (tmp_date + '달전');
 		}else{
-			tmp = '지금막';
+			tmp = '모름...';
 		}
 		/*if(now.getYear() != writer.getYear()){
 			tmp = (now.getYear() - writer.getYear())+'년전';
@@ -308,7 +310,7 @@ refreshTimes();
 			//삭제만 하자 ㅋㅋ~
 			//근데 삭제가 잘 안된다 쩝...
 			var list = $('table_list');
-			list.deleteRow(1);
+			list.deleteRow(0);
 		} 
 		maxseq = dbmaxseq;
     };
