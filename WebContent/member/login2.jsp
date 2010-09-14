@@ -55,8 +55,15 @@ ${except.message}
 </c:if>
 <%
   String cPath = request.getContextPath();
-  String returnPath = pageContext.getAttribute("returnPath") != null ?
-      (String) pageContext.getAttribute("returnPath") :
-       Navigation.getPath("HOME_URL");
+	//로그인 에러로 수정_HOME_URL이 잘 먹히지 않는 관계로...
+  /*String returnPath = pageContext.getAttribute("returnPath") != null ?
+      (String) pageContext.getAttribute("returnPath") : Navigation.getPath("HOME_URL");*/
+  String returnPath = "";  
+  if("".equals(returnPath) || returnPath == null){
+	  returnPath = Navigation.getPath("HOME_URL");
+  }else{
+	  returnPath = (String)pageContext.getAttribute("returnPath");
+  }
+        
   response.sendRedirect(returnPath);
 %>
