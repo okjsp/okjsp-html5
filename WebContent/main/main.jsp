@@ -152,9 +152,9 @@ int maxseq = 0;
 						        	%></div></td>
 						        <td title="<%= one.getWhen("yyyy-MM-dd HH:mm:ss z") %>">
 						        	<span name="dataLabel">
-						        		<input type="hidden" id="dataLabelHidden" value="<%= one.getWhen().getTime() %>">
 						        		<%= DateLabel.getTimeDiffLabel(one.getWhen()) %>
 						        	</span>
+						        	<input type="hidden" id="dataLabelHidden" value="<%= one.getWhen().getTime() %>">
 						        </td>
 						    </tr>
 						<%
@@ -204,6 +204,7 @@ function refreshTimes(){
 		var date = dates[k];
 		//var writer = new Date(parseInt(date.getAttribute('data-time')));
 		var writer = new Date(parseInt(dates_hidden.value));
+
 		var tmp = '';
 		if(now.getYear() != writer.getYear()){
 			tmp = (now.getYear() - writer.getYear())+'년전';
@@ -226,6 +227,7 @@ function refreshTimes(){
 		}
 
 		date.innerHTML = tmp;
+		dates_hidden.value = tmp;
 	}
 }
 
