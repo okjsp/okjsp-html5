@@ -507,6 +507,7 @@ table tr {
    -webkit-animation-iteration-count: 1;
    -webkit-animation-timing-function: ease-in-out;
    -webkit-animation-direction: alternate;
+   font-weight: bolder;
 }
 
 #textarea_member {
@@ -578,4 +579,12 @@ select.field {
 	margin-top: -7px;
 	margin-bottom: 10px;
 	text-align: center;
+}
+
+#note {
+	width: 100%;
+	height: 80px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #AEB0AD;
 }
