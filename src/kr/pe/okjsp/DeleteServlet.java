@@ -89,8 +89,9 @@ public class DeleteServlet extends HttpServlet {
 				// file 삭제 생략
 				
 			} else {
-				resourceName = "/error.jsp";
-				throw new Exception("WRONG PASSWORD");
+				resourceName = "/error.jsp?err=WRONG PASSWORD&errMsg=비밀번호에러";
+				req.getRequestDispatcher(resourceName).forward(req, res);
+				//throw new Exception("WRONG PASSWORD");
 			}
 
 		} catch (Exception e) {
