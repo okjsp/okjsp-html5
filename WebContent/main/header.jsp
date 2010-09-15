@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="kr.pe.okjsp.util.CommonUtil, kr.pe.okjsp.Navigation"%>    
 <%
 //ContextPath
 String cPath = request.getContextPath();
 %> 
 
 <header>
-	<h1 id="sitename"><a href="<%=cPath%>" title="Go to Start page">OKJSP</a></h1>
+	<h1 id="sitename"><a href="<%= Navigation.getPath("HOME_URL") %>" title="Go to Start page">OKJSP</a></h1>
 	<div id="description">java, jsp, eclipse & HTML5
 	</div>
 	<div id="top">
