@@ -310,7 +310,7 @@ refreshTimes();
 			//삭제만 하자 ㅋㅋ~
 			//근데 삭제가 잘 안된다 쩝...
 			var list = $('table_list');
-			list.deleteRow(0);
+			list.deleteRow(1);
 		} 
 		maxseq = dbmaxseq;
     };
