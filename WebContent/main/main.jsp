@@ -205,7 +205,6 @@ function refreshTimes(){
 		var tmp_date = Math.round((now - writer)/60000);
 		var tmp = '';
 
-		alert(k+'=='+tmp_date);
 		if(tmp_date < 1){
 			tmp = ('지금막');
 		}else if(tmp_date < 60){
