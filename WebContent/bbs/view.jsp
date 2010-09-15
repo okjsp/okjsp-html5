@@ -76,7 +76,7 @@
 			<!--<input type="button" class="button" value="답변" onClick="goReply()"/> -->
 	    	<input type="button" class="button" value="수정" onClick="show_passwd_layer('goModify')"/>
 	     	<input type="button" class="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
-	     	<input type="button" class="button" value="책갈피" onClick="goBookmark()"/>
+	     	<!--<input type="button" class="button" value="책갈피" onClick="goBookmark()"/> -->
 		</section>
 	</div>
 		<form name="f0" method="POST" onSubmit="return chk_memo(this)">
@@ -88,14 +88,17 @@
 	    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
 	    <input type="hidden" name="viewstamp" value="<%= System.currentTimeMillis() %>">
 		
-	      <textarea name="bcomment" style="width:100%;height:80px" id="note"></textarea>
-	        id:<input type="text" class="memoid" name="writer"
+	      <textarea name="bcomment" id="note"></textarea>
+	        id:<input type="text" name="writer" class="field"
 	            maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
-	        pw:<input type="password" class="memopw" name="memopass" maxlength="15">
+	        &nbsp;&nbsp;&nbsp;
+	        pw:<input type="password" name="memopass" maxlength="15" class="field">
+	        &nbsp;&nbsp;&nbsp;
+	        <input type="submit" name="send" value="Memo" class="button_two">
 		    <input type="hidden" name="doublecheck" class="memodc" value="okjsp">
-		    <br /><span style="color:#f00">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
+		    <br /><span style="color:#f00;font-size:12px ">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
 		    <br />개조심할 필요는 있으니까요. 낮말은 새, 밤말은 쥐, 인터넷말은 검색엔진</span>
-	        <br /><input type="submit" name="send" value="Memo">
+	        <br />
 		</form>		
 	</div></div>
 	<form name="f1">
