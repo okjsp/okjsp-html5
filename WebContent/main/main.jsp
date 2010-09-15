@@ -205,18 +205,19 @@ function refreshTimes(){
 		var tmp_date = Math.round((now - writer)/60000);
 		var tmp = '';
 
+		alert(k+'=='+tmp_date);
 		if(tmp_date < 1){
 			tmp = ('지금막');
 		}else if(tmp_date < 60){
 			tmp = (tmp_date + '분전');
 		}else if(tmp_date < (60*24)){
-			tmp_date = Math.round(tmp_date/24);
+			tmp_date = Math.round(tmp_date/60);
 			tmp = (tmp_date + '시간전');
 		}else if(tmp_date < (60*24*30)){
-			tmp_date = Math.round(tmp_date/30);
+			tmp_date = Math.round(tmp_date/(60*24));
 			tmp = (tmp_date + '일전');
 		}else if(tmp_date < (60*24*30*12)){
-			tmp_date = Math.round(tmp_date/12);
+			tmp_date = Math.round(tmp_date/(60*24*30));
 			tmp = (tmp_date + '달전');
 		}else{
 			tmp = '모름...';
