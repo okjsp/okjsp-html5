@@ -28,6 +28,7 @@
 					<video width="390" id="clip" controls> 
 					    <source src="<%=cPath%>/video/chrome_japan.ogv" type='video/ogg; codecs="theora, vorbis"' /> 
 					    <source src="<%=cPath%>/video/chrome_japan.webm" type='video/webm; codecs="vp8, vorbis"' />
+					    <source src="<%=cPath%>/video/chrome_japan.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
 					    Your browser does not support the video tag
 					  </video>
 					<br/>
