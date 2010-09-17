@@ -25,6 +25,13 @@
 	   				<section>
 					<h1>사이트 안내</h1>
 					<br/>
+					<video width="390" id="clip" controls> 
+					    <source src="<%=cPath%>/video/chrome_japan.ogv" type='video/ogg; codecs="theora, vorbis"' /> 
+					    <source src="<%=cPath%>/video/chrome_japan.webm" type='video/webm; codecs="vp8, vorbis"' />
+					    Your browser does not support the video tag
+					  </video>
+					<br/>
+					<br/>
 					1. 해당 사이트는 크롬 6.0에 최적화 되어 있습니다. <br/> 
 					   퀘적한 사이트 서핑을 위해서 크롬, 사파리, WebKit 등의 설치를 권장합니다. <br/>
 					 WebKit : <a href="http://webkit.org/">http://webkit.org/</a> <br/>
