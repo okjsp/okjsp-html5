@@ -165,6 +165,12 @@ int maxseq = 0;
 				<br><br>
 				<!-- 메인 컨텐츠_끝======================================= -->
 			</div><!-- #content-->
+			<br/>
+			<!-- ############## Chatting 시작 ################# -->
+			<div id="content">
+				<jsp:include page="../chat/chatMain.jsp"></jsp:include>
+			</div>
+			<!-- ############## Chatting 끝 ################# -->
 		</div><!-- #container-->
 
 		<jsp:include page="left.jsp"></jsp:include>

@@ -1,0 +1,52 @@
+<!-- Main 화면 하단에 붙는 Chatting 의 CSS -->
+
+b {
+	border:none;
+	background: #fff;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #202020;
+}
+
+h4 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 12pt;
+	color: #007276;
+	/* background:url(../img/header_gradient.jpg); */
+	background-color: #f0f0f0;
+	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+
+	border: 1px solid #f0f0f0;
+	padding: 2px 5px 2px 5px;
+	margin: 0px 0px 5px 0px;
+	text-shadow: 2px 1px 2px #CCC;
+}
+
+div.sdivContainer {
+	border: 0px; /*1px solid #444;*/
+	margin: 5px 0px 5px 0px;
+	padding: 2px 5px 2px 5px;
+	background-color: #f0f0f0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+input[type="text"].stxfDlg {
+	font-family: inherit;
+	border: 1px solid #444;
+	background-color: white;
+}
+
+input[type="button"].sbtnDlg {
+	font-family: inherit;
+	border: 1px solid #808080;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	margin: 1px;
+	color: white;
+	background-color: #81a0b5;
+	width: 60px;
+}
