@@ -264,8 +264,8 @@
 					eUsername.addEventListener( "focus", elemFocusLsnr, false );
 					eMessage.addEventListener( "focus", elemFocusLsnr, false );
 */
-					eUsername.focus();
-					eUsername.select();
+					//eUsername.focus();	// 메인 페이지에 위치 하므로 자동 포커스 기능을 하지 않는다.
+					//eUsername.select();	// 메인 페이지에 위치 하므로 SELECT 기능도 하지 않는다.
 				} else {
 					jws.$( "sbtnSend" ).setAttribute( "disabled", "disabled" );
 					jws.$( "sbtnLogin" ).setAttribute( "disabled", "disabled" );
