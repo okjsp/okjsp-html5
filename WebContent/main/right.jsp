@@ -27,6 +27,10 @@ String cPath = request.getContextPath();
 	<div class="box">
 		<h3>광고</h3>
 		<div class="innerCenter">
+			<a href="<%=cPath %>/main/f.jsp?http://www.adoberia.co.kr/?src=image&kw=000044" target="_blank"
+			><img src="http://www.okjsp.pe.kr/images/banner/JAVACOMM_134x60_02.gif"
+				alt="Adobe CS5 학생용 교사용 출시"
+			></a>
 			<a href="<%=cPath %>/main/f.jsp?http://olccenter.or.kr/" target="_blank"
 			><img src="http://www.okjsp.pe.kr/images/banner/olc_134x60.gif"
 				alt="개방형 소프트웨어 교육센터, 동영상 교육"
