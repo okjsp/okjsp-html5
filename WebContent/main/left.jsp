@@ -12,7 +12,7 @@ String cPath = request.getContextPath();
     <div class="box">
         <h3>Login</h3>
         <div class="inner">
-          <c:if test="${empty member}">
+          <c:if test="${empty member.id}">
             <form method="post" action="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/login2.jsp"> 
               <p><input type="hidden" name="returnPath" value="<%= Navigation.getPath("SECURE_DOMAIN") %>" /></p>
               <p><label for="username_2" class="top">ID:</label><br />
@@ -25,7 +25,7 @@ String cPath = request.getContextPath();
               </p>
             </form>
           </c:if>
-          <c:if test="${!empty member}">
+          <c:if test="${!empty member.id}">
              <p align="center"><a href="#">${member.id}[로그인중]</a></p>
              <p align="center"><a href="<%= Navigation.getPath("SECURE_DOMAIN") %>/member/info.jsp">${member.id} /info</a></p>
              <p align="center">
