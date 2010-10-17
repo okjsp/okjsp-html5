@@ -6,9 +6,9 @@
 <jsp:useBean id="one"  class="kr.pe.okjsp.Article" scope="request"/>
 <jsp:useBean id="list" class="kr.pe.okjsp.ListHandler" />
 <%
-	String cPath  = request.getContextPath();
+	String cPath = request.getContextPath();
 	String bbsids = request.getParameter("bbs");
-	int memoCount = 0; 	// 뎃글 갯수 (SSE 에서 비교 값으로 사용)
+	int memoCount = 0; // 뎃글 갯수 (SSE 에서 비교 값으로 사용)
 %>
 <html>
 <head>
@@ -32,33 +32,36 @@
     	<div id="container">
 			<div id="contentinner">		        
         <article>
-	        <h2><%= CommonUtil.showHtml(one.getSubject()) %>
-	        	<%-- Twitter 공식 트윗 버튼 --%>
-	        	<a href="//twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="okjsp" data-text="<%= CommonUtil.showHtml(one.getSubject()) %>"> [Tweet]</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-	        </h2>
+<h2><%=CommonUtil.showHtml(one.getSubject())%> 
+<%-- Twitter 공식 트윗 버튼 --%>
+<a href="//twitter.com/share" class="twitter-share-button"
+	data-count="horizontal" data-via="okjsp"
+	data-text="<%=CommonUtil.showHtml(one.getSubject())%>"> [Tweet]</a><script
+	type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+</h2>
 			<br/>
 				<%
-				    if (one.getId() != null) {
-				        %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"
-				        	alt="<%= one.getId() %>"
+					if (one.getId() != null) {
+				%><img src="http://www.okjsp.pe.kr/profile/<%=one.getId()%>.jpg"
+				        	alt="<%=one.getId()%>"
 				        	style="width:77px"
 				        	onerror="this.src='/images/spacer.gif'"><%
-				    }
+					}
 				%>
-			<%= DateLabel.getTimeDiffLabel(one.getWhen()) %> (<%= one.getWhen("yyyy-MM-dd HH:mm") %>), by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a>
-          <p><%=  one.getContentView()  %></p>
-          <p>| Posted by <a href="<%= one.getHomepage() %>"><%= one.getWriter() %> </a> | Categories: <a href="#"> <%= one.getBbs() %></a> | Read: <a href="#"><%= one.getRead() %></a> | CCL: <%= one.getCcl_name() %> </p>          
+			<%=DateLabel.getTimeDiffLabel(one.getWhen())%> (<%=one.getWhen("yyyy-MM-dd HH:mm")%>), by <a href="<%=one.getHomepage()%>"><%=one.getWriter()%> </a>
+          <p><%=one.getContentView()%></p>
+          <p>| Posted by <a href="<%=one.getHomepage()%>"><%=one.getWriter()%> </a> | Categories: <a href="#"> <%=one.getBbs()%></a> | Read: <a href="#"><%=one.getRead()%></a> | CCL: <%=one.getCcl_name()%> </p>          
 	<ul><%
-	  ArrayList fileList = (ArrayList) request.getAttribute("arrdf");
-	  if (fileList != null) {
-	    Iterator file = fileList.iterator();
-	    while (file.hasNext()) {
-	      DownFile df = (DownFile)file.next();
-	%><li><a href="/html5/bbs?act=DOWN&maskname=<%= df.getMaskName() %>&fileName=<%= df.getFileName() %>"><%= df.getFileName() %>
-	 <%= df.getFileSize() %> Bytes (<%=df.getDownload()%>)</a></li><%
-	    } // end while
-	  }
-	%>
+          		ArrayList fileList = (ArrayList) request.getAttribute("arrdf");
+          		if (fileList != null) {
+          			Iterator file = fileList.iterator();
+          			while (file.hasNext()) {
+          				DownFile df = (DownFile) file.next();
+          	%><li><a href="/html5/bbs?act=DOWN&maskname=<%=df.getMaskName()%>&fileName=<%=df.getFileName()%>"><%=df.getFileName()%>
+	 <%=df.getFileSize()%> Bytes (<%=df.getDownload()%>)</a></li><%
+	 	} // end while
+	 	}
+	 %>
 	</ul>
 	</article> 
 
@@ -81,16 +84,17 @@
 	</div>
 		<form name="f0" method="POST" onSubmit="return chk_memo(this)">
 	    <input type="hidden" name="pact" value="MEMO">
-	    <input type="hidden" name="seq" value="<%= one.getSeq() %>">
-	    <input type="hidden" name="pg" value="<%= list.getPg() %>">
-	    <input type="hidden" name="keyfield" value="<%=  CommonUtil.nchk(request.getParameter("keyfield"),"content")  %>">
-	    <input type="hidden" name="keyword" value="<%=  CommonUtil.nchk(request.getParameter("keyword"))  %>">
-	    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
-	    <input type="hidden" name="viewstamp" value="<%= System.currentTimeMillis() %>">
+	    <input type="hidden" name="seq" value="<%=one.getSeq()%>">
+	    <input type="hidden" name="pg" value="<%=list.getPg()%>">
+	    <input type="hidden" name="keyfield" value="<%=CommonUtil.nchk(request.getParameter("keyfield"),
+					"content")%>">
+	    <input type="hidden" name="keyword" value="<%=CommonUtil.nchk(request.getParameter("keyword"))%>">
+	    <input type="hidden" name="bbs" value="<%=one.getBbs()%>">
+	    <input type="hidden" name="viewstamp" value="<%=System.currentTimeMillis()%>">
 		
 	      <textarea name="bcomment" id="note"></textarea>
 	        id:<input type="text" name="writer" class="field"
-	            maxlength="50" value="<%= CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter")) %>">
+	            maxlength="50" value="<%=CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter"))%>">
 	        &nbsp;&nbsp;&nbsp;
 	        pw:<input type="password" name="memopass" maxlength="15" class="field">
 	        &nbsp;&nbsp;&nbsp;
@@ -103,11 +107,11 @@
 	</div></div>
 	<form name="f1">
     <input type="hidden" name="act" value="LIST">
-    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
-    <input type="hidden" name="seq" value="<%= one.getSeq() %>">
-    <input type="hidden" name="pg" value="<%= list.getPg() %>">
+    <input type="hidden" name="bbs" value="<%=one.getBbs()%>">
+    <input type="hidden" name="seq" value="<%=one.getSeq()%>">
+    <input type="hidden" name="pg" value="<%=list.getPg()%>">
     <input type="hidden" name="keyfield" value=""> 
-    <input type="hidden" name="keyword" value="<%= CommonUtil.nchk(request.getParameter("keyword")) %>">
+    <input type="hidden" name="keyword" value="<%=CommonUtil.nchk(request.getParameter("keyword"))%>">
     <input type="hidden" name="pact" value="">
     <input type="hidden" name="password" value="">
 </form>
@@ -124,7 +128,7 @@
 <%-- ############################################################## --%>
 <script type="text/javascript">
 
-	var currentMemoCount = <%= memoCount %>;
+	var currentMemoCount = <%=memoCount%>;
 
 	function startSSE() {
 	    switch(detectUAgent()) {
