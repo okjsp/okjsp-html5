@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+<%@page import="kr.pe.okjsp.ListHandler"%>
+<%@page import="kr.pe.okjsp.BbsInfoBean"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="kr.pe.okjsp.util.DateLabel"%>
+<%@page import="kr.pe.okjsp.util.CommonUtil"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.pe.okjsp.Article"%>
+<%@page import="java.util.Iterator"%>
 <html lang="ko">
 <%@ page errorPage="error.jsp"
-    import="kr.pe.okjsp.*,
-    	    kr.pe.okjsp.util.CommonUtil,
-    	    kr.pe.okjsp.util.DateLabel,
-            java.util.*,
-            java.util.Iterator"
     pageEncoding="UTF-8"
 %>
 <head>
@@ -227,30 +230,6 @@ function refreshTimes(){
 		}else{
 			tmp = '모름...';
 		}
-		/*if(now.getYear() != writer.getYear()){
-			tmp = (now.getYear() - writer.getYear())+'년전';
-		}else if(now.getMonth() != writer.getMonth()){
-			tmp = (now.getMonth() - writer.getMonth())+'달전';
-		}else if((now.getHours() - writer.getHours()>=24)&&(now.getDate() != writer.getDate())){
-			if((now.getDate() - writer.getDate()) == 1){
-				tmp = '어제';
-			}else if((now.getDate() - writer.getDate()) == 2){
-				tmp = '그저께';
-			}else{
-				tmp = (now.getDate() - writer.getDate())+'일전';
-			}
-		}else if(now.getHours() != writer.getHours()){
-			var tmp_2 = now.getHours() - writer.getHours();
-			if(tmp_2 < 0){
-				tmp = ((now.getHours()+24) - writer.getHours())+'시간전';
-			}else{
-				tmp = (now.getHours() - writer.getHours())+'시간전';
-			}
-		}else if(now.getMinutes() != writer.getMinutes()){
-			tmp = (now.getMinutes() - writer.getMinutes())+'분전';
-		}else{
-			tmp = '지금 막';
-		}*/
 
 		date.innerHTML = tmp;
 	}
@@ -276,22 +255,17 @@ refreshTimes();
      */
     var detectUAgent = function() {
         if (navigator.appName == "Opera" && -1 !== navigator.appVersion.indexOf("9.")) {
-            //log("Opera browser detected. " + INIT_MESSAGE);
             return 'opera';
         } else
         if (-1 !== navigator.appVersion.indexOf("AppleWebKit/5")) {
-            //log("Apparently, your browser supports SSE. " + INIT_MESSAGE);
             return 'webkit';
         } else
         if (navigator.appName == "Netscape" && -1 !== navigator.appVersion.indexOf("5.0")) {
-            //log("Your browser does not support SSE yet natively, but you can see here emulation. " + INIT_MESSAGE);
             return 'webkit';
         } else
         if (undefined !== window['EventSource']) {
-            //log("I'm not sure about your browser, but let's try. " + INIT_MESSAGE);
             return 'webkit';
         }  else {
-            //log(FAIL_MESSAGE);
             return false;
         }
     };
