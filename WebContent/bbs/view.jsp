@@ -16,7 +16,6 @@
 <!-- 크롬  프레임 설정 -->
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
-<link rel="stylesheet" type="text/css" href="<%=cPath%>/css/print.css" media="print" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel="icon" type="image/x-icon" href="<%=cPath%>/images/favicon.ico" />
 <script src="<%=cPath%>/js/okjsp.js"></script>
@@ -77,21 +76,25 @@
 	<div  id="memoDiv">
 		<section>
 			<!--<input type="button" class="button" value="답변" onClick="goReply()"/> -->
-	    	<input type="button" class="button" value="수정" onClick="show_passwd_layer('goModify')"/>
-	     	<input type="button" class="button" value="삭제" onClick="show_passwd_layer('goDelete')"/>
+	    	<input type="button" class="button_two" value="수정" onClick="show_passwd_layer('goModify')"/>
+	    	&nbsp;
+	     	<input type="button" class="button_two" value="삭 제" onClick="show_passwd_layer('goDelete')"/>
+	     	&nbsp;
 	     	<!--<input type="button" class="button" value="책갈피" onClick="goBookmark()"/> -->
+	     	<input type="button" class="button_two" value="로컬저장" onClick="goBbsSaveWork()"/>
+	     	&nbsp;
+	     	<input type="button" class="button_two" value="로컬삭제" onClick="goBbsDeleteWork()"/>
 		</section>
+		<div id="result"></div>
 	</div>
 		<form name="f0" method="POST" onSubmit="return chk_memo(this)">
 	    <input type="hidden" name="pact" value="MEMO">
-	    <input type="hidden" name="seq" value="<%=one.getSeq()%>">
-	    <input type="hidden" name="pg" value="<%=list.getPg()%>">
-	    <input type="hidden" name="keyfield" value="<%=CommonUtil.nchk(request.getParameter("keyfield"),
-					"content")%>">
-	    <input type="hidden" name="keyword" value="<%=CommonUtil.nchk(request.getParameter("keyword"))%>">
-	    <input type="hidden" name="bbs" value="<%=one.getBbs()%>">
-	    <input type="hidden" name="viewstamp" value="<%=System.currentTimeMillis()%>">
-		
+	    <input type="hidden" name="seq" id="seq" value="<%= one.getSeq() %>">
+	    <input type="hidden" name="pg" value="<%= list.getPg() %>">
+	    <input type="hidden" name="keyfield" value="<%=  CommonUtil.nchk(request.getParameter("keyfield"),"content")  %>">
+	    <input type="hidden" name="keyword" value="<%=  CommonUtil.nchk(request.getParameter("keyword"))  %>">
+	    <input type="hidden" name="bbs" value="<%= one.getBbs() %>">
+	    <input type="hidden" name="viewstamp" value="<%= System.currentTimeMillis() %>">		
 	      <textarea name="bcomment" id="note"></textarea>
 	        id:<input type="text" name="writer" class="field"
 	            maxlength="50" value="<%=CommonUtil.a2k(CommonUtil.getCookie(request, "okwriter"))%>">
@@ -100,8 +103,8 @@
 	        &nbsp;&nbsp;&nbsp;
 	        <input type="submit" name="send" value="Memo" class="button_two">
 		    <input type="hidden" name="doublecheck" class="memodc" value="okjsp">
-		    <br /><span style="color:#f00;font-size:12px ">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
-		    <br />개조심할 필요는 있으니까요. 낮말은 새, 밤말은 쥐, 인터넷말은 검색엔진</span>
+		    <div style="color:#f00;font-size:12px ">IP 노출됩니다. 예민한 얘기는 올리지 않으시는 게 사이트 운영에 도움이 됩니다.
+		    <br />개조심할 필요는 있으니까요. 낮말은 새, 밤말은 쥐, 인터넷말은 검색엔진</div>
 	        <br />
 		</form>		
 	</div></div>
@@ -126,7 +129,7 @@
 <%-- ############################################################## --%>
 <%-- ############             실시간 댓글 시작                             ############ --%>
 <%-- ############################################################## --%>
-<script type="text/javascript">
+<script>
 
 	var currentMemoCount = <%=memoCount%>;
 
@@ -221,10 +224,41 @@
 
 	// 실시간 댓글기능 Start. 
 	startSSE();
+	<%-- ############################################################## --%>
+	<%-- ############             실시간 댓글 끝                             ############ --%>
+	<%-- ############################################################## --%>
+
+	//worker에서 생성시킨 db는 jsp파일에 있는 db와 호환되지 않는 문제로
+	//같이 worker에서 구동시켜아 함..
+	var worker = new Worker("<%=cPath%>/bbs/worker.js");
+	//web worker사용하여 webdb에 저장
+	function goBbsSaveWork(){
+		worker.postMessage({'seq': '<%=one.getSeq()%>'
+			, 'bbs': '<%=one.getBbs()%>'
+			, 'writer': '<%=one.getWriter()%>'
+			, 'subject': '<%=one.getSubject()%>'
+			, 'when': '<%=one.getWhen("yyyy-MM-dd")%>'
+			, 'content': '<%=one.getContentView2()%>'
+			, 'type': 'insert'}); // Send data to our worker.
+		worker.addEventListener('message', function(e) {
+		    document.getElementById('result').textContent = e.data;
+		}, false);
+	}
+
+	function goBbsDeleteWork(){
+		worker.postMessage({'seq': '<%=one.getSeq()%>'
+			, 'bbs': '<%=one.getBbs()%>'
+			, 'writer': '<%=one.getWriter()%>'
+			, 'subject': '<%=one.getSubject()%>'
+			, 'when': '<%=one.getWhen("yyyy-MM-dd")%>'
+			, 'content': '<%=one.getContentView2()%>'
+			, 'type': 'delete'}); // Send data to our worker.
+		worker.addEventListener('message', function(e) {
+		    document.getElementById('result').textContent = e.data;
+		}, false);
+	}
+
 </script>
-<%-- ############################################################## --%>
-<%-- ############             실시간 댓글 끝                             ############ --%>
-<%-- ############################################################## --%>
 
 
 </html>

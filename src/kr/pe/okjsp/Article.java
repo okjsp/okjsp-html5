@@ -394,6 +394,21 @@ public class Article {
 		}
 		return this.content;
 	}
+	
+	/*
+	 * piki : 자바스크립트에서 엔터등의 에러로 인해 변경..
+	 */
+	public String getContentView2() {
+		String tmp = this.content;
+		if(!"".equals(tmp)){
+			tmp = tmp.replaceAll("\r\n", "<br>");
+			tmp = tmp.replaceAll("\n", "<br>");
+			//tmp = tmp.replaceAll("<", "&lt;");
+			//tmp = tmp.replaceAll(">", "&rt;");
+			tmp = tmp.replaceAll("'", "\"");
+		}
+		return tmp;
+	}
 
 	/**
 	 * @return
