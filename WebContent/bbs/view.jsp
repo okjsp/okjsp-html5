@@ -228,35 +228,7 @@
 	<%-- ############             실시간 댓글 끝                             ############ --%>
 	<%-- ############################################################## --%>
 
-	//worker에서 생성시킨 db는 jsp파일에 있는 db와 호환되지 않는 문제로
-	//같이 worker에서 구동시켜아 함..
-	var worker = new Worker("<%=cPath%>/bbs/worker.js");
-	//web worker사용하여 webdb에 저장
-	function goBbsSaveWork(){
-		worker.postMessage({'seq': '<%=one.getSeq()%>'
-			, 'bbs': '<%=one.getBbs()%>'
-			, 'writer': '<%=one.getWriter()%>'
-			, 'subject': '<%=one.getSubject()%>'
-			, 'when': '<%=one.getWhen("yyyy-MM-dd")%>'
-			, 'content': '<%=one.getContentView2()%>'
-			, 'type': 'insert'}); // Send data to our worker.
-		worker.addEventListener('message', function(e) {
-		    document.getElementById('result').textContent = e.data;
-		}, false);
-	}
-
-	function goBbsDeleteWork(){
-		worker.postMessage({'seq': '<%=one.getSeq()%>'
-			, 'bbs': '<%=one.getBbs()%>'
-			, 'writer': '<%=one.getWriter()%>'
-			, 'subject': '<%=one.getSubject()%>'
-			, 'when': '<%=one.getWhen("yyyy-MM-dd")%>'
-			, 'content': '<%=one.getContentView2()%>'
-			, 'type': 'delete'}); // Send data to our worker.
-		worker.addEventListener('message', function(e) {
-		    document.getElementById('result').textContent = e.data;
-		}, false);
-	}
+	
 
 </script>
 
