@@ -25,6 +25,8 @@ String cPath = request.getContextPath();
 	   			<section>
 					<h1>로컬 저장 게시판</h1>
 					<br/>
+					The network is: <span id="indicator">(state unknown)</span>
+					<br/>
 					<script>
 					  var db;
 					  db = openDatabase("okjsp_sqlite", "1.0", "okjsp_sqlite", 2 * 1024 * 1024);
@@ -101,6 +103,8 @@ function doDelete(tmp){
 	}, false);
 }
 
+document.getElementById('indicator').innerHTML = 
+	window.navigator.onLine ? 'online' : 'offline';
 </script>
 </body>
 </html>
