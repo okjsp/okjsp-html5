@@ -83,9 +83,16 @@ String cPath = request.getContextPath();
 </div><!-- #wrapper -->
 <!-- Free template created by http://freehtml5templates.com -->
 <script>
-var worker = new Worker("<%=cPath%>/bbs/worker.js");
 function doDelete(tmp){
+	var worker = new Worker("<%=cPath%>/bbs/worker.js");
+	//worker.postMessage({'seq': tmp
+	//	, 'type': 'delete'}); // Send data to our worker. 
 	worker.postMessage({'seq': tmp
+		, 'bbs': ''
+		, 'writer': ''
+		, 'subject': ''
+		, 'when': ''
+		, 'content': ''
 		, 'type': 'delete'}); // Send data to our worker.
 	worker.addEventListener('message', function(e) {
 	    //document.getElementById('result').textContent = e.data;
@@ -93,6 +100,7 @@ function doDelete(tmp){
 	    top.location.href = '<%=cPath%>/bbs/localList.jsp';
 	}, false);
 }
+
 </script>
 </body>
 </html>
