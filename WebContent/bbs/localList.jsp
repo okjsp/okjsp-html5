@@ -25,18 +25,18 @@ String cPath = request.getContextPath();
 	   			<section>
 					<h1>로컬 저장 게시판</h1>
 					<br/>
-					The network is: <span id="indicator">(state unknown)</span>
+					The network is: <span id="indicator">(state unknown)</span>  <span id="error_msg"></span>
 					<br/>
 					<script>
-					window.applicationCache.addEventListener('updateready', function() {
-						window.applicationCache.swapCache();
+					var cache = window.applicationCache;
+					cache.addEventListener('updateready', function() {
+						cache.swapCache();
 					}, false);
 					var err_type = '';
-					var err_msg = '';
-					window.applicationCache.addEventListener('error', function(e) {
-						//alert(e.message);
+					
+					cache.addEventListener('error', function(e) {
 						err_type = 'error';
-						err_msg = e.message;
+						document.getElementById('error_msg').innerHTML = '/ [cache error]'+e.message;
 					}, false);
 					if(err_type == ''){
 						var worker = new Worker("<%=cPath%>/bbs/worker2.js");
@@ -54,8 +54,6 @@ String cPath = request.getContextPath();
 						    document.getElementById('result').innerHTML = '[database]error : [Line : ' + e.lineno + ']'
 					         '[in : ' + e.filename + ']' + '[' + e.message + ']' ;
 						}, false);
-					}else{
-						document.getElementById('result').innerHTML = '[cache error]'+err_msg;
 					}
 					
 					</script>
