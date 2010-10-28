@@ -19,25 +19,14 @@ self.addEventListener('message', function(e) {
 			  function(e){self.postMessage('CREATE TABLE ERROR:'+e.message);});
 	  tx.executeSql("SELECT * FROM okboard where seq = ?", [seq], function(tx, result) {
 		  if(result.rows.length == 0){
-			  if(type == 'insert'){
-				  tx.executeSql("insert into okboard(bbsid,seq,writer,subject,wtime,content) "
-							+"values(?,?,?,?,?,?)"
-							,[bbs,seq,writer,subject,when,content]
-							,self.postMessage('INSERT SUCCESS..')
-							,function(e){self.postMessage('INSERT ERROR:'+e.message);});
-				  self.postMessage('DATABASE SAVE SUCCESS..');
-			  }else{
-				  self.postMessage('DATABASE NOT SAVED..');
-			  }
+			  tx.executeSql("insert into okboard(bbsid,seq,writer,subject,wtime,content) "
+						+"values(?,?,?,?,?,?)"
+						,[bbs,seq,writer,subject,when,content]
+						,self.postMessage('INSERT SUCCESS..')
+						,function(e){self.postMessage('INSERT ERROR:'+e.message);});
+			  self.postMessage('DATABASE SAVE SUCCESS..');
 		  }else{
-			  if(type == 'insert'){
-				  self.postMessage('DATABASE SAVED..');
-			  }else{
-				  tx.executeSql("DELETE FROM okboard where seq = ? "
-							,[seq]
-							,self.postMessage('DELETE SUCCESS..')
-							,function(e){self.postMessage('DELETE ERROR:'+e.message);});
-			  }
+			  self.postMessage('DATABASE SAVED..');
 		  }
 	  },function(e){self.postMessage('SELECT TABLE ERROR:'+e.message);});
   });

@@ -2,9 +2,8 @@ CACHE MANIFEST
 
 # version 1
 
-CACHE:
 /html5/bbs/localList.jsp
-/html5/bbs/worker.js
+/html5/bbs/worker2.js
 /html5/css/style.css
 /html5/main/header.jsp
 /html5/main/left.jsp
