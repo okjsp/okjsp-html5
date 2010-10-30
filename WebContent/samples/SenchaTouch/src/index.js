@@ -66,7 +66,7 @@ Ext.setup({
             	html: "Left Docked Item",
                 scroll: 'vertical',
             	style: "background-color: #DDDDDD; text-align: left;",
-                items: [list1, list2, list3, listMap],
+            	items: [list1, list2, list3, listMap, list1, list2, list3, list1, list2, list3],
             	dock: "left"
             }]
         });
