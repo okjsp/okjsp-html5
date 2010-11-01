@@ -38,9 +38,15 @@ int maxseq = 0;
 			<div id="content">
 			<!-- 메인 컨텐츠_시작======================================= -->
 				<article>
-<a href="/f.jsp?http://www.devlec.com/?_pageVariable=OKJSP" target="_blank">
-<img src="http://www.devlec.com/images/devlec_okjsp.gif">
-</a>
+<script type="text/javascript">
+var topBanner = {
+		url:'http://www.acornpub.co.kr/',
+		src:'/images/banner/acornpub_468x60.gif',
+		alt:'acornpub'};
+		
+document.write('<a href="/f.jsp?' + topBanner.url + '" target="_blank">' +
+		'<img src="' + topBanner.src +'" alt="'+topBanner.alt+'"></a>');
+</script>
 				</article>
 				<br/>
 				<article>
