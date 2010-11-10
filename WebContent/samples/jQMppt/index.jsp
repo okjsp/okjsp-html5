@@ -6,6 +6,7 @@
 String cPath = request.getContextPath();
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />  
 <title>OKJSP_jQueryMobile</title>
 <!-- 기본으로 들어가는 링크 _시작 -->
 <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />

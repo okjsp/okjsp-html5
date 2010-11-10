@@ -1,12 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html> 
+<html> 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<%
+//ContextPath
+String cPath = request.getContextPath();
+%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OKJSP_jQueryMobile</title>
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>개  요</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<font size="6">
+		<p>JavaScript</p>
+		<p>most-used smartphone web browsers and tablet form factors</p>
+		<p>jQuery</p>
+		<p>clean, sematic HTML  </p>						
+		</font>
+	</div><!-- /content -->
+	
+</div><!-- /page -->
 
 </body>
 </html>
