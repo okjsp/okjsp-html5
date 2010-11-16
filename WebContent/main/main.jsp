@@ -40,9 +40,9 @@ int maxseq = 0;
 				<article>
 <script type="text/javascript">
 var topBanner = {
-		url:'http://www.acornpub.co.kr/',
-		src:'/images/banner/acornpub_468x60.gif',
-		alt:'acornpub'};
+		url:'http://www.devlec.com/?_pageVariable=OKJSP',
+		src:'http://www.devlec.com/images/devlec_okjsp.gif',
+		alt:'▒▒▒ 데브렉 ▒▒▒ 개발자를 위한 국내 최고 프로그래밍 전문 동영상강좌 사이트'};
 		
 document.write('<a href="/f.jsp?' + topBanner.url + '" target="_blank">' +
 		'<img src="' + topBanner.src +'" alt="'+topBanner.alt+'"></a>');
