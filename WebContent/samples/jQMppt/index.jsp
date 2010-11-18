@@ -26,7 +26,7 @@ String cPath = request.getContextPath();
 			</h1>
 			<p>[OKJSP] jQuery mobile framework 발표자료</p>
 			<p>해당 자료는 
-				<a href="http://jquerymobile.com/demos/1.0a1/" target="_blank">http://jquerymobile.com/demos/1.0a1/</a>
+				<a href="http://jquerymobile.com/demos/1.0a2/" target="_blank">http://jquerymobile.com/demos/1.0a2/</a>
 				 를 기초로 작성하였습니다.</p>
 		</div>
 		<!-- 화면 상단_제목 들어가는 부분_끝  -->
@@ -36,8 +36,9 @@ String cPath = request.getContextPath();
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 				<li data-role="list-divider">개  요</li>
 				<li><a href="docs/about/one.jsp">jQuery Mobile 이란 무엇인가?</a></li>
-				<li><a href="docs/about/two.jsp">특징, 접근성, 지원플랫폼</a></li>
-				<li><a href="docs/about/three.jsp">테마</a></li>
+				<li><a href="docs/about/two.jsp">특징</a></li>
+				<li><a href="docs/about/three.jsp">지원플랫폼</a></li>
+				<li><a href="docs/about/four.jsp">테마</a></li>
 			</ul>
 		</div>
 		<!-- 목록_끝 -->
