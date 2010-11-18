@@ -13,14 +13,11 @@ String cPath = request.getContextPath();
 <div data-role="page">
 
 	<div data-role="header">
-		<h1>개  요</h1>
+		<h1>기본 설정</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<p id="font-one">JavaScript</p>
-		<p id="font-one">most-used smartphone web browsers and tablet form factors</p>
-		<p id="font-one">jQuery</p>
-		<p id="font-one">clean, sematic HTML  </p>						
+		<p id="font-6">Mmobileinit event</p>
 	</div><!-- /content -->
 	
 </div><!-- /page -->

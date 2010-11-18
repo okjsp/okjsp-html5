@@ -22,16 +22,16 @@ String cPath = request.getContextPath();
 	<div data-role="page" data-theme="b" id="jqm-home">
 		<div id="jqm-homeheader">
 			<h1 id="jqm-logo">
-				<img src="images/jquery-logo.png" alt="jQuery Mobile Framework" width="235" height="61" />
+				<img src="images/logo_blue.png" width="200" />
 			</h1>
-			<p>[OKJSP] jQuery mobile framework 발표자료</p>
-			<p>해당 자료는 
+			<p id="font-two">[OKJSP] jQuery mobile framework 발표자료</p>
+			<p id="font-two">해당 자료는 
 				<a href="http://jquerymobile.com/demos/1.0a2/" target="_blank">http://jquerymobile.com/demos/1.0a2/</a>
 				 를 기초로 작성하였습니다.</p>
 		</div>
 		<!-- 화면 상단_제목 들어가는 부분_끝  -->
 	
-		<!-- 목록_시작 -->
+		<!-- 개  요_시작 -->
 		<div data-role="content">
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 				<li data-role="list-divider">개  요</li>
@@ -41,7 +41,16 @@ String cPath = request.getContextPath();
 				<li><a href="docs/about/four.jsp">테마</a></li>
 			</ul>
 		</div>
-		<!-- 목록_끝 -->
+		<!-- 개  요_끝 -->
+		
+		<!-- API_시작 -->
+		<div data-role="content">
+			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+				<li data-role="list-divider">API</li>
+				<li><a href="docs/api/one.jsp">기본 설정</a></li>
+			</ul>
+		</div>
+		<!-- API_끝 -->
 	</div>
 </body>
 </html>

@@ -17,18 +17,16 @@ String cPath = request.getContextPath();
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<font size="6">
-		<p>Built on jQuery core</p>
-		<p>Compatible with all major mobile platforms</p>
-		<p>Lightweight size</p>
-		<p>HTML5 Markup-driven configuration</p>						
-		<p>Progressive enhancement</p>
-		<p>Automatic initialization</p>
-		<p>Accessibility</p>
-		<p>New events API</p>
-		<p>New plugins</p>
-		<p>Powerful theming framework</p>
-		</font>
+		<p id="font-one">Built on jQuery core</p>
+		<p id="font-one">Compatible with all major mobile platforms</p>
+		<p id="font-one">Lightweight size</p>
+		<p id="font-one">HTML5 Markup-driven configuration</p>						
+		<p id="font-one">Progressive enhancement</p>
+		<p id="font-one">Automatic initialization</p>
+		<p id="font-one">Accessibility</p>
+		<p id="font-one">New events API</p>
+		<p id="font-one">New plugins</p>
+		<p id="font-one">Powerful theming framework</p>
 	</div><!-- /content -->
 	
 </div><!-- /page -->

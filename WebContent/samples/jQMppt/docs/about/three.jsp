@@ -17,19 +17,15 @@ String cPath = request.getContextPath();
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<font size="6">
-		<p>Apple iOS: iPhone, iPod Touch, iPad (all versions)</p>
-		<p>Android: all devices (all versions)</p>
-		<p>Blackberry Torch (version 6)</p>
-		<p>Palm WebOS Pre, Pixi</p>
-		<p>Nokia N900 (in progress)</p>
-		</font>
-		<br/>
-		<font size="4">
-		<p>Older versions of Blackberry, Nokia/Symbian, and Windows Mobile : 디버깅중 </p>
-		<p>Windows Mobile 7, bada, or MeeGo : 향후 지원 예정</p>
-		<p>Firefox, Chrome, Safari, Internet Explorer, Opera, etc. : jQuery core 내장</p>
-		</font>
+		<p id="font-one">Apple iOS: iPhone, iPod Touch, iPad (all versions)</p>
+		<p id="font-one">Android: all devices (all versions)</p>
+		<p id="font-one">Blackberry Torch (version 6)</p>
+		<p id="font-one">Palm WebOS Pre, Pixi</p>
+		<p id="font-one">Nokia N900 (in progress)</p>
+
+		<p id="font-two">Older versions of Blackberry, Nokia/Symbian, and Windows Mobile : 디버깅중 </p>
+		<p id="font-two">Windows Mobile 7, bada, or MeeGo : 향후 지원 예정</p>
+		<p id="font-two">Firefox, Chrome, Safari, Internet Explorer, Opera, etc. : jQuery core 내장</p>
 	</div><!-- /content -->
 	
 </div><!-- /page -->
