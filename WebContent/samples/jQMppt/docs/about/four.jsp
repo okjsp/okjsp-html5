@@ -25,7 +25,13 @@ String cPath = request.getContextPath();
 		<p id="font-one">jQuery Mobile Alpha 2</p>
 		<p id="font-two">2010년 11월 12일 (1.0a2)</p>				
 		<a href="http://jquerymobile.com/demos/1.0a2/" target="_blank">
-			http://jquerymobile.com/demos/1.0a2/</a>	
+			http://jquerymobile.com/demos/1.0a2/</a>
+		<p id="font-two">추가기능 : 버그 수정, 대량목록조회개선, 
+			새로운 기능의 select menu추가, 페이지스크롤기능 개선, 
+			고정 headers/footers 등등의 기능들이 추가되거나 개선   </p>
+		<a href="http://jquerymobile.com/2010/11/jquery-mobile-alpha-2-released/" target="_blank">
+			http://jquerymobile.com/2010/11/jquery-mobile-alpha-2-released/</a>
+						
 	</div><!-- /content -->
 	
 </div><!-- /page -->
