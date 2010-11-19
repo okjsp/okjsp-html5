@@ -25,9 +25,6 @@ String cPath = request.getContextPath();
 				<img src="images/logo_blue.png" width="200" />
 			</h1>
 			<p id="font-two">[OKJSP] jQuery mobile framework 발표자료</p>
-			<p id="font-two">해당 자료는 
-				<a href="http://jquerymobile.com/demos/1.0a2/" target="_blank">http://jquerymobile.com/demos/1.0a2/</a>
-				 를 기초로 작성하였습니다.</p>
 		</div>
 		<!-- 화면 상단_제목 들어가는 부분_끝  -->
 	
