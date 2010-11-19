@@ -38,7 +38,7 @@ String cPath = request.getContextPath();
 				<li><a href="docs/about/one.jsp">jQuery Mobile 이란 무엇인가?</a></li>
 				<li><a href="docs/about/two.jsp">특징</a></li>
 				<li><a href="docs/about/three.jsp">지원플랫폼</a></li>
-				<li><a href="docs/about/four.jsp">테마</a></li>
+				<li><a href="docs/about/four.jsp">Alpha Release Notes</a></li>
 			</ul>
 		</div>
 		<!-- 개  요_끝 -->
