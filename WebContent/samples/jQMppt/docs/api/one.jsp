@@ -17,7 +17,14 @@ String cPath = request.getContextPath();
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<p id="font-6">Mmobileinit event</p>
+		<p class="font-one">The mobileinit event</p>
+		<pre class="font-two">
+<code>
+$(document).bind("mobileinit", function(){	
+			//apply overrides here	
+});	
+</code>
+		</pre>
 	</div><!-- /content -->
 	
 </div><!-- /page -->

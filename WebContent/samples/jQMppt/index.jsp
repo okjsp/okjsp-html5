@@ -24,7 +24,7 @@ String cPath = request.getContextPath();
 			<h1 id="jqm-logo">
 				<img src="images/logo_blue.png" width="200" />
 			</h1>
-			<p id="font-two">[OKJSP] jQuery mobile framework 발표자료</p>
+			<p class="font-two">[OKJSP] jQuery mobile framework 발표자료</p>
 		</div>
 		<!-- 화면 상단_제목 들어가는 부분_끝  -->
 	

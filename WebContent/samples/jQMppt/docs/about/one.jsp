@@ -17,10 +17,10 @@ String cPath = request.getContextPath();
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<p id="font-one">JavaScript</p>
-		<p id="font-one">most-used smartphone web browsers and tablet form factors</p>
-		<p id="font-one">jQuery</p>
-		<p id="font-one">clean, sematic HTML  </p>						
+		<p class="font-one">JavaScript</p>
+		<p class="font-one">most-used smartphone web browsers and tablet form factors</p>
+		<p class="font-one">jQuery</p>
+		<p class="font-one">clean, sematic HTML  </p>						
 	</div><!-- /content -->
 	
 </div><!-- /page -->
