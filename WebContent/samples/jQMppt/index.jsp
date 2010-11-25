@@ -9,9 +9,11 @@ String cPath = request.getContextPath();
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />  
 <title>OKJSP_jQueryMobile</title>
 <!-- 기본으로 들어가는 링크 _시작 -->
-<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
 <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+<!-- 사용자 스크립트 : 위치 중요~ -->
+<script src="js/custom-scripting.js"></script>
+<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
 <!-- 기본으로 들어가는 링크 _끝 -->
 
 <!-- 사용자css_현재 상단 타이틀에만 적용 -->
@@ -24,7 +26,7 @@ String cPath = request.getContextPath();
 			<h1 id="jqm-logo">
 				<img src="images/logo_blue.png" width="200" />
 			</h1>
-			<p class="font-two">[OKJSP] jQuery mobile framework 발표자료</p>
+			<p class="font-two" id="maintitle">[OKJSP] jQuery mobile framework 발표자료</p>
 		</div>
 		<!-- 화면 상단_제목 들어가는 부분_끝  -->
 	
