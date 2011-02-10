@@ -24,6 +24,7 @@ int maxseq = 0;
 <link rel="stylesheet" type="text/css" href="<%=cPath%>/css/style.css" media="screen" /> 
 <script src="<%=cPath%>/js/prototype.js"></script>
 <script src="<%=cPath%>/js/cookie.js"></script>
+<script src="/js/banner.js"></script>
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <title>OKJSP_HTML5</title>
 </head>
@@ -37,15 +38,9 @@ int maxseq = 0;
 		<div id="container">
 			<div id="content">
 			<!-- 메인 컨텐츠_시작======================================= -->
-				<article>
+				<article style="text-align:center">
 <script type="text/javascript">
-var topBanner = {
-		url:'http://www.devlec.com/?_pageVariable=OKJSP',
-		src:'http://www.devlec.com/images/devlec_okjsp.gif',
-		alt:'▒▒▒ 데브렉 ▒▒▒ 개발자를 위한 국내 최고 프로그래밍 전문 동영상강좌 사이트'};
-		
-document.write('<a href="/f.jsp?' + topBanner.url + '" target="_blank">' +
-		'<img src="' + topBanner.src +'" alt="'+topBanner.alt+'"></a>');
+Banner.show();
 </script>
 				</article>
 				<br/>
