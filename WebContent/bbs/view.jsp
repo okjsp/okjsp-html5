@@ -48,7 +48,7 @@
 					}
 				%>
 			<%=DateLabel.getTimeDiffLabel(one.getWhen())%> (<%=one.getWhen("yyyy-MM-dd HH:mm")%>), by <a href="<%=one.getHomepage()%>"><%=one.getWriter()%> </a>
-          <p><%=HttpLinker.getLinkedSource(one.getContentView())%></p>
+          <p><%= one.getContentView() %></p>
           <p>| Posted by <a href="<%=one.getHomepage()%>"><%=one.getWriter()%> </a> | Categories: <a href="#"> <%=one.getBbs()%></a> | Read: <a href="#"><%=one.getRead()%></a> | CCL: <%=one.getCcl_name()%> </p>          
 	<ul><%
           		ArrayList fileList = (ArrayList) request.getAttribute("arrdf");
