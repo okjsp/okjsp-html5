@@ -588,3 +588,7 @@ select.field {
 	-webkit-border-radius: 5px;
 	border: 1px solid #AEB0AD;
 }
+
+li {
+	list-item: none;
+}
