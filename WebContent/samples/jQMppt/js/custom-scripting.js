@@ -1,6 +1,6 @@
 
 $(document).bind("mobileinit", function(){	
-	alert('mobileinit event start:'+$.mobile.subPageUrlKey);
+	//alert('mobileinit event start:'+$.mobile.subPageUrlKey);
 	var bar = 'tmp';
 
 	//$.mobile object를 이용하여 extend 시켜 사용
