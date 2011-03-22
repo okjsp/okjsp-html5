@@ -18,6 +18,16 @@ String cPath = request.getContextPath();
 
 <!-- 사용자css_현재 상단 타이틀에만 적용 -->
 <link rel="stylesheet" href="css/jqm-docs.css" />
+<script>
+function doControl(val){
+	if(document.getElementById(val).style.display == 'none' ){
+		document.getElementById(val).style.display = "block" ;
+	}else{
+		document.getElementById(val).style.display = "none" ;
+	}
+}
+
+</script>
 </head>
 <body>
 	<!-- 화면 상단_제목 들어가는 부분_시작  -->
@@ -26,18 +36,17 @@ String cPath = request.getContextPath();
 			<h1 id="jqm-logo">
 				<img src="images/logo_blue.png" width="200" />
 			</h1>
-			<p class="font-two" id="maintitle">[OKJSP] jQuery mobile framework 발표자료</p>
+			<p class="font-two" id="maintitle">[OKJSP] hybrid Application 발표자료</p>
 		</div>
 		<!-- 화면 상단_제목 들어가는 부분_끝  -->
 	
 		<!-- 개  요_시작 -->
 		<div data-role="content">
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
-				<li data-role="list-divider">개  요</li>
-				<li><a href="docs/about/one.jsp">jQuery Mobile 이란 무엇인가?</a></li>
-				<li><a href="docs/about/two.jsp">특징</a></li>
-				<li><a href="docs/about/three.jsp">지원플랫폼</a></li>
-				<li><a href="docs/about/four.jsp">Alpha Release Notes</a></li>
+				<li data-role="list-divider">개요 </li>
+				<li><a href="docs/about/one.jsp">What?</a></li>
+				<li><a href="docs/about/two.jsp">Native apps vs Web apps vs Hybrid apps</a></li>
+				<li><a href="docs/about/three.jsp">현황</a></li>
 			</ul>
 		</div>
 		<!-- 개  요_끝 -->
@@ -45,8 +54,8 @@ String cPath = request.getContextPath();
 		<!-- API_시작 -->
 		<div data-role="content">
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
-				<li data-role="list-divider">API</li>
-				<li><a href="docs/api/one.jsp">기본 설정</a></li>
+				<li data-role="list-divider">종류</li>
+				<li><a href="docs/api/one.jsp">Phone Gap</a></li>
 			</ul>
 		</div>
 		<!-- API_끝 -->
