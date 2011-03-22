@@ -17,18 +17,15 @@ String cPath = request.getContextPath();
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<p class="font-one">Apple iOS: iPhone, iPod Touch, iPad (all versions)</p>
-		<p class="font-one">Android: all devices (all versions)</p>
-		<p class="font-one">Blackberry Torch (version 6)</p>
-		<p class="font-one">Palm WebOS Pre, Pixi</p>
-		<p class="font-one">Nokia N900 (in progress)</p>
-
-		<p class="font-two">Older versions of Blackberry, Nokia/Symbian, and Windows Mobile : 디버깅중 </p>
-		<p class="font-two">Windows Mobile 7, bada, or MeeGo : 향후 지원 예정</p>
-		<p class="font-two">Firefox, Chrome, Safari, Internet Explorer, Opera, etc. : jQuery core 내장</p>
-
-		<a href="http://jquerymobile.com/gbs/" target="_blank">
-			View supported browser matrix on jQuery Mobile</a>
+		<ul>
+			<li class="font-one"><a 
+				href="http://en.wikipedia.org/wiki/Multiple_phone_web_based_application_framework" 
+				target="_blank" >Wiki</a>  </li>
+			<li class="font-one">
+				<a href="http://www.appspresso.com/appdev/appMain.do" target="_blank">앱스프레소</a>
+			</li>
+		</ul>
+		
 	</div><!-- /content -->
 	
 </div><!-- /page -->
