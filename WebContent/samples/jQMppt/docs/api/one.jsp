@@ -17,10 +17,11 @@ String cPath = request.getContextPath();
 	</div><!-- /header -->
 
 	<div data-role="content">
+		<img src="<%=cPath %>/samples/jQMppt/docs/api/phoneGap.png" alt="phoneGap" style="max-width:100%; margin-top:20px;">
 		<ul>
-			<li class="font-one"><a href="http://www.phonegap.com/" target="_blank">http://www.phonegap.com/</a></li>
-			<li class="font-one"><a href="http://groups.google.com/group/phonegap" target="_blank">http://groups.google.com/group/phonegap</a></li>
-			<li class="font-one"><a href="http://docs.phonegap.com" target="_blank">http://docs.phonegap.com/</a></li>
+			<li class="font-one"><a href="http://www.phonegap.com/" target="_blank">Phone gap</a></li>
+			<li class="font-one"><a href="http://groups.google.com/group/phonegap" target="_blank">Phone gap Group</a></li>
+			<li class="font-one"><a href="http://docs.phonegap.com" target="_blank">Document</a></li>
 		</ul>
 	
 	
