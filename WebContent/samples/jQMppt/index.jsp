@@ -56,6 +56,9 @@ function doControl(val){
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 				<li data-role="list-divider">종류</li>
 				<li><a href="docs/api/one.jsp">Phone Gap</a></li>
+				<li><a href="docs/api/two.jsp">Appcelerator Titanium</a></li>
+				
+				
 			</ul>
 		</div>
 		<!-- API_끝 -->
