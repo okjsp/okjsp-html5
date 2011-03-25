@@ -22,6 +22,16 @@ String cPath = request.getContextPath();
 			<li class="font-one"><a href="http://www.phonegap.com/" target="_blank">Phone gap</a></li>
 			<li class="font-one"><a href="http://groups.google.com/group/phonegap" target="_blank">Phone gap Group</a></li>
 			<li class="font-one"><a href="http://docs.phonegap.com" target="_blank">Document</a></li>
+			<li class="font-one">Open Source License : 
+				<a href="http://opensource.org/licenses/mit-license" target="_blank">MIT</a>
+			</li>
+			<li class="font-one">free</li>
+			<li class="font-one">Framework target : Embedded applications</li>
+			<li class="font-one">개발언어 : HTML, Javascript</li>
+			<li class="font-one">지원플랫폼 : iOS, Android, BlackBerry, 
+				<a href="http://developer.palm.com/" target="_blank">Palm WebOS</a>
+				, Symbian, Windows Mobile</li>
+			<li class="font-one"><a href="http://www.phonegap.com/features" target="_blank">지원되는 기능</a></li>
 		</ul>
 	
 	

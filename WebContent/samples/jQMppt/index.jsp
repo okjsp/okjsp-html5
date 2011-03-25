@@ -55,10 +55,18 @@ function doControl(val){
 		<div data-role="content">
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 				<li data-role="list-divider">종류</li>
-				<li><a href="docs/api/one.jsp">Phone Gap</a></li>
-				<li><a href="docs/api/two.jsp">Appcelerator Titanium</a></li>
-				
-				
+				<li><a href="docs/api/phonegap.jsp">Phone Gap</a></li>
+				<li><a href="docs/api/titanium.jsp">Appcelerator Titanium</a></li>
+				<li><a href="docs/api/rhodes.jsp">Rhodes</a></li>
+				<li><a href="docs/api/appspresso.jsp">Appspresso</a></li>
+			</ul>
+		</div>
+		<!-- API_끝 -->
+		
+		<!-- API_시작 -->
+		<div data-role="content">
+			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+				<li><a href="docs/end.jsp">마치면서</a></li>
 			</ul>
 		</div>
 		<!-- API_끝 -->
