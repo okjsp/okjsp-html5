@@ -32,7 +32,7 @@ String cPath = request.getContextPath();
 					<ul> 
 						<li>하드웨어 기능을 충분히 활용할수 있다.</li> 
 						<li>응용프로그램을 판매할수 있다.</li>
-						<li>각각의 플렛폼에 맞는 개발 언어등을 습득해야 한다.</li>
+						<li>각각의 플랫폼에 맞는 개발 언어등을 습득해야 한다.</li>
 						<li>그로 인한 유지보수의 문제.</li>
 					</ul>
 				</li>
@@ -51,7 +51,7 @@ String cPath = request.getContextPath();
 						<li>웹기반!!!</li> 
 						<li>개발도, 유지보수도 쉽다.</li>
 						<li>디바이스 API의 활용이 가능.</li>
-						<li>각각의 플렛폼을 고민할 필요가 없다</li>
+						<li>각각의 플랫폼을 고민할 필요가 없다</li>
 					</ul>
 				</li>
 			
