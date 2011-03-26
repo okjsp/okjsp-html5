@@ -30,9 +30,9 @@ String cPath = request.getContextPath();
 			<li class="font-one">개발언어 : HTML, Javascript, [PHP, Ruby & Python for Desktop apps]</li>
 			<li class="font-one">지원플랫폼 : iOS, Android, BlackBerry(지원예정),other(Windows, Linux & Mac)
 				<img src="<%=cPath %>/samples/jQMppt/docs/about/icon18_wrench_allbkg.png" 
-					alt="icon designs" style="max-width:100%; margin-top:20px;" onClick="doControl('control_cc')">
-				<div id="control_cc" style="display:none">
-				==> 모바일 부터 데스크탑 까지 호환될수 있는 app의 개발이 가능<br/>
+					alt="icon designs" style="max-width:100%; margin-top:20px;" onClick="doControl('control_dd')">
+				<div id="control_dd" style="display:none">
+				모바일 부터 데스크탑 까지 호환될수 있는 app의 개발이 가능<br/>
 				<img src="<%=cPath %>/samples/jQMppt/docs/api/Ti_2.png" alt="titabium_2" style="max-width:100%; margin-top:20px;">
 				</div>
 			</li>
