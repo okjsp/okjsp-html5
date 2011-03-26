@@ -62,13 +62,15 @@ function doControl(val){
 			</ul>
 		</div>
 		<!-- API_끝 -->
-		
+		<%-- 
 		<!-- API_시작 -->
 		<div data-role="content">
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+				<li data-role="list-divider">마침</li>
 				<li><a href="docs/end.jsp">마치면서</a></li>
 			</ul>
 		</div>
+		--%>
 		<!-- API_끝 -->
 	</div>
 </body>
