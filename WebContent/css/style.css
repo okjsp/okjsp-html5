@@ -40,6 +40,10 @@ img {
 	border: none;
 }
 
+li {
+	list-style: none;
+}
+
 blockquote {
 	margin: 0 20px 18px 20px;
 	padding: 1px 12px;
@@ -587,8 +591,4 @@ select.field {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border: 1px solid #AEB0AD;
-}
-
-li {
-	list-item: none;
 }

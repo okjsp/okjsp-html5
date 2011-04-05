@@ -27,22 +27,9 @@ String cPath = request.getContextPath();
 	<div class="box">
 		<h3>광고</h3>
 		<div class="innerCenter">
-			<a href="<%=cPath %>/main/f.jsp?http://www.itwillsc.co.kr/02curriculum/08java_spring01.php?http_dc" target="_blank"
-			><img src="http://www.okjsp.pe.kr/images/banner/itwill_134x60.gif"
-				alt="박성백 강사의 Spring 프레임워크 & iBATIS 실무 완전정복"
-			></a>
-			<a href="<%=cPath %>/main/f.jsp?http://www.adoberia.co.kr/?src=image&kw=000044" target="_blank"
-			><img src="http://www.okjsp.pe.kr/images/banner/JAVACOMM_134x60_02.gif"
-				alt="Adobe CS5 학생용 교사용 출시"
-			></a>
-			<a href="<%=cPath %>/main/f.jsp?http://olccenter.or.kr/" target="_blank"
-			><img src="http://www.okjsp.pe.kr/images/banner/olc_134x60.gif"
-				alt="개방형 소프트웨어 교육센터, 동영상 교육"
-			></a>
-			<a href="<%=cPath %>/main/f.jsp?http://www.apptalk.tv" target="_blank"
-			><img src="http://www.okjsp.pe.kr/images/banner/apptalk_134x60.jpg"
-				alt="세상의 모든 앱을 영상으로. 앱의 모든 것, 앱톡"
-			></a>
+<script type="text/javascript">
+Banner.showAside();
+</script>
     	</div>
 	</div><!-- .box -->
 
