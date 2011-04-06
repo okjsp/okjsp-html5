@@ -200,7 +200,7 @@ public class MemberHandler {
 		        	.createThumbnail();
 				member.setProfile("Y");
 			} else {
-				new ProfileUtil().copyDefaultProfile(contextRoot, member.getId());
+				new ProfileUtil().copyDefaultProfile(contextRoot, member.getSid());
 			}
 
 			pstmt = pconn.prepareStatement(QUERY_UPDATE);
@@ -251,7 +251,7 @@ public class MemberHandler {
 		        	.createThumbnail();
 				member.setProfile("Y");
 			} else {
-				new ProfileUtil().copyDefaultProfile(contextRoot, member.getId());
+				new ProfileUtil().copyDefaultProfile(contextRoot, member.getSid());
 			}
 			
 			pstmt = pconn.prepareStatement(QUERY_MAX_SID);
