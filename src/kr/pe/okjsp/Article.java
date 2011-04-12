@@ -492,10 +492,10 @@ public class Article {
 		
 		int ccl = 0;
 		try {
-			ccl = Integer.parseInt(this.ccl_id.trim());
+			if (this.ccl_id != null) {
+				ccl = Integer.parseInt(this.ccl_id.trim());
+			}
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
 		
