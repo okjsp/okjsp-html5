@@ -30,7 +30,7 @@
 
 <%
     if (mb.getId() != null) {
-        %><img src="http://www.okjsp.pe.kr/profile/<%= mb.getId() %>.jpg"
+        %><img src="http://www.okjsp.pe.kr/profile/<%= mb.getSid() %>.jpg"
         	alt="<%= mb.getId() %>"
         	style="width:33px;height:33px"
         	onerror="this.src='/images/spacer.gif'"><%
