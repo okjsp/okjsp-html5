@@ -68,9 +68,9 @@ public class ControllerServlet extends HttpServlet {
 			res.sendRedirect(loginPath);
 			return;
     	} else if ( !( "Kenny".equals(member.getId()) ||
-            			"kenu".equals(member.getId()) )){
-    		res.sendRedirect("/html5/main/errorPage.jsp?msgCode=1");	// msgCode=1 : "- 죄송합니다. 본 게시판은 글쓰기 권한이 있는분만 글을 남길 수 있습니다."
-    		return;
+    			"topolo".equals(member.getId()) ||
+    			"kenu".equals(member.getId()) )){
+    		throw new IOException("NO RIGHT TO WRITE!!!");
     	}
     }
 	
@@ -79,11 +79,7 @@ public class ControllerServlet extends HttpServlet {
 			res.sendRedirect(loginPath);
 			return;
 		}
-		boolean isSpammer = checkSpammer(member.getId());
-		if(isSpammer) {
-			res.sendRedirect(loginPath);
-			return;
-		}
+
 	}
 
     if ("REPLY".equals(act)){
@@ -112,22 +108,6 @@ public class ControllerServlet extends HttpServlet {
   } // end doGet()
   
   
-	/*
-	 * "computer85", "spirits_lee", "it7power", "ahnks2"
-	 */
-  // buk12 ~04/09
-  // it7power, spirits_lee ~04/10
-	String[] spammers = { "buk12", "it7power", "spirits_lee" };
-
-	private boolean checkSpammer(String id) {
-		for (String spammer : spammers) {
-			if (spammer.equals(id)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 /**
  * @param req
  */
