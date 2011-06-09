@@ -140,7 +140,7 @@ public class ArticleDao {
 			pstmt.setString(++idx, article.getBbs());
 			pstmt.setInt   (++idx, article.getSeq());
 			pstmt.setInt   (++idx, article.getRef());
-			pstmt.setString(++idx, article.getId());
+			pstmt.setString(++idx, String.valueOf(article.getSid()));
 			pstmt.setString(++idx, article.getWriter());
 			pstmt.setString(++idx, article.getSubject());
 			pstmt.setString(++idx, article.getContent());
@@ -194,7 +194,7 @@ public class ArticleDao {
 			pstmt.setInt(3, article.getRef());
 			pstmt.setInt(4, article.getStep() + 1);
 			pstmt.setInt(5, article.getLev() + 1);
-			pstmt.setString(6, article.getId());
+			pstmt.setString(6, String.valueOf(article.getSid()));
 			pstmt.setString(7, article.getWriter());
 			pstmt.setString(8, article.getSubject());
 			pstmt.setString(9, article.getContent());
