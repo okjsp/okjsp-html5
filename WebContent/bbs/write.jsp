@@ -65,7 +65,7 @@
 
 		if(!!window.webkitNotifications) { // 브라우저에서 WebkitNotifications 을 지원 하는 경우 (현재 Chrome 만 지원)
 			if(window.webkitNotifications.checkPermission() == 0 ){ //사용자 승인 여부 확인하기 (0:승인 , 1:승인전, 2:거부)
-				var picture 	= 'http://www.okjsp.pe.kr/profile/kenu.jpg'; 
+				var picture 	= 'http://www.okjsp.pe.kr/profile/0.jpg'; 
 				var titleStr 	= '필수 입력 값이 입력되지 않았습니다';
 				var bodyStr 	= errorMsg;
 				okNotification 	= window.webkitNotifications.createNotification(picture, titleStr, bodyStr);

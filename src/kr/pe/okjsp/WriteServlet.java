@@ -3,8 +3,7 @@ package kr.pe.okjsp;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.Enumeration;
+import java.sql.SQLException;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -14,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.pe.okjsp.util.CommonUtil;
 import kr.pe.okjsp.util.DbCon;
-
-import com.oreilly.servlet.MultipartRequest;
 
 public class WriteServlet extends HttpServlet {
 
@@ -152,7 +149,7 @@ public class WriteServlet extends HttpServlet {
 				articleDao.updateOKBOARD_FILE(conn, article.getSeq(), req.getParameter("masknamePrefix"), fileCount); // okboard_file 테이블의 seq값을 Update 한다.
 			
 			conn.commit();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			System.out.println("WriteServlet err:" + CommonUtil.a2k(e.toString()));
 		} finally {
 			dbCon.close(conn, null);

@@ -130,10 +130,15 @@ public class ArticleDao {
 	 * @param conn
 	 * @param article
 	 * @return result record count
+	 * @throws IOException 
 	 */
-	public int write(Connection conn, Article article) {
+	public int write(Connection conn, Article article) throws IOException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
+		if ("recruit".equals(article.getBbs())) {
+			checkSpam(conn, "recruit", String.valueOf(article.getSid()));
+		}
 		try {
 			pstmt = conn.prepareStatement(QUERY_ADD);
 			int idx = 0;
@@ -388,10 +393,6 @@ public class ArticleDao {
 		int result = 0;
 		try {
 			conn = dbCon.getConnection();
-			
-			if ("recruit".equals(article.getBbs())) {
-				checkSpam(conn, "recruit", String.valueOf(article.getSid()));
-			}
 			
 			conn.setAutoCommit(false);
 
