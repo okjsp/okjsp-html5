@@ -1,0 +1,57 @@
+1. 디자인
+http://freehtml5templates.com/
+
+2. HTML5개발 관련 정리
+http://www.html5rocks.com
+
+3.HTML 5 Forms Demo(회원가입폼)
+http://brucelawson.co.uk/tests/html5-forms-demo.html
+
+4. 웹소켓관련
+http://code.google.com/p/jwebsocket/
+
+5. html5 저작도구 (authoring tool)
+http://www.html5trends.com/best-of/6-html5-authoring-tools/
+
+6. 웹PPT(Web Design For Non-Web Designers presentation online)
+http://choppingblock.com/presentations/201006_HOW_WebDesign/#slide1
+
+7. Korea HTML5 Group
+http://html5.bal.pe.kr
+
+8. HTML5 와 HTML4 의차이점 (번역본)
+http://channy.creation.net/project/html5/html4-differences/Overview_ko.html
+HTML5에 관한 포괄적인 설명
+http://channy.creation.net/blog/776
+
+9. WebDevMobile
+http://webdevmobile.com/xe/
+
+10. HTML 5 Tag Reference
+http://www.w3schools.com/html5/html5_reference.asp
+
+11. A showcase of sites using HTML5 markup
+http://html5gallery.com/
+
+12. HTML5와 CSS3를 사용하여 최신 웹 사이트 구축
+http://www.ibm.com/developerworks/kr/library/tutorial/wa-html5/index.html
+
+13. Yes, You Can Use HTML 5 Today(HTML & XHTML Tutorials)
+http://articles.sitepoint.com/article/html-5-snapshot-2009
+
+14. HTML5 발표자료
+http://html5.firejune.com/#slide1
+
+15. W3C 대한민국 사무국
+http://www.w3c.or.kr/
+
+16. HTML5 API(영어)
+http://www.w3.org/TR/html5/ (Latest Published Version)
+http://www.whatwg.org/specs/web-apps/current-work/multipage/
+
+17. HTML5 - 새롭게 추가되는 자바스크립트 API
+http://blog.xiles.net/334
+
+18. HTML5 Showcase(사파리만 되기는하는데...하단의 Developers는 다른 브라우저에서도 들어갈수 있습니다)
+http://www.apple.com/html5/
+
