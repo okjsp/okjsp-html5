@@ -41,7 +41,7 @@ while (iter.hasNext()) {
       <br/>
       <p>&nbsp; <a onClick="document.getElementById('contents_<%=one.getSeq()%>').style.display='block';" style='cursor:pointer'>내용 보기...</a></p>
 			<div id='contents_<%=one.getSeq()%>' style='display:none'>		
-			<p><section><%= one.getContentView() %></section></p>
+			<p><section><%= CommonUtil.rplc( one.getContentView(), "\n", "<br />") %></section></p>
 			<p>&nbsp; <a onClick="document.getElementById('contents_<%=one.getSeq()%>').style.display='none';" style='cursor:pointer'>내용 닫기...</a></p>			
 			</div>
       <p class="details">| Posted by <a><%= one.getWriter() %> 
