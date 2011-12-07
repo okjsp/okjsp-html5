@@ -8,7 +8,7 @@
 <%
 	String cPath = request.getContextPath();
 	String bbsids = request.getParameter("bbs");
-	int memoCount = 0; // 뎃글 갯수 (SSE 에서 비교 값으로 사용)
+	int memoCount = 0;
 %>
 <html>
 <head>
@@ -21,6 +21,7 @@
 <script src="<%=cPath%>/js/okjsp.js"></script>
 <script src="<%=cPath%>/js/okboard_view.js"></script>
 <script src="<%=cPath%>/js/prototype.js"></script>
+<script src="/js/banner.js" charset="utf-8"></script>
 <title>OKJSP</title>
 </head>
 
@@ -49,6 +50,13 @@
 				%>
 			<%=DateLabel.getTimeDiffLabel(one.getWhen())%> (<%=one.getWhen("yyyy-MM-dd HH:mm")%>), by <a href="<%=one.getHomepage()%>"><%=one.getWriter()%> </a>
           <p><%= one.getContentView() %></p>
+<%-- 하단 배너 --%>
+<div style="margin:0 0 20px; width:100%;text-align:center;">
+<script type="text/javascript">
+Banner.showContentSection();
+</script>
+</div>
+          
           <p>| Posted by <a href="<%=one.getHomepage()%>"><%=one.getWriter()%> </a> | Categories: <a href="#"> <%=one.getBbs()%></a> | Read: <a href="#"><%=one.getRead()%></a> | CCL: <%=one.getCcl_name()%> </p>          
 	<ul><%
           		ArrayList fileList = (ArrayList) request.getAttribute("arrdf");

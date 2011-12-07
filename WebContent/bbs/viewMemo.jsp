@@ -37,7 +37,7 @@
     }
 %>
 <br />
-<%= HttpLinker.getLinkedSource( CommonUtil.rplc(mb.getBcomment() ,"\n", "<br>")) %></p>
+<%= HttpLinker.getLinkedSource( CommonUtil.rplc(mb.getBcomment(), "\n", "<br />")) %></p>
 <p><%= mb.getWriter() %>
 <%= mb.getWhen("yyyy-MM-dd HH:mm:ss")%>
 </p></div>
