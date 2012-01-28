@@ -33,7 +33,7 @@ public class TwitterUpdate {
 	private String acessToken_secret   = rb.getString("ACESSTOKENSECRET");
 	
 	public void doUpdate(Article article, HttpServletRequest req) {
-		if ( !isTwitterUpdate(article, req) ){
+		if ( "1".equals("1") || !isTwitterUpdate(article, req) ){
 			return;
 		}
 		
