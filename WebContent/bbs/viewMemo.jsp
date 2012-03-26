@@ -40,7 +40,9 @@
 <%= HttpLinker.getLinkedSource( CommonUtil.rplc(mb.getBcomment(), "\n", "<br />")) %></p>
 <p><%= mb.getWriter() %>
 <%= mb.getWhen("yyyy-MM-dd HH:mm:ss")%>
-</p></div>
+</p>
+<input type="hidden" name="mseq" value="<%= mb.getMseq() %>">
+</div>
 <%  
 	  }
 	  memoCount ++;		// 뎃글 갯수 (SSE 에서 비교 값으로 사용)
