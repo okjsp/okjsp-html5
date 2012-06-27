@@ -44,8 +44,7 @@
 					if (one.getId() != null) {
 				%><img src="http://www.okjsp.pe.kr/profile/<%=one.getId()%>.jpg"
 				        	alt="<%=one.getId()%>"
-				        	style="width:77px"
-				        	onerror="this.src='/images/spacer.gif'"><%
+				        	style="width:77px"><%
 					}
 				%>
 			<%=DateLabel.getTimeDiffLabel(one.getWhen())%> (<%=one.getWhen("yyyy-MM-dd HH:mm")%>), by <a href="<%=one.getHomepage()%>"><%=one.getWriter()%> </a>

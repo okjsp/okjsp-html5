@@ -44,8 +44,7 @@ if (iterList.hasNext() ) {
     if (one.getId() != null) {
         %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"
         	alt="<%= one.getId() %>"
-        	style="width:14px;height:14px"
-        	onerror="this.src='<%=cPath%>/images/spacer.gif'"><%
+        	style="width:14px;height:14px"><%
     }
         	%></div></b></td>
 		<td title="<%= one.getWhen("yyyy-MM-dd HH:mm:ss z") %>">

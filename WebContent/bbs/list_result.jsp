@@ -33,10 +33,8 @@ while (iter.hasNext()) {
 			<%
 				    if (one.getId() != null) {
 				        %><img src="http://www.okjsp.pe.kr/profile/<%= one.getId() %>.jpg"
-				        	alt="<%= one.getId() %>"
-				        	onerror="this.src='http://www.okjsp.pe.kr/profile/images/spacer.gif'" style="width:17px" align="bottom"
-				        	><%
-				    } else { %> <img src="http://www.okjsp.pe.kr/profile/images/spacer.gif" > <% } %>
+				        	alt="<%= one.getId() %>" style="width:17px" align="bottom"><%
+				    } %>
       </h3>
       <br/>
       <p>&nbsp; <a onClick="document.getElementById('contents_<%=one.getSeq()%>').style.display='block';" style='cursor:pointer'>내용 보기...</a></p>
