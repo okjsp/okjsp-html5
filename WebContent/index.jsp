@@ -1,4 +1,3 @@
 <%
-String cPath = request.getContextPath();
-response.sendRedirect(cPath+"/bbs?act=FIRST_MAIN");
+response.sendRedirect("/html5/bbs?act=FIRST_MAIN");
 %>
