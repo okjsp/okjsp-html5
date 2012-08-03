@@ -8,7 +8,7 @@ String cPath = request.getContextPath();
 
 <header>
 	<h1 id="sitename"><a href="<%= Navigation.getPath("HOME_URL") %>" title="Go to Start page">OKJSP</a></h1>
-	<div id="description">java, jsp, eclipse & HTML5
+	<div id="description">java, jsp, eclipse &amp; HTML5
 	</div>
 	<div id="top">
 		<nav>
@@ -21,7 +21,7 @@ String cPath = request.getContextPath();
 			</ul>
 		</nav>
 		<div class="search">
-			<input type="checkbox" onclick="doChange()" id="change"><span class="changeFont">기존 사이트로 변환</span><br/><br/>
+			<br /><br />
 			<form name="searchf1" method="get" target="okjspsearch"
 			action="http://www.google.com/search"
 			onsubmit="searchf1.q.value='site:okjsp.pe.kr '+searchf1.qt.value;"> 
@@ -31,16 +31,3 @@ String cPath = request.getContextPath();
 		</div>
 	</div>
 </header>
-
-<script>
-function doChange(){
-	if(document.getElementById('change').checked == true){
-		if(confirm('기존사이트로 다시 복귀하시기 원하십니까?') == true){
-			deleteCookie( 'urlChangeOKSJSP' );
-			//로컬과 서버 설정 주의~!!!
-			top.location.href = 'http://www.okjsp.pe.kr';
-		}
-	}
-}
-
-</script>

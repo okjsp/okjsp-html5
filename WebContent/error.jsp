@@ -16,7 +16,7 @@
 </head>
 <body>
 <div id="wrapper">
-	<jsp:include page="/main/header.jsp"></jsp:include>
+	<jsp:include page="./main/header.jsp"></jsp:include>
 	<section>
 		<div id="container">
 			<div id="contentinner">
