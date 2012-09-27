@@ -74,6 +74,10 @@ public class ControllerServlet extends HttpServlet {
     	}
     }
 	
+	if (member != null && member.getSid() == 17004 && member.getSid() == 19384) {
+		throw new IOException("NO RIGHT TO USE!!!");
+	}
+	
 	if ("ADD".equals(act) || "REPLY".equals(act)) {
 		if (member == null || ("").equals(member.getId()) || member.getId() == null) {
 			res.sendRedirect(loginPath);
@@ -85,8 +89,8 @@ public class ControllerServlet extends HttpServlet {
     if ("REPLY".equals(act)){
         req.setAttribute("do", "reply");
     } else if ("ADD".equals(act)){
-        // °Ô½ÃÆÇ ¾²±â·Î °¡¸é¼­ cookie ¿¡ ÀÖ´Â °ªÀ» article °´Ã¼¿¡ ³Ö¾î¼­
-        // ÇÑ¹ø ±Û¾´ ÀÌ¸§, ÀÌ¸ÞÀÏ, È¨ÆäÀÌÁö´Â °è¼Ó ±â¾ïÇÏ°Ô ÇÑ´Ù.
+        // ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½é¼­ cookie ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ article ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ö¾î¼­
+        // ï¿½Ñ¹ï¿½ ï¿½Û¾ï¿½ ï¿½Ì¸ï¿½, ï¿½Ì¸ï¿½ï¿½ï¿½, È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ñ´ï¿½.
         Article article = new Article();
         try {
             article.setWriter(CommonUtil.a2k(CommonUtil.getCookie(req, "okwriter")));
