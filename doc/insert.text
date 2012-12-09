@@ -3,8 +3,8 @@ insert into okboard_category(seq,id,name) values(2,'techtrend'        ,'TECH TRE
 insert into okboard_category(seq,id,name) values(3,'lecture'     ,'강좌');
 insert into okboard_category(seq,id,name) values(4,'TOOL'        ,'개발툴');
 insert into okboard_category(seq,id,name) values(5,'TOOLqna'     ,'개발툴 QnA');
-insert into okboard_category(seq,id,name) values(6,'ajax'        ,'Ajax');
-insert into okboard_category(seq,id,name) values(7,'ajaxqna'     ,'Ajax QnA');
+insert into okboard_category(seq,id,name) values(6,'ajax'        ,'JavaScript');
+insert into okboard_category(seq,id,name) values(7,'ajaxqna'     ,'JavaScript QnA');
 insert into okboard_category(seq,id,name) values(8,'bbs2'        ,'DB Tips');
 insert into okboard_category(seq,id,name) values(9,'bbs1'        ,'DB QnA');
 insert into okboard_category(seq,id,name) values(10,'bbs4'       ,'JSP Tips');

@@ -39,7 +39,7 @@ public class BbsManager {
 				"rubyqna","flex","flexqna","bbs7","docs","etc","bbs6","japanlife","bbs5","movie","howmuch","lifeqna","news","solo","recruit","engdocs",
 				"krtomcat","link","goodjob","market","model2jsp","notice","okboard","useful","mac","ihaveadream","javastudy","ns","dbstudy","springstudy",
 				"xf","twitter","trash"};
-		String[] bbsName = {"HTML5","TECH TREND","강좌","개발툴","개발툴 QnA","Ajax","Ajax QnA","DB Tips","DB QnA","JSP Tips","JSP QnA","j2ee Tips",
+		String[] bbsName = {"HTML5","TECH TREND","강좌","개발툴","개발툴 QnA","JavaScript","JavaScript QnA","DB Tips","DB QnA","JSP Tips","JSP QnA","j2ee Tips",
 				"j2ee QnA","XML Tips","XML QnA","Ruby on Rails","Ruby on Rails QnA","Flex","Flex QnA","소스자료실","문서자료실","기타자료실","사는 얘기",
 				"일본사는얘기","머리식히는 곳","movie story","얼마면돼","의견좀","뉴스따라잡기","싱글의 미학","구인/구직/홍보","english bbs","번역","추천사이트",
 				"좋은회사","장터","모델2JSP책관련","공지사항","자료실문답","유용한 정보","맥 정보","정부는 개발자를 위해","프로그램기초스터디",
